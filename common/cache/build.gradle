@@ -1,0 +1,11 @@
+apply from: "$rootDir/common-android-library.gradle"
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation project(Modules.model)
+
+    implementation Libraries.lifecycleExtensions
+    annotationProcessor Libraries.lifecycleCompiler
+    implementation Libraries.roomDB
+    kapt Libraries.roomCompiler
+}

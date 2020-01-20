@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">networking</string>
+    <string name="key_not_found">%1$s key not found in strings</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="time_out_error">Network timeout</string>
+    <string name="session_expired">Session Expired</string>
+    <string name="not_implemented">Not implemented</string>
+    <string name="invalid_response">Invalid response</string>
+    <string name="default_api_error">[E105] Default Api Error</string>
+
+</resources>

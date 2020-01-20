@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.gwl.login.LoginField" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.gwl.login.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:id="@+id/container"
+        tools:context=".LoginActivity">
+
+        <EditText
+            android:id="@+id/textLogin"
+            android:layout_marginTop="10dp"
+            android:hint="Enter email"
+            android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,LoginField.USER_NAME, hasFocus)}"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(LoginField.USER_NAME,text.toString())}"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/textPassword"
+            android:layout_marginTop="10dp"
+            android:hint="Enter password"
+            android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,LoginField.PASSWORD, hasFocus)}"
+            android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(LoginField.PASSWORD,text.toString())}"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/btnLogin"
+            android:text="Login"
+            android:onClick="@{()->viewModel.onLoginClick()}"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LockAuthentication</string>
+    <string name="title_authenticationlocl">Module Title</string>
+    <string name="title_mpin">Module Title</string>
+</resources>
