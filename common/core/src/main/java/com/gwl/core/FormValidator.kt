@@ -1,8 +1,5 @@
 package com.gwl.core
 
-import com.gwl.model.LoginItem
-import java.security.AccessController.getContext
-
 class FormValidator {
     // region - Companion object
     companion object {
@@ -21,26 +18,26 @@ class FormValidator {
             return name.isNotEmpty()
         }
 
-       /*fun getValidationErrorMessage(
-           hasFocus: Boolean, model: LoginItem,
-           loginField: LoginField,
-           showError: (String?) -> Unit
-        ) {
-            if (model.isValidDetails)
-                return
-            if (model.isPasswordValid || model.isEmailValid)
-                showError(null)
+        /*fun getValidationErrorMessage(
+            hasFocus: Boolean, model: LoginItem,
+            loginField: LoginField,
+            showError: (String?) -> Unit
+         ) {
+             if (model.isValidDetails)
+                 return
+             if (model.isPasswordValid || model.isEmailValid)
+                 showError(null)
 
-            if (loginField == LoginField.USER_NAME && !hasFocus && model.email.isEmpty()) {
-                showError(getContext().getString(R.string.email_empty_error))
-            } else if (loginField == LoginField.USER_NAME && !hasFocus && !model.isEmailValid) {
-                showError(getContext().getString(R.string.error_invalid_email))
-            } else if (loginField == LoginField.PASSWORD && !hasFocus && model.password.isEmpty()) {
-                showError(getContext().getString(R.string.password_empty_error))
-            } else if (loginField == LoginField.PASSWORD && !hasFocus && !model.isPasswordValid) {
-                showError(getContext().getString(R.string.password_invalid_error))
-            }
-        }*/
+             if (loginField == LoginField.USER_NAME && !hasFocus && model.email.isEmpty()) {
+                 showError(getContext().getString(R.string.email_empty_error))
+             } else if (loginField == LoginField.USER_NAME && !hasFocus && !model.isEmailValid) {
+                 showError(getContext().getString(R.string.error_invalid_email))
+             } else if (loginField == LoginField.PASSWORD && !hasFocus && model.password.isEmpty()) {
+                 showError(getContext().getString(R.string.password_empty_error))
+             } else if (loginField == LoginField.PASSWORD && !hasFocus && !model.isPasswordValid) {
+                 showError(getContext().getString(R.string.password_invalid_error))
+             }
+         }*/
 
         // endregion
     }

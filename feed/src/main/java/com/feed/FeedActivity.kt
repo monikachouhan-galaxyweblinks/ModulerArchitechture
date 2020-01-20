@@ -11,21 +11,18 @@ import com.networking.dispatchers.DispatcherProviderImpl
 
 class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>() {
     val dispatcherProvider: DispatcherProvider = DispatcherProviderImpl()
-    val pilgrimAPI: NetworkAPI by lazy { NetworkAPIFactory.standardClient(this) }
+    val networkAPI: NetworkAPI by lazy { NetworkAPIFactory.standardClient(this) }
     override fun getLayoutId(): Int {
         return R.layout.activity_feed
     }
 
     override fun getViewModel(): FeedViewModel =
-        initViewModel {
-            FeedViewModel(FeedRepository(), pilgrimAPI)
-        }
+        initViewModel { FeedViewModel(networkAPI) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
         mViewModel.getList()
-
     }
 
 }

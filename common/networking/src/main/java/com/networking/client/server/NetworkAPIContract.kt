@@ -8,8 +8,8 @@ import retrofit2.Call
 
 abstract class NetworkAPIContract {
 
-    abstract suspend fun getList(): Call<ApiResponse<com.gwl.model.ResponseData>>
-    abstract suspend fun getFeedList(): Call<ApiResponse<com.gwl.model.FeedResponse?>>
+    abstract suspend fun getList(): Call<ApiResponse<ResponseData>>
+    abstract suspend fun getFeedList(): Call<FeedResponse?>
 
 
 }
