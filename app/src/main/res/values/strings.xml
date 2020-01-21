@@ -5,4 +5,7 @@
     <string name="title_login">Login</string>
     <string name="title_launcher">Launcher</string>
     <string name="title_feed">Module Title</string>
+    <string name="title_material_component">MaterialComponent</string>
+    <string name="user_name">User Name</string>
+    <string name="ok">OK</string>
 </resources>

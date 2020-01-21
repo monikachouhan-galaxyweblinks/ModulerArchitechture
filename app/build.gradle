@@ -28,7 +28,6 @@ android {
     dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, ":feed"]
 
 
-
 }
 
 dependencies {
@@ -47,6 +46,7 @@ dependencies {
     implementation Libraries.ktx
     implementation Libraries.kotlin
     api SupportLibraries.appcompat
+    api SupportLibraries.design
 
 //    api Libraries.ktx
 //    api Libraries.kotlin
@@ -58,4 +58,5 @@ dependencies {
 //    api Libraries.retrofitgson
 //    api SupportLibraries.appcompat
 
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
