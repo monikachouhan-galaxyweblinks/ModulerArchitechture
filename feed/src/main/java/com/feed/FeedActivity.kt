@@ -1,17 +1,18 @@
 package com.feed
 
 import android.os.Bundle
+import android.util.Log
 import com.feed.databinding.ActivityFeedBinding
+import com.gwl.MyApplication
 import com.gwl.core.BaseActivity
 import com.gwl.core.initViewModel
 import com.networking.client.server.NetworkAPI
-import com.networking.client.server.NetworkAPIFactory
 import com.networking.dispatchers.DispatcherProvider
 import com.networking.dispatchers.DispatcherProviderImpl
 
 class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>() {
     val dispatcherProvider: DispatcherProvider = DispatcherProviderImpl()
-    val networkAPI: NetworkAPI by lazy { NetworkAPIFactory.standardClient(this) }
+    val networkAPI: NetworkAPI by lazy { MyApplication.instance.networkAPI }
     override fun getLayoutId(): Int {
         return R.layout.activity_feed
     }
@@ -22,7 +23,10 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
-        mViewModel.getList()
+        mViewModel.initPager().observe {
+            Log.d("FeedActivity","FeedActivity articles $it")
+          mViewModel.adapter.submitList(it)
+        }
     }
 
 }

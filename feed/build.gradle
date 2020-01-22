@@ -5,4 +5,5 @@ dependencies {
     implementation project(Modules.networking)
     implementation SupportLibraries.recyclerview
     implementation Libraries.glide
+    implementation Libraries.paging
 }

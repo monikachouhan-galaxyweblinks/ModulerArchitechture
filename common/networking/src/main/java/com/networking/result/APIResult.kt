@@ -1,9 +1,9 @@
 package com.networking.result
 
 import com.networking.R
+import com.networking.response.ApiResponse
+import com.networking.response.HTTP_SUCCESS_CODE
 import com.networking.util.StringUtil.getString
-import com.pilgrimnetworking.response.ApiResponse
-import com.pilgrimnetworking.response.HTTP_SUCCESS_CODE
 
 sealed class APIResult<T> {
     class Failure<T>(val details: APIError) : APIResult<T>()

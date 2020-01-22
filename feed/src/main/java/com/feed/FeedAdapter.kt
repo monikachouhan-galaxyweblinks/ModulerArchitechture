@@ -13,7 +13,7 @@ import com.gwl.model.ArticlesItem
 /**
  * @author GWL
  */
-class FeedAdapter : BaseAdapter<ArticlesItem>() {
+class FeedAdapter : BaseAdapter<ArticlesItem>()  {
 
     override val layoutId: Int get() = R.layout.item_row_feed
 

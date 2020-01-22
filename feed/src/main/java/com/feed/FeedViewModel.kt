@@ -1,36 +1,45 @@
 package com.feed
 
-import android.util.Log
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.feed.datasource.FeedDataSource
 import com.gwl.core.BaseViewModel
+import com.gwl.model.ArticlesItem
 import com.gwl.model.FeedResponse
 import com.networking.client.server.NetworkAPI
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class FeedViewModel(val pilgrimAPI: NetworkAPI) : BaseViewModel() {
 
-    val feedResponse: ObservableField<FeedResponse> by lazy { ObservableField<FeedResponse>() }
-    var adapter:  FeedAdapter = FeedAdapter()
-    fun getList() {
-        GlobalScope.launch(Dispatchers.IO) {
-            pilgrimAPI.getFeedList().enqueue(object : Callback<FeedResponse?> {
-                override fun onFailure(call: Call<FeedResponse?>, t: Throwable) {
-                    Log.d("FeedViewModel", "on Failure ${t.message}")
-
-                }
-
-                override fun onResponse(call: Call<FeedResponse?>, response: Response<FeedResponse?>) {
-                    Log.d("FeedViewModel", " on success ${response.body()}")
-                    feedResponse.set(response.body())
-                }
-
-            })
-        }
-
+    companion object {
+        const val FETCH_SIZE = 5
+        const val PREFETCH_DISTANCE = 20
     }
+
+    val feedResponse: ObservableField<FeedResponse> by lazy { ObservableField<FeedResponse>() }
+    var adapter: FeedsAdapter = FeedsAdapter()
+    val pagedListConfig = PagedList.Config.Builder()
+        .setInitialLoadSizeHint(FETCH_SIZE)
+        .setPageSize(FETCH_SIZE)
+        .setPrefetchDistance(PREFETCH_DISTANCE)
+        .setEnablePlaceholders(false)
+        .build()
+
+    fun initPager(): LiveData<PagedList<ArticlesItem>> {
+        return LivePagedListBuilder<Int, ArticlesItem>(
+            ArticleDataSourceFactory(
+                FeedDataSource(),
+                true
+            ), pagedListConfig
+        ).build()
+    }
+
+    /* fun getList() {
+         GlobalScope.launch(Dispatchers.IO) {
+             val response = pilgrimAPI.getFeeds(1L,20)
+             Log.d("FeedViewModel", "FeedViewModel ${response.execute()}")
+         }
+
+     }*/
 }

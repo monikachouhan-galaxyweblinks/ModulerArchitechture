@@ -9,6 +9,7 @@ android {
     defaultConfig {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
+        multiDexEnabled true
     }
     dataBinding {
         enabled = true
@@ -20,5 +21,6 @@ dependencies {
     implementation project(Modules.core)
     implementation project(Modules.navigation)
     implementation Libraries.kotlin
+    implementation Libraries.multidex
     implementation project(Modules.model)
 }
