@@ -1,4 +1,4 @@
-package com.fingure;
+package com.fingerLock;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,6 +10,8 @@ import android.os.CancellationSignal;
 import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
+
+import com.fingure.R;
 
 /**
  * Created by whit3hawks on 11/16/16.

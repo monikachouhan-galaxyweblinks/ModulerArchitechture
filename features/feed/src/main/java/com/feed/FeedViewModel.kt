@@ -17,7 +17,7 @@ class FeedViewModel(val pilgrimAPI: NetworkAPI) : BaseViewModel() {
         const val PREFETCH_DISTANCE = 20
     }
 
-    val feedResponse: ObservableField<FeedResponse> by lazy { ObservableField<FeedResponse>() }
+    val isApiRunning: ObservableField<Boolean> by lazy { ObservableField<Boolean>(true) }
     var adapter: FeedsAdapter = FeedsAdapter()
     val pagedListConfig = PagedList.Config.Builder()
         .setInitialLoadSizeHint(FETCH_SIZE)
@@ -27,6 +27,7 @@ class FeedViewModel(val pilgrimAPI: NetworkAPI) : BaseViewModel() {
         .build()
 
     fun initPager(): LiveData<PagedList<ArticlesItem>> {
+        isApiRunning.set(true)
         return LivePagedListBuilder<Int, ArticlesItem>(
             ArticleDataSourceFactory(
                 FeedDataSource(),

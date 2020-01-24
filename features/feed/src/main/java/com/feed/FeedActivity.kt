@@ -26,6 +26,7 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>() {
         mViewModel.initPager().observe {
             Log.d("FeedActivity","FeedActivity articles $it")
           mViewModel.adapter.submitList(it)
+            mViewModel.isApiRunning.set(false)
         }
     }
 

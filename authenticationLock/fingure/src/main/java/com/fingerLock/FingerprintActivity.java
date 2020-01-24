@@ -1,4 +1,4 @@
-package com.fingure;
+package com.fingerLock;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -11,6 +11,11 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import com.fingure.R;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -26,9 +31,6 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 public class FingerprintActivity extends AppCompatActivity {
 
@@ -50,7 +52,7 @@ public class FingerprintActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.errorText);
 
         // Check whether the device has a Fingerprint sensor.
-        if(!fingerprintManager.isHardwareDetected()){
+        if (!fingerprintManager.isHardwareDetected()) {
             /**
              * An error message will be displayed if the device does not contain the fingerprint hardware.
              * However if you plan to implement a default authentication method,
@@ -60,19 +62,19 @@ public class FingerprintActivity extends AppCompatActivity {
              * startActivity(intent);
              */
             textView.setText("Your Device does not have a Fingerprint Sensor");
-        }else {
+        } else {
             // Checks whether fingerprint permission is set on manifest
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
                 textView.setText("Fingerprint authentication permission not enabled");
-            }else{
+            } else {
                 // Check whether at least one fingerprint is registered
                 if (!fingerprintManager.hasEnrolledFingerprints()) {
                     textView.setText("Register at least one fingerprint in Settings");
-                }else{
+                } else {
                     // Checks whether lock screen security is enabled or not
                     if (!keyguardManager.isKeyguardSecure()) {
                         textView.setText("Lock screen security not enabled in Settings");
-                    }else{
+                    } else {
                         generateKey();
 
                         if (cipherInit()) {

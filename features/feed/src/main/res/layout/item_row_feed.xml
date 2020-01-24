@@ -22,6 +22,7 @@
             tools:text="Title"
             android:text="@{item.title}"
             android:textColor="#000"
+            android:textSize="17sp"
             android:layout_height="wrap_content" />
 
         <ImageView
