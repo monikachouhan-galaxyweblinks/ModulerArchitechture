@@ -20,12 +20,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
     testOptions { unitTests.returnDefaultValues = true }
 
     dataBinding { enabled = true }
 
-    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, ":feed"]
+    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, Modules.player,":features:feed"]
 
 
 }
@@ -38,6 +41,7 @@ dependencies {
     implementation project(Modules.networking)
     implementation project(Modules.navigation)
     implementation project(Modules.presentation)
+    implementation project(Modules.exoplayerLib)
 
     implementation Libraries.multidex
     implementation Libraries.roomDB
@@ -47,8 +51,15 @@ dependencies {
     implementation Libraries.ktx
     implementation Libraries.kotlin
     api SupportLibraries.appcompat
+    implementation ("com.google.android.exoplayer:exoplayer:${Versions.exoPlayer2Version}") {
+        exclude group: 'com.android.support'
+    }
     api SupportLibraries.design
 
+    implementation(
+            "com.google.android.exoplayer:extension-ima:${Versions.exoPlayer2Version}") {
+        exclude group: 'com.android.support'
+    }
 //    api Libraries.ktx
 //    api Libraries.kotlin
 //    api Libraries.coroutinescore
@@ -59,5 +70,4 @@ dependencies {
 //    api Libraries.retrofitgson
 //    api SupportLibraries.appcompat
 
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

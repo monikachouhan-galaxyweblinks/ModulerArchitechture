@@ -20,10 +20,14 @@
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/common/networking" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/feed" />
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/features/launcher" />
             <option value="$PROJECT_DIR$/features/login" />
-            <option value="$PROJECT_DIR$/feed" />
+            <option value="$PROJECT_DIR$/features/player_feeds" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/exoplayer" />
+            <option value="$PROJECT_DIR$/libraries/player-core" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>

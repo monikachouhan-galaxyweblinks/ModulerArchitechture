@@ -2,7 +2,7 @@ package com.gwl
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.gwl.navigation.features.FeedNavigation
+import com.gwl.navigation.features.PlayerNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         startFeed()
     }
 
-    private fun startFeed() = FeedNavigation.dynamicStart?.let { startActivity(it) }
+    private fun startFeed() = PlayerNavigation.dynamicStart?.let { startActivity(it) }
 
     companion object {
         private const val HOME = 100

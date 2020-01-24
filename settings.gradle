@@ -1,5 +1,5 @@
-include  Modules.networking, ':feed'
-include Modules.model,Modules.core
+include Modules.networking, ':features:feed', Modules.player, Modules.exoplayerLib,Modules.playerCore
+include Modules.model, Modules.core
 include Modules.app, Modules.navigation, Modules.login, Modules.home, Modules.launcher, Modules.cache, Modules.presentation
-include Modules.mpinauthentication,Modules.fingure
+include Modules.mpinauthentication, Modules.fingure
 rootProject.name = 'ModuleArchitechure'

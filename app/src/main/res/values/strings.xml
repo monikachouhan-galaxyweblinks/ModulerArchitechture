@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ModuleArchitechure</string>
     <string name="title_features">Features</string>
-    <string name="title_home">Homw</string>
+    <string name="title_home">Home</string>
     <string name="title_login">Login</string>
     <string name="title_launcher">Launcher</string>
     <string name="title_feed">Module Title</string>

@@ -5,17 +5,19 @@ object ApplicationId {
 object Modules {
     val app = ":app"
     val navigation = ":navigation"
+    val player = ":features:player_feeds"
 
     val cache = ":common:cache"
     val core = ":common:core"
-    val network = ":common:network"
     val networking = ":common:networking"
-
 
     val presentation = ":common:core"
     val model = ":common:model"
     val home = ":features:home"
     val login = ":features:login"
+    val exoplayerLib = ":libraries:exoplayer"
+    val playerCore = ":libraries:player-core"
+
     val launcher = ":features:launcher"
     val mpinauthentication = ":authenticationLock:mpin:mpinauthentication"
     val mpin = ":authenticationLock:mpin"
@@ -32,7 +34,7 @@ object Versions {
     val gradle = "3.5.2"
 
     val compileSdk = 28
-    val minSdk = 21
+    val minSdk = 26
     val targetSdk = 28
 
     val googleAuth = "16.0.1"
@@ -68,6 +70,8 @@ object Versions {
     val leakCanary = "1.6.3"
     val crashlytics = "2.9.9"
     val koin = "2.0.0-beta-1"
+    val releaseVersion = "3.7.0.2905-A1"
+    val exoPlayer2Version = "2.9.5"
 
     val roomVersion = "2.2.3"
     val roomCompiler = "2.2.3"
@@ -89,14 +93,16 @@ object Libraries {
     val multidex = "androidx.multidex:multidex:${Versions.multidex}"
 
     val coroutinescore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-    val coroutinesandroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    val coroutinesandroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 
     val kotlincoroutinesretrofit = "ru.gildor.coroutines:kotlin-coroutines-retrofit:1.1.0"
-    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitgson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
-     //paging
+    //paging
     val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
 
     val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
