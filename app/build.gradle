@@ -35,6 +35,7 @@ dependencies {
     implementation project(Modules.model)
     implementation project(Modules.cache)
     implementation project(Modules.core)
+    implementation project(Modules.networking)
     implementation project(Modules.navigation)
     implementation project(Modules.presentation)
 

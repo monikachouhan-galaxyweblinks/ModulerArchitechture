@@ -7,10 +7,13 @@ dependencies {
 
     implementation SupportLibraries.design
     implementation Libraries.lifecycleExtensions
+    implementation Libraries.paging
+
     kapt Libraries.lifecycleCompiler
     testImplementation TestLibraries.lifecycleTesting
 
     implementation project(Modules.model)
+    implementation project(Modules.networking)
     api Libraries.glide
     kapt Libraries.glideCompiler
 }

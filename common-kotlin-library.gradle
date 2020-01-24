@@ -1,5 +1,8 @@
 apply plugin: 'kotlin'
-
+apply plugin: 'kotlin-android-extensions'
+androidExtensions {
+    experimental = true
+}
 dependencies {
     implementation Libraries.kotlin
 }

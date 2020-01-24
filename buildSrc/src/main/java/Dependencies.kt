@@ -72,6 +72,7 @@ object Versions {
     val roomVersion = "2.2.3"
     val roomCompiler = "2.2.3"
     val playCore = "1.3.7"
+    val pagingVersion = "2.1.1"
 
     val databindingCompiler = "3.5.3"
 
@@ -95,9 +96,8 @@ object Libraries {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitgson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
-
-
-
+     //paging
+    val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
 
     val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
 
