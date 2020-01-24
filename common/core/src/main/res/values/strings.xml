@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Presentation</string>
+    <string name="unknown_error">An unknown error occurred</string>
+    <string name="error_timeout">Couldn\'t reach the server. Please check your internet connection.</string>
 </resources>

@@ -1,8 +1,8 @@
-package com.pilgrimnetworking.response
+package com.networking.response
 
 import com.google.gson.annotations.SerializedName
 
-sealed class PilgrimResponse<T> {
+sealed class BaseResponse<T> {
     abstract fun isSuccessful(): Boolean
 }
 
@@ -29,24 +29,28 @@ open class ApiResponse<T>(
     var data: T,
 
     @SerializedName("isPaginated")
-    private var isPaginated: Boolean?,
+    private var isPaginated: Boolean?=true,
 
     @SerializedName("isLast")
     private var isLast: Boolean?,
 
     @SerializedName("message")
-    var message: String,
+    var message: String?="",
 
     @SerializedName("code")
-    var code: String
-) : PilgrimResponse<T>() {
+    var code: String?="",
+
+    @SerializedName("count")
+    var itemCount: Int? = 0
+) : BaseResponse<T>() {
     override fun isSuccessful(): Boolean {
         return data != null || code == HTTP_SUCCESS_CODE
     }
 
     fun hasNextPage(): Boolean {
         return if (isPaginated == null || isPaginated == false) {
-            false
+            //false
+            true
         } else {
             isLast == false
         }
