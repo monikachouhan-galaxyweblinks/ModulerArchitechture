@@ -26,7 +26,8 @@ android {
 
     dataBinding { enabled = true }
 
-    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin]
+    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure,
+                       Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin, Modules.facebookLogin]
 
     compileOptions {
         sourceCompatibility 1.8

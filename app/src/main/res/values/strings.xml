@@ -10,4 +10,8 @@
     <string name="ok">OK</string>
     <string name="title_google_login">GoogleLogin</string>
     <string name="title_googlelogin">glogin</string>
+    <string name="title_facebook_login">FacebookLogin</string>
+
+    <string name="apikey">AIzaSyDJj3mE824QZiXId6naVyHnumzW7KJfjxw</string>
+    <string name="facebook_app_id">sdfsdweqeqw</string>
 </resources>

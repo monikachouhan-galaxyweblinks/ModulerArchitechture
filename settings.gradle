@@ -2,5 +2,5 @@ include Modules.networking, Modules.feed, Modules.player, Modules.exoplayerLib, 
 include Modules.model, Modules.core
 include Modules.app, Modules.navigation, Modules.login, Modules.home, Modules.launcher, Modules.cache, Modules.presentation
 include Modules.mpinauthentication, Modules.fingure
-include  Modules.googleLogin
+include  Modules.googleLogin,Modules.facebookLogin
 rootProject.name = 'ModuleArchitechure'

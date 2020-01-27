@@ -44,4 +44,11 @@
         android:layout_height="wrap_content"
         android:text="Google Login" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFacebookLogin"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Facebook Login" />
+
 </LinearLayout>
