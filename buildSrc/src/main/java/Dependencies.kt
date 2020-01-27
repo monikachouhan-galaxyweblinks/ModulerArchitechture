@@ -37,7 +37,7 @@ object Versions {
     val gradle = "3.5.2"
 
     val compileSdk = 28
-    val minSdk = 26
+    val minSdk = 18
     val targetSdk = 28
 
     val googleAuth = "16.0.1"
@@ -75,7 +75,7 @@ object Versions {
     val crashlytics = "2.9.9"
     val koin = "2.0.0-beta-1"
     val releaseVersion = "3.7.0.2905-A1"
-    val exoPlayer2Version = "2.9.5"
+    val exoPlayer2Version = "2.10.1"
 
     val roomVersion = "2.2.3"
     val roomCompiler = "2.2.3"

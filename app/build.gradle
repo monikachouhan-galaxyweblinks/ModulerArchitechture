@@ -21,17 +21,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
-    }
+
     testOptions { unitTests.returnDefaultValues = true }
 
     dataBinding { enabled = true }
 
     dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin]
 
-
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 dependencies {

@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
 
@@ -74,22 +75,26 @@ public class Motion {
     }
 
     public static Observable<ArrayList<Pair<String, Element>>> contents() {
-        return Observable.fromCallable(() -> {
-            Element body = article.body();
-            ArrayList<Pair<String, Element>> result = new ArrayList<>();
-            result.add(Pair.create("", body.select(INTRO).first()));
 
-            Element part;
+        return Observable.fromCallable(new Callable<ArrayList<Pair<String, Element>>>() {
+            @Override
+            public ArrayList<Pair<String, Element>> call() throws Exception {
+                Element body = article.body();
+                ArrayList<Pair<String, Element>> result = new ArrayList<>();
+                result.add(Pair.create("", body.select(INTRO).first()));
 
-            part = body.getElementById(ID_PART2);
-            result.add(Pair.create(part.child(0).text(), part.child(1)));
+                Element part;
 
-            part = body.getElementById(ID_PART3);
-            result.add(Pair.create(part.child(0).text(), part.child(1)));
+                part = body.getElementById(ID_PART2);
+                result.add(Pair.create(part.child(0).text(), part.child(1)));
 
-            part = body.getElementById(ID_PART4);
-            result.add(Pair.create(part.child(0).text(), part.child(1)));
-            return result;
+                part = body.getElementById(ID_PART3);
+                result.add(Pair.create(part.child(0).text(), part.child(1)));
+
+                part = body.getElementById(ID_PART4);
+                result.add(Pair.create(part.child(0).text(), part.child(1)));
+                return result;
+            }
         });
     }
 

@@ -19,14 +19,17 @@ package im.ene.toro.exoplayer;
 import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ads.AdsLoader;
 import com.google.android.exoplayer2.source.ads.AdsMediaSource;
 import com.google.android.exoplayer2.ui.PlayerView;
+
 import im.ene.toro.ToroPlayer;
 import im.ene.toro.annotations.Beta;
 
@@ -39,56 +42,67 @@ import im.ene.toro.annotations.Beta;
 @Beta //
 public class AdsPlayable extends ExoPlayable {
 
-  static class FactoryImpl implements AdsMediaSource.MediaSourceFactory {
+    static class FactoryImpl implements AdsMediaSource.MediaSourceFactory {
 
-    @NonNull final ExoCreator creator;
-    @NonNull final ToroPlayer player;
+        @NonNull
+        final ExoCreator creator;
+        @NonNull
+        final ToroPlayer player;
 
-    FactoryImpl(@NonNull ExoCreator creator, @NonNull ToroPlayer player) {
-      this.creator = creator;
-      this.player = player;
+        FactoryImpl(@NonNull ExoCreator creator, @NonNull ToroPlayer player) {
+            this.creator = creator;
+            this.player = player;
+        }
+
+        @Override
+        public MediaSource createMediaSource(Uri uri) {
+            return this.creator.createMediaSource(uri, null);
+        }
+
+        @Override
+        public int[] getSupportedTypes() {
+            // IMA does not support Smooth Streaming ads.
+            return new int[]{C.TYPE_DASH, C.TYPE_HLS, C.TYPE_OTHER};
+        }
     }
 
-    @Override public MediaSource createMediaSource(Uri uri) {
-      return this.creator.createMediaSource(uri, null);
+    @NonNull
+    private final AdsLoader adsLoader;
+    @NonNull
+    private final FactoryImpl factory;
+    @Nullable
+    private final ViewGroup adsContainer;
+
+    @SuppressWarnings("WeakerAccess")
+    public AdsPlayable(ExoCreator creator, Uri uri, String fileExt, ToroPlayer player,
+                       @NonNull AdsLoader adsLoader, @Nullable ViewGroup adsContainer) {
+        super(creator, uri, fileExt);
+        this.adsLoader = adsLoader;
+        this.adsContainer = adsContainer;
+        this.factory = new FactoryImpl(this.creator, player);
     }
 
-    @Override public int[] getSupportedTypes() {
-      // IMA does not support Smooth Streaming ads.
-      return new int[] { C.TYPE_DASH, C.TYPE_HLS, C.TYPE_OTHER };
-    }
-  }
-
-  @NonNull private final AdsLoader adsLoader;
-  @NonNull private final FactoryImpl factory;
-  @Nullable private final ViewGroup adsContainer;
-
-  @SuppressWarnings("WeakerAccess")
-  public AdsPlayable(ExoCreator creator, Uri uri, String fileExt, ToroPlayer player,
-      @NonNull AdsLoader adsLoader, @Nullable ViewGroup adsContainer) {
-    super(creator, uri, fileExt);
-    this.adsLoader = adsLoader;
-    this.adsContainer = adsContainer;
-    this.factory = new FactoryImpl(this.creator, player);
-  }
-
-  @CallSuper
-  @Override public void prepare(boolean prepareSource) {
-    this.mediaSource = createAdsMediaSource(creator, mediaUri, fileExt, //
-        factory.player, adsLoader, adsContainer, factory);
-    super.prepare(prepareSource);
-  }
-
-  private static MediaSource createAdsMediaSource(ExoCreator creator, Uri uri, String fileExt,
-      ToroPlayer player, AdsLoader adsLoader, ViewGroup adContainer,
-      AdsMediaSource.MediaSourceFactory factory) {
-    MediaSource original = creator.createMediaSource(uri, fileExt);
-    View playerView = player.getPlayerView();
-    if (!(playerView instanceof PlayerView)) {
-      throw new IllegalArgumentException("Require PlayerView");
+    @CallSuper
+    @Override
+    public void prepare(boolean prepareSource) {
+        this.mediaSource = createAdsMediaSource(creator, mediaUri, fileExt, //
+                factory.player, adsLoader, adsContainer, factory);
+        super.prepare(prepareSource);
     }
 
-    return new AdsMediaSource(original, factory, adsLoader,
-        adContainer == null ? ((PlayerView) playerView).getOverlayFrameLayout() : adContainer);
-  }
+    private static MediaSource createAdsMediaSource(ExoCreator creator, Uri uri, String fileExt,
+                                                    ToroPlayer player, AdsLoader adsLoader, ViewGroup adContainer,
+                                                    AdsMediaSource.MediaSourceFactory factory) {
+        MediaSource original = creator.createMediaSource(uri, fileExt);
+        View playerView = player.getPlayerView();
+        if (!(playerView instanceof PlayerView)) {
+            throw new IllegalArgumentException("Require PlayerView");
+        }
+//        ViewGroup playerview = ((PlayerView) playerView).getOverlayFrameLayout();
+        //View playerview =((PlayerView) playerView).getOverlayFrameLayout();
+
+//    return new AdsMediaSource(original, factory, adsLoader,
+//        adContainer == null ? ((PlayerView) playerView).getOverlayFrameLayout() : adContainer);
+        return new AdsMediaSource(original, factory, adsLoader, (PlayerView) playerView);
+    }
 }

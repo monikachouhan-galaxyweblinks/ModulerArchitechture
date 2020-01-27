@@ -14,10 +14,7 @@ android {
     dataBinding {
         enabled = true
     }
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    }
+
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
@@ -25,6 +22,10 @@ android {
     lintOptions {
         disable 'InvalidPackage'
         abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 
