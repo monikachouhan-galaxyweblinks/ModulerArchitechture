@@ -5,7 +5,7 @@ dependencies {
     implementation project(Modules.model)
 
     implementation Libraries.lifecycleExtensions
-    annotationProcessor Libraries.lifecycleCompiler
+    kapt Libraries.lifecycleCompiler
     implementation Libraries.roomDB
     kapt Libraries.roomCompiler
 }
