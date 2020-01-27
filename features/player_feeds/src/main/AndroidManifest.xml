@@ -23,7 +23,7 @@
 
   <dist:module
       dist:instant="false"
-      dist:title="PlayerFeeds">
+      dist:title="@string/title_player_feeds">
     <dist:delivery>
       <dist:on-demand />
     </dist:delivery>

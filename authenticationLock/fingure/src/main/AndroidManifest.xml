@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.fingure">
 
-    <dist:module
-        dist:instant="false"
-       >
+    <dist:module dist:instant="false"
+        dist:title="@string/title_finger">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
@@ -14,20 +13,8 @@
 
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.fingerLock.FingerprintActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <application >
+        <activity android:name="com.fingerLock.FingerprintActivity"></activity>
         <activity
             android:name="com.fingerLock.HomeActivity"
             android:theme="@style/AppTheme"></activity>
