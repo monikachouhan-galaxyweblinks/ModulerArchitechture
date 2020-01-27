@@ -6,7 +6,7 @@ import com.gwl.core.initViewModel
 import com.gwl.core.setKeyboardShown
 import com.gwl.core.showSnackbar
 import com.gwl.login.databinding.ActivityLoginBinding
-import com.gwl.navigation.features.HomeNavigation
+import com.gwl.navigation.features.FeedNavigation
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -27,7 +27,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun initObservers() {
         super.initObservers()
         mViewModel.apply {
-            navigateOnNext.observe { HomeNavigation.dynamicStart?.let { startActivity(it) } }
+            navigateOnNext.observe {
+                FeedNavigation.dynamicStart?.let { startActivity(it) }
+                finish()
+            }
             onLoginError.observe { container?.showSnackbar(it) }
             showKeyboard.observe { container?.setKeyboardShown(this@LoginActivity, it) }
         }

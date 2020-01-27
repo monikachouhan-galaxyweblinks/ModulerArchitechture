@@ -1,0 +1,27 @@
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName "v" + Versions.releaseVersion
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':app')
+
+    api FirebaseLibraries.auth
+    api GoogleLibraries.auth
+    //api FacebookLibraries.sdk
+}

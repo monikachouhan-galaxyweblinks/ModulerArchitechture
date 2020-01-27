@@ -1,0 +1,75 @@
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion Versions.compileSdk
+
+  defaultConfig {
+    applicationId "toro.demo.exoplayer"
+    minSdkVersion Versions.minSdk
+    targetSdkVersion Versions.targetSdk
+    versionCode Releases.versionCode
+    versionName  Releases.versionName
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    vectorDrawables.useSupportLibrary = true
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+    }
+  }
+
+  packagingOptions {
+    exclude 'META-INF/services/javax.annotation.processing.Processor'
+  }
+
+  lintOptions {
+    disable 'InvalidPackage'
+    abortOnError false
+  }
+
+  compileOptions {
+    sourceCompatibility 1.8
+    targetCompatibility 1.8
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation Libraries.kotlin
+
+  implementation project(Modules.app)
+  implementation project(Modules.playerCore)
+  implementation project(Modules.exoplayerLib)
+
+  //noinspection GradleDependency
+  implementation "com.google.android.exoplayer:exoplayer:${Versions.exoPlayer2Version}"
+
+  //noinspection GradleCompatible
+  implementation 'com.google.android.material:material:1.0.0'
+  implementation 'androidx.appcompat:appcompat:1.1.0'
+  implementation 'androidx.cardview:cardview:1.0.0'
+  // implementation "com.android.support:support-vector-drawable:${rootProject.ext.supportLibraryVersion}"
+  implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+
+  implementation group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+  implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+  implementation 'io.reactivex.rxjava2:rxjava:2.2.13'
+
+  implementation 'com.jakewharton:butterknife:10.1.0'
+  kapt 'com.jakewharton:butterknife-compiler:10.1.0'
+
+//  implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+//  implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
+  // kapt "android.arch.lifecycle:compiler:${rootProject.ext.archLibraryVersion}"
+
+  implementation 'com.google.android:flexbox:1.1.0'
+
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

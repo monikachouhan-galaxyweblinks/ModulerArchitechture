@@ -48,7 +48,8 @@ fun TextView.setStyledText(text: String?) {
     setText(value)
 }
 
-@SuppressLint("DefaultLocale")
+@SuppressLint("Defaul" +
+        "tLocale")
 @BindingAdapter("textCapitalize")
 fun TextView.capitalizeText(name: String?) {
     text = name?.capitalize() ?: ""

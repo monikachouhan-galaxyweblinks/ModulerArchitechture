@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="item"
+            type="com.gwl.model.ArticlesItem" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#F1EEEE"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/titleText"
+            tools:text="Title"
+            android:text="@{item.title}"
+            android:textColor="#000"
+            android:textSize="17sp"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/image"
+            imageUrl="@{item.urlToImage}"
+            android:layout_marginTop="10dp"
+            android:layout_height="200dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/publishedDate"
+            tools:text="Published At : "
+            android:text="@{item.publishedAt}"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

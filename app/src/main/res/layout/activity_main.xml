@@ -3,39 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/_20dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/user_name">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFingerPrint"
         style="@style/Material.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ok" />
-
-    <TextView
-        style="@style/TextView.Headline1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/app_name" />
+        android:text="Finger Print Lock" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPinLogin"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pin Login" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFeed"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVideoPlayer"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player Feed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleLogin"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Google Login" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnFacebookLogin"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Facebook Login" />
 
 </LinearLayout>

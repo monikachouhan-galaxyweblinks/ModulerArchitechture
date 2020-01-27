@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -20,15 +23,21 @@
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/common/networking" />
             <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/feed" />
             <option value="$PROJECT_DIR$/features/home" />
             <option value="$PROJECT_DIR$/features/launcher" />
             <option value="$PROJECT_DIR$/features/login" />
-            <option value="$PROJECT_DIR$/feed" />
+            <option value="$PROJECT_DIR$/features/player_feeds" />
+            <option value="$PROJECT_DIR$/features/social_login" />
+            <option value="$PROJECT_DIR$/features/social_login/facebook_login" />
+            <option value="$PROJECT_DIR$/features/social_login/google_login" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/exoplayer" />
+            <option value="$PROJECT_DIR$/libraries/player-core" />
             <option value="$PROJECT_DIR$/navigation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>
