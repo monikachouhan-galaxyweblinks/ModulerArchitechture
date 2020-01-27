@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -28,7 +29,7 @@ android {
 
     dataBinding { enabled = true }
 
-    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, Modules.player,":features:feed"]
+    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin]
 
 
 }
@@ -51,7 +52,7 @@ dependencies {
     implementation Libraries.ktx
     implementation Libraries.kotlin
     api SupportLibraries.appcompat
-    implementation ("com.google.android.exoplayer:exoplayer:${Versions.exoPlayer2Version}") {
+    implementation("com.google.android.exoplayer:exoplayer:${Versions.exoPlayer2Version}") {
         exclude group: 'com.android.support'
     }
     api SupportLibraries.design
@@ -60,6 +61,11 @@ dependencies {
             "com.google.android.exoplayer:extension-ima:${Versions.exoPlayer2Version}") {
         exclude group: 'com.android.support'
     }
+
+    /*  api FirebaseLibraries.auth
+      api GoogleLibraries.auth
+      api FacebookLibraries.sdk*/
+
 //    api Libraries.ktx
 //    api Libraries.kotlin
 //    api Libraries.coroutinescore

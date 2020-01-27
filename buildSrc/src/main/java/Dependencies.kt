@@ -5,23 +5,26 @@ object ApplicationId {
 object Modules {
     val app = ":app"
     val navigation = ":navigation"
-    val player = ":features:player_feeds"
-
     val cache = ":common:cache"
+
     val core = ":common:core"
     val networking = ":common:networking"
-
     val presentation = ":common:core"
+
     val model = ":common:model"
     val home = ":features:home"
     val login = ":features:login"
     val exoplayerLib = ":libraries:exoplayer"
     val playerCore = ":libraries:player-core"
-
     val launcher = ":features:launcher"
+
+    val player = ":features:player_feeds"
+    val feed = ":features:feed"
     val mpinauthentication = ":authenticationLock:mpin:mpinauthentication"
     val mpin = ":authenticationLock:mpin"
     val fingure = ":authenticationLock:fingure"
+    val googleLogin = ":features:social_login:google_login"
+    val facebookLogin = ":features:social_login:facebook_login"
 
 }
 
@@ -39,10 +42,11 @@ object Versions {
 
     val googleAuth = "16.0.1"
 
-    val googleServices = "4.2.0"
+    val googleServices = "4.3.3"
 
     val firebaseAuth = "16.0.4"
     val firebaseCore = "16.0.4"
+    val facebookSdk = "4.30.0"
 
     val fabric = "1.27.1"
     val multidex = "2.0.1"
@@ -159,6 +163,10 @@ object GoogleLibraries {
 object FirebaseLibraries {
     val auth = "com.google.firebase:firebase-auth:${Versions.firebaseAuth}"
     val core = "com.google.firebase:firebase-core:${Versions.firebaseCore}"
+}
+
+object FacebookLibraries {
+    val sdk = "com.facebook.android:facebook-android-sdk:${Versions.facebookSdk}"
 }
 
 object TestLibraries {

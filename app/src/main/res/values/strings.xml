@@ -8,4 +8,6 @@
     <string name="title_material_component">MaterialComponent</string>
     <string name="user_name">User Name</string>
     <string name="ok">OK</string>
+    <string name="title_google_login">GoogleLogin</string>
+    <string name="title_googlelogin">glogin</string>
 </resources>

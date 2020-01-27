@@ -17,6 +17,13 @@
         android:text="Finger Print Lock" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPinLogin"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pin Login" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnFeed"
         style="@style/Material.Button"
         android:layout_width="match_parent"
@@ -29,5 +36,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Player Feed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleLogin"
+        style="@style/Material.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Google Login" />
 
 </LinearLayout>
