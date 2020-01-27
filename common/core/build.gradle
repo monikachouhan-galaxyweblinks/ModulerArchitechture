@@ -17,3 +17,6 @@ dependencies {
     api Libraries.glide
     kapt Libraries.glideCompiler
 }
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

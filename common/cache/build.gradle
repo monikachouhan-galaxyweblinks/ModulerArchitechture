@@ -9,3 +9,6 @@ dependencies {
     implementation Libraries.roomDB
     kapt Libraries.roomCompiler
 }
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
