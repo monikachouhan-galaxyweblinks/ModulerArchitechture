@@ -1,17 +1,16 @@
 package com.gwl
 
 import android.app.Application
-import androidx.multidex.MultiDexApplication
 import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
 import com.google.android.exoplayer2.upstream.cache.SimpleCache
 import com.gwl.core.LoginManager
 import com.networking.NetworkingApiApplication
 import com.networking.client.server.NetworkAPI
 import com.networking.client.server.NetworkAPIFactory
-import im.ene.toro.exoplayer.Config
-import im.ene.toro.exoplayer.ExoCreator
-import im.ene.toro.exoplayer.MediaSourceBuilder
-import im.ene.toro.exoplayer.ToroExo
+import com.gwl.playerfeed.Config
+import com.gwl.playerfeed.ExoCreator
+import com.gwl.playerfeed.MediaSourceBuilder
+import com.gwl.playerfeed.ToroExo
 import java.io.File
 
 // * Created on 14/1/20.

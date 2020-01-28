@@ -3,7 +3,6 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(Modules.model)
-
     implementation Libraries.lifecycleExtensions
     kapt Libraries.lifecycleCompiler
     implementation Libraries.roomDB

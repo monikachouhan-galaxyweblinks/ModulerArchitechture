@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2018 Nam Nguyen, nam@ene.im
+  ~ Copyright (c) 2018 Nam Nguyen, nam@gwl.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -74,7 +74,7 @@
       android:indeterminate="true"
       />
 
-  <im.ene.toro.exoplayer.ui.ToroControlView
+  <com.gwl.playerfeed.ui.ToroControlView
       android:id="@id/exo_controller"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

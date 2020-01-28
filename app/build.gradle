@@ -26,8 +26,7 @@ android {
 
     dataBinding { enabled = true }
 
-    dynamicFeatures = [Modules.home, Modules.launcher, Modules.login, Modules.fingure,
-                       Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin, Modules.facebookLogin]
+    dynamicFeatures = FeatureModules.modules
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,7 +35,7 @@ android {
 }
 
 dependencies {
-    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api SupportLibraries.constrainLayout
     implementation project(Modules.model)
     implementation project(Modules.cache)
     implementation project(Modules.core)
@@ -46,6 +45,7 @@ dependencies {
     implementation project(Modules.exoplayerLib)
 
     implementation Libraries.multidex
+    implementation GoogleLibraries.playCore
     implementation Libraries.roomDB
     kapt Libraries.roomCompiler
     implementation SupportLibraries.recyclerview
@@ -62,19 +62,5 @@ dependencies {
             "com.google.android.exoplayer:extension-ima:${Versions.exoPlayer2Version}") {
         exclude group: 'com.android.support'
     }
-
-    /*  api FirebaseLibraries.auth
-      api GoogleLibraries.auth
-      api FacebookLibraries.sdk*/
-
-//    api Libraries.ktx
-//    api Libraries.kotlin
-//    api Libraries.coroutinescore
-//    api Libraries.coroutinesandroid
-//    api Libraries.kotlincoroutinesretrofit
-//    api Libraries.loggingInterceptor
-//    api Libraries.retrofit
-//    api Libraries.retrofitgson
-//    api SupportLibraries.appcompat
 
 }

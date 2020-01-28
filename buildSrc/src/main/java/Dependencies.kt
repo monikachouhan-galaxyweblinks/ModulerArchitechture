@@ -2,6 +2,34 @@ object ApplicationId {
     val id = "com.gwl"
 }
 
+object FeatureModules {
+    var modules = arrayOf(
+        Modules.home, Modules.launcher, Modules.login,
+        Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin
+    )
+
+    val settingModules = arrayOf(
+        Modules.app,
+        Modules.networking,
+        Modules.feed,
+        Modules.player,
+        Modules.exoplayerLib,
+        Modules.playerCore,
+        Modules.model,
+        Modules.core,
+        Modules.navigation,
+        Modules.login,
+        Modules.home,
+        Modules.launcher,
+        Modules.cache,
+        Modules.presentation,
+        Modules.mpinauthentication,
+        Modules.fingure,
+        Modules.googleLogin,
+        Modules.facebookLogin
+    )
+}
+
 object Modules {
     val app = ":app"
     val navigation = ":navigation"
@@ -55,6 +83,7 @@ object Versions {
     val design = "1.0.0"
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"
+    val constraint = "1.1.3"
     val maps = "15.0.1"
 
     val ktx = "1.0.0-alpha1"
@@ -64,6 +93,7 @@ object Versions {
     val timber = "4.7.1"
     val rxjava = "2.2.6"
     val rxkotlin = "2.3.0"
+    val rxAndroid = "2.1.1"
     val retrofit = "2.5.0"
     val loggingInterceptor = "3.12.1"
     val glide = "4.9.0"
@@ -76,10 +106,11 @@ object Versions {
     val koin = "2.0.0-beta-1"
     val releaseVersion = "3.7.0.2905-A1"
     val exoPlayer2Version = "2.10.1"
+    val butterKnifVersion = "10.1.0"
 
     val roomVersion = "2.2.3"
     val roomCompiler = "2.2.3"
-    val playCore = "1.3.7"
+    val playCore = "1.6.4"
     val pagingVersion = "2.1.1"
 
     val databindingCompiler = "3.5.3"
@@ -105,6 +136,10 @@ object Libraries {
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitgson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val exoPlayer = "com.google.android.exoplayer:exoplayer:${Versions.exoPlayer2Version}"
+    val butterknif = "com.jakewharton:butterknife:${Versions.butterKnifVersion}"
+    val butterknifCompiler = "com.jakewharton:butterknife-compiler:${Versions.butterKnifVersion}"
+    val flexBox = "com.google.android:flexbox:1.1.0"
 
     //paging
     val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
@@ -115,6 +150,7 @@ object Libraries {
 
     val rxjava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
+    val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
 
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val moshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
@@ -153,6 +189,7 @@ object SupportLibraries {
     val design = "com.google.android.material:material:${Versions.design}"
     val cardview = "androidx.cardview:cardview:${Versions.cardview}"
     val recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
+    val constrainLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
 }
 
 object GoogleLibraries {

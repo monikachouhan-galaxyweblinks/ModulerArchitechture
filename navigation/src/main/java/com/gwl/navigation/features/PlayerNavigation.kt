@@ -5,7 +5,7 @@ import com.gwl.navigation.loadIntentOrNull
 
 object PlayerNavigation : DynamicFeature<Intent> {
 
-    private const val PLAYER = "toro.demo.exoplayer.basic.BasicListActivity"
+    private const val PLAYER = "com.gwl.playerfeed.basic.BasicListActivity"
 
     override val dynamicStart: Intent?
         get() = PLAYER.loadIntentOrNull()
