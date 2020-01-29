@@ -1,9 +1,12 @@
-apply from: "$rootDir/common-kotlin-library.gradle"
+apply from: "$rootDir/common-android-library.gradle"
 apply plugin: 'kotlin-kapt'
 
-dependencies{
+dependencies {
     implementation Libraries.roomDB
     kapt Libraries.roomCompiler
     api Libraries.retrofitgson
-
+    implementation SupportLibraries.appcompat
+}
+androidExtensions {
+    experimental = true
 }

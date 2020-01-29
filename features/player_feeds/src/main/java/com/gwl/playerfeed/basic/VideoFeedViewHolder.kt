@@ -25,7 +25,7 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.gwl.MyApplication
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewHolder
-import com.gwl.model.MediaFeed
+import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.ExoPlayerViewHelper
 import com.gwl.playerfeed.R
@@ -39,7 +39,7 @@ import com.gwl.toro.widget.Container
  * @author eneim (2018/01/23).
  */
 internal class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
-    BaseViewHolder<MediaFeed>(itemRowBind), ToroPlayer {
+    BaseViewHolder<ArticlesItem>(itemRowBind), ToroPlayer {
 
     companion object {
         const val defaultRatio = 100 * 165.78F / 360F // magic number.
@@ -55,11 +55,12 @@ internal class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
     var listener: EventListener? = null
     var autoplay: Boolean = false
     override fun bind(
-        data: MediaFeed,
-        onItemClickListener: BaseAdapter.OnItemClickListener<MediaFeed>?
+        data: ArticlesItem,
+        onItemClickListener: BaseAdapter.OnItemClickListener<ArticlesItem>?
     ) {
         super.bind(data, onItemClickListener)
         itemRowBinding.setVariable(BR.item, data)
+        itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         videoUri = Uri.parse(data.videoUrl)
         //playerFrame.setAspectRatio(16/9f)
     }

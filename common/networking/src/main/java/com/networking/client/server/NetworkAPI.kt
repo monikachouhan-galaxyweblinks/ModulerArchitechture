@@ -5,7 +5,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.gwl.model.ArticlesItem
 import com.gwl.model.FeedResponse
-import com.gwl.model.MediaFeed
 import com.gwl.model.ResponseData
 import com.networking.R
 import com.networking.response.ApiResponse
@@ -44,7 +43,7 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
             .feedApiResult()
     }
 
-    override suspend fun getPlayerFeeds(page: Int, count: Int): APIResult<List<MediaFeed>> {
+    override suspend fun getPlayerFeeds(page: Int, count: Int): APIResult<List<ArticlesItem>> {
         return return authService.getMediaFeeds(page, count).apiResult()
     }
 /*  suspend fun getFeeds(page: Long, count: Int): Call<FeedResponse> {

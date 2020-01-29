@@ -1,8 +1,11 @@
 package com.gwl.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-abstract class ArticlesItem(
+@Parcelize
+data class ArticlesItem(
 
     @SerializedName("publishedAt")
     val publishedAt: String? = null,
@@ -26,8 +29,7 @@ abstract class ArticlesItem(
     val url: String? = null,
 
     @SerializedName("content")
-    val content: String? = null
-) {
-    abstract var type: MediaType?
-    abstract var videoUrl: String?
-}
+    val content: String? = null,
+    var type: MediaType? = MediaType.VIDEO,
+    var videoUrl: String? = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+) : Parcelable

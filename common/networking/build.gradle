@@ -10,4 +10,5 @@ dependencies {
         api Libraries.retrofit
         api Libraries.retrofitgson
         api SupportLibraries.appcompat
+        implementation project(Modules.model)
 }

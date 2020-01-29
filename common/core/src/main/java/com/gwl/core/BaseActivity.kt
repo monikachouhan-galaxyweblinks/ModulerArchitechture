@@ -1,6 +1,7 @@
 package com.gwl.core
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity

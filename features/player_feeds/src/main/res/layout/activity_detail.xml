@@ -7,9 +7,11 @@
 
         <import type="android.view.View" />
 
+        <import type="com.gwl.model.MediaType" />
+
         <variable
-            name="itemClick"
-            type="com.gwl.core.BaseAdapter.OnItemClickListener" />
+            name="viewModel"
+            type="com.gwl.detail.DetailViewModel" />
 
         <variable
             name="item"
@@ -34,7 +36,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -52,16 +53,22 @@
                     android:textColor="@color/black"
                     tools:text="title" />
 
-                <com.google.android.exoplayer2.ui.PlayerView
-                    android:id="@+id/playerView"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:controller_layout_id="@layout/exo_playback_controls"
-                    app:resize_mode="fixed_width"
-                    app:show_buffering="always"
-                    app:shutter_background_color="?attr/colorButtonNormal"
-                    app:surface_type="surface_view"
-                    app:use_artwork="false" />
+                    android:layout_height="200dp">
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/playerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:controller_layout_id="@layout/exo_playback_controls"
+                        app:resize_mode="fixed_width"
+                        app:show_buffering="always"
+                        app:shutter_background_color="?attr/colorButtonNormal"
+                        app:surface_type="surface_view"
+                        app:use_artwork="false"
+                        app:visibleIf="@{item.type== MediaType.VIDEO}" />
+                </FrameLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textDescription"

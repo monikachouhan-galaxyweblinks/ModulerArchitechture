@@ -22,7 +22,9 @@ import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.BulletSpan
+import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.databinding.BindingAdapter
 
 /**
  * @author eneim (2018/01/26).
@@ -49,5 +51,14 @@ fun replaceBulletSpans(spannable: Spannable) {
         val flags = spannable.getSpanFlags(it)
         spannable.removeSpan(it)
         spannable.setSpan(BulletSpan(12), start, end, flags)
+    }
+}
+
+@BindingAdapter("visibleIf")
+fun View.show(visible: Boolean) {
+    if (visible) {
+        this.visibility = View.VISIBLE
+    } else {
+        this.visibility = View.GONE
     }
 }

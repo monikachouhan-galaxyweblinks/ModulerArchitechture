@@ -6,22 +6,22 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.gwl.core.datasource.PaginationDataSource
 import com.gwl.core.datasource.PagingDataSource
-import com.gwl.model.MediaFeed
+import com.gwl.model.ArticlesItem
 import com.networking.result.APIError
 
-class MediaDataSource(model: PaginationDataSource<MediaFeed>, override val isPagination: Boolean)
-    : PagingDataSource<MediaFeed>(model) {
+class MediaDataSource(model: PaginationDataSource<ArticlesItem>, override val isPagination: Boolean)
+    : PagingDataSource<ArticlesItem>(model) {
 
     override val errorLiveData: MutableLiveData<APIError>? = MediaListErrorLiveData
     override val refreshingLiveData: MutableLiveData<Boolean>? = MediaListRefreshingLiveData
     override val availableItemCountLiveData: MutableLiveData<Int>? = MediaCountLiveData
 }
 
-class MediaDataSourceFactory(private val model: PaginationDataSource<MediaFeed>,
+class MediaDataSourceFactory(private val model: PaginationDataSource<ArticlesItem>,
                              private val isPagination: Boolean = true)
-    : DataSource.Factory<Int, MediaFeed>() {
+    : DataSource.Factory<Int, ArticlesItem>() {
 
-    override fun create(): DataSource<Int, MediaFeed> {
+    override fun create(): DataSource<Int, ArticlesItem> {
         return MediaDataSource(model, isPagination)
     }
 }

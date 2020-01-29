@@ -1,6 +1,7 @@
 package com.gwl.playerfeed.basic
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,8 @@ import com.gwl.core.initViewModel
 import com.gwl.core.networkdetection.ConnectionLiveData
 import com.gwl.core.networkdetection.ConnectionModel
 import com.gwl.core.networkdetection.ConnectionType
+import com.gwl.model.ArticlesItem
+import com.gwl.navigation.features.DetailNavigation
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityBasicListBinding
@@ -23,6 +26,10 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
     private val disposable = CompositeDisposable()
     private var connectionMode: ConnectionModel? = null
 
+    companion object {
+        const val DATA = "item_data"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
@@ -32,6 +39,7 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
             layoutManager = LinearLayoutManager(this@BasicListActivity)
             cacheManager = CacheManager.DEFAULT
         }
+        adapter.itemClick = mViewModel
         mViewModel.initPager().observe {
             adapter.submitList(it)
             mViewModel.isApiRunning.set(false)
@@ -43,6 +51,10 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
         ConnectionLiveData(this).observe {
             connectionMode = it
             updateAutoPlaySetting()
+        }
+        mViewModel.onItemClick.observe {
+            Log.e("ttttt ","${it.title}")
+            showDetail(it)
         }
     }
 
@@ -81,5 +93,11 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
         adapter.isAutoPlay = mViewModel.getAutoPlayPref() &&
                 connectionMode?.type == ConnectionType.WIFI
         adapter.notifyDataSetChanged()
+    }
+
+    private fun showDetail(item: ArticlesItem) = DetailNavigation.dynamicStart?.let {
+        it.putExtra(DATA, item)
+        it.putExtra("name", "amit")
+        startActivity(it)
     }
 }

@@ -3,12 +3,14 @@ package com.gwl.playerfeed.basic
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.gwl.MyApplication
+import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewModel
 import com.gwl.core.LoginManager
-import com.gwl.model.MediaFeed
+import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.MediaDataSourceFactory
 import com.gwl.playerfeed.datasource.MediaFeedDataSource
 import com.networking.client.server.NetworkAPI
@@ -21,7 +23,12 @@ import kotlinx.coroutines.launch
 /**
  * @author GWL
  */
-class BasicListViewModel : BaseViewModel() {
+class BasicListViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<ArticlesItem> {
+    override fun onItemClick(item: ArticlesItem) {
+        Log.e("itemememe ", "${item}")
+        onItemClick.postValue(item)
+    }
+
     companion object {
         const val FETCH_SIZE = 5
         const val KEY_AUTO_PLAY_SETTING = "autoplay"
@@ -29,10 +36,10 @@ class BasicListViewModel : BaseViewModel() {
     }
 
     val loginManager: LoginManager by lazy { MyApplication.loginManager }
-
+    val onItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
     val networkAPI: NetworkAPI by lazy { MyApplication.instance.networkAPI }
     val isApiRunning: ObservableField<Boolean> by lazy { ObservableField<Boolean>(true) }
-    val mediaFeeds: ObservableField<List<MediaFeed>> by lazy { ObservableField<List<MediaFeed>>() }
+    val mediaFeeds: ObservableField<List<ArticlesItem>> by lazy { ObservableField<List<ArticlesItem>>() }
     val onMediaFeedsFailure: ObservableField<String> by lazy { ObservableField<String>() }
     val pagedListConfig = PagedList.Config.Builder()
         .setInitialLoadSizeHint(FETCH_SIZE)
@@ -41,9 +48,9 @@ class BasicListViewModel : BaseViewModel() {
         .setEnablePlaceholders(false)
         .build()
 
-    fun initPager(): LiveData<PagedList<MediaFeed>> {
+    fun initPager(): LiveData<PagedList<ArticlesItem>> {
         isApiRunning.set(true)
-        return LivePagedListBuilder<Int, MediaFeed>(
+        return LivePagedListBuilder<Int, ArticlesItem>(
             MediaDataSourceFactory(
                 MediaFeedDataSource(),
                 true
@@ -68,7 +75,7 @@ class BasicListViewModel : BaseViewModel() {
     }
 
     fun updateAutoPlaySetting(checked: Boolean) {
-        Log.d("updateAutoPlaySetting"," updateAutoPlaySetting $checked ")
+        Log.d("updateAutoPlaySetting", " updateAutoPlaySetting $checked ")
         loginManager.setBoolean(KEY_AUTO_PLAY_SETTING, checked)
     }
 

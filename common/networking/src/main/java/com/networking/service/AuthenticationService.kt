@@ -1,7 +1,7 @@
 package com.networking.service
 
+import com.gwl.model.ArticlesItem
 import com.gwl.model.FeedResponse
-import com.gwl.model.MediaFeed
 import com.gwl.model.ResponseData
 import com.networking.response.ApiResponse
 import retrofit2.Call
@@ -18,7 +18,7 @@ interface AuthenticationService {
     fun getMediaFeeds(
         @Query("page") page: Int = 1,
         @Query("pageSize") count: Int = 10
-    ):Call<ApiResponse<List<MediaFeed>>>
+    ):Call<ApiResponse<List<ArticlesItem>>>
 
     @GET("/v2/everything")
     fun fetchFeedList(
