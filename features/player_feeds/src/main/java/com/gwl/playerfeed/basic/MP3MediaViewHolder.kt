@@ -3,7 +3,7 @@ package com.gwl.playerfeed.basic
 import android.net.Uri
 import androidx.databinding.ViewDataBinding
 import com.gwl.core.BaseAdapter
-import com.gwl.model.MediaFeed
+import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
 
@@ -16,8 +16,8 @@ class MP3MediaViewHolder(itemRowBind: ViewDataBinding) : VideoFeedViewHolder(ite
 
 
     override fun bind(
-        data: MediaFeed,
-        onItemClickListener: BaseAdapter.OnItemClickListener<MediaFeed>?
+        data: ArticlesItem,
+        onItemClickListener: BaseAdapter.OnItemClickListener<ArticlesItem>?
     ) {
         itemRowBinding.setVariable(BR.item, data)
         artWork.setImageResource(R.drawable.music_bg_thumbnail)

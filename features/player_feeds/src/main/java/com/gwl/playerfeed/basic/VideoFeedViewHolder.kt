@@ -29,8 +29,8 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.gwl.MyApplication
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewHolder
-import com.gwl.model.MediaType
 import com.gwl.model.ArticlesItem
+import com.gwl.model.MediaType
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.ExoPlayerViewHelper
 import com.gwl.playerfeed.R
@@ -115,13 +115,11 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
                 override fun onPaused() {
                     // status.text = "Paused"
                     Log.d("VideoFeedViewHolder", " initialize onPaused")
-
                 }
 
                 override fun onCompleted() {
                     //status.text = "Completed"
                     Log.d("VideoFeedViewHolder", " initialize onCompleted")
-
                 }
 
             }

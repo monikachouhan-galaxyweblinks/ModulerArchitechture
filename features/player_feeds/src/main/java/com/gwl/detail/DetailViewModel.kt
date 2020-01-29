@@ -15,7 +15,7 @@ class DetailViewModel(val item: ArticlesItem) : BaseViewModel() {
     }
 
     fun getVideoUrl(): String? {
-        return item.videoUrl
+        return item.sourceUrl
     }
 
 }

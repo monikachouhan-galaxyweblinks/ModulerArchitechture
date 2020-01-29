@@ -36,7 +36,7 @@ class MediaFeedAdapter : PagedListAdapter<ArticlesItem, BaseViewHolder<ArticlesI
         return when (viewType) {
             VIDEO_VIEW_TYPE -> VideoFeedViewHolder(videoView)
             MP3_VIEW_TYPE -> MP3MediaViewHolder(videoView)
-            else -> ImageArticlesItemViewHolder(videoView)
+            else -> ImageMediaFeedViewHolder(videoView)
         }
     }
 
