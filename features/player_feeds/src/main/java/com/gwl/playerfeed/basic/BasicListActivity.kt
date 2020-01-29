@@ -1,7 +1,6 @@
 package com.gwl.playerfeed.basic
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +10,9 @@ import com.gwl.core.networkdetection.ConnectionLiveData
 import com.gwl.core.networkdetection.ConnectionModel
 import com.gwl.core.networkdetection.ConnectionType
 import com.gwl.model.ArticlesItem
+import com.gwl.navigation.features.AudioDetailNavigation
 import com.gwl.navigation.features.DetailNavigation
+import com.gwl.navigation.features.ImageDetailNavigation
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityBasicListBinding
@@ -52,10 +53,9 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
             connectionMode = it
             updateAutoPlaySetting()
         }
-        mViewModel.onItemClick.observe {
-            Log.e("ttttt ","${it.title}")
-            showDetail(it)
-        }
+        mViewModel.audioItemClick.observe { showAudioDetail(it) }
+        mViewModel.videoItemClick.observe { showVideoDetail(it) }
+        mViewModel.imageItemClick.observe { showImageDetail(it) }
     }
 
     override fun onDestroy() {
@@ -95,9 +95,18 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
         adapter.notifyDataSetChanged()
     }
 
-    private fun showDetail(item: ArticlesItem) = DetailNavigation.dynamicStart?.let {
+    private fun showVideoDetail(item: ArticlesItem) = DetailNavigation.dynamicStart?.let {
         it.putExtra(DATA, item)
-        it.putExtra("name", "amit")
+        startActivity(it)
+    }
+
+    private fun showImageDetail(item: ArticlesItem) = ImageDetailNavigation.dynamicStart?.let {
+        it.putExtra(DATA, item)
+        startActivity(it)
+    }
+
+    private fun showAudioDetail(item: ArticlesItem) = AudioDetailNavigation.dynamicStart.let {
+        it?.putExtra(DATA, item)
         startActivity(it)
     }
 }

@@ -14,11 +14,12 @@ interface AuthenticationService {
     @GET("glide.json")
     fun getList(): Call<ApiResponse<ResponseData>>
 
-    @GET("v2/everything?q=movies&apiKey=079dac74a5f94ebdb990ecf61c8854b7")
+    //079dac74a5f94ebdb990ecf61c8854b7
+    @GET("v2/everything?q=movies&apiKey=51e2488cb9744482ac40ab958a9bd4b3")
     fun getMediaFeeds(
         @Query("page") page: Int = 1,
         @Query("pageSize") count: Int = 10
-    ):Call<ApiResponse<List<ArticlesItem>>>
+    ): Call<ApiResponse<List<ArticlesItem>>>
 
     @GET("/v2/everything")
     fun fetchFeedList(

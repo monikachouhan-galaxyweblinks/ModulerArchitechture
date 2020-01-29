@@ -53,10 +53,10 @@
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textColor="@color/black"
                     tools:text="title" />
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
+                    android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                     android:layout_height="200dp">
 
                     <ImageView

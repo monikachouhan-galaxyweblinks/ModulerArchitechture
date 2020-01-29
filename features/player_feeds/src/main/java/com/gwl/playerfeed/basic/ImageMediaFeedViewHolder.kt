@@ -16,6 +16,7 @@ class ImageMediaFeedViewHolder(itemRowBind: ViewDataBinding) :
         onItemClickListener: BaseAdapter.OnItemClickListener<ArticlesItem>?
     ) {
         super.bind(data, null)
+        itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         itemRowBinding.setVariable(BR.item, data)
     }
 }

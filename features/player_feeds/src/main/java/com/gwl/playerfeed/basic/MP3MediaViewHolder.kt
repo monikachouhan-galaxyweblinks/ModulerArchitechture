@@ -19,6 +19,7 @@ class MP3MediaViewHolder(itemRowBind: ViewDataBinding) : VideoFeedViewHolder(ite
         data: ArticlesItem,
         onItemClickListener: BaseAdapter.OnItemClickListener<ArticlesItem>?
     ) {
+        itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         itemRowBinding.setVariable(BR.item, data)
         artWork.setImageResource(R.drawable.music_bg_thumbnail)
         videoUri = Uri.parse(data.sourceUrl)

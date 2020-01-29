@@ -45,6 +45,7 @@
             android:id="@+id/playerView"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            app:controller_layout_id="@layout/exo_playback_controls"
             app:resize_mode="fixed_width"
             app:show_buffering="always"
             app:shutter_background_color="?attr/colorButtonNormal"

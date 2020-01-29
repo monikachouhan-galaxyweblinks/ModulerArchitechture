@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.gwl.playerfeed">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,14 +16,22 @@
     </dist:module>
 
     <application android:usesCleartextTraffic="true">
-        <activity android:name="com.gwl.detail.DetailActivity"></activity>
+        <activity
+            android:name="com.gwl.details.audio.AudioDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.gwl.details.VideoDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name="com.gwl.details.ImageDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"></activity>
         <activity
             android:name=".basic.BasicListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"></activity>
-        <activity
-            android:name=".basic.BasicListActivity1"
-            android:screenOrientation="portrait"></activity>
         <activity android:name=".creator.CreatorDemoActivity"></activity>
         <activity android:name=".playable.PlayableDemoActivity"></activity>
     </application>

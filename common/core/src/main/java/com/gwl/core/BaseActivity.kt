@@ -1,7 +1,6 @@
 package com.gwl.core
 
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
@@ -49,7 +48,7 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
         mDataBinding = DataBindingUtil.setContentView<B>(this, getLayoutId())
         this.mViewModel = getViewModel()
         //TODO - Need to set binding variables
-       // mDataBinding.setVariable(BR.viewModel, mViewModel)
+        // mDataBinding.setVariable(BR.viewModel, mViewModel)
         mDataBinding.executePendingBindings()
         initObservers()
         initExtras()
@@ -90,5 +89,11 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
      fun getColorValue(@ColorRes error: Int?): Int {
          return error?.let { getContext().resources.getColor(error) } ?: 0
      }*/
+
+    fun setupToolbar(title: String?, showBackButton: Boolean) {
+        supportActionBar?.setHomeButtonEnabled(showBackButton)
+        supportActionBar?.setDisplayHomeAsUpEnabled(showBackButton)
+        supportActionBar?.title = title
+    }
 
 }

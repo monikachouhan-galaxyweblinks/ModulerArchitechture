@@ -1,14 +1,13 @@
-package com.gwl.detail
+package com.gwl.details
 
 import com.gwl.core.BaseViewModel
 import com.gwl.model.ArticlesItem
 import com.gwl.model.MediaType
-import com.gwl.playerfeed.ExoPlayerViewHelper
 
 /**
  * @author GWL
  */
-class DetailViewModel(val item: ArticlesItem) : BaseViewModel() {
+class VideoDetailViewModel(val item: ArticlesItem) : BaseViewModel() {
 
     fun getFeedType(): MediaType? {
         return item.type

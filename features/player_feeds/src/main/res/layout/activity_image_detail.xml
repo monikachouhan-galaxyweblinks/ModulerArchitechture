@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.gwl.details.VideoDetailViewModel" />
+            type="com.gwl.details.image.ImageDetailViewModel" />
 
         <variable
             name="item"
@@ -24,7 +23,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-       <!-- <include layout="@layout/layout_toolbar" />-->
+        <!-- <include layout="@layout/layout_toolbar" />-->
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitle"
@@ -41,16 +40,12 @@
             android:textColor="@color/black"
             tools:text="title" />
 
-        <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/playerView"
+        <ImageView
+            imageUrl="@{item.sourceUrl}"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            app:resize_mode="fixed_width"
-            app:show_buffering="always"
-            app:shutter_background_color="?attr/colorButtonNormal"
-            app:surface_type="surface_view"
-            app:use_artwork="false"
-            app:use_controller="true" />
+            android:layout_height="200dp"
+            android:adjustViewBounds="true" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textDescription"

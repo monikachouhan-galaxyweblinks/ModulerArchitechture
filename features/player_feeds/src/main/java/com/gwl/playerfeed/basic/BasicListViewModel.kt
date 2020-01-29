@@ -11,6 +11,7 @@ import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewModel
 import com.gwl.core.LoginManager
 import com.gwl.model.ArticlesItem
+import com.gwl.model.MediaType
 import com.gwl.playerfeed.MediaDataSourceFactory
 import com.gwl.playerfeed.datasource.MediaFeedDataSource
 import com.networking.client.server.NetworkAPI
@@ -25,8 +26,12 @@ import kotlinx.coroutines.launch
  */
 class BasicListViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<ArticlesItem> {
     override fun onItemClick(item: ArticlesItem) {
-        Log.e("itemememe ", "${item}")
-        onItemClick.postValue(item)
+        Log.e("clickckck ", "${item.type?.name} fcghfgh")
+        when (item.type) {
+            MediaType.IMAGE -> imageItemClick.postValue(item)
+            MediaType.VIDEO -> videoItemClick.postValue(item)
+            MediaType.MP3 -> audioItemClick.postValue(item)
+        }
     }
 
     companion object {
@@ -36,7 +41,9 @@ class BasicListViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<Arti
     }
 
     val loginManager: LoginManager by lazy { MyApplication.loginManager }
-    val onItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
+    val videoItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
+    val imageItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
+    val audioItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
     val networkAPI: NetworkAPI by lazy { MyApplication.instance.networkAPI }
     val isApiRunning: ObservableField<Boolean> by lazy { ObservableField<Boolean>(true) }
     val mediaFeeds: ObservableField<List<ArticlesItem>> by lazy { ObservableField<List<ArticlesItem>>() }

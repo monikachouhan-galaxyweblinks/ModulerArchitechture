@@ -23,7 +23,9 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.BulletSpan
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.BindingAdapter
 
 /**
@@ -61,4 +63,19 @@ fun View.show(visible: Boolean) {
     } else {
         this.visibility = View.GONE
     }
+}
+
+
+fun AppCompatActivity.setupToolbarWithTitle(
+    toolbar: Toolbar,
+    darkIcons: Boolean = true,
+    enableUpButton: Boolean = true,
+    title: String? = null
+) {
+    setSupportActionBar(toolbar)
+    supportActionBar?.setDisplayHomeAsUpEnabled(enableUpButton)
+    /* val indicator =
+         if (darkIcons) R.drawable.ic_arrow_back_black_24dp else R.drawable.ic_arrow_back_black_24dp
+     supportActionBar?.setHomeAsUpIndicator(indicator)*/
+    supportActionBar?.title = title ?: ""
 }
