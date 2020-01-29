@@ -24,10 +24,32 @@ sealed class APIResult<T> {
         }
     }
 
-    fun <U> map(apply: (T) -> U): APIResult<U> {
+    fun <U> map(apply: (T?) -> U): APIResult<U> {
         return when (this) {
             is Success -> {
                 val data = this.response.data
+                val transformed = apply(data)
+                Success(
+                    ApiResponse(
+                        transformed,
+                        transformed,
+                        this.response.hasNextPage(),
+                        !this.response.hasNextPage(),
+                        this.response.message,
+                        this.response.code
+                    )
+                )
+            }
+            is Failure -> {
+                Failure(this.details)
+            }
+        }
+    }
+
+    fun <U> mapArticles(apply: (T?) -> U): APIResult<U> {
+        return when (this) {
+            is Success -> {
+                val data = this.response.articles
                 val transformed = apply(data)
                 Success(
                     ApiResponse(

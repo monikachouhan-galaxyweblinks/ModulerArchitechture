@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.gwl.model.MediaType" />
+
         <variable
             name="item"
             type="com.gwl.model.MediaFeed" />
@@ -45,19 +47,33 @@
                     android:text="@{item.title}"
                     android:textColor="@color/black"
                     android:paddingTop="4dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                   />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-                <com.google.android.exoplayer2.ui.PlayerView
-                    android:id="@+id/playerView"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:resize_mode="fixed_width"
-                    app:use_artwork="false"
-                    app:shutter_background_color="?attr/colorButtonNormal"
-                    app:surface_type="surface_view"
-                    app:show_buffering="always"
-                    app:controller_layout_id="@layout/exo_playback_controls" />
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:id="@+id/imageView"
+                        imageUrl="@{item.sourceUrl}"
+                        android:adjustViewBounds="true"
+                        visibleIf="@{item.type == MediaType.IMAGE}"
+                        android:layout_height="match_parent" />
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/playerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:resize_mode="fixed_width"
+                        app:use_artwork="false"
+                        app:default_artwork="@drawable/demo_view_thumb"
+                        visibleIf="@{item.type != MediaType.IMAGE}"
+                        app:shutter_background_color="?attr/colorButtonNormal"
+                        app:surface_type="surface_view"
+                        app:show_buffering="always"
+                        app:controller_layout_id="@layout/exo_playback_controls" />
+                </FrameLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textDescription"

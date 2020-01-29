@@ -29,5 +29,5 @@ abstract class ArticlesItem(
     val content: String? = null
 ) {
     abstract var type: MediaType?
-    abstract var videoUrl: String?
+    abstract var sourceUrl: String?
 }

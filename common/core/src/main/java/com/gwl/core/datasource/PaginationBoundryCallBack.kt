@@ -71,7 +71,9 @@ class MyStudioBoundryCallBack<T>(
                 when (result) {
                     is APIResult.Success -> {
                         val data = result.response.data
-                        onSuccess(data, pageSize)
+                        data?.also {
+                            onSuccess(it, pageSize)
+                        }
                         hasNextItem = result.response.hasNextPage()
                     }
                     is APIResult.Failure -> {

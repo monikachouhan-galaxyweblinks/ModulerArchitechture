@@ -21,8 +21,6 @@
         <item name="materialButtonStyle">@style/Material.Button</item>
         <!-- Text Field widget style attribute -->
         <item name="textInputStyle">@style/Widget.TextInputLayout</item>
-        <!-- Card widget style attribute -->
-        <item name="materialCardViewStyle">@style/AppCard</item>
         <!-- Bottom Navigation widget style attribute -->
         <item name="bottomNavigationStyle">@style/AppBottomNavigation</item>
 
