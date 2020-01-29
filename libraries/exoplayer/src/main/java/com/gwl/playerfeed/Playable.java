@@ -55,6 +55,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public interface Playable {
 
   /**
+   *
    * Prepare the resource for a {@link SimpleExoPlayer}. This method should:
    * - Request for new {@link SimpleExoPlayer} instance if there is not a usable one.
    * - Configure {@link EventListener} for it.
@@ -90,7 +91,7 @@ public interface Playable {
   /**
    * Start the playback. If the {@link MediaSource} is not prepared, then also prepare it.
    */
-  void play();
+  void play(Boolean isAutoPlay);
 
   /**
    * Pause the playback.

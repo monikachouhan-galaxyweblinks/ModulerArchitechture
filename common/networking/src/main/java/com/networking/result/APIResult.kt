@@ -8,7 +8,7 @@ import com.networking.util.StringUtil.getString
 sealed class APIResult<T> {
     class Failure<T>(val details: APIError) : APIResult<T>()
     class Success<T>(val response: ApiResponse<T>) : APIResult<T>() {
-        constructor(value: T) : this(ApiResponse(value, null, null, "", HTTP_SUCCESS_CODE))
+        constructor(value: T) : this(ApiResponse(value, value, null, null, "", HTTP_SUCCESS_CODE))
     }
 
     val value: ApiResponse<T>?
@@ -31,8 +31,12 @@ sealed class APIResult<T> {
                 val transformed = apply(data)
                 Success(
                     ApiResponse(
-                        transformed, this.response.hasNextPage(), !this.response.hasNextPage(),
-                        this.response.message, this.response.code
+                        transformed,
+                        transformed,
+                        this.response.hasNextPage(),
+                        !this.response.hasNextPage(),
+                        this.response.message,
+                        this.response.code
                     )
                 )
             }

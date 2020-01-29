@@ -16,18 +16,18 @@
 
 package com.gwl.playerfeed.basic
 
-import androidx.core.util.Pair
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
-import java.util.ArrayList
+import java.util.*
 
 /**
  * @author eneim (2018/01/23).
  */
-class SectionContentAdapter : Adapter<BaseViewHolder>() {
+class SectionContentAdapter : Adapter<BaseViewHolder1>() {
 
     companion object {
         const val videoItem = "div > video"
@@ -47,24 +47,25 @@ class SectionContentAdapter : Adapter<BaseViewHolder>() {
 
     private var inflater: LayoutInflater? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder1 {
         if (inflater === null || inflater!!.context !== parent.context) {
             inflater = LayoutInflater.from(parent.context)
         }
 
-        return VideoViewHolder(inflater!!, parent)
+        return if (viewType == typeVideo) VideoViewHolder(inflater!!, parent)
+        else TextViewHolder(inflater!!, parent)
 
     }
 
     override fun getItemCount() = this.elements.size
 
-    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BaseViewHolder1, position: Int) {
         holder.bind(elements[position])
     }
 
     override fun getItemViewType(position: Int): Int {
         val item = elements[position]
         val vidCount = item.select(videoItem).size
-        return if (vidCount > 0) typeVideo else typeVideo
+        return if (vidCount > 0) typeVideo else typeText
     }
 }

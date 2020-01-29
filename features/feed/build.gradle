@@ -1,7 +1,6 @@
 apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 dependencies {
-    implementation project(':app')
     implementation project(Modules.networking)
     implementation SupportLibraries.recyclerview
     implementation Libraries.glide

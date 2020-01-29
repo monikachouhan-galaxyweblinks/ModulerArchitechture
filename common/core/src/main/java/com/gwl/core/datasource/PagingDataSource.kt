@@ -90,7 +90,7 @@ abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, ope
         return when (result) {
             is APIResult.Success -> {
                 availableItemCountLiveData?.postValue(result.response.itemCount)
-                result.response.data
+                result.response.articles ?: listOf()
             }
             is APIResult.Failure -> {
                 errorLiveData?.postValue(result.details)

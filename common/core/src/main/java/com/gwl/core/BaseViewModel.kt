@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
  *
  */
 abstract class BaseViewModel : ViewModel() {
+
     open var toolBarTitle: ObservableField<String> = ObservableField()
     open var toolBarColor: ObservableField<Int> = ObservableField()
 //    open var toolBarTitle: String = ""

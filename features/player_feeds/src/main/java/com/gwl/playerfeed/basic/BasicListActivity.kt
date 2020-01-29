@@ -1,57 +1,85 @@
-/*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.gwl.playerfeed.basic
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gwl.toro.CacheManager
-import io.reactivex.android.schedulers.AndroidSchedulers.mainThread
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers.io
-import kotlinx.android.synthetic.main.content_basic_list.*
+import com.gwl.core.BaseActivity
+import com.gwl.core.initViewModel
+import com.gwl.core.networkdetection.ConnectionLiveData
+import com.gwl.core.networkdetection.ConnectionModel
+import com.gwl.core.networkdetection.ConnectionType
+import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
+import com.gwl.playerfeed.databinding.ActivityBasicListBinding
+import com.gwl.toro.CacheManager
+import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.content_basic_list.*
 
-class BasicListActivity : AppCompatActivity() {
 
-    private val adapter = SectionContentAdapter()
+class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewModel>() {
+
+    private val adapter = MediaFeedAdapter()
     private val disposable = CompositeDisposable()
+    private var connectionMode: ConnectionModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_basic_list)
-        //setSupportActionBar(toolbar)
-        //toolbar_layout.title = "Material Motion"
+        mDataBinding.setVariable(BR.viewModel, mViewModel)
 
         container.apply {
             adapter = this@BasicListActivity.adapter
             layoutManager = LinearLayoutManager(this@BasicListActivity)
             cacheManager = CacheManager.DEFAULT
         }
+        mViewModel.initPager().observe {
+            adapter.submitList(it)
+            mViewModel.isApiRunning.set(false)
+        }
+    }
 
-        disposable.add(Motion.contents()
-            .subscribeOn(io()).observeOn(mainThread())
-            .doOnNext { adapter.updateElements(it) }
-            .subscribe()
-        )
+    override fun initObservers() {
+        super.initObservers()
+        ConnectionLiveData(this).observe {
+            connectionMode = it
+            updateAutoPlaySetting()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()
+    }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_basic_list
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_basic_list, menu)
+        val item = menu!!.findItem(R.id.action_autoPlaySettings)
+        item.isChecked = mViewModel.getAutoPlayPref()
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_autoPlaySettings -> {
+                item.isChecked = !item.isChecked
+                mViewModel.updateAutoPlaySetting(item.isChecked)
+                updateAutoPlaySetting()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun getViewModel(): BasicListViewModel {
+        return initViewModel { BasicListViewModel() }
+    }
+
+    fun updateAutoPlaySetting() {
+        adapter.isAutoPlay = mViewModel.getAutoPlayPref() &&
+                connectionMode?.type == ConnectionType.WIFI
+        adapter.notifyDataSetChanged()
     }
 }

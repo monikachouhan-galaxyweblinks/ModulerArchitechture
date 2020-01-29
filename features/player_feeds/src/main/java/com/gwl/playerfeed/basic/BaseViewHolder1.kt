@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@ene.im
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 /**
  * @author eneim (2018/01/23).
  */
-abstract class BaseViewHolder(itemView: View) : ViewHolder(itemView) {
+abstract class BaseViewHolder1(itemView: View) : ViewHolder(itemView) {
 
   open fun bind(item: Any?) {}
 }

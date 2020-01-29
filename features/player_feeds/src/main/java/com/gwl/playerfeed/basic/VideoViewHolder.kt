@@ -37,7 +37,7 @@ import java.util.regex.Pattern
  * @author eneim (2018/01/23).
  */
 internal class VideoViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-    BaseViewHolder(inflater.inflate(R.layout.exo_article_part_video, parent, false)),
+    BaseViewHolder1(inflater.inflate(R.layout.exo_article_part_video, parent, false)),
     ToroPlayer {
 
   companion object {
@@ -57,6 +57,7 @@ internal class VideoViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
     super.bind(item)
     val videoUrl = (item as Element).select("video > source[type=video/mp4]").attr("src")
     if (videoUrl !== null) videoUri = Uri.parse(videoUrl)
+
     val style = item.getElementsByClass("qp-ui-video-player-mouse").attr("style")
     if (style !== null) {
       val match = ratioRegex.matcher(style)
@@ -106,7 +107,7 @@ internal class VideoViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
   }
 
   override fun play() {
-    helper!!.play()
+    helper!!.play(true)
   }
 
   override fun pause() {

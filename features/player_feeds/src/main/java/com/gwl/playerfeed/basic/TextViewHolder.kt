@@ -30,7 +30,7 @@ import com.gwl.playerfeed.common.htmlText
  * @author eneim (2018/01/23).
  */
 internal class TextViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
-        BaseViewHolder(inflater.inflate(R.layout.article_part_text, parent, false)) {
+        BaseViewHolder1(inflater.inflate(R.layout.article_part_text, parent, false)) {
 
     private val textView by lazy { this.itemView as AppCompatTextView }
 

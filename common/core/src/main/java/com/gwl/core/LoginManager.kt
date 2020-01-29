@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 
 class LoginManager private constructor(context: Context) {
     companion object {
-        private const val SHARED_PREFS_NAME = "Ulltma_APP"
+        private const val SHARED_PREFS_NAME = "Moduler_APP"
         private const val SHARED_PREFS_KEY_USER = "user"
         private var instance: LoginManager? = null
 

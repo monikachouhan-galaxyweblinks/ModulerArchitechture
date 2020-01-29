@@ -31,9 +31,15 @@
     <dist:fusing dist:include="true" />
   </dist:module>
 
-  <application>
+  <application
+      android:usesCleartextTraffic="true">
     <activity
         android:name="com.gwl.playerfeed.basic.BasicListActivity"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme"
+        >
+    </activity> <activity
+        android:name="com.gwl.playerfeed.basic.BasicListActivity1"
         android:screenOrientation="portrait">
     </activity>
     <activity

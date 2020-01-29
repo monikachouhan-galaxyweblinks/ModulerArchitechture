@@ -19,8 +19,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.gwl.playerfeed.basic.BasicListActivity">
   <item
-      android:id="@+id/action_settings"
-      android:orderInCategory="100"
+      android:id="@+id/action_autoPlaySettings"
+      android:checkable="true"
       android:title="@string/action_settings"
-      app:showAsAction="never"/>
+      app:showAsAction="never" />
+
 </menu>

@@ -72,7 +72,7 @@ class PlayableDemoActivity : AppCompatActivity() {
       )
           .also {
             it.prepare(true)
-            it.play()
+            it.play(true)
           }
     }
 
@@ -107,7 +107,7 @@ class PlayableDemoActivity : AppCompatActivity() {
     buttonContainer.removeAllViews()
     val inflater = LayoutInflater.from(buttonContainer.context)
 
-    buttonContainer.addCustomButton(inflater, "Play") { playable!!.play() }
+    buttonContainer.addCustomButton(inflater, "Play") { playable!!.play(true) }
     buttonContainer.addCustomButton(inflater, "Pause") { playable!!.pause() }
     buttonContainer.addCustomButton(
         inflater, "Mute"
@@ -121,7 +121,7 @@ class PlayableDemoActivity : AppCompatActivity() {
       if (playable != null) (playable as Playable).apply {
         this.pause()
         this.reset()
-        this.play()
+        this.play(true)
       }
     }
   }

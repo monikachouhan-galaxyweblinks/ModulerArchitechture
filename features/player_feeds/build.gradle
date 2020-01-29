@@ -2,12 +2,13 @@ apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 dependencies {
   implementation Libraries.kotlin
-  implementation project(Modules.app)
+  implementation project(Modules.networking)
   implementation project(Modules.playerCore)
   implementation project(Modules.exoplayerLib)
 
   //noinspection GradleDependency
   implementation Libraries.exoPlayer
+  implementation Libraries.paging
 
   //noinspection GradleCompatible
   implementation SupportLibraries.design

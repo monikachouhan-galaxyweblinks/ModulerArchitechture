@@ -44,7 +44,6 @@ public class ExoPlayerViewHelper extends ToroPlayerHelper {
   @NonNull private final ExoPlayable playable;
   @NonNull private final MyEventListeners listeners;
   private final boolean lazyPrepare;
-
   // Container is no longer required for constructing new instance.
   @SuppressWarnings("unused") @RemoveIn(version = "3.6.0") @Deprecated  //
   public ExoPlayerViewHelper(Container container, @NonNull ToroPlayer player, @NonNull Uri uri) {
@@ -102,8 +101,9 @@ public class ExoPlayerViewHelper extends ToroPlayerHelper {
     playable.release();
   }
 
-  @Override public void play() {
-    playable.play();
+  @Override
+  public void play(Boolean isAutoPlay) {
+    playable.play(isAutoPlay);
   }
 
   @Override public void pause() {

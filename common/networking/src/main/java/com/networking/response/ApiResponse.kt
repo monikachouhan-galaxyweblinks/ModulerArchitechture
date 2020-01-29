@@ -28,6 +28,9 @@ open class ApiResponse<T>(
     @SerializedName("data")
     var data: T,
 
+    @SerializedName("articles")
+    var articles: T?,
+
     @SerializedName("isPaginated")
     private var isPaginated: Boolean?=true,
 

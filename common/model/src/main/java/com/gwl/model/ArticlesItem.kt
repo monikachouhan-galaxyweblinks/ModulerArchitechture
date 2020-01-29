@@ -2,7 +2,7 @@ package com.gwl.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ArticlesItem(
+abstract class ArticlesItem(
 
     @SerializedName("publishedAt")
     val publishedAt: String? = null,
@@ -27,4 +27,7 @@ data class ArticlesItem(
 
     @SerializedName("content")
     val content: String? = null
-)
+) {
+    abstract var type: MediaType?
+    abstract var videoUrl: String?
+}

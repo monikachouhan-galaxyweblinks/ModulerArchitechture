@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.gwl.model.ArticlesItem
 import com.gwl.model.FeedResponse
+import com.gwl.model.MediaFeed
 import com.gwl.model.ResponseData
 import com.networking.R
 import com.networking.response.ApiResponse
@@ -39,10 +40,14 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
     }
 
     override suspend fun getFeedList(page: Long, count: Int): APIResult<List<ArticlesItem>> {
-        return authService.fetchFeedList("bitcoin", "5b0c09c541454cad8d8626d779802b2e", page, count).feedApiResult()
+        return authService.fetchFeedList("bitcoin", "5b0c09c541454cad8d8626d779802b2e", page, count)
+            .feedApiResult()
     }
 
-  /*  suspend fun getFeeds(page: Long, count: Int): Call<FeedResponse> {
+    override suspend fun getPlayerFeeds(page: Int, count: Int): APIResult<List<MediaFeed>> {
+        return return authService.getMediaFeeds(page, count).apiResult()
+    }
+/*  suspend fun getFeeds(page: Long, count: Int): Call<FeedResponse> {
         return authService.fetchFeedList("bitcoin", "5b0c09c541454cad8d8626d779802b2e", page, count)
     }*/
 
@@ -93,7 +98,7 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
     private suspend fun <T : Any> Call<T>.mappedApiResult(): APIResult<T> {
         val result = awaitResult()
         return when (result) {
-            is Result.Ok -> APIResult.Success(ApiResponse(result.value, null, null))
+            is Result.Ok -> APIResult.Success(ApiResponse(result.value, result.value, null, null))
             is Result.Error -> APIResult.Failure(errorFromHttpException(result.exception))
             is Result.Exception -> APIResult.Failure(errorFromAnyException(result.exception))
         }
@@ -117,7 +122,7 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
     // region - Response Parsing
     private suspend fun Call<FeedResponse>.feedApiResult(): APIResult<List<ArticlesItem>> {
         val result = awaitResult()
-       // Log.d("apiResult", " apiResult feedApiResult $result")
+        // Log.d("apiResult", " apiResult feedApiResult $result")
         return when (result) {
             is Result.Ok -> {
                 Log.d("apiResult", " apiResult success " + result.value.articles)
