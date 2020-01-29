@@ -31,5 +31,5 @@ data class ArticlesItem(
     @SerializedName("content")
     val content: String? = null,
     var type: MediaType? = MediaType.VIDEO,
-    var videoUrl: String? = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    var sourceUrl: String? = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
 ) : Parcelable

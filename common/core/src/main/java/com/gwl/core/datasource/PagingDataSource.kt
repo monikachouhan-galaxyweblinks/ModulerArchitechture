@@ -1,5 +1,6 @@
 package com.gwl.core.datasource
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.networking.result.APIError
@@ -26,7 +27,7 @@ abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, ope
 
         GlobalScope.launch(Dispatchers.Default) {
             val response = source.fetch(1, loadSize)
-
+             Log.d("loadInitial","loadInitial $response")
             val list = parseResponse(response)
 
             refreshingLiveData?.postValue(false)
@@ -90,6 +91,7 @@ abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, ope
         return when (result) {
             is APIResult.Success -> {
                 availableItemCountLiveData?.postValue(result.response.itemCount)
+                Log.d("loadInitial","parseResponse ${result.response.articles}")
                 result.response.articles ?: listOf()
             }
             is APIResult.Failure -> {

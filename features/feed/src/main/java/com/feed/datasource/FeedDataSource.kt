@@ -3,7 +3,8 @@ package com.feed.datasource
 import com.gwl.MyApplication
 import com.gwl.core.datasource.PathDataSource
 import com.gwl.model.ArticlesItem
-import com.gwl.model.FeedResponse
+import com.gwl.model.Media
+import com.gwl.model.MediaType
 import com.networking.result.APIResult
 import kotlinx.android.parcel.Parcelize
 

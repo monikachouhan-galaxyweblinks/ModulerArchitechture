@@ -26,7 +26,7 @@ const val HTTP_SUCCESS_CODE = "Success"
 
 open class ApiResponse<T>(
     @SerializedName("data")
-    var data: T,
+    var data: T?,
 
     @SerializedName("articles")
     var articles: T?,

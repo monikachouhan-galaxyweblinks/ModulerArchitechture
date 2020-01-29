@@ -44,7 +44,7 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
     }
 
     override suspend fun getPlayerFeeds(page: Int, count: Int): APIResult<List<ArticlesItem>> {
-        return return authService.getMediaFeeds(page, count).apiResult()
+         return authService.getMediaFeeds(page, count).apiResult()
     }
 /*  suspend fun getFeeds(page: Long, count: Int): Call<FeedResponse> {
         return authService.fetchFeedList("bitcoin", "5b0c09c541454cad8d8626d779802b2e", page, count)
