@@ -30,7 +30,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".presentation.MediaFeedActivity"
+            android:name=".presentation.MediaFeedFragment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
     </application>

@@ -2,9 +2,10 @@ package com.gwl.playerfeed.presentation
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gwl.core.BaseActivity
+import com.gwl.core.BaseFragment
 import com.gwl.core.initViewModel
 import com.gwl.core.networkdetection.ConnectionLiveData
 import com.gwl.core.networkdetection.ConnectionModel
@@ -21,7 +22,7 @@ import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.content_basic_list.*
 
 
-class MediaFeedActivity : BaseActivity<ActivityBasicListBinding, MediaFeedViewModel>() {
+class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewModel>() {
 
     private val adapter = MediaFeedAdapter()
     private val disposable = CompositeDisposable()
@@ -33,11 +34,11 @@ class MediaFeedActivity : BaseActivity<ActivityBasicListBinding, MediaFeedViewMo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
-
         container.apply {
-            adapter = this@MediaFeedActivity.adapter
-            layoutManager = LinearLayoutManager(this@MediaFeedActivity)
+            adapter = this@MediaFeedFragment.adapter
+            layoutManager = LinearLayoutManager(context)
             cacheManager = CacheManager.DEFAULT
         }
         adapter.itemClick = mViewModel
@@ -49,9 +50,11 @@ class MediaFeedActivity : BaseActivity<ActivityBasicListBinding, MediaFeedViewMo
 
     override fun initObservers() {
         super.initObservers()
-        ConnectionLiveData(this).observe {
-            connectionMode = it
-            updateAutoPlaySetting()
+        context?.also { it ->
+            ConnectionLiveData(it).observe {
+                connectionMode = it
+                updateAutoPlaySetting()
+            }
         }
         mViewModel.audioItemClick.observe { showAudioDetail(it) }
         mViewModel.videoItemClick.observe { showVideoDetail(it) }
@@ -67,11 +70,11 @@ class MediaFeedActivity : BaseActivity<ActivityBasicListBinding, MediaFeedViewMo
         return R.layout.activity_basic_list
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_basic_list, menu)
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        activity?.menuInflater?.inflate(R.menu.menu_basic_list, menu)
         val item = menu!!.findItem(R.id.action_autoPlaySettings)
         item.isChecked = mViewModel.getAutoPlayPref()
-        return super.onCreateOptionsMenu(menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -108,5 +111,9 @@ class MediaFeedActivity : BaseActivity<ActivityBasicListBinding, MediaFeedViewMo
     private fun showAudioDetail(item: ArticlesItem) = AudioDetailNavigation.dynamicStart.let {
         it?.putExtra(DATA, item)
         startActivity(it)
+    }
+
+    override fun getBindingVariable(): Int {
+        return BR.viewModel
     }
 }

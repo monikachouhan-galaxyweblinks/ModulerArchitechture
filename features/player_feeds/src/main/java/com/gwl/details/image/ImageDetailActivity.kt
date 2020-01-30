@@ -7,7 +7,7 @@ import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityImageDetailBinding
-import com.gwl.playerfeed.presentation.MediaFeedActivity
+import com.gwl.playerfeed.presentation.MediaFeedFragment
 
 class ImageDetailActivity : BaseActivity<ActivityImageDetailBinding, ImageDetailViewModel>() {
     lateinit var item: ArticlesItem
@@ -26,7 +26,7 @@ class ImageDetailActivity : BaseActivity<ActivityImageDetailBinding, ImageDetail
     }
 
     private fun getIntentData() {
-        item = intent.getParcelableExtra(MediaFeedActivity.DATA) as ArticlesItem
+        item = intent.getParcelableExtra(MediaFeedFragment.DATA) as ArticlesItem
     }
 
     override fun getLayoutId(): Int {
