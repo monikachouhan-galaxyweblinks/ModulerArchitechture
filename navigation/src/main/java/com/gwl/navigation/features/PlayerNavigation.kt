@@ -5,7 +5,7 @@ import com.gwl.navigation.loadIntentOrNull
 
 object PlayerNavigation : DynamicFeature<Intent> {
 
-    private const val PLAYER = "com.gwl.playerfeed.basic.BasicListActivity"
+    private const val PLAYER = "com.gwl.playerfeed.presentation.MediaFeedActivity"
 
     override val dynamicStart: Intent?
         get() = PLAYER.loadIntentOrNull()

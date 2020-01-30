@@ -7,10 +7,8 @@ import com.gwl.details.image.ImageDetailViewModel
 import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
-import com.gwl.playerfeed.basic.BasicListActivity
-import com.gwl.playerfeed.common.setupToolbarWithTitle
 import com.gwl.playerfeed.databinding.ActivityImageDetailBinding
-import kotlinx.android.synthetic.main.layout_toolbar.*
+import com.gwl.playerfeed.presentation.MediaFeedActivity
 
 
 class ImageDetailActivity : BaseActivity<ActivityImageDetailBinding, ImageDetailViewModel>() {
@@ -30,7 +28,7 @@ class ImageDetailActivity : BaseActivity<ActivityImageDetailBinding, ImageDetail
     }
 
     private fun getIntentData() {
-        item = intent.getParcelableExtra(BasicListActivity.DATA) as ArticlesItem
+        item = intent.getParcelableExtra(MediaFeedActivity.DATA) as ArticlesItem
     }
 
     override fun getLayoutId(): Int {

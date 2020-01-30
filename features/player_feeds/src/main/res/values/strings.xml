@@ -16,7 +16,7 @@
 
 <resources>
   <string name="app_name">Toro with ExoPlayer</string>
-  <string name="title_activity_basic_list">BasicListActivity</string>
+  <string name="title_activity_basic_list">MediaFeedActivity</string>
   <string name="large_text">
     "Material is the metaphor.\n\n"
 

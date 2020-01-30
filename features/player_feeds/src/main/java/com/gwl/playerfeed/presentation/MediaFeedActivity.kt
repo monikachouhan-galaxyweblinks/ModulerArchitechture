@@ -1,4 +1,4 @@
-package com.gwl.playerfeed.basic
+package com.gwl.playerfeed.presentation
 
 import android.os.Bundle
 import android.view.Menu
@@ -21,7 +21,7 @@ import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.content_basic_list.*
 
 
-class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewModel>() {
+class MediaFeedActivity : BaseActivity<ActivityBasicListBinding, MediaFeedViewModel>() {
 
     private val adapter = MediaFeedAdapter()
     private val disposable = CompositeDisposable()
@@ -36,8 +36,8 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
         mDataBinding.setVariable(BR.viewModel, mViewModel)
 
         container.apply {
-            adapter = this@BasicListActivity.adapter
-            layoutManager = LinearLayoutManager(this@BasicListActivity)
+            adapter = this@MediaFeedActivity.adapter
+            layoutManager = LinearLayoutManager(this@MediaFeedActivity)
             cacheManager = CacheManager.DEFAULT
         }
         adapter.itemClick = mViewModel
@@ -85,8 +85,8 @@ class BasicListActivity : BaseActivity<ActivityBasicListBinding, BasicListViewMo
         return super.onOptionsItemSelected(item)
     }
 
-    override fun getViewModel(): BasicListViewModel {
-        return initViewModel { BasicListViewModel() }
+    override fun getViewModel(): MediaFeedViewModel {
+        return initViewModel { MediaFeedViewModel() }
     }
 
     fun updateAutoPlaySetting() {

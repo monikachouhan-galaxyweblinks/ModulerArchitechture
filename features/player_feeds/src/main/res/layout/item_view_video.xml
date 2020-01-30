@@ -16,6 +16,10 @@
         <variable
             name="item"
             type="com.gwl.model.ArticlesItem" />
+
+        <variable
+            name="isPlaying"
+            type="androidx.databinding.ObservableBoolean" />
     </data>
 
     <com.google.android.exoplayer2.ui.AspectRatioFrameLayout
@@ -45,7 +49,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_margin="8dp"
-                    android:paddingStart="8dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="4dp"
@@ -59,26 +62,36 @@
                     android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                     android:layout_height="200dp">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:id="@+id/imageView"
-                        imageUrl="@{item.sourceUrl}"
-                        android:adjustViewBounds="true"
-                        visibleIf="@{item.type == MediaType.IMAGE}"
-                        android:layout_height="match_parent" />
-
                     <com.google.android.exoplayer2.ui.PlayerView
                         android:id="@+id/playerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:resize_mode="fixed_width"
                         app:use_artwork="false"
-                        app:default_artwork="@drawable/demo_view_thumb"
                         visibleIf="@{item.type != MediaType.IMAGE}"
                         app:shutter_background_color="?attr/colorButtonNormal"
                         app:surface_type="surface_view"
                         app:show_buffering="always"
                         app:controller_layout_id="@layout/exo_playback_controls" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:id="@+id/imageView"
+                        imageUrl="@{item.sourceUrl}"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        visibleIf="@{item.type == MediaType.IMAGE || !isPlaying}"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:id="@+id/imageView2"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/music_bg_thumbnail"
+                        visibleIf="@{item.type == MediaType.MP3}"
+                        android:layout_height="match_parent" />
+
                 </FrameLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -87,7 +100,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_margin="8dp"
-                    android:paddingStart="8dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="4dp"

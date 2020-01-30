@@ -1,6 +1,8 @@
-package com.gwl.playerfeed.basic
+package com.gwl.playerfeed.presentation
 
 import android.net.Uri
+import android.util.Log
+import androidx.databinding.Observable
 import androidx.databinding.ViewDataBinding
 import com.gwl.core.BaseAdapter
 import com.gwl.model.ArticlesItem
@@ -20,8 +22,9 @@ class MP3MediaViewHolder(itemRowBind: ViewDataBinding) : VideoFeedViewHolder(ite
         onItemClickListener: BaseAdapter.OnItemClickListener<ArticlesItem>?
     ) {
         itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
+        isPlaying.set(false)
         itemRowBinding.setVariable(BR.item, data)
-        artWork.setImageResource(R.drawable.music_bg_thumbnail)
+        itemRowBinding.setVariable(BR.isPlaying, isPlaying)
         videoUri = Uri.parse(data.sourceUrl)
     }
 }
