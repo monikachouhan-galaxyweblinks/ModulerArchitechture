@@ -1,5 +1,23 @@
 apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
-dependencies{
+android {
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            // 1 for only Drawer , 2 for only BottomBar , 3 for Both
+            buildConfigField "Integer", "IS_DRAWER", '3'
+            signingConfig signingConfigs.debug
+            testCoverageEnabled true
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            buildConfigField "Integer", "IS_DRAWER", '3'
+        }
+    }
+}
+
+dependencies {
     implementation SupportLibraries.appcompat
 }

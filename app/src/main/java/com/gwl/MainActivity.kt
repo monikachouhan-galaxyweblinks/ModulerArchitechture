@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         btnPinLogin?.setOnClickListener { startPinLogin() }
         btnGoogleLogin?.setOnClickListener { startGoogleLogin() }
         btnFacebookLogin?.setOnClickListener { startFacebookLogin() }
-
+        btnHome?.setOnClickListener { startHome() }
     }
 
     private fun initDynamicModules() {
@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
     private fun startFingerPrint() = FingerLockNavigation.dynamicStart?.let { startActivity(it) }
     private fun startPinLogin() = PinLoginNavigation.dynamicStart?.let { startActivity(it) }
     private fun startGoogleLogin() = GoogleLoginNavigation.dynamicStart?.let { startActivity(it) }
+    private fun startHome() = HomeNavigation.dynamicStart?.let { startActivity(it) }
     private fun startFacebookLogin() =
         FacebookLoginNavigation.dynamicStart?.let { startActivity(it) }
 

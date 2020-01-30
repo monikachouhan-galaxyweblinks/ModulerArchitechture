@@ -1,13 +1,35 @@
 package com.gwl.home
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.util.Log
+import com.gwl.base.BottomNavigationActivity
+import com.gwl.core.initViewModel
+import com.gwl.home.databinding.ActivityHome1Binding
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BottomNavigationActivity<ActivityHome1Binding, HomeViewModel>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_1)
-
+    override fun getViewModel(): HomeViewModel {
+        return initViewModel { HomeViewModel() }
     }
+
+    // region - Click events
+    override fun onProfileSelect(fromSideMenu: Boolean) {
+        Log.e(HomeActivity::class.java.simpleName, "onProfileSelect")
+    }
+
+    override fun onSettingSelect(fromSideMenu: Boolean) {
+        Log.e(HomeActivity::class.java.simpleName, "onSettingSelect")
+    }
+
+    override fun onAboutSelect(fromSideMenu: Boolean) {
+        Log.e(HomeActivity::class.java.simpleName, "onAboutSelect")
+    }
+
+    override fun onLogoutSelect(fromSideMenu: Boolean) {
+        Log.e(HomeActivity::class.java.simpleName, "onLogoutSelect")
+    }
+
+    override fun onFeedSelect(fromSideMenu: Boolean) {
+        Log.e(HomeActivity::class.java.simpleName, "onFeedSelect")
+    }
+    // endregion
 }
