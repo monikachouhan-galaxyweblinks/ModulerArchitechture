@@ -21,7 +21,6 @@ import com.gwl.playerfeed.databinding.ActivityDetailBinding
 import com.gwl.playerfeed.presentation.MediaFeedActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 
-
 class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewModel>() {
     lateinit var item: ArticlesItem
     var fullscreen = false
@@ -40,7 +39,6 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
         onBackPressed()
         return super.onSupportNavigateUp()
     }
-
 
     private fun getIntentData() {
         item = intent.getParcelableExtra(MediaFeedActivity.DATA) as ArticlesItem
@@ -77,12 +75,12 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
         val fullscreenButton =
             playerViewController.findViewById(R.id.exo_fullscreen_icon) as ImageView
         fullscreenButton.setOnClickListener {
-            if (fullscreen) {
+            fullscreen = if (fullscreen) {
                 changeToPortrait()
-                fullscreen = false
+                false
             } else {
                 changeToLandscape()
-                fullscreen = true
+                true
             }
         }
     }
@@ -99,7 +97,6 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
     }
 
     private fun changeToLandscape() {
-
         val lp = window.attributes
         val window = window
         window.attributes = lp

@@ -19,20 +19,20 @@
         <activity
             android:name="com.gwl.details.audio.AudioDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.gwl.details.VideoDetailActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
-            android:name="com.gwl.details.ImageDetailActivity"
+            android:name="com.gwl.details.image.ImageDetailActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".presentation.MediaFeedActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

@@ -4,7 +4,7 @@ object ApplicationId {
 
 object FeatureModules {
     var modules = arrayOf(
-        Modules.home, Modules.launcher, Modules.login,
+        Modules.home, Modules.launcher, Modules.login,Modules.profile,
         Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin
     )
 
@@ -20,6 +20,7 @@ object FeatureModules {
         Modules.navigation,
         Modules.login,
         Modules.home,
+        Modules.profile,
         Modules.launcher,
         Modules.cache,
         Modules.presentation,
@@ -45,6 +46,7 @@ object Modules {
     val exoplayerLib = ":libraries:exoplayer"
     val playerCore = ":libraries:player-core"
     val launcher = ":features:launcher"
+    val profile = ":features:profile"
 
     val player = ":features:player_feeds"
     val feed = ":features:feed"

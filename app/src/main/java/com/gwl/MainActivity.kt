@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         btnPinLogin?.setOnClickListener { startPinLogin() }
         btnGoogleLogin?.setOnClickListener { startGoogleLogin() }
         btnFacebookLogin?.setOnClickListener { startFacebookLogin() }
+
     }
 
     private fun initDynamicModules() {

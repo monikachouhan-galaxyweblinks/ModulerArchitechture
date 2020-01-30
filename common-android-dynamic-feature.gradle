@@ -30,11 +30,11 @@ android {
 
 dependencies {
     implementation project(Modules.app)
-    implementation project(Modules.core)
-    implementation project(Modules.navigation)
-    implementation Libraries.kotlin
-    implementation SupportLibraries.appcompat
-    implementation SupportLibraries.constrainLayout
-    implementation Libraries.multidex
-    implementation project(Modules.model)
+   /* implementation project(Modules.core)
+    implementation project(Modules.navigation)*/
+   // implementation Libraries.kotlin
+  /*  implementation SupportLibraries.appcompat
+    implementation SupportLibraries.constrainLayout*/
+    //implementation Libraries.multidex
+  //  implementation project(Modules.model)
 }

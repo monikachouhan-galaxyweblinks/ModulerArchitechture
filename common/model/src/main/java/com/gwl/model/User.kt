@@ -1,15 +1,20 @@
 package com.gwl.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.android.parcel.Parcelize
 
 /**
  * @author GWL
  */
+@Parcelize
 @Entity
-class User {
+class User : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
     var name: String = "test"
+    var email: String = ""
+    var profileUrl: String = ""
     var password: String = ""
 }

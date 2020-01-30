@@ -35,38 +35,32 @@ android {
     androidExtensions {
         experimental = true
     }
+
+
 }
 
 dependencies {
-    api SupportLibraries.constrainLayout
+    api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation project(Modules.model)
-    implementation project(Modules.cache)
-    implementation project(Modules.core)
-    implementation project(Modules.networking)
-    implementation project(Modules.navigation)
-    implementation project(Modules.presentation)
-    implementation project(Modules.exoplayerLib)
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api project(Modules.model)
+    api project(Modules.cache)
+    api project(Modules.core)
+    api project(Modules.networking)
+    api project(Modules.navigation)
+    api project(Modules.presentation)
+    api project(Modules.exoplayerLib)
 
-    implementation Libraries.multidex
-    implementation GoogleLibraries.playCore
-    implementation Libraries.roomDB
+    api Libraries.multidex
+    api GoogleLibraries.playCore
+    api Libraries.roomDB
     kapt Libraries.roomCompiler
-    implementation SupportLibraries.recyclerview
+    api SupportLibraries.recyclerview
 
-    implementation Libraries.ktx
-    implementation Libraries.kotlin
-    api SupportLibraries.appcompat
-    implementation("com.google.android.exoplayer:exoplayer:${Versions.exoPlayer2Version}") {
-        exclude group: 'com.android.support'
-    }
+    api Libraries.ktx
+    api Libraries.kotlin
+
     api SupportLibraries.design
-
-    implementation(
-            "com.google.android.exoplayer:extension-ima:${Versions.exoPlayer2Version}") {
-        exclude group: 'com.android.support'
-    }
-
 }
 androidExtensions {
     experimental = true
