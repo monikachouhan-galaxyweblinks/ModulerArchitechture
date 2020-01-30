@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initDynamicModules()
-        btnFingerPrint?.setOnClickListener { startFingerPrint() }
 
+        btnFingerPrint?.setOnClickListener { startFingerPrint() }
         btnFeed?.setOnClickListener { startLogin() }
         btnVideoPlayer?.setOnClickListener { startPlayerFeed() }
         btnPinLogin?.setOnClickListener { startPinLogin() }
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun startPlayerFeed() = PlayerNavigation.dynamicStart?.let { startActivity(it) }
+    private fun startPlayerFeed() = PlayerNavigation.dynamicStart?.let { /*startActivity(it)*/ }
     private fun startLogin() = LoginNavigation.dynamicStart?.let { startActivity(it) }
     private fun startFingerPrint() = FingerLockNavigation.dynamicStart?.let { startActivity(it) }
     private fun startPinLogin() = PinLoginNavigation.dynamicStart?.let { startActivity(it) }

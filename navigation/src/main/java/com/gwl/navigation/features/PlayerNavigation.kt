@@ -1,12 +1,12 @@
 package com.gwl.navigation.features
 
-import android.content.Intent
-import com.gwl.navigation.loadIntentOrNull
+import androidx.fragment.app.Fragment
+import com.gwl.navigation.loadFragmentOrNull
 
-object PlayerNavigation : DynamicFeature<Intent> {
+object PlayerNavigation : DynamicFeature<Fragment> {
 
-    private const val PLAYER = "com.gwl.playerfeed.presentation.MediaFeedActivity"
+    private const val PLAYER = "com.gwl.playerfeed.presentation.MediaFeedFragment"
 
-    override val dynamicStart: Intent?
-        get() = PLAYER.loadIntentOrNull()
+    override val dynamicStart: Fragment?
+        get() = PLAYER.loadFragmentOrNull()
 }

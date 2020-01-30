@@ -33,7 +33,7 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google_login)
-        //        callbackManager = CallbackManager.Factory.create();
+        // callbackManager = CallbackManager.Factory.create();
         mAuthListener = AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
             if (user != null) { // User is signed in
@@ -62,11 +62,11 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
     }
 
     private fun googlePreInit() {
-        val gso =
-            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(com.gwl.R.string.default_web_client_id))
-                .requestEmail()
-                .build()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(com.gwl.R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
         mGoogleApiClient = GoogleApiClient.Builder(this)
             .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
             .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
@@ -98,7 +98,7 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
                 val account = result.signInAccount
                 if (account!!.displayName != null) {
                     val userNameStr = account.displayName
-                    tvName.setText(userNameStr)
+                    tvName.text = userNameStr
                     Log.e(
                         "resulttt  name ::: ",
                         userNameStr + "  ${account.email}" + "  ${account.photoUrl}"

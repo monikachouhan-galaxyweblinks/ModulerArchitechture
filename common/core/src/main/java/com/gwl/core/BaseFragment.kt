@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 
 /**
  * @author GWL
@@ -33,14 +35,23 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
         mViewModel = getViewModel()
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mDataBinding.setVariable(getBindingVariable(), mViewModel)
         mDataBinding.lifecycleOwner = this
         mDataBinding.executePendingBindings()
+        initObservers()
     }
+
     // endregion
+    fun <T> LiveData<T>.observe(performTask: (it: T) -> Unit) {
+        this.observe(this@BaseFragment, Observer {
+            performTask(it)
+        })
+    }
+
+
+    open fun initObservers() {}
 
     // region - Abstract functions
     /**
