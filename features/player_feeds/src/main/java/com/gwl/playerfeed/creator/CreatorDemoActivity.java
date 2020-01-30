@@ -42,7 +42,7 @@ import com.gwl.playerfeed.R;
 
 public class CreatorDemoActivity extends AppCompatActivity {
 
-    static final Uri videoUri =
+ /*   static final Uri videoUri =
             // Uri.parse("https://storage.googleapis.com/material-design/publish/material_v_12/assets/0B14F_FSUCc01SWc0N29QR3pZT2s/materialmotionhero-spec-0505.mp4");
             Uri.parse("file:///android_asset/bbb/video.mp4");
 
@@ -96,5 +96,5 @@ public class CreatorDemoActivity extends AppCompatActivity {
         playerView.setPlayer(null);
         exoPlayer.removeListener(listener);
         ToroExo.with(this).releasePlayer(creator, exoPlayer);
-    }
+    }*/
 }

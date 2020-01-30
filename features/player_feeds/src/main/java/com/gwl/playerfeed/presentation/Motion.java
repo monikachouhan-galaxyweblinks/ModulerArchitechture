@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed.basic;
+package com.gwl.playerfeed.presentation;
 
 import android.content.Context;
 
@@ -32,7 +32,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
 

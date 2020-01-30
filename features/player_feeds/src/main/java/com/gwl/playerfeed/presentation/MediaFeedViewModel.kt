@@ -1,4 +1,4 @@
-package com.gwl.playerfeed.basic
+package com.gwl.playerfeed.presentation
 
 import android.util.Log
 import androidx.databinding.ObservableField
@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 /**
  * @author GWL
  */
-class BasicListViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<ArticlesItem> {
+class MediaFeedViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<ArticlesItem> {
     override fun onItemClick(item: ArticlesItem) {
         Log.e("clickckck ", "${item.type?.name} fcghfgh")
         when (item.type) {

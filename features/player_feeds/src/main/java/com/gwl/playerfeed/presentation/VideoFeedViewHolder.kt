@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed.basic
+package com.gwl.playerfeed.presentation
 
 import android.net.Uri
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.ui.PlayerView
+import com.gwl.ExoConfig
 import com.gwl.MyApplication
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewHolder
 import com.gwl.model.ArticlesItem
-import com.gwl.model.MediaType
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.ExoPlayerViewHelper
 import com.gwl.playerfeed.R
@@ -52,34 +51,25 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
 
     private val playerFrame by lazy { itemView as AspectRatioFrameLayout }
     val player = itemView.findViewById(R.id.playerView) as PlayerView
-    private val title = itemView.findViewById(R.id.textTitle) as TextView
-    private val description = itemView.findViewById(R.id.textDescription) as TextView
-    val artWork: ImageView = player.findViewById(R.id.exo_artwork)
+    val artWork: ImageView = itemView.findViewById(R.id.imageView)
     private var helper: ExoPlayerViewHelper? = null
     open var videoUri: Uri? = null
-    private var mediaType: MediaType = MediaType.VIDEO
-
     var listener: EventListener? = null
     open var autoplay: Boolean = false
+    val isPlaying: ObservableBoolean by lazy { ObservableBoolean(false) }
+
     override fun bind(
         data: ArticlesItem,
         onItemClickListener: BaseAdapter.OnItemClickListener<ArticlesItem>?
     ) {
         super.bind(data, onItemClickListener)
         itemRowBinding.setVariable(BR.item, data)
+        itemRowBinding.setVariable(BR.isPlaying, isPlaying)
         videoUri = Uri.parse(data.sourceUrl)
-        loadImage(videoUri)
         itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         //playerFrame.setAspectRatio(16/9f)
     }
 
-    private fun loadImage(videoUri: Uri?) {
-        Glide.with(MyApplication.instance)
-            .asBitmap()
-            .load(videoUri)
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(artWork)
-    }
 
     override fun getPlayerView() = player
 
@@ -90,38 +80,29 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
             this,
             videoUri!!,
             null,
-            MyApplication.config!!
+            ExoConfig.config!!
         )
         if (listener == null) {
             listener = object : EventListener {
                 override fun onFirstFrameRendered() {
-                    // status.text = "First frame rendered"
-                    artWork.visibility = View.GONE
                     Log.d("VideoFeedViewHolder", " initialize onFirstFrameRendered")
                 }
 
                 override fun onBuffering() {
-                    // status.text = "Buffering"
-                    Log.d("VideoFeedViewHolder", " initialize onBuffering")
-
+                    isPlaying.set(false)
                 }
 
                 override fun onPlaying() {
-                    // status.text = "Playing"
-                    Log.d("VideoFeedViewHolder", " initialize onPlaying")
-
+                    isPlaying.set(true)
                 }
 
                 override fun onPaused() {
-                    // status.text = "Paused"
-                    Log.d("VideoFeedViewHolder", " initialize onPaused")
+                    isPlaying.set(false)
                 }
 
                 override fun onCompleted() {
-                    //status.text = "Completed"
-                    Log.d("VideoFeedViewHolder", " initialize onCompleted")
+                    isPlaying.set(false)
                 }
-
             }
             helper!!.addPlayerEventListener(listener!!)
         }

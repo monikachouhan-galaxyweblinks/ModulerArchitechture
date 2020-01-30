@@ -1,4 +1,4 @@
-package com.gwl.playerfeed.basic
+package com.gwl.playerfeed.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

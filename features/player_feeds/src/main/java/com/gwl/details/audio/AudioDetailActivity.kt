@@ -15,11 +15,9 @@ import com.gwl.details.VideoDetailViewModel
 import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
-import com.gwl.playerfeed.basic.BasicListActivity
 import com.gwl.playerfeed.databinding.ActivityAudioDetailBinding
+import com.gwl.playerfeed.presentation.MediaFeedActivity
 import kotlinx.android.synthetic.main.activity_audio_detail.*
-import kotlinx.android.synthetic.main.activity_detail.*
-
 
 class AudioDetailActivity : BaseActivity<ActivityAudioDetailBinding, VideoDetailViewModel>() {
     lateinit var item: ArticlesItem
@@ -40,7 +38,7 @@ class AudioDetailActivity : BaseActivity<ActivityAudioDetailBinding, VideoDetail
 
 
     private fun getIntentData() {
-        item = intent.getParcelableExtra(BasicListActivity.DATA) as ArticlesItem
+        item = intent.getParcelableExtra(MediaFeedActivity.DATA) as ArticlesItem
     }
 
     private fun initPlayerView() {

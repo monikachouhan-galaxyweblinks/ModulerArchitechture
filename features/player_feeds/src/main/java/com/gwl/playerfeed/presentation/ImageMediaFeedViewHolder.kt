@@ -1,4 +1,4 @@
-package com.gwl.playerfeed.basic
+package com.gwl.playerfeed.presentation
 
 import androidx.databinding.ViewDataBinding
 import com.gwl.core.BaseAdapter

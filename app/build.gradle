@@ -39,7 +39,6 @@ android {
 
 dependencies {
     api SupportLibraries.constrainLayout
-    api 'androidx.appcompat:appcompat:1.0.2'
     api 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation project(Modules.model)
     implementation project(Modules.cache)

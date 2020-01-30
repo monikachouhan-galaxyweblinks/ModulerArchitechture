@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.gwl.playerfeed.basic.BasicListViewModel" />
+            type="com.gwl.playerfeed.presentation.MediaFeedViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:background="#A3D8D4D4"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.gwl.playerfeed.basic.BasicListActivity">
+        tools:context="com.gwl.playerfeed.presentation.MediaFeedActivity">
 
-        <com.gwl.toro.widget.Container xmlns:tools="http://schemas.android.com/tools"
+        <com.gwl.toro.widget.Container
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.gwl.playerfeed.basic.BasicListActivity"
+            tools:context="com.gwl.playerfeed.presentation.MediaFeedActivity"
             tools:showIn="@layout/activity_basic_list" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
