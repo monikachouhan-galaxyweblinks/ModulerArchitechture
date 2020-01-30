@@ -4,10 +4,8 @@ import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.MediaSource
@@ -35,6 +33,7 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
         mDataBinding.setVariable(BR.item, item)
         initPlayerView()
         setupToolbar(item.title, true)
+        fullScreen()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -75,48 +74,63 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
     }
 
     fun fullScreen() {
-       /* val fullscreenButton =
+        val fullscreenButton =
             playerViewController.findViewById(R.id.exo_fullscreen_icon) as ImageView
         fullscreenButton.setOnClickListener {
             if (fullscreen) {
-                fullscreenButton.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@VideoDetailActivity,
-                        R.drawable.exo_controls_fullscreen_enter
-                    )
-                )
-                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-                if (supportActionBar != null) {
-                    supportActionBar!!.show()
-                }
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                val params = playerViewController.layoutParams as LinearLayout.LayoutParams
-                params.width = params.MATCH_PARENT
-                params.height =
-                    (200 * applicationContext.resources.displayMetrics.density).toInt()
-                playerViewController.layoutParams = params
+                changeToPortrait()
                 fullscreen = false
             } else {
-                fullscreenButton.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        this@VideoDetailActivity,
-                        R.drawable.exo_controls_fullscreen_exit
-                    )
-                )
-                window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
-                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
-                if (supportActionBar != null) {
-                    supportActionBar!!.hide()
-                }
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-                val params = playerViewController.layoutParams as RelativeLayout.LayoutParams
-                params.width = params.MATCH_PARENT
-                params.height = params.MATCH_PARENT
-                playerViewController.layoutParams = params
+                changeToLandscape()
                 fullscreen = true
             }
-        }*/
-
+        }
     }
+
+    private fun changeToPortrait() {
+        val attr = window.attributes
+        val window = window
+        window.attributes = attr
+        window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        textTitle.visibility = View.VISIBLE
+        textDescription.visibility = View.VISIBLE
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        showSystemUI()
+    }
+
+    private fun changeToLandscape() {
+
+        val lp = window.attributes
+        val window = window
+        window.attributes = lp
+        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        textTitle.visibility = View.GONE
+        textDescription.visibility = View.GONE
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        hideSystemUI()
+    }
+
+    private fun hideSystemUI() {
+        // Enables regular immersive mode.
+        // For "lean back" mode, remove SYSTEM_UI_FLAG_IMMERSIVE.
+        // Or for "sticky immersive," replace it with SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE
+                // Set the content to appear under the system bars so that the
+                // content doesn't resize when the system bars hide and show.
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                // Hide the nav bar and status bar
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+    }
+
+    // Shows the system bars by removing all the flags
+    // except for the ones that make the content appear under the system bars.
+    private fun showSystemUI() {
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+    }
+
 }
