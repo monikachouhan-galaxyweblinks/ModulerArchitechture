@@ -78,7 +78,7 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
             .asBitmap()
             .load(videoUri)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .into(artWork);
+            .into(artWork)
     }
 
     override fun getPlayerView() = player

@@ -24,8 +24,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-       <!-- <include layout="@layout/layout_toolbar" />-->
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textTitle"
             android:layout_width="match_parent"

@@ -1,7 +1,13 @@
 package com.gwl.details
 
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.source.ConcatenatingMediaSource
 import com.google.android.exoplayer2.source.MediaSource
@@ -20,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewModel>() {
     lateinit var item: ArticlesItem
+    var fullscreen = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         getIntentData()
@@ -41,7 +48,7 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
     }
 
     private fun initPlayerView() {
-        val PlayerView1 = playerView as PlayerView
+        val PlayerView1 = playerViewController as PlayerView
         val player = ExoPlayerFactory.newSimpleInstance(this)
         PlayerView1.player = player
         val uri = Uri.parse(item.sourceUrl)
@@ -67,8 +74,49 @@ class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        playerView.player.release()
+    fun fullScreen() {
+       /* val fullscreenButton =
+            playerViewController.findViewById(R.id.exo_fullscreen_icon) as ImageView
+        fullscreenButton.setOnClickListener {
+            if (fullscreen) {
+                fullscreenButton.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this@VideoDetailActivity,
+                        R.drawable.exo_controls_fullscreen_enter
+                    )
+                )
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+                if (supportActionBar != null) {
+                    supportActionBar!!.show()
+                }
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                val params = playerViewController.layoutParams as LinearLayout.LayoutParams
+                params.width = params.MATCH_PARENT
+                params.height =
+                    (200 * applicationContext.resources.displayMetrics.density).toInt()
+                playerViewController.layoutParams = params
+                fullscreen = false
+            } else {
+                fullscreenButton.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        this@VideoDetailActivity,
+                        R.drawable.exo_controls_fullscreen_exit
+                    )
+                )
+                window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN
+                        or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
+                if (supportActionBar != null) {
+                    supportActionBar!!.hide()
+                }
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                val params = playerViewController.layoutParams as RelativeLayout.LayoutParams
+                params.width = params.MATCH_PARENT
+                params.height = params.MATCH_PARENT
+                playerViewController.layoutParams = params
+                fullscreen = true
+            }
+        }*/
+
     }
 }

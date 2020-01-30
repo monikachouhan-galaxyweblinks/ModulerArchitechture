@@ -42,11 +42,12 @@
             tools:text="title" />
 
         <com.google.android.exoplayer2.ui.PlayerView
-            android:id="@+id/playerView"
+            android:id="@+id/playerViewController"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             app:resize_mode="fixed_width"
             app:show_buffering="always"
+            app:controller_layout_id="@layout/exo_playback_control_view"
             app:shutter_background_color="?attr/colorButtonNormal"
             app:surface_type="surface_view"
             app:use_artwork="false"

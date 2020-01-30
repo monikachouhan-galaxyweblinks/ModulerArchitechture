@@ -16,11 +16,12 @@ import com.gwl.model.ArticlesItem
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
 import com.gwl.playerfeed.basic.BasicListActivity
-import com.gwl.playerfeed.databinding.ActivityDetailBinding
+import com.gwl.playerfeed.databinding.ActivityAudioDetailBinding
+import kotlinx.android.synthetic.main.activity_audio_detail.*
 import kotlinx.android.synthetic.main.activity_detail.*
 
 
-class AudioDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewModel>() {
+class AudioDetailActivity : BaseActivity<ActivityAudioDetailBinding, VideoDetailViewModel>() {
     lateinit var item: ArticlesItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +63,7 @@ class AudioDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewM
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.activity_detail
+        return R.layout.activity_audio_detail
     }
 
     override fun getViewModel(): VideoDetailViewModel {
