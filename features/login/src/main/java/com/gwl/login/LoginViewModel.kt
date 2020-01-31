@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.gwl.MyApplication
 import com.gwl.core.BaseViewModel
 import com.gwl.model.LoginItem
+import com.gwl.model.User
 
 class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
 
@@ -21,7 +22,6 @@ class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
     var onLoginError: MutableLiveData<String> = MutableLiveData()
     val showKeyboard by lazy { MutableLiveData<Boolean>() }
     val loginManager by lazy { MyApplication.loginManager }
-
     // endregion
 
     // region - onFocusChange validate fields of input text
@@ -44,6 +44,11 @@ class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
         showKeyboard.postValue(false)
         if (loginItem.isValidCredential) {
             loginManager.persistUser(true)
+            val user = User().apply {
+                name = "testUser"
+                email = "gwl@example.com"
+            }
+            loginManager.setUser(user)
             navigateOnNext.postValue(true)
 
         } else {

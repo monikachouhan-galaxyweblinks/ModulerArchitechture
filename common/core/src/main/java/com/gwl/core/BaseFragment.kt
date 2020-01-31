@@ -52,6 +52,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
 
 
     open fun initObservers() {}
+    open fun initExtras() {}
 
     // region - Abstract functions
     /**

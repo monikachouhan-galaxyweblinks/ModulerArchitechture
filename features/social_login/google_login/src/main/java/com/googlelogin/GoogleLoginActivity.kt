@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google_login.R
+import com.gwl.MyApplication
+import com.gwl.model.User
 import kotlinx.android.synthetic.main.activity_google_login.*
 
 class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
@@ -28,7 +30,7 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
     private val RC_SIGN_IN = 9001
     private val mAuth = FirebaseAuth.getInstance()
     private val mContext: Context = this
-    // private lateinit var callbackManager: CallbackManager
+    val loginManager by lazy { MyApplication.loginManager }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +46,6 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
         }
         initForLogin()
         googleSignIn()
-        /*FacebookSdk.sdkInitialize(this)
-        getFacebookUserInfo()*/
     }
 
     private fun initForLogin() {
@@ -93,10 +93,10 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
-            Log.e("resulttt ::: ", result.toString())
+            Log.e("resulttt ::: "," onActivityResult  -- ${result.signInAccount} "+ result.isSuccess.toString())
             if (result.isSuccess) {
                 val account = result.signInAccount
-                if (account!!.displayName != null) {
+                if (account?.displayName != null) {
                     val userNameStr = account.displayName
                     tvName.text = userNameStr
                     Log.e(
@@ -104,7 +104,13 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
                         userNameStr + "  ${account.email}" + "  ${account.photoUrl}"
                     )
                 }
+                val user = User().apply {
+                    name = account?.displayName ?: ""
+                    email = account?.email ?: ""
+                    profileUrl = account?.photoUrl.toString() ?: ""
+                }
                 firebaseAuthWithGoogle(account)
+                loginManager.setUser(user)
             }
         } else {
             Log.e("resulttt ::: data ", data.toString())
@@ -130,52 +136,4 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
         }
         signOut()
     }
-
-
-    /* fun getFacebookUserInfo() {
-         callbackManager = CallbackManager.Factory.create();
-         FacebookSdk.sdkInitialize(this);
-         LoginManager.getInstance().logOut()
-         LoginManager.getInstance().logInWithReadPermissions(
-             this,
-             Arrays.asList("public_profile", "user_friends", "email")
-         )
-         LoginManager.getInstance().registerCallback(callbackManager, object :
-             FacebookCallback<LoginResult?> {
-             override fun onSuccess(loginResult: LoginResult?) {
-                 Log.e("LOG_CAT", loginResult?.accessToken.toString())
-                 val request = GraphRequest.newMeRequest(
-                     loginResult?.accessToken
-                 ) { `object`, response ->
-                     Log.v("LOG_CAT", response.toString())
-                     try {
-                         val userIdStr = `object`.getString("id")
-                         val userNameStr = `object`.getString("name")
-                         val parts =
-                             userNameStr.split("\\s+").toTypedArray()
-                         val firstNameStr = parts[0]
-                         val lastNameStr = parts[1]
-                         val emailIdStr = `object`.getString("email")
-                         val profileLinkStr =
-                             "http://graph.facebook.com/$userIdStr/picture?type=large"
-                     } catch (e: Exception) {
-                         Log.e("FBError", e.toString())
-                     }
-                 }
-                 val parameters = Bundle()
-                 parameters.putString("fields", "id,name,email,gender,birthday,link")
-                 request.parameters = parameters
-                 request.executeAsync()
-             }
-
-             override fun onCancel() {
-                 Log.e("onCancel", "onCancel")
-             }
-
-             override fun onError(exception: FacebookException) {
-                 Log.e("onError", exception.toString())
-             }
-
-         })
-     }*/
 }

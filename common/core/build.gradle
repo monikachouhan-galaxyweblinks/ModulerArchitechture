@@ -8,6 +8,7 @@ dependencies {
     implementation SupportLibraries.design
     implementation Libraries.lifecycleExtensions
     implementation Libraries.paging
+    implementation Libraries.retrofitgson
 
     kapt Libraries.lifecycleCompiler
     testImplementation TestLibraries.lifecycleTesting

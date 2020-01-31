@@ -18,11 +18,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
-
     }
 
-    override fun getViewModel(): LoginViewModel =
-        initViewModel { LoginViewModel(LoginRepository()) }
+    override fun getViewModel(): LoginViewModel = initViewModel { LoginViewModel(LoginRepository()) }
 
     override fun initObservers() {
         super.initObservers()

@@ -87,12 +87,14 @@ abstract class DrawerActivity<B : ViewDataBinding, V : BaseViewModel> : BaseActi
     fun setupMenuItems(isDrawer: Boolean) {
         bottomNavigation.menu.clear()
         getMenuItems().forEachIndexed { index, item ->
-            if (isDrawer)
-                nav_view.menu.add(Menu.NONE, index, Menu.NONE, item.title)
-                    .setIcon(item.icon)
-            else if (index < 5) //Only 5 menu item can be added
+            if (item.getFragment()!=null) {
+                if (isDrawer)
+                    nav_view.menu.add(Menu.NONE, index, Menu.NONE, item.title)
+                        .setIcon(item.icon)
+            else if (bottomNavigation.menu.size() < 5) //Only 5 menu item can be added
                 bottomNavigation.menu.add(Menu.NONE, index, Menu.NONE, item.title)
                     .setIcon(item.icon)
+            }
         }
     }
 }

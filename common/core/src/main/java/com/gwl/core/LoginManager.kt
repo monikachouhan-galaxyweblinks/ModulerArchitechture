@@ -2,13 +2,16 @@ package com.gwl.core
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.gson.Gson
+import com.gwl.model.User
 
 class LoginManager private constructor(context: Context) {
     companion object {
         private const val SHARED_PREFS_NAME = "Moduler_APP"
+        private const val SHARED_PREFS_KEY_USER_EXIST = "user_exist"
         private const val SHARED_PREFS_KEY_USER = "user"
         private var instance: LoginManager? = null
-
+        private val gson = Gson()
         fun getInstance(context: Context): LoginManager {
             return (if (instance != null) instance
             else LoginManager(context)) as LoginManager
@@ -28,12 +31,12 @@ class LoginManager private constructor(context: Context) {
     }
 
     private fun fetchPersistedUser(): Boolean {
-        return sharedPreferences.getBoolean(SHARED_PREFS_KEY_USER, false)
+        return sharedPreferences.getBoolean(SHARED_PREFS_KEY_USER_EXIST, false)
     }
 
     fun persistUser(boolean: Boolean) {
         sharedPreferences.edit()
-            .putBoolean(SHARED_PREFS_KEY_USER, boolean)
+            .putBoolean(SHARED_PREFS_KEY_USER_EXIST, boolean)
             .apply()
     }
 
@@ -54,6 +57,16 @@ class LoginManager private constructor(context: Context) {
 
     fun setString(key: String, value: String) {
         sharedPreferences.edit().putString(key, value).apply()
+    }
+
+    fun setUser(user: User) {
+        val userString = gson.toJson(user)
+        sharedPreferences.edit().putString(SHARED_PREFS_KEY_USER, userString).apply()
+    }
+
+    fun getUser(): User? {
+        val user = sharedPreferences.getString(SHARED_PREFS_KEY_USER, null)
+        return gson.fromJson(user, User::class.java)
     }
 
     fun setBoolean(key: String, value: Boolean) {

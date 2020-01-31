@@ -7,9 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.gwl.MyApplication
+import com.gwl.model.User
 
 class FacebookLoginActivity : AppCompatActivity() {
     private lateinit var callbackManager: CallbackManager
+    val loginManager by lazy { MyApplication.loginManager }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_facebook_login)
@@ -23,8 +27,8 @@ class FacebookLoginActivity : AppCompatActivity() {
     }
 
     private fun getFacebookUserInfo() {
-        callbackManager = CallbackManager.Factory.create();
-        FacebookSdk.sdkInitialize(this);
+        callbackManager = CallbackManager.Factory.create()
+        FacebookSdk.sdkInitialize(this)
         LoginManager.getInstance().logOut()
         LoginManager.getInstance().logInWithReadPermissions(
             this, listOf("public_profile", "user_friends", "email")
@@ -43,6 +47,13 @@ class FacebookLoginActivity : AppCompatActivity() {
                         val emailIdStr = `object`.getString("email")
                         val profileLinkStr =
                             "http://graph.facebook.com/$userIdStr/picture?type=large"
+                        val user = User().apply {
+                            name = userNameStr
+                            email = emailIdStr
+                            profileUrl = profileLinkStr
+                        }
+                        loginManager.setUser(user)
+
                     } catch (e: Exception) {
                         Log.e("FBError", e.toString())
                     }

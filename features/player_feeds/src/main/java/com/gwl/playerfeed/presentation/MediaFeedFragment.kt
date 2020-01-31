@@ -21,7 +21,6 @@ import com.gwl.toro.CacheManager
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.content_basic_list.*
 
-
 class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewModel>() {
 
     private val adapter = MediaFeedAdapter()
@@ -32,24 +31,24 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         const val DATA = "item_data"
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+    override fun initObservers() {
+        super.initObservers()
         mDataBinding.setVariable(BR.viewModel, mViewModel)
+
         container.apply {
             adapter = this@MediaFeedFragment.adapter
             layoutManager = LinearLayoutManager(context)
             cacheManager = CacheManager.DEFAULT
         }
         adapter.itemClick = mViewModel
+
         mViewModel.initPager().observe {
             adapter.submitList(it)
             mViewModel.isApiRunning.set(false)
         }
-    }
 
-    override fun initObservers() {
-        super.initObservers()
+        setHasOptionsMenu(true)
+
         context?.also { it ->
             ConnectionLiveData(it).observe {
                 connectionMode = it
