@@ -1,8 +1,11 @@
 apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 android {
     compileSdkVersion 29
-    
+
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 29
@@ -15,13 +18,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
+    implementation project(Modules.navigation)
 //    implementation 'androidx.appcompat:appcompat:1.1.0'
-
 
 
 }

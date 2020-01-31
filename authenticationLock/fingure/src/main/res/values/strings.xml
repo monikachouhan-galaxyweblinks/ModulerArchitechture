@@ -7,4 +7,18 @@
     <string name="title_activity_home">Fingerprint</string>
     <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
+    <string name="finger_sensor_not_supported">Your Device does not have a Fingerprint Sensor</string>
+    <string name="finger_auther_permission_not_enabled">Fingerprint authentication permission not enabled</string>
+    <string name="register_atleasr_one_finger">Register at least one fingerprint in Settings</string>
+    <string name="lock_screen_security_not_enabled_form_settings">Lock screen security not enabled in Settings</string>
+    <string name="authentication_errro">Fingerprint Authentication error</string>
+    <string name="authentication_help">Fingerprint Authentication help</string>
+    <string name="finger_authentication_failed">Fingerprint Authentication failed.</string>
+    <string name="finger_print_not_supported">Your Device does not have a Fingerprint Sensor</string>
+    <string name="finger_print_permission_not_enabled">Fingerprint authentication permission not enabled</string>
+    <string name="register_atleast_one_fingerprint">Register at least one fingerprint in Settings</string>
+    <string name="lock_screen_security_not_enabled">Lock screen security not enabled in Settings</string>
+    <string name="finger_print_aithentication_failed">Fingerprint Authentication failed.</string>
+    <string name="finger_print_aithentication_help">Fingerprint Authentication help.</string>
+    <string name="finger_print_aithentication_error">Fingerprint Authentication error.</string>
 </resources>

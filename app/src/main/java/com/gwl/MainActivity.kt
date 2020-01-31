@@ -1,5 +1,6 @@
 package com.gwl
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             .build()
     }
 
+    @SuppressLint("SwitchIntDef")
     private fun downloadFeature(onSuccess: () -> Unit) {
         splitInstallManager.startInstall(request)
             .addOnFailureListener {

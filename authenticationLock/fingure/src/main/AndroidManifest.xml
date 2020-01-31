@@ -1,24 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.fingure">
 
-    <dist:module dist:instant="false"
+    <dist:module
+        dist:instant="false"
         dist:title="@string/title_finger">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
+
         <dist:fusing dist:include="true" />
     </dist:module>
 
-
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-    <application >
-        <activity android:name="com.fingerLock.FingerprintActivity"></activity>
-        <activity
-            android:name="com.fingerLock.HomeActivity"
-            android:theme="@style/AppTheme"></activity>
+
+    <application tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.fingerLock.FingerPrintActivity"></activity>
     </application>
 
 </manifest>
-

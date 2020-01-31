@@ -1,6 +1,7 @@
 package com.gwl
 
 import android.app.Application
+import com.gwl.core.CoreApplication
 import com.gwl.core.LoginManager
 import com.networking.NetworkingApiApplication
 import com.networking.client.server.NetworkAPI
@@ -25,6 +26,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        CoreApplication.init(this)
         NetworkingApiApplication.init(this)
     }
 }
