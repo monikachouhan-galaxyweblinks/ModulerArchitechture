@@ -5,8 +5,8 @@ import com.gwl.navigation.loadIntentOrNull
 
 object FacebookLoginNavigation : DynamicFeature<Intent> {
 
-    private const val LOGIN = "com.gwl.facebook_login.FacebookLoginActivity"
+    private const val FBLOGIN = "com.gwl.fblogin.FacebookActivity"
 
     override val dynamicStart: Intent?
-        get() = LOGIN.loadIntentOrNull()
+        get() = FBLOGIN.loadIntentOrNull()
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ModuleArchitechure</string>
+    <string name="app_name">ModuleArchitecture</string>
     <string name="title_features">Features</string>
     <string name="title_home">Home</string>
     <string name="title_mpin">Module Title</string>
@@ -16,6 +16,9 @@
     <string name="title_facebook_login">FacebookLogin</string>
 
     <string name="apikey">AIzaSyDJj3mE824QZiXId6naVyHnumzW7KJfjxw</string>
-    <string name="facebook_app_id">sdfsdweqeqw</string>
+    <string name="facebook_app_id">475841799170709</string>
+    <string name="fb_login_protocol_scheme">fb475841799170709</string>
+
     <string name="title_profile">Profile</string>
+    <string name="title_fblogin">FaceBook Login</string>
 </resources>

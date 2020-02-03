@@ -4,8 +4,8 @@ object ApplicationId {
 
 object FeatureModules {
     var modules = arrayOf(
-        Modules.home, Modules.launcher, Modules.login,Modules.profile,
-        Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin
+        Modules.home, Modules.launcher, Modules.login, Modules.profile,
+        Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin,Modules.fbLogin
     )
 
     val settingModules = arrayOf(
@@ -27,7 +27,7 @@ object FeatureModules {
         Modules.mpinauthentication,
         Modules.fingure,
         Modules.googleLogin,
-        Modules.facebookLogin
+        Modules.fbLogin
     )
 }
 
@@ -54,6 +54,7 @@ object Modules {
     val mpin = ":authenticationLock:mpin"
     val fingure = ":authenticationLock:fingure"
     val googleLogin = ":features:social_login:google_login"
+    val fbLogin = ":features:social_login:fblogin"
     val facebookLogin = ":features:social_login:facebook_login"
 
 }

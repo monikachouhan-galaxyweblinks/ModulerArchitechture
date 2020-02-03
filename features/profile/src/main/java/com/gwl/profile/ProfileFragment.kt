@@ -19,12 +19,4 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }
-
-    /* companion object {
-         @JvmStatic
-         fun newInstance(user: User) =
-             ProfileFragment().apply {
-                 arguments = Bundle().apply { putParcelable(ARG_PARAM, user) }
-             }
-     }*/
 }

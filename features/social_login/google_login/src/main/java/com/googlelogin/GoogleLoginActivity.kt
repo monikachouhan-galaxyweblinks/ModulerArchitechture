@@ -1,14 +1,9 @@
 package com.googlelogin
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-/*import com.facebook.*
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult*/
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -17,28 +12,27 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google_login.R
 import com.gwl.MyApplication
 import com.gwl.model.User
+import com.gwl.navigation.features.HomeNavigation
 import kotlinx.android.synthetic.main.activity_google_login.*
 
-class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
-    GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+class GoogleLoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFailedListener,
+    GoogleApiClient.ConnectionCallbacks {
 
     private lateinit var mAuthListener: AuthStateListener
     private lateinit var mGoogleApiClient: GoogleApiClient
     private val RC_SIGN_IN = 9001
     private val mAuth = FirebaseAuth.getInstance()
-    private val mContext: Context = this
-    val loginManager by lazy { MyApplication.loginManager }
+    private val loginManager by lazy { MyApplication.loginManager }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_google_login)
-        // callbackManager = CallbackManager.Factory.create();
         mAuthListener = AuthStateListener { firebaseAuth ->
             val user = firebaseAuth.currentUser
-            if (user != null) { // User is signed in
+            if (user != null) {
+                // User is signed in
                 Log.e("LOG_CAT", "onAuthStateChanged:signed_in:" + user.uid)
             } else { // User is signed out
                 Log.e("LOG_CAT", "onAuthStateChanged:signed_out")
@@ -50,9 +44,6 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
 
     private fun initForLogin() {
         googlePreInit()
-    }
-
-    override fun onClick(v: View) {
     }
 
     private fun googleSignIn() {
@@ -93,7 +84,10 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
-            Log.e("resulttt ::: "," onActivityResult  -- ${result.signInAccount} "+ result.isSuccess.toString())
+            Log.e(
+                "resulttt ::: ", " onActivityResult  -- ${result.signInAccount} "
+                        + result.isSuccess.toString()
+            )
             if (result.isSuccess) {
                 val account = result.signInAccount
                 if (account?.displayName != null) {
@@ -111,28 +105,34 @@ class GoogleLoginActivity : AppCompatActivity(), View.OnClickListener,
                 }
                 firebaseAuthWithGoogle(account)
                 loginManager.setUser(user)
+                navigateOnHome()
             }
         } else {
             Log.e("resulttt ::: data ", data.toString())
-            //callbackManager!!.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
+    private fun navigateOnHome() {
+        HomeNavigation.dynamicStart?.let {
+            startActivity(it)
+            finish()
         }
     }
 
     override fun onStart() {
         super.onStart()
-        mAuth.addAuthStateListener(mAuthListener!!)
+        mAuth.addAuthStateListener(mAuthListener)
     }
 
     override fun onStop() {
         super.onStop()
-        if (mAuthListener != null) mAuth.removeAuthStateListener(mAuthListener)
+        mAuth.removeAuthStateListener(mAuthListener)
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?) {
         val credential = GoogleAuthProvider.getCredential(acct?.idToken, null)
         mAuth.signInWithCredential(credential).addOnCompleteListener(this@GoogleLoginActivity) {
-            if (!it.isSuccessful)
-                return@addOnCompleteListener
+            if (!it.isSuccessful) return@addOnCompleteListener
         }
         signOut()
     }
