@@ -8,7 +8,7 @@ import com.gwl.core.BaseViewModel
 import com.gwl.model.LoginItem
 import com.gwl.model.User
 
-class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
+class LoginViewModel : BaseViewModel() {
 
     // region - Public Properties
     val loginItem by lazy { LoginItem(email = "", password = "") }
@@ -19,6 +19,8 @@ class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
     val emailError by lazy { ObservableField<String>() }
     val passwordError by lazy { ObservableField<String>() }
     var navigateOnNext: MutableLiveData<Boolean> = MutableLiveData()
+    var navigateForGoogleLogin: MutableLiveData<Boolean> = MutableLiveData()
+    var navigateForFacebookLogin: MutableLiveData<Boolean> = MutableLiveData()
     var onLoginError: MutableLiveData<String> = MutableLiveData()
     val showKeyboard by lazy { MutableLiveData<Boolean>() }
     val loginManager by lazy { MyApplication.loginManager }
@@ -29,12 +31,6 @@ class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
         updateError(hasFocus)
         if (loginField == LoginField.PASSWORD)
             showKeyboard.postValue(true)
-        /*    FormValidator.getValidationErrorMessage(hasFocus, loginItem, loginField) {
-                when (loginField) {
-                    LoginField.USER_NAME -> emailError.set(it)
-                    LoginField.PASSWORD -> passwordError.set(it)
-                }
-            }*/
     }
     // endregion
 
@@ -57,6 +53,15 @@ class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
             onLoginError.postValue(loginError.value)
         }
     }
+
+    fun onGoogleLoginClick() {
+        navigateForGoogleLogin.postValue(true)
+    }
+
+    fun onFacebookLoginClick() {
+        navigateForFacebookLogin.postValue(true)
+    }
+
     // endregion
 
     // region - After Text change lister  validate form fields and save value on model
@@ -69,7 +74,6 @@ class LoginViewModel(val loginRepository: LoginRepository) : BaseViewModel() {
 
             val isValid = loginItem.email.isNotEmpty() && loginItem.password.isNotEmpty()
             btnLoginEnable.set(isValid)
-            //  clearError.set(true)
         }
     }
     // endregion

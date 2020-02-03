@@ -1,4 +1,4 @@
-package com.gwl.facebook_login
+package com.gwl.facebooklogin
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,9 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.gwl.MyApplication
 import com.gwl.model.User
+import com.gwl.navigation.features.HomeNavigation
 
-class FacebookLoginActivity : AppCompatActivity() {
+class FBLoginActivity : AppCompatActivity() {
     private lateinit var callbackManager: CallbackManager
     val loginManager by lazy { MyApplication.loginManager }
 
@@ -53,7 +54,7 @@ class FacebookLoginActivity : AppCompatActivity() {
                             profileUrl = profileLinkStr
                         }
                         loginManager.setUser(user)
-
+                        navigateOnHome()
                     } catch (e: Exception) {
                         Log.e("FBError", e.toString())
                     }
@@ -72,5 +73,12 @@ class FacebookLoginActivity : AppCompatActivity() {
                 Log.e("onError", exception.toString())
             }
         })
+    }
+
+    private fun navigateOnHome() {
+        HomeNavigation.dynamicStart?.let {
+            startActivity(it)
+            finish()
+        }
     }
 }

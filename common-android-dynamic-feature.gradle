@@ -18,10 +18,6 @@ android {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
-        abortOnError false
-    }
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
