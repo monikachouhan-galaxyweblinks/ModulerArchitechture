@@ -8,6 +8,8 @@
 
         <import type="com.gwl.model.MediaType" />
 
+        <import type="com.gwl.model.UserField" />
+
         <variable
             name="viewModel"
             type="com.gwl.profile.ProfileViewModel" />
@@ -20,38 +22,43 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:background="@color/blue_bg_color"
-            android:layout_height="200dp">
+            android:background="@color/colorPrimary"
+            android:layout_height="250dp">
 
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="100dp"
-            android:layout_gravity="center"
-            loadCircularImage="@{viewModel.user.profileUrl}"
-            android:layout_height="100dp" />
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="130dp"
+                android:background="@drawable/profile_outline"
+                android:layout_gravity="center"
+                loadCircularImage="@{viewModel.user.profileUrl}"
+                android:layout_height="130dp" />
         </FrameLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_20dp"
-            android:padding="@dimen/_10dp"
+            android:padding="15dp"
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textNameTitle"
-                android:text="Name :"
-                android:padding="@dimen/_10dp"
                 style="@style/TextView.SubTitle1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:ems="5"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:padding="15dp"
+                android:text="Name" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textName"
                 tools:text="Name"
-                android:padding="@dimen/_10dp"
+                android:padding="15dp"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.NAME,text.toString())}"
+                android:enabled="@{viewModel.isEditable}"
                 style="@style/TextView.SubTitle1"
+                android:inputType="textCapWords"
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_toRightOf="@id/textNameTitle"
                 android:text="@{viewModel.user.name}"
@@ -61,18 +68,22 @@
             <TextView
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textEmailTitle"
-                android:text="Email :"
-                android:padding="@dimen/_10dp"
+                android:text="Email"
+                android:padding="15dp"
+                android:ems="5"
                 style="@style/TextView.SubTitle1"
                 android:layout_below="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textEmail"
                 tools:text="Email"
-                android:padding="@dimen/_10dp"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.EMAIL,text.toString())}"
+                android:enabled="@{viewModel.isEditable}"
                 style="@style/TextView.SubTitle1"
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_toRightOf="@id/textEmailTitle"
@@ -84,23 +95,83 @@
             <TextView
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textCityTitle"
-                android:text="City :"
-                android:padding="@dimen/_10dp"
+                android:text="City"
+                android:ems="5"
+                android:padding="15dp"
+                style="@style/TextView.SubTitle1"
+                android:layout_below="@+id/textPhoneTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_marginTop="@dimen/_10dp"
+                android:id="@+id/textCity"
+                tools:text="City"
+                android:padding="15dp"
+                style="@style/TextView.SubTitle1"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:inputType="textCapWords"
+                android:enabled="@{viewModel.isEditable}"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.CITY,text.toString())}"
+                android:layout_toRightOf="@id/textCityTitle"
+                android:layout_below="@+id/textMobile"
+                android:text="@{viewModel.user.city}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10dp"
+                android:id="@+id/textPhoneTitle"
+                android:text="Mobile"
+                android:ems="5"
+                android:padding="15dp"
                 style="@style/TextView.SubTitle1"
                 android:layout_below="@+id/textEmailTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textCity"
-                tools:text="Email"
-                android:padding="@dimen/_10dp"
+                android:id="@+id/textMobile"
+                tools:text="999111"
+                android:maxLength="10"
+                android:inputType="phone"
+                android:padding="15dp"
                 style="@style/TextView.SubTitle1"
                 android:layout_marginLeft="@dimen/_10dp"
-                android:layout_toRightOf="@id/textCityTitle"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
+                android:layout_toRightOf="@id/textPhoneTitle"
                 android:layout_below="@+id/textEmail"
-                android:text="@{viewModel.user.email}"
+                android:enabled="@{viewModel.isEditable}"
+                android:text="@{viewModel.user.mobile}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10dp"
+                android:id="@+id/textStateTitle"
+                android:text="State"
+                android:ems="5"
+                android:padding="15dp"
+                style="@style/TextView.SubTitle1"
+                android:layout_below="@+id/textCityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_marginTop="@dimen/_10dp"
+                android:id="@+id/textState"
+                tools:text="mp"
+                android:maxLength="10"
+                android:inputType="text"
+                android:padding="15dp"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.STATE,text.toString())}"
+                style="@style/TextView.SubTitle1"
+                android:enabled="@{viewModel.isEditable}"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_toRightOf="@id/textStateTitle"
+                android:layout_below="@+id/textCity"
+                android:text="@{viewModel.user.state}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

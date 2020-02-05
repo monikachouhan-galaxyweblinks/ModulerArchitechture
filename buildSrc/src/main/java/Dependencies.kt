@@ -20,7 +20,6 @@ object FeatureModules {
         Modules.googleLogin,
         Modules.fbLogin,
         Modules.instaFeed,
-        Modules.feeds,
         Modules.signup
     )
 
@@ -43,7 +42,6 @@ object FeatureModules {
         Modules.googleLogin,
         Modules.signup,
         Modules.instaFeed,
-        Modules.feeds,
         Modules.fbLogin
     )
 }
@@ -67,8 +65,6 @@ object Modules {
     val playerCore = ":libraries:player-core"
     val launcher = ":features:launcher"
     val profile = ":features:profile"
-    val feeds = ":features:feeds"
-
     /*val player = ":features:player_feeds"*/
     val instaFeed = ":features:insta_feeds"
     val signup = ":features:signup"

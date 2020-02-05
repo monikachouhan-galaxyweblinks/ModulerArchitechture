@@ -40,19 +40,15 @@ class FacebookActivity : AppCompatActivity() {
             FacebookCallback<LoginResult?> {
             override fun onSuccess(loginResult: LoginResult?) {
                 //Called when login success
-                Log.e("LOG_CAT", loginResult?.accessToken.toString())
-                val request = GraphRequest.newMeRequest(
-                    loginResult?.accessToken
-                ) { `object`, response ->
-                    Log.e("LOG_CAT", response.toString())
+                val request = GraphRequest.newMeRequest(loginResult?.accessToken)
+                { `object`, response ->
                     try {
                         val userIdStr = `object`.getString("id")
                         val userNameStr = `object`.getString("name")
                         val emailIdStr = `object`.getString("email")
                         val profileLinkStr =
                             "http://graph.facebook.com/$userIdStr/picture?type=large"
-                        val user = User().apply {
-                            name = userNameStr
+                        val user = User().apply { name = userNameStr
                             email = emailIdStr
                             profileUrl = profileLinkStr
                         }
@@ -62,6 +58,7 @@ class FacebookActivity : AppCompatActivity() {
                         finish()
                         Log.e("FBError", e.toString())
                     }
+                    finish()
                 }
                 val parameters = Bundle()
                 parameters.putString("fields", "id,name,email,gender,birthday,link")

@@ -19,8 +19,7 @@ fun ImageView.load(str: String?) {
 fun ImageView.loadCircularImage(str: String?) {
     Glide.with(this)
         .load(str)
-        .apply(
-            RequestOptions.circleCropTransform()
+        .apply(RequestOptions.circleCropTransform()
                 .placeholder(R.drawable.profile_placeholder)
         )
         .into(this)

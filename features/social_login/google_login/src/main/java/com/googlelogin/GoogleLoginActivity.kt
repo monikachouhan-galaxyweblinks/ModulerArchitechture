@@ -81,7 +81,6 @@ class GoogleLoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFai
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
             /**
              * called on login result
@@ -93,22 +92,14 @@ class GoogleLoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFai
             )
             if (result.isSuccess) {
                 val account = result.signInAccount
-                if (account?.displayName != null) {
-                    val userNameStr = account.displayName
-                    tvName.text = userNameStr
-                    Log.e(
-                        "resulttt  name ::: ",
-                        userNameStr + "  ${account.email}" + "  ${account.photoUrl}"
-                    )
-                }
                 val user = User().apply {
                     name = account?.displayName ?: ""
                     email = account?.email ?: ""
                     profileUrl = account?.photoUrl.toString() ?: ""
                 }
-                firebaseAuthWithGoogle(account)
                 loginManager.setUser(user)
                 navigateOnHome()
+                firebaseAuthWithGoogle(account)
             }
         } else {
             Log.e("resulttt ::: data ", data.toString())

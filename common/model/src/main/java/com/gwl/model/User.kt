@@ -14,6 +14,9 @@ class User : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
     var name: String = "test"
+    var city: String = ""
+    var state: String = ""
+    var mobile: String = ""
     var email: String = ""
     var profileUrl: String = ""
     var password: String = ""

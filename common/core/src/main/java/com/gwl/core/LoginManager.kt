@@ -62,7 +62,7 @@ class LoginManager private constructor(context: Context) {
         sharedPreferences.edit().putString(key, value).apply()
     }
 
-    fun setUser(user: User) {
+    fun setUser(user: User?) {
         val userString = gson.toJson(user)
         sharedPreferences.edit().putString(SHARED_PREFS_KEY_USER, userString).apply()
     }
