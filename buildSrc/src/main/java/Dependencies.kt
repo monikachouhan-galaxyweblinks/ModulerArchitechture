@@ -1,18 +1,32 @@
+/**
+ * All dependencies and gradle constants declared here.
+ */
 object ApplicationId {
-    val id = "com.gwl"
+    const val id = "com.gwl"
 }
 
+/**
+ * FeatureModules defines set of modules dependencies used in project.
+ * Add dynamic module dependency here.
+ */
 object FeatureModules {
     var modules = arrayOf(
-        Modules.home, Modules.launcher, Modules.login, Modules.profile,
-        Modules.fingure, Modules.mpin, Modules.player, Modules.feed, Modules.googleLogin,Modules.fbLogin
+        Modules.home,
+        Modules.launcher,
+        Modules.login,
+        Modules.profile,
+        Modules.fingure,
+        Modules.mpin,
+        Modules.googleLogin,
+        Modules.fbLogin,
+        Modules.instaFeed,
+        Modules.feeds,
+        Modules.signup
     )
 
     val settingModules = arrayOf(
         Modules.app,
         Modules.networking,
-        Modules.feed,
-        Modules.player,
         Modules.exoplayerLib,
         Modules.playerCore,
         Modules.model,
@@ -27,10 +41,16 @@ object FeatureModules {
         Modules.mpinauthentication,
         Modules.fingure,
         Modules.googleLogin,
+        Modules.signup,
+        Modules.instaFeed,
+        Modules.feeds,
         Modules.fbLogin
     )
 }
 
+/**
+ *  Every module used in project declare here.
+ */
 object Modules {
     val app = ":app"
     val navigation = ":navigation"
@@ -47,16 +67,16 @@ object Modules {
     val playerCore = ":libraries:player-core"
     val launcher = ":features:launcher"
     val profile = ":features:profile"
+    val feeds = ":features:feeds"
 
-    val player = ":features:player_feeds"
-    val feed = ":features:feed"
-    val mpinauthentication = ":authenticationLock:mpin:mpinauthentication"
-    val mpin = ":authenticationLock:mpin"
-    val fingure = ":authenticationLock:fingure"
+    /*val player = ":features:player_feeds"*/
+    val instaFeed = ":features:insta_feeds"
+    val signup = ":features:signup"
+    val mpinauthentication = ":features:authenticationLock:mpin:mpinauthentication"
+    val mpin = ":features:authenticationLock:mpin"
+    val fingure = ":features:authenticationLock:fingure"
     val googleLogin = ":features:social_login:google_login"
     val fbLogin = ":features:social_login:fblogin"
-    val facebookLogin = ":features:social_login:facebook_login"
-
 }
 
 object Releases {
@@ -64,6 +84,9 @@ object Releases {
     val versionName = "1.0"
 }
 
+/**
+ * Libraries version declare here.
+ */
 object Versions {
     val gradle = "3.5.2"
 
@@ -124,6 +147,7 @@ object Versions {
     val mockitoInline = "2.24.5"
 }
 
+// Libraries used in modules
 object Libraries {
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
 
@@ -180,9 +204,7 @@ object Libraries {
         "com.squareup.leakcanary:leakcanary-support-fragment:${Versions.leakCanary}"
 
     val crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
-
     val databinding = "androidx.databinding:databinding-compiler:${Versions.databindingCompiler}"
-
     val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
 }

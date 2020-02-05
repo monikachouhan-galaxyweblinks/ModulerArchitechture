@@ -6,7 +6,6 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-
 @BindingAdapter("imageUrl")
 fun ImageView.load(str: String?) {
     Glide.with(this)
@@ -22,6 +21,7 @@ fun ImageView.loadCircularImage(str: String?) {
         .load(str)
         .apply(
             RequestOptions.circleCropTransform()
+                .placeholder(R.drawable.profile_placeholder)
         )
         .into(this)
 }

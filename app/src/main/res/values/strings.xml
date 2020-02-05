@@ -5,6 +5,7 @@
     <string name="title_mpin">Module Title</string>
     <string name="title_login">Login</string>
     <string name="title_player_feeds">PlayerFeeds</string>
+    <string name="title_insta_feeds">InstaFeeds</string>
     <string name="title_launcher">Launcher</string>
     <string name="title_feed">Module Title</string>
     <string name="title_finger">Module Title</string>
@@ -21,4 +22,6 @@
 
     <string name="title_profile">Profile</string>
     <string name="title_fblogin">FaceBook Login</string>
+    <string name="title_signup">Signup</string>
+    <string name="title_feeds">Feeds</string>
 </resources>

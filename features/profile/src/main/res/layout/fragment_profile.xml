@@ -16,27 +16,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/_10dp">
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:background="@color/blue_bg_color"
+            android:layout_height="200dp">
 
         <ImageView
             android:id="@+id/profileImage"
             android:layout_width="100dp"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20dp"
-            loadCircularDrawable="@{@drawable/profile_placeholder}"
+            loadCircularImage="@{viewModel.user.profileUrl}"
             android:layout_height="100dp" />
+        </FrameLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_20dp"
+            android:padding="@dimen/_10dp"
             android:layout_height="match_parent">
 
             <TextView
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textNameTitle"
                 android:text="Name :"
-                style="@style/TextAppearance.AppCompat.Body2"
+                android:padding="@dimen/_10dp"
+                style="@style/TextView.SubTitle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -44,7 +50,8 @@
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textName"
                 tools:text="Name"
-                style="@style/TextAppearance.AppCompat.Body2"
+                android:padding="@dimen/_10dp"
+                style="@style/TextView.SubTitle1"
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_toRightOf="@id/textNameTitle"
                 android:text="@{viewModel.user.name}"
@@ -55,7 +62,8 @@
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textEmailTitle"
                 android:text="Email :"
-                style="@style/TextAppearance.AppCompat.Body2"
+                android:padding="@dimen/_10dp"
+                style="@style/TextView.SubTitle1"
                 android:layout_below="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -64,10 +72,34 @@
                 android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/textEmail"
                 tools:text="Email"
-                style="@style/TextAppearance.AppCompat.Body2"
+                android:padding="@dimen/_10dp"
+                style="@style/TextView.SubTitle1"
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_toRightOf="@id/textEmailTitle"
                 android:layout_below="@+id/textName"
+                android:text="@{viewModel.user.email}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10dp"
+                android:id="@+id/textCityTitle"
+                android:text="City :"
+                android:padding="@dimen/_10dp"
+                style="@style/TextView.SubTitle1"
+                android:layout_below="@+id/textEmailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10dp"
+                android:id="@+id/textCity"
+                tools:text="Email"
+                android:padding="@dimen/_10dp"
+                style="@style/TextView.SubTitle1"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_toRightOf="@id/textCityTitle"
+                android:layout_below="@+id/textEmail"
                 android:text="@{viewModel.user.email}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

@@ -1,6 +1,7 @@
 package com.gwl.core
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 
 import androidx.annotation.LayoutRes
@@ -15,6 +16,9 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
     internal var list: MutableList<T>? = null
     private var clickListener: OnItemClickListener<T>? = null
 
+    /**
+     * Override for set view
+     */
     @get:LayoutRes
     abstract val layoutId: Int
 
@@ -22,6 +26,9 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
         this.clickListener = clickListener
     }
 
+    /**
+     * Call setData() to set dataset.
+     */
     fun setData(list: MutableList<T>?) {
         if (this.list != null) this.list?.clear()
         this.list = list
@@ -51,6 +58,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
     interface OnItemClickListener<T> {
         fun onItemClick(item: T)
+        fun onViewClicked(view: View, item: T)
     }
 }
 

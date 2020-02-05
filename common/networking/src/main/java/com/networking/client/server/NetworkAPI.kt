@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.gwl.model.ArticlesItem
 import com.gwl.model.FeedResponse
+import com.gwl.model.InstaFeed
 import com.gwl.model.ResponseData
 import com.networking.R
 import com.networking.response.ApiResponse
@@ -44,7 +45,11 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
     }
 
     override suspend fun getPlayerFeeds(page: Int, count: Int): APIResult<List<ArticlesItem>> {
-         return authService.getMediaFeeds(page, count).apiResult()
+        return authService.getMediaFeeds(page, count).apiResult()
+    }
+
+    override suspend fun getInstaFeeds(): APIResult<List<InstaFeed>> {
+        return authService.getInstaFeeds().apiResult()
     }
 /*  suspend fun getFeeds(page: Long, count: Int): Call<FeedResponse> {
         return authService.fetchFeedList("bitcoin", "5b0c09c541454cad8d8626d779802b2e", page, count)

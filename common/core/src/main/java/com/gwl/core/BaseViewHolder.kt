@@ -10,8 +10,7 @@ open class BaseViewHolder<T>(val itemRowBinding: ViewDataBinding) :
     RecyclerView.ViewHolder(itemRowBinding.root) {
 
     open fun bind(data: T, onItemClickListener: BaseAdapter.OnItemClickListener<T>?) {
-        //TODO - Need to set binding variables
-
+        //TODO - set common binding variables
         //itemRowBinding.setVariable(BR.item, data)
         //itemRowBinding.setVariable(BR.clickListener, onItemClickListener);
     }

@@ -5,6 +5,9 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.gwl.model.User
 
+/**
+ * Save User information
+ * */
 class LoginManager private constructor(context: Context) {
     companion object {
         private const val SHARED_PREFS_NAME = "Moduler_APP"

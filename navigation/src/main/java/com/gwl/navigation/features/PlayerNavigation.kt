@@ -5,7 +5,7 @@ import com.gwl.navigation.loadFragmentOrNull
 
 object PlayerNavigation : DynamicFeature<Fragment> {
 
-    const val PLAYER = "com.gwl.playerfeed.presentation.MediaFeedFragment"
+    const val PLAYER = "com.gwl.feeds.presentation.InstaFeedFragment"
 
     override val dynamicStart: Fragment?
         get() = PLAYER.loadFragmentOrNull()

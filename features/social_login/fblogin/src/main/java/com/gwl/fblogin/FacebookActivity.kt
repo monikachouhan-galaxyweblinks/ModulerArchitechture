@@ -26,16 +26,20 @@ class FacebookActivity : AppCompatActivity() {
         callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
+    /**
+     * Initialize Facebook sdk
+     */
     private fun getFacebookUserInfo() {
         callbackManager = CallbackManager.Factory.create()
         FacebookSdk.sdkInitialize(this)
         LoginManager.getInstance().logOut()
         LoginManager.getInstance().logInWithReadPermissions(
-            this, listOf("public_profile", "user_friends", "email")
+            this, listOf("public_profile", "email")
         )
         LoginManager.getInstance().registerCallback(callbackManager, object :
             FacebookCallback<LoginResult?> {
             override fun onSuccess(loginResult: LoginResult?) {
+                //Called when login success
                 Log.e("LOG_CAT", loginResult?.accessToken.toString())
                 val request = GraphRequest.newMeRequest(
                     loginResult?.accessToken
@@ -55,6 +59,7 @@ class FacebookActivity : AppCompatActivity() {
                         loginManager.setUser(user)
                         navigateOnHome()
                     } catch (e: Exception) {
+                        finish()
                         Log.e("FBError", e.toString())
                     }
                 }
@@ -65,10 +70,13 @@ class FacebookActivity : AppCompatActivity() {
             }
 
             override fun onCancel() {
+                //Called when login cancel
                 Log.e("onCancel", "onCancel")
+                finish()
             }
 
             override fun onError(exception: FacebookException) {
+                //Called when login error
                 Log.e("onError", exception.toString())
             }
         })

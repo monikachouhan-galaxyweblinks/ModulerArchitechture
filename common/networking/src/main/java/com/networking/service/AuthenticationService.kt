@@ -2,11 +2,13 @@ package com.networking.service
 
 import com.gwl.model.ArticlesItem
 import com.gwl.model.FeedResponse
+import com.gwl.model.InstaFeed
 import com.gwl.model.ResponseData
 import com.networking.response.ApiResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 
 interface AuthenticationService {
@@ -20,6 +22,11 @@ interface AuthenticationService {
         @Query("page") page: Int = 1,
         @Query("pageSize") count: Int = 10
     ): Call<ApiResponse<List<ArticlesItem>>>
+
+    @GET
+    fun getInstaFeeds(
+        @Url url :String="https://api.instagram.com/v1/users/self/media/recent/?access_token=3113853757.1677ed0.035f3e26d40745b2957ea09af1429049"
+    ): Call<ApiResponse<List<InstaFeed>>>
 
     @GET("/v2/everything")
     fun fetchFeedList(

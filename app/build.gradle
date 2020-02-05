@@ -26,12 +26,13 @@ android {
 
     dataBinding { enabled = true }
 
-    dynamicFeatures = FeatureModules.modules
+    dynamicFeatures =  FeatureModules.modules
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     androidExtensions {
         experimental = true
     }

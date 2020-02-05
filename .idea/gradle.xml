@@ -11,10 +11,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/authenticationLock" />
-            <option value="$PROJECT_DIR$/authenticationLock/fingure" />
-            <option value="$PROJECT_DIR$/authenticationLock/mpin" />
-            <option value="$PROJECT_DIR$/authenticationLock/mpin/mpinauthentication" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/cache" />
@@ -22,19 +18,26 @@
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/common/networking" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/feed" />
+            <option value="$PROJECT_DIR$/features/authenticationLock" />
+            <option value="$PROJECT_DIR$/features/authenticationLock/fingure" />
+            <option value="$PROJECT_DIR$/features/authenticationLock/mpin" />
+            <option value="$PROJECT_DIR$/features/authenticationLock/mpin/mpinauthentication" />
+            <option value="$PROJECT_DIR$/features/feeds" />
             <option value="$PROJECT_DIR$/features/home" />
+            <option value="$PROJECT_DIR$/features/insta_feeds" />
             <option value="$PROJECT_DIR$/features/launcher" />
             <option value="$PROJECT_DIR$/features/login" />
-            <option value="$PROJECT_DIR$/features/player_feeds" />
             <option value="$PROJECT_DIR$/features/profile" />
+            <option value="$PROJECT_DIR$/features/signup" />
             <option value="$PROJECT_DIR$/features/social_login" />
             <option value="$PROJECT_DIR$/features/social_login/fblogin" />
             <option value="$PROJECT_DIR$/features/social_login/google_login" />
+            <option value="$PROJECT_DIR$/feeds" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/exoplayer" />
             <option value="$PROJECT_DIR$/libraries/player-core" />
             <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/signup" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

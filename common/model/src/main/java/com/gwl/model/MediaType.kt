@@ -5,5 +5,5 @@ package com.gwl.model
  * @author GWL
  */
 enum class MediaType(val value: String = "video") {
-    IMAGE("image"), VIDEO("video"), MP3("mp3")
+    IMAGE("image"), VIDEO("video"), MP3("mp3"), CAROSEL("carousel")
 }

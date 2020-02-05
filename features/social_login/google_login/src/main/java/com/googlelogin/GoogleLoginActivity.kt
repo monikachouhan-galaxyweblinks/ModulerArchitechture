@@ -69,20 +69,23 @@ class GoogleLoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFai
     }
 
     override fun onConnected(bundle: Bundle?) {
-        Log.e("LOG_CAT", "onConnected: $bundle")
+        //called when connected to google client
     }
 
     override fun onConnectionSuspended(i: Int) {
-        Log.e("LOG_CAT", "onConnectionSuspended: $i")
+        //called when google client connection Suspended
     }
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
-        Log.e(javaClass.name, "onConnectionFailed:$connectionResult")
+       //Log.e(javaClass.name, "onConnectionFailed:$connectionResult")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_SIGN_IN) {
+            /**
+             * called on login result
+             */
             val result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             Log.e(
                 "resulttt ::: ", " onActivityResult  -- ${result.signInAccount} "
@@ -110,6 +113,7 @@ class GoogleLoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFai
         } else {
             Log.e("resulttt ::: data ", data.toString())
         }
+        finish()
     }
 
     private fun navigateOnHome() {

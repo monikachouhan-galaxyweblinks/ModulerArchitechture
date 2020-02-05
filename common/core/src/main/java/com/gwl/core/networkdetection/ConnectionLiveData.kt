@@ -7,12 +7,12 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 
+/**
+ * Detect network with type (WIFI,CELLULAR etc.)
+ * @see ConnectionLiveData
+ */
 class ConnectionLiveData(private val context: Context) : LiveData<ConnectionModel>() {
 
     private var networkJob: Job? = null

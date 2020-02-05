@@ -1,0 +1,29 @@
+apply from: "$rootDir/common-android-dynamic-feature.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+dependencies {
+    implementation Libraries.kotlin
+    implementation project(Modules.networking)
+    implementation project(Modules.playerCore)
+    implementation project(Modules.exoplayerLib)
+
+    //noinspection GradleDependency
+    implementation Libraries.exoPlayer
+    implementation Libraries.paging
+
+    //noinspection GradleCompatible
+    implementation SupportLibraries.design
+    implementation SupportLibraries.cardview
+    // implementation "com.android.support:support-vector-drawable:${rootProject.ext.supportLibraryVersion}"
+
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+    implementation Libraries.rxAndroid
+    implementation Libraries.rxjava
+
+    implementation Libraries.butterknif
+    kapt Libraries.butterknifCompiler
+
+    implementation Libraries.flexBox
+
+}

@@ -23,7 +23,7 @@ object HomeConfiguration {
                 R.drawable.ic_profile
             ),
             CustomMenu(
-                "com.kijiji.TestFragment",
+                "com.feed.TestFragment",
                 null,
                 StringUtil.getString(R.string.setting),
                 R.drawable.ic_settings

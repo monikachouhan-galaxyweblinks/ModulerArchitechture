@@ -9,8 +9,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-
-abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, open val isPagination: Boolean = true) : PageKeyedDataSource<Int, T>() {
+/**
+ * Pagination generic base implementation
+ */
+abstract class PagingDataSource<T>(
+    open val source: PaginationDataSource<T>,
+    open val isPagination: Boolean = true
+) : PageKeyedDataSource<Int, T>() {
     open val availableItemCountLiveData: MutableLiveData<Int>? = null
     open val refreshingLiveData: MutableLiveData<Boolean>? = null
     open val loadingLiveData: MutableLiveData<Boolean>? = null
@@ -19,7 +24,10 @@ abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, ope
     /**
      * Load the initial page of data
      */
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, T>) {
+    override fun loadInitial(
+        params: LoadInitialParams<Int>,
+        callback: LoadInitialCallback<Int, T>
+    ) {
         val loadSize = params.requestedLoadSize
 
         refreshingLiveData?.postValue(true)
@@ -27,18 +35,19 @@ abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, ope
 
         GlobalScope.launch(Dispatchers.Default) {
             val response = source.fetch(1, loadSize)
-             Log.d("loadInitial","loadInitial $response")
+            Log.d("loadInitial", "loadInitial $response")
             val list = parseResponse(response)
 
             refreshingLiveData?.postValue(false)
             loadingLiveData?.postValue(false)
 
             val previousPage = null
-            val nextPage = if (response is APIResult.Success && response.hasNextPage() && isPagination) {
-                2
-            } else {
-                null
-            }
+            val nextPage =
+                if (response is APIResult.Success && response.hasNextPage() && isPagination) {
+                    2
+                } else {
+                    null
+                }
             callback.onResult(list, previousPage, nextPage)
         }
     }
@@ -91,8 +100,8 @@ abstract class PagingDataSource<T>(open val source: PaginationDataSource<T>, ope
         return when (result) {
             is APIResult.Success -> {
                 availableItemCountLiveData?.postValue(result.response.itemCount)
-                Log.d("loadInitial","parseResponse ${result.response.articles}")
-                result.response.articles ?: listOf()
+                Log.d("loadInitial", "parseResponse ${result.response.data}")
+                result.response.data ?: listOf()
             }
             is APIResult.Failure -> {
                 errorLiveData?.postValue(result.details)

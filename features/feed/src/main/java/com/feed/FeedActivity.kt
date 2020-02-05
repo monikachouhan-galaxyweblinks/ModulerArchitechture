@@ -23,8 +23,8 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
+
         mViewModel.initPager().observe {
-            Log.d("FeedActivity", "FeedActivity articles $it")
             mViewModel.adapter.submitList(it)
             mViewModel.isApiRunning.set(false)
         }

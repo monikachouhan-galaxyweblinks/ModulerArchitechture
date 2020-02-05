@@ -1,2 +1,3 @@
+include ':signup', ':feeds'
 include FeatureModules.settingModules
 rootProject.name = 'ModuleArchitechure'

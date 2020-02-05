@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.textfield.TextInputLayout
 
 // region - Public function
@@ -38,6 +39,12 @@ fun <T> RecyclerView.setAdapter(adapter: BaseAdapter<T>?, list: MutableList<T>?)
     adapter?.setData(list)
 }
 
+@BindingAdapter(value = ["pageAdapter", "pageList"], requireAll = false)
+fun <T> ViewPager.setAdapter(adapter: BasePagerAdapter<T>?, list: MutableList<T>?) {
+    this.adapter = adapter
+    adapter?.setData(list)
+}
+
 @BindingAdapter("styledText")
 fun TextView.setStyledText(text: String?) {
     val value = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -48,8 +55,10 @@ fun TextView.setStyledText(text: String?) {
     setText(value)
 }
 
-@SuppressLint("Defaul" +
-        "tLocale")
+@SuppressLint(
+    "Defaul" +
+            "tLocale"
+)
 @BindingAdapter("textCapitalize")
 fun TextView.capitalizeText(name: String?) {
     text = name?.capitalize() ?: ""
