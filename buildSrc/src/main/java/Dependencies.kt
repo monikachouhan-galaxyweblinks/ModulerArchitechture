@@ -20,6 +20,7 @@ object FeatureModules {
         Modules.googleLogin,
         Modules.fbLogin,
         Modules.instaFeed,
+        Modules.settings,
         Modules.signup
     )
 
@@ -42,6 +43,7 @@ object FeatureModules {
         Modules.googleLogin,
         Modules.signup,
         Modules.instaFeed,
+        Modules.settings,
         Modules.fbLogin
     )
 }
@@ -57,9 +59,9 @@ object Modules {
     val core = ":common:core"
     val networking = ":common:networking"
     val presentation = ":common:core"
-
     val model = ":common:model"
     val home = ":features:home"
+    val settings = ":features:settings"
     val login = ":features:login"
     val exoplayerLib = ":libraries:exoplayer"
     val playerCore = ":libraries:player-core"

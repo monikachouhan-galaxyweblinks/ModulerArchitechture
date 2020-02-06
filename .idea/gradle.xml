@@ -27,16 +27,15 @@
             <option value="$PROJECT_DIR$/features/launcher" />
             <option value="$PROJECT_DIR$/features/login" />
             <option value="$PROJECT_DIR$/features/profile" />
+            <option value="$PROJECT_DIR$/features/settings" />
             <option value="$PROJECT_DIR$/features/signup" />
             <option value="$PROJECT_DIR$/features/social_login" />
             <option value="$PROJECT_DIR$/features/social_login/fblogin" />
             <option value="$PROJECT_DIR$/features/social_login/google_login" />
-            <option value="$PROJECT_DIR$/feeds" />
             <option value="$PROJECT_DIR$/libraries" />
             <option value="$PROJECT_DIR$/libraries/exoplayer" />
             <option value="$PROJECT_DIR$/libraries/player-core" />
             <option value="$PROJECT_DIR$/navigation" />
-            <option value="$PROJECT_DIR$/signup" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

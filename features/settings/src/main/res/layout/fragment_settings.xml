@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.gwl.settings.SettingsViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="@dimen/_10dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/autoPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_10dp"
+            android:paddingBottom="@dimen/_10dp"
+            android:paddingRight="@dimen/_10dp"
+            android:text="Auto play on wifi"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/checkboxAutoPlay"
+            android:textAppearance="@style/TextView.SubTitle1" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:id="@+id/checkboxAutoPlay"
+            android:paddingTop="@dimen/_10dp"
+            android:paddingBottom="@dimen/_10dp"
+            android:checked="@={viewmodel.isAutoPlay}"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</layout>

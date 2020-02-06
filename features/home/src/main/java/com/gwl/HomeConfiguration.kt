@@ -23,7 +23,7 @@ object HomeConfiguration {
                 R.drawable.ic_profile
             ),
             CustomMenu(
-                "com.feed.TestFragment",
+                FragmentNavigation.SETTINGS,
                 null,
                 StringUtil.getString(R.string.setting),
                 R.drawable.ic_settings

@@ -122,6 +122,7 @@ class GoogleLoginActivity : AppCompatActivity(), GoogleApiClient.OnConnectionFai
     override fun onStop() {
         super.onStop()
         mAuth.removeAuthStateListener(mAuthListener)
+        finish()
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?) {

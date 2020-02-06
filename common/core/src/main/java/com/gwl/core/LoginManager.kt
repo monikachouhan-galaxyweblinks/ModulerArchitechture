@@ -76,7 +76,7 @@ class LoginManager private constructor(context: Context) {
         sharedPreferences.edit().putBoolean(key, value).apply()
     }
 
-    fun getBoolean(key: String): Boolean? {
+    fun getBoolean(key: String): Boolean {
         return sharedPreferences.getBoolean(key, false)
     }
 

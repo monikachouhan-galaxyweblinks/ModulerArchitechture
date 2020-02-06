@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.text.Html
 import android.view.View
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -26,7 +27,13 @@ fun View.showLoader(visible: Boolean) {
 fun TextView.setColor(color: Int) {
     this.setTextColor(color)
 }
+/*
 
+@BindingAdapter("onCheckedChange")
+fun CheckBox.OnCheckedChange(: Int) {
+    this.setTextColor(color)
+}
+*/
 
 @BindingAdapter("error")
 fun TextInputLayout.setError(name: String?) {
@@ -55,10 +62,7 @@ fun TextView.setStyledText(text: String?) {
     setText(value)
 }
 
-@SuppressLint(
-    "Defaul" +
-            "tLocale"
-)
+@SuppressLint("DefaultLocale")
 @BindingAdapter("textCapitalize")
 fun TextView.capitalizeText(name: String?) {
     text = name?.capitalize() ?: ""
