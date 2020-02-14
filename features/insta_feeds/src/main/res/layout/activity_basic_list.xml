@@ -19,7 +19,7 @@
         android:fitsSystemWindows="true"
         tools:context="com.gwl.feeds.presentation.MediaFeedFragment">
 
-        <com.gwl.toro.widget.Container
+        <com.gwl.core.ShimmerRecyclerView
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

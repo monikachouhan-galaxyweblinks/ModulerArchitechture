@@ -1,11 +1,17 @@
 package com.gwl.navigation
 
 import android.content.Intent
+import com.gwl.navigation.Navigation.PACKAGE_NAME
 
-private const val PACKAGE_NAME = "com.gwl"
+object Navigation {
+    var PACKAGE_NAME: String = ""
+}
 
 private fun intentTo(className: String): Intent =
-    Intent(Intent.ACTION_VIEW).setClassName(PACKAGE_NAME, className)
+    if (PACKAGE_NAME.isNotEmpty()) Intent(Intent.ACTION_VIEW).setClassName(
+        PACKAGE_NAME, className
+    ) else
+        throw IllegalArgumentException(" Navigation.PACKAGE_NAME must be initialized in Application class.")
 
 internal fun String.loadIntentOrNull(): Intent? =
     try {

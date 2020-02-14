@@ -3,6 +3,7 @@ package com.gwl.feeds.presentation
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gwl.core.BaseFragment
 import com.gwl.core.initViewModel
@@ -18,7 +19,7 @@ import com.gwl.navigation.features.DetailNavigation
 import com.gwl.navigation.features.ImageDetailNavigation
 import com.gwl.toro.CacheManager
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.content_basic_list.*
+import kotlinx.android.synthetic.main.activity_basic_list.*
 
 class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewModel>() {
 
@@ -39,6 +40,7 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
             layoutManager = LinearLayoutManager(context)
             cacheManager = CacheManager.DEFAULT
         }
+        container.visibility = View.VISIBLE
         adapter.itemClick = mViewModel
 
         mViewModel.initPager().observe {

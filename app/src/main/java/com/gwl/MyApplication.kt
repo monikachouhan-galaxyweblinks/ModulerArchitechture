@@ -3,6 +3,7 @@ package com.gwl
 import android.app.Application
 import com.gwl.core.CoreApplication
 import com.gwl.core.LoginManager
+import com.gwl.navigation.Navigation
 import com.networking.NetworkingApiApplication
 import com.networking.client.server.NetworkAPI
 import com.networking.client.server.NetworkAPIFactory
@@ -26,6 +27,7 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Navigation.PACKAGE_NAME = applicationInfo.packageName
         CoreApplication.init(this)
         NetworkingApiApplication.init(this)
     }

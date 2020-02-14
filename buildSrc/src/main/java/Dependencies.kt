@@ -128,6 +128,7 @@ object Versions {
     val leakCanary = "1.6.3"
     val crashlytics = "2.9.9"
     val koin = "2.0.0-beta-1"
+    val shimmerVersion = "2.1.0"
     val releaseVersion = "3.7.0.2905-A1"
     val exoPlayer2Version = "2.10.1"
     val butterKnifVersion = "10.1.0"
@@ -205,6 +206,8 @@ object Libraries {
     val databinding = "androidx.databinding:databinding-compiler:${Versions.databindingCompiler}"
     val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    val shimmer = "io.supercharge:shimmerlayout:${Versions.shimmerVersion}"
+
 }
 
 object SupportLibraries {

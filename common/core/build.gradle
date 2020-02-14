@@ -4,6 +4,9 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation SupportLibraries.appcompat
     implementation SupportLibraries.recyclerview
+    implementation Libraries.shimmer
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
+    implementation project(Modules.playerCore)
 
     implementation SupportLibraries.design
     implementation Libraries.lifecycleExtensions
