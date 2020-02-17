@@ -4,9 +4,9 @@ import android.app.Application
 import com.gwl.core.CoreApplication
 import com.gwl.core.LoginManager
 import com.gwl.navigation.Navigation
-import com.networking.NetworkingApiApplication
-import com.networking.client.server.NetworkAPI
-import com.networking.client.server.NetworkAPIFactory
+import com.gwl.networking.NetworkingApiApplication
+import com.gwl.networking.client.server.NetworkAPI
+import com.gwl.networking.client.server.NetworkAPIFactory
 
 // * Created on 14/1/20.
 /**

@@ -33,10 +33,10 @@ import com.google.android.exoplayer2.text.TextOutput;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.video.VideoListener;
-import com.gwl.toro.ToroPlayer;
-import com.gwl.toro.annotations.RemoveIn;
-import com.gwl.toro.media.PlaybackInfo;
-import com.gwl.toro.media.VolumeInfo;
+import com.gwl.playercore.ToroPlayer;
+import com.gwl.playercore.annotations.RemoveIn;
+import com.gwl.playercore.media.PlaybackInfo;
+import com.gwl.playercore.media.VolumeInfo;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
 

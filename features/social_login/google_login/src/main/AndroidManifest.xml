@@ -14,7 +14,7 @@
     </dist:module>
 
     <application>
-        <activity android:name="com.googlelogin.GoogleLoginActivity"></activity>
+        <activity android:name="com.gwl.googlelogin.GoogleLoginActivity"/>
     </application>
 
 </manifest>

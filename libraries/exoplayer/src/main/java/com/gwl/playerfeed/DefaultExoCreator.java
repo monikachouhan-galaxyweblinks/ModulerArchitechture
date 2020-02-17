@@ -37,7 +37,7 @@ import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import java.io.IOException;
 
-import static com.gwl.toro.ToroUtil.checkNotNull;
+import static com.gwl.playercore.ToroUtil.checkNotNull;
 import static com.gwl.playerfeed.ToroExo.with;
 
 /**

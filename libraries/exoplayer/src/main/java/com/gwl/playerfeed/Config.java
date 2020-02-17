@@ -29,10 +29,10 @@ import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.cache.Cache;
-import com.gwl.toro.annotations.Beta;
+import com.gwl.playercore.annotations.Beta;
 
 import static com.google.android.exoplayer2.DefaultRenderersFactory.EXTENSION_RENDERER_MODE_OFF;
-import static com.gwl.toro.ToroUtil.checkNotNull;
+import static com.gwl.playercore.ToroUtil.checkNotNull;
 
 /**
  * Necessary configuration for {@link ExoCreator} to produces {@link SimpleExoPlayer} and

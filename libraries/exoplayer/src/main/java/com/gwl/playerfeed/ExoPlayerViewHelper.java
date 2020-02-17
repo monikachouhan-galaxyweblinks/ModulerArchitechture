@@ -21,14 +21,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.toro.ToroPlayer;
-import com.gwl.toro.annotations.RemoveIn;
-import com.gwl.toro.helper.ToroPlayerHelper;
-import com.gwl.toro.media.PlaybackInfo;
-import com.gwl.toro.media.VolumeInfo;
-import com.gwl.toro.widget.Container;
+import com.gwl.playercore.ToroPlayer;
+import com.gwl.playercore.annotations.RemoveIn;
+import com.gwl.playercore.helper.ToroPlayerHelper;
+import com.gwl.playercore.media.PlaybackInfo;
+import com.gwl.playercore.media.VolumeInfo;
+import com.gwl.playercore.widget.Container;
 
-import static com.gwl.toro.ToroUtil.checkNotNull;
+import static com.gwl.playercore.ToroUtil.checkNotNull;
 import static com.gwl.playerfeed.ToroExo.with;
 
 /**

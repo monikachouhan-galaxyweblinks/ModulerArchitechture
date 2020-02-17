@@ -16,7 +16,7 @@ import com.gwl.feeds.R
 import com.gwl.feeds.datasource.MediaFeedDataSource
 import com.gwl.model.InstaFeed
 import com.gwl.model.MediaType
-import com.networking.client.server.NetworkAPI
+import com.gwl.networking.client.server.NetworkAPI
 
 // * Created on 28/1/20.
 /**

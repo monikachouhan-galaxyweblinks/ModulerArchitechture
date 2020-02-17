@@ -5,7 +5,7 @@ import com.gwl.navigation.loadIntentOrNull
 
 object GoogleLoginNavigation : DynamicFeature<Intent> {
 
-    private const val LOGIN = "com.googlelogin.GoogleLoginActivity"
+    private const val LOGIN = "com.gwl.googlelogin.GoogleLoginActivity"
 
     override val dynamicStart: Intent?
         get() = LOGIN.loadIntentOrNull()

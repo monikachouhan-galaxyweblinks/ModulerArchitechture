@@ -7,7 +7,7 @@ import androidx.paging.DataSource
 import com.gwl.core.datasource.PaginationDataSource
 import com.gwl.core.datasource.PagingDataSource
 import com.gwl.model.InstaFeed
-import com.networking.result.APIError
+import com.gwl.networking.result.APIError
 
 class MediaDataSource(model: PaginationDataSource<InstaFeed>, override val isPagination: Boolean)
     : PagingDataSource<InstaFeed>(model) {

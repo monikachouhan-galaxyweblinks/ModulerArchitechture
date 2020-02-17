@@ -40,9 +40,9 @@ import com.google.android.exoplayer2.drm.UnsupportedDrmException;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.util.Util;
-import com.gwl.toro.exoplayer.R;
-import com.gwl.toro.media.DrmMedia;
-import com.gwl.toro.media.VolumeInfo;
+import com.gwl.playercore.exoplayer.R;
+import com.gwl.playercore.media.DrmMedia;
+import com.gwl.playercore.media.VolumeInfo;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -54,8 +54,8 @@ import java.util.UUID;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.google.android.exoplayer2.drm.UnsupportedDrmException.REASON_UNSUPPORTED_SCHEME;
 import static com.google.android.exoplayer2.util.Util.getDrmUuid;
-import static com.gwl.toro.ToroUtil.checkNotNull;
-import static com.gwl.toro.exoplayer.BuildConfig.LIB_NAME;
+import static com.gwl.playercore.ToroUtil.checkNotNull;
+import static com.gwl.playercore.exoplayer.BuildConfig.LIB_NAME;
 import static java.lang.Runtime.getRuntime;
 
 /**

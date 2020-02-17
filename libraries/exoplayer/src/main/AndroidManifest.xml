@@ -14,4 +14,4 @@
   ~ limitations under the License.
   -->
 
-<manifest package="com.gwl.toro.exoplayer"/>
+<manifest package="com.gwl.playercore.exoplayer"/>

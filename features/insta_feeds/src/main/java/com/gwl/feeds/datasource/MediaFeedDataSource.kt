@@ -3,7 +3,7 @@ package com.gwl.feeds.datasource
 import com.gwl.MyApplication
 import com.gwl.core.datasource.PathDataSource
 import com.gwl.model.InstaFeed
-import com.networking.result.APIResult
+import com.gwl.networking.result.APIResult
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

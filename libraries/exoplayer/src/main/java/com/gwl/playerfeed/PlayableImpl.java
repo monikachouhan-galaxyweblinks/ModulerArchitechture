@@ -28,15 +28,15 @@ import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.toro.ToroPlayer;
-import com.gwl.toro.ToroPlayer.VolumeChangeListeners;
-import com.gwl.toro.ToroUtil;
-import com.gwl.toro.media.PlaybackInfo;
-import com.gwl.toro.media.VolumeInfo;
+import com.gwl.playercore.ToroPlayer;
+import com.gwl.playercore.ToroPlayer.VolumeChangeListeners;
+import com.gwl.playercore.ToroUtil;
+import com.gwl.playercore.media.PlaybackInfo;
+import com.gwl.playercore.media.VolumeInfo;
 
-import static com.gwl.toro.ToroUtil.checkNotNull;
-import static com.gwl.toro.media.PlaybackInfo.INDEX_UNSET;
-import static com.gwl.toro.media.PlaybackInfo.TIME_UNSET;
+import static com.gwl.playercore.ToroUtil.checkNotNull;
+import static com.gwl.playercore.media.PlaybackInfo.INDEX_UNSET;
+import static com.gwl.playercore.media.PlaybackInfo.TIME_UNSET;
 
 /**
  * [20180225]

@@ -24,7 +24,7 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.TransferListener;
-import com.gwl.toro.ToroUtil;
+import com.gwl.playercore.ToroUtil;
 
 /**
  * Abstract the {@link DefaultBandwidthMeter}, provide a wider use.

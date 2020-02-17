@@ -3,8 +3,8 @@ package com.gwl.core.datasource
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.networking.result.APIError
-import com.networking.result.APIResult
+import com.gwl.networking.result.APIError
+import com.gwl.networking.result.APIResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

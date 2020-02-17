@@ -30,11 +30,11 @@ import com.gwl.feeds.ExoConfig
 import com.gwl.feeds.R
 import com.gwl.model.InstaFeed
 import com.gwl.playerfeed.ExoPlayerViewHelper
-import com.gwl.toro.ToroPlayer
-import com.gwl.toro.ToroPlayer.EventListener
-import com.gwl.toro.ToroUtil.visibleAreaOffset
-import com.gwl.toro.media.PlaybackInfo
-import com.gwl.toro.widget.Container
+import com.gwl.playercore.ToroPlayer
+import com.gwl.playercore.ToroPlayer.EventListener
+import com.gwl.playercore.ToroUtil.visibleAreaOffset
+import com.gwl.playercore.media.PlaybackInfo
+import com.gwl.playercore.widget.Container
 
 /**
  * @author eneim (2018/01/23).

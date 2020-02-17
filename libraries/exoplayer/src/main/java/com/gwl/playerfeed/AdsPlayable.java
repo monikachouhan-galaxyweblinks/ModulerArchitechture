@@ -30,8 +30,8 @@ import com.google.android.exoplayer2.source.ads.AdsLoader;
 import com.google.android.exoplayer2.source.ads.AdsMediaSource;
 import com.google.android.exoplayer2.ui.PlayerView;
 
-import com.gwl.toro.ToroPlayer;
-import com.gwl.toro.annotations.Beta;
+import com.gwl.playercore.ToroPlayer;
+import com.gwl.playercore.annotations.Beta;
 
 /**
  * A {@link Playable} that is able to integrate with {@link AdsLoader}.

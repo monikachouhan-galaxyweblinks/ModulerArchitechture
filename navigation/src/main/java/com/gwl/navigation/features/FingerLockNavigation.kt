@@ -5,7 +5,7 @@ import com.gwl.navigation.loadIntentOrNull
 
 object FingerLockNavigation : DynamicFeature<Intent> {
 
-    private const val FingerLock = "com.fingerLock.FingerPrintActivity"
+    private const val FingerLock = "com.gwl.fingerLock.FingerPrintActivity"
 
     override val dynamicStart: Intent?
         get() = FingerLock.loadIntentOrNull()

@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.mpin.activity.MPinViewModel" />
+            type="com.gwl.mpin.activity.MPinViewModel" />
     </data>
 
     <FrameLayout

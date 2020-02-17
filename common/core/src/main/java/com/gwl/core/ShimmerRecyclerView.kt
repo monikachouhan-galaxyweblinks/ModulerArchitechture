@@ -25,7 +25,7 @@ import android.os.Build
 import android.util.AttributeSet
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.gwl.toro.widget.Container
+import com.gwl.playercore.widget.Container
 
 class ShimmerRecyclerView : Container {
 

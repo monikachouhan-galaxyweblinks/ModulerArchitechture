@@ -28,10 +28,10 @@ import com.google.android.exoplayer2.drm.DrmSessionManager;
 import com.google.android.exoplayer2.drm.FrameworkMediaCrypto;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.gwl.toro.ToroPlayer;
-import com.gwl.toro.media.VolumeInfo;
+import com.gwl.playercore.ToroPlayer;
+import com.gwl.playercore.media.VolumeInfo;
 
-import static com.gwl.toro.ToroUtil.checkNotNull;
+import static com.gwl.playercore.ToroUtil.checkNotNull;
 
 /**
  * A custom {@link SimpleExoPlayer} that also notify the change of Volume.

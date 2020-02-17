@@ -6,7 +6,7 @@ import com.gwl.navigation.loadIntentOrNull
 
 object PinLoginNavigation : DynamicFeature<Intent> {
 
-    private const val FingerLock = "com.mpin.activity.MpinActivity"
+    private const val FingerLock = "com.gwl.mpin.activity.MpinActivity"
 
     override val dynamicStart: Intent?
         get() = FingerLock.loadIntentOrNull()

@@ -17,7 +17,7 @@ import com.gwl.model.ArticlesItem
 import com.gwl.navigation.features.AudioDetailNavigation
 import com.gwl.navigation.features.DetailNavigation
 import com.gwl.navigation.features.ImageDetailNavigation
-import com.gwl.toro.CacheManager
+import com.gwl.playercore.CacheManager
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_basic_list.*
 

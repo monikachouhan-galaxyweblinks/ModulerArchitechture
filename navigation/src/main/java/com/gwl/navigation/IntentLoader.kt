@@ -11,7 +11,7 @@ private fun intentTo(className: String): Intent =
     if (PACKAGE_NAME.isNotEmpty()) Intent(Intent.ACTION_VIEW).setClassName(
         PACKAGE_NAME, className
     ) else
-        throw IllegalArgumentException(" Navigation.PACKAGE_NAME must be initialized in Application class.")
+        throw IllegalArgumentException("Navigation.PACKAGE_NAME must be initialized in Application class.")
 
 internal fun String.loadIntentOrNull(): Intent? =
     try {
