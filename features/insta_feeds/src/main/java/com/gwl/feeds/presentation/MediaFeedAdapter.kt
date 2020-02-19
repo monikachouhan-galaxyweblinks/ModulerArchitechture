@@ -10,6 +10,9 @@ import com.gwl.core.BaseViewHolder
 import com.gwl.feeds.R
 import com.gwl.model.InstaFeed
 import com.gwl.model.MediaType
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 // * Created on 20/1/20.
 /**
@@ -20,7 +23,6 @@ class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(
     companion object {
         val VIDEO_VIEW_TYPE = 0
         val IMAGE_VIEW_TYPE = 1
-        val MP3_VIEW_TYPE = 2
         val CAROSEL_VIEW_TYPE = 3
         val UNKNOWN_VIEW_TYPE = -1
     }
@@ -33,13 +35,11 @@ class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(
         val view = DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context), R.layout.item_view_video, parent, false
         )
-
         val carouselView = DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context), R.layout.item_view_carosel, parent, false
         )
         return when (viewType) {
             VIDEO_VIEW_TYPE -> VideoFeedViewHolder(view)
-            MP3_VIEW_TYPE -> MP3MediaViewHolder(view)
             CAROSEL_VIEW_TYPE -> CarouselViewHolder(carouselView)
             else -> ImageMediaFeedViewHolder(view)
         }
@@ -62,7 +62,6 @@ class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(
         return when (getItem(position)?.type) {
             MediaType.VIDEO.value -> VIDEO_VIEW_TYPE
             MediaType.IMAGE.value -> IMAGE_VIEW_TYPE
-            MediaType.MP3.value -> MP3_VIEW_TYPE
             MediaType.CAROSEL.value -> CAROSEL_VIEW_TYPE
             else -> UNKNOWN_VIEW_TYPE
         }
@@ -75,8 +74,4 @@ class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(
         override fun areContentsTheSame(oldItem: InstaFeed, newItem: InstaFeed) = (
                 oldItem == newItem)
     }
-}
-
-interface ClickListener {
-    fun onclick(item: String)
 }

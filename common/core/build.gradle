@@ -20,6 +20,7 @@ dependencies {
     implementation project(Modules.networking)
     api Libraries.glide
     kapt Libraries.glideCompiler
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 }
 
 sourceCompatibility = "8"

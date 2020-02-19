@@ -1,7 +1,6 @@
 package com.gwl.model
 
 
-import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
@@ -14,4 +13,4 @@ data class LowResolution(
     val url: String,
     @SerializedName("width")
     val width: Int
-) :Parcelable
+) : Parcelable

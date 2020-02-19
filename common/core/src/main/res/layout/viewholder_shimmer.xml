@@ -2,4 +2,6 @@
 <io.supercharge.shimmerlayout.ShimmerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shimmer_demo_shimmer_color="#73ffffff"
     android:animateLayoutChanges="true" />

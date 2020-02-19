@@ -8,5 +8,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Likes(
     @SerializedName("count")
-    val count: Int
+    var count: Int
 ) : Parcelable

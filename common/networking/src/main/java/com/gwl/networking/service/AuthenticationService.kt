@@ -23,6 +23,8 @@ interface AuthenticationService {
         @Query("pageSize") count: Int = 10
     ): Call<ApiResponse<List<ArticlesItem>>>
 
+    // 3113853757.1677ed0.035f3e26d40745b2957ea09af1429049
+    // 5415976503.1677ed0.c1969a92489940fbac11608b34bf8129
     @GET
     fun getInstaFeeds(
         @Url url :String="https://api.instagram.com/v1/users/self/media/recent/?access_token=3113853757.1677ed0.035f3e26d40745b2957ea09af1429049"

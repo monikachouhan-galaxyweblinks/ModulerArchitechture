@@ -13,7 +13,6 @@ class SlidingImageAdapter : BasePagerAdapter<CarouselImage>() {
         return binding?.root ?: view
     }
 
-    override val layoutId: Int
-        get() = R.layout.slidingimages_layout
+    override val layoutId: Int get() = R.layout.slidingimages_layout
 
 }

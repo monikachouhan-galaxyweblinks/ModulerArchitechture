@@ -1,6 +1,7 @@
 package com.gwl
 
 import android.app.Application
+import com.gwl.cache.db.AppDatabase
 import com.gwl.core.CoreApplication
 import com.gwl.core.LoginManager
 import com.gwl.navigation.Navigation
@@ -23,6 +24,7 @@ class MyApplication : Application() {
     companion object {
         lateinit var instance: MyApplication
         val loginManager by lazy { LoginManager.getInstance(instance) }
+        val database by lazy { AppDatabase.getInstance(instance) }
     }
 
     override fun onCreate() {

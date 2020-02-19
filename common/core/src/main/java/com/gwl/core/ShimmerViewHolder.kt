@@ -29,7 +29,6 @@ class ShimmerViewHolder(inflater: LayoutInflater, parent: ViewGroup, innerViewRe
     private val mShimmerLayout: ShimmerLayout = itemView as ShimmerLayout
 
     init {
-
         inflater.inflate(innerViewResId, mShimmerLayout, true)
     }
 

@@ -19,20 +19,23 @@
         android:fitsSystemWindows="true"
         tools:context="com.gwl.feeds.presentation.MediaFeedFragment">
 
-        <com.gwl.core.ShimmerRecyclerView
-            android:id="@+id/container"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            visibleIf="@{!viewModel.isApiRunning}"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.gwl.feeds.presentation.MediaFeedFragment"
-            tools:showIn="@layout/activity_basic_list" />
+            android:id="@+id/swipeToRefresh"
+            android:layout_height="wrap_content">
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            visibleIf="@{viewModel.isApiRunning}"
-            android:layout_height="wrap_content"/>
+            <com.gwl.core.ShimmerRecyclerView
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <!--  <ProgressBar
+              android:layout_width="wrap_content"
+              android:layout_gravity="center"
+              android:layout_height="wrap_content"/>
+  -->
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

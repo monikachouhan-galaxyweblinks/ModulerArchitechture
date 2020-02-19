@@ -1,6 +1,7 @@
 package com.gwl.core
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
     // region - Public properties
     lateinit var mDataBinding: B
     lateinit var mViewModel: V
+    var isFirst: Boolean = false
     // endregion
 
     // region - Lifecycle functions
@@ -37,10 +39,12 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mDataBinding.setVariable(getBindingVariable(), mViewModel)
-        mDataBinding.lifecycleOwner = this
-        mDataBinding.executePendingBindings()
-        initObservers()
+       // if (isFirst) {
+            mDataBinding.setVariable(getBindingVariable(), mViewModel)
+            mDataBinding.lifecycleOwner = this
+            mDataBinding.executePendingBindings()
+            initObservers()
+       // }
     }
 
     // endregion

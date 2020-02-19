@@ -18,23 +18,27 @@ package com.gwl.feeds.presentation
 
 import android.net.Uri
 import android.util.Log
-import android.widget.ImageView
 import androidx.databinding.ObservableBoolean
+import androidx.databinding.ObservableInt
 import androidx.databinding.ViewDataBinding
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.ui.PlayerView
+import com.gwl.MyApplication
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewHolder
 import com.gwl.feeds.BR
 import com.gwl.feeds.ExoConfig
 import com.gwl.feeds.R
 import com.gwl.model.InstaFeed
-import com.gwl.playerfeed.ExoPlayerViewHelper
 import com.gwl.playercore.ToroPlayer
 import com.gwl.playercore.ToroPlayer.EventListener
 import com.gwl.playercore.ToroUtil.visibleAreaOffset
 import com.gwl.playercore.media.PlaybackInfo
 import com.gwl.playercore.widget.Container
+import com.gwl.playerfeed.ExoPlayerViewHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 /**
  * @author eneim (2018/01/23).
@@ -46,13 +50,15 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
         const val defaultRatio = 100 * 165.78F / 360F // magic number.
     }
 
+    private val favDao by lazy { MyApplication.database.favDao() }
+
     private val playerFrame by lazy { itemView as AspectRatioFrameLayout }
     val player = itemView.findViewById(R.id.playerView) as PlayerView
-    val artWork: ImageView = itemView.findViewById(R.id.imageView)
     private var helper: ExoPlayerViewHelper? = null
     open var videoUri: Uri? = null
     var listener: EventListener? = null
     open var autoplay: Boolean = false
+    val likeCount: ObservableInt by lazy { ObservableInt(0) }
     val isPlaying: ObservableBoolean by lazy { ObservableBoolean(false) }
 
     override fun bind(
@@ -60,11 +66,30 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
         onItemClickListener: BaseAdapter.OnItemClickListener<InstaFeed>?
     ) {
         super.bind(data, onItemClickListener)
+
+        val count = if (checkIsFav(data.id)) data.likes.count + 1 else data.likes.count
+        data.likes.count = count
         itemRowBinding.setVariable(BR.item, data)
         itemRowBinding.setVariable(BR.isPlaying, isPlaying)
+        itemRowBinding.setVariable(BR.position, adapterPosition)
+        itemRowBinding.setVariable(BR.isFave, isFavorite)
+        itemRowBinding.setVariable(BR.likeCount, likeCount)
+
         videoUri = Uri.parse(data.videos.lowResolution.url)
         itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         //playerFrame.setAspectRatio(16/9f)
+        Log.d("VideoFeedViewHolder", "VideoFeedViewHolder count $count ")
+    }
+
+    fun checkIsFav(id: String): Boolean {
+        var isFave = false
+        GlobalScope.launch(Dispatchers.IO) {
+            val data = favDao.getFavById(id)
+            isFave = data != null && adapterPosition == data.position
+            isFavorite.set(isFave)
+        }
+
+        return isFave
     }
 
     override fun getPlayerView() = player

@@ -13,7 +13,7 @@ class MediaDataSource(model: PaginationDataSource<InstaFeed>, override val isPag
     : PagingDataSource<InstaFeed>(model) {
 
     override val errorLiveData: MutableLiveData<APIError>? = MediaListErrorLiveData
-    override val refreshingLiveData: MutableLiveData<Boolean>? = MediaListRefreshingLiveData
+    override val refreshingLiveData: MutableLiveData<List<InstaFeed>>? = MediaListRefreshingLiveData
     override val availableItemCountLiveData: MutableLiveData<Int>? = MediaCountLiveData
 }
 
@@ -26,7 +26,7 @@ class MediaDataSourceFactory(private val model: PaginationDataSource<InstaFeed>,
     }
 }
 
-object MediaListRefreshingLiveData : MutableLiveData<Boolean>()
+object MediaListRefreshingLiveData : MutableLiveData<List<InstaFeed>>()
 
 object MediaListErrorLiveData : MutableLiveData<APIError>()
 

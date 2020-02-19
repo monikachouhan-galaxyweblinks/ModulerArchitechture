@@ -2,37 +2,43 @@ package com.gwl.model
 
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+@Entity
 @Parcelize
 data class InstaFeed(
 /* @SerializedName("caption")
-    val caption: Any?,*/
+    var caption: Any?,*/
+    @PrimaryKey(autoGenerate = true)
+    var itemId: Int = 0,
     @SerializedName("comments")
-    val comments: Comments,
+    var comments: Comments,
     @SerializedName("created_time")
-    val createdTime: String,
+    var createdTime: String,
     @SerializedName("filter")
-    val filter: String,
+    var filter: String,
     @SerializedName("id")
-    val id: String,
+    var id: String,
     @SerializedName("images")
-    val images: Images,
+    var images: Images,
     @SerializedName("location")
-    val location: Location?,
+    var location: Location?,
     @SerializedName("carousel_media")
-    val carosel: List<CarouselImage>?,
+    var carosel: List<CarouselImage>?,
     @SerializedName("videos")
-    val videos: Videos,
+    var videos: Videos,
     @SerializedName("likes")
-    val likes: Likes,
+    var likes: Likes,
     @SerializedName("link")
-    val link: String,
+    var link: String,
     @SerializedName("type")
-    val type: String,
+    var type: String,
     @SerializedName("user")
-    val instaUser: InstaUser,
+    var instaUser: InstaUser,
     @SerializedName("user_has_liked")
-    val userHasLiked: Boolean
+    var userHasLiked: Boolean,
+    var isLiked: Boolean = false
 ) : Parcelable

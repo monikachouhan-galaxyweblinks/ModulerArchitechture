@@ -7,13 +7,13 @@ import androidx.lifecycle.Observer
 import com.gwl.core.BaseActivity
 import com.gwl.core.initViewModel
 import com.gwl.mpin.util.PreferencesSettings
+import com.gwl.mpinlock.PFFLockScreenConfiguration
+import com.gwl.mpinlock.fragments.PFLockScreenFragment
+import com.gwl.mpinlock.viewmodels.PFPinCodeViewModel
 import com.gwl.navigation.features.HomeNavigation
 import com.mpin.BR
 import com.mpin.R
 import com.mpin.databinding.ActivityMpinBinding
-import com.gwl.mpinlock.PFFLockScreenConfiguration
-import com.gwl.mpinlock.fragments.PFLockScreenFragment
-import com.gwl.mpinlock.viewmodels.PFPinCodeViewModel
 
 class MpinActivity : BaseActivity<ActivityMpinBinding, MPinViewModel>() {
 
@@ -35,9 +35,7 @@ class MpinActivity : BaseActivity<ActivityMpinBinding, MPinViewModel>() {
     }
 
     private fun initializeObservers() {
-        mViewModel.showToast.observe {
-            showToast(it)
-        }
+        mViewModel.showToast.observe { showToast(it) }
         mViewModel.navigateToHome.observe { redirectToHomeScreen() }
     }
 

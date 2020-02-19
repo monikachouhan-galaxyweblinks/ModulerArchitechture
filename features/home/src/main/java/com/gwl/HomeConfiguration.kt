@@ -8,14 +8,17 @@ import com.gwl.navigation.features.FragmentNavigation
 import com.gwl.navigation.loadFragmentOrNull
 
 object HomeConfiguration {
+    val feedMenu by lazy {
+        CustomMenu(FragmentNavigation.PLAYER_FEED,
+            null,
+            StringUtil.getString(R.string.feed),
+            R.drawable.ic_home
+        )
+    }
+
     fun getMenuItems(): List<CustomMenu> {
         return listOf(
-            CustomMenu(
-                FragmentNavigation.PLAYER_FEED,
-                null,
-                StringUtil.getString(R.string.feed),
-                R.drawable.ic_home
-            ),
+            feedMenu,
             CustomMenu(
                 FragmentNavigation.PROFILE,
                 null,

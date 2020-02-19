@@ -17,7 +17,7 @@ abstract class PagingDataSource<T>(
     open val isPagination: Boolean = true
 ) : PageKeyedDataSource<Int, T>() {
     open val availableItemCountLiveData: MutableLiveData<Int>? = null
-    open val refreshingLiveData: MutableLiveData<Boolean>? = null
+    open val refreshingLiveData: MutableLiveData<List<T>>? = null
     open val loadingLiveData: MutableLiveData<Boolean>? = null
     open val errorLiveData: MutableLiveData<APIError>? = null
 
@@ -30,15 +30,15 @@ abstract class PagingDataSource<T>(
     ) {
         val loadSize = params.requestedLoadSize
 
-        refreshingLiveData?.postValue(true)
+        refreshingLiveData?.postValue(listOf())
         loadingLiveData?.postValue(true)
 
         GlobalScope.launch(Dispatchers.Default) {
             val response = source.fetch(1, loadSize)
             Log.d("loadInitial", "loadInitial $response")
             val list = parseResponse(response)
-
-            refreshingLiveData?.postValue(false)
+            
+            refreshingLiveData?.postValue(list)
             loadingLiveData?.postValue(false)
 
             val previousPage = null
@@ -48,6 +48,8 @@ abstract class PagingDataSource<T>(
                 } else {
                     null
                 }
+            Log.d("loadInitial", "loadInitial $nextPage")
+
             callback.onResult(list, previousPage, nextPage)
         }
     }
@@ -70,6 +72,8 @@ abstract class PagingDataSource<T>(
             } else {
                 null
             }
+            Log.d("loadInitial", "loadAfter $nextPage")
+
             callback.onResult(list, nextPage)
         }
     }

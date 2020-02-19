@@ -1,5 +1,6 @@
 package com.gwl.core
 
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 open class BaseViewHolder<T>(val itemRowBinding: ViewDataBinding) :
     RecyclerView.ViewHolder(itemRowBinding.root) {
-
+    val isFavorite: ObservableBoolean = ObservableBoolean(false)
     open fun bind(data: T, onItemClickListener: BaseAdapter.OnItemClickListener<T>?) {
         //TODO - set common binding variables
         //itemRowBinding.setVariable(BR.item, data)

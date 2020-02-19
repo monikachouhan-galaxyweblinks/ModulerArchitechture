@@ -14,11 +14,12 @@
 
         <ImageView
             android:id="@+id/image"
+            android:background="#F0F0F0F0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
-            imageUrl="@{image.standardResolution.url}"
+            crouselImageUrl="@{image.standardResolution.url}"
             android:scaleType="fitCenter" />
 
     </FrameLayout>
