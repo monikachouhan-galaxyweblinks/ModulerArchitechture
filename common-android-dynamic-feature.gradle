@@ -9,6 +9,9 @@ android {
     defaultConfig {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
+        defaultConfig{
+            vectorDrawables.useSupportLibrary = true
+        }
     }
     dataBinding {
         enabled = true

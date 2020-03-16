@@ -1,5 +1,8 @@
 package com.gwl.core
 
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -8,11 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 
 
 // region - Public function
-/*
-fun getContext(): Context {
-    return MyApplication.instance
-}
-*/
 
 fun AppCompatActivity.initializeToolbar(toolbar: Toolbar, title: String, showBackButton: Boolean) {
     setSupportActionBar(toolbar)
@@ -21,6 +19,9 @@ fun AppCompatActivity.initializeToolbar(toolbar: Toolbar, title: String, showBac
     supportActionBar?.setHomeButtonEnabled(showBackButton)
 }
 
+fun Activity.navigateToNextScreen(screen: Class<*>, bundle: Bundle) {
+    startActivity(Intent(this, screen).apply { putExtras(bundle) })
+}
 inline fun <reified T : BaseViewModel> AppCompatActivity.initViewModel(noinline creator: (() -> T)? = null): T {
     return if (creator == null)
         ViewModelProviders.of(this).get(T::class.java)

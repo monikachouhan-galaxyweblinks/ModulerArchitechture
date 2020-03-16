@@ -1,5 +1,6 @@
 package com.gwl.feeds.presentation
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,15 +11,30 @@ import com.gwl.core.BaseViewHolder
 import com.gwl.feeds.R
 import com.gwl.model.InstaFeed
 import com.gwl.model.MediaType
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 // * Created on 20/1/20.
 /**
  * @author GWL
  */
-class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(MediaCallback) {
+class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(object :
+    DiffUtil.ItemCallback<InstaFeed>() {
+    override fun areItemsTheSame(oldItem: InstaFeed, newItem: InstaFeed): Boolean {
+        Log.d("areItemsTheSame", "areItemsTheSame ----")
+
+        val data = /*(oldItem::class == newItem::class &&*/ oldItem.id == newItem.id  //)
+        Log.d("areItemsTheSame", "---areItemsTheSame $data")
+        return data /*(oldItem::class == newItem::class && oldItem.id == newItem.id)*/
+    }
+
+
+    override fun areContentsTheSame(oldItem: InstaFeed, newItem: InstaFeed): Boolean {
+        Log.d("areItemsTheSame", "areContentsTheSame --")
+
+        val iss = (oldItem.equals(newItem))
+        Log.d("areItemsTheSame", "areContentsTheSame $iss")
+        return iss
+    }
+}) {
 
     companion object {
         val VIDEO_VIEW_TYPE = 0
@@ -66,12 +82,6 @@ class MediaFeedAdapter : PagedListAdapter<InstaFeed, BaseViewHolder<InstaFeed>>(
             else -> UNKNOWN_VIEW_TYPE
         }
     }
+    // object MediaCallback :
 
-    object MediaCallback : DiffUtil.ItemCallback<InstaFeed>() {
-        override fun areItemsTheSame(oldItem: InstaFeed, newItem: InstaFeed) =
-            (oldItem::class == newItem::class)
-
-        override fun areContentsTheSame(oldItem: InstaFeed, newItem: InstaFeed) = (
-                oldItem == newItem)
-    }
 }

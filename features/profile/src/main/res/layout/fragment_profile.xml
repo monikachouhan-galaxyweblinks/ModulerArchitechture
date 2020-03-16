@@ -18,11 +18,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="false"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:background="@color/colorPrimary"
+            android:focusable="false"
+            android:clickable="true"
+            android:gravity="center"
+            android:focusableInTouchMode="true"
             android:layout_height="250dp">
 
             <ImageView
@@ -30,14 +37,28 @@
                 android:layout_width="130dp"
                 android:background="@drawable/profile_outline"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 loadCircularImage="@{viewModel.user.profileUrl}"
                 android:layout_height="130dp" />
-        </FrameLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                visibleIf="@{viewModel.isEditable}"
+                android:onClick="@{()->viewModel.askToChangeProfile()}"
+                android:layout_alignEnd="@id/profileImage"
+                android:layout_alignBottom="@id/profileImage"
+                android:src="@drawable/ic_edit_white_24dp"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_20dp"
             android:padding="15dp"
+            android:focusable="false"
+            android:clickable="true"
+            android:focusableInTouchMode="true"
             android:layout_height="match_parent">
 
             <TextView
@@ -58,6 +79,7 @@
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.NAME,text.toString())}"
                 android:enabled="@{viewModel.isEditable}"
                 style="@style/TextView.SubTitle1"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:inputType="textCapWords"
                 android:layout_marginLeft="@dimen/_10dp"
                 android:layout_toRightOf="@id/textNameTitle"
@@ -86,6 +108,7 @@
                 android:enabled="@{viewModel.isEditable}"
                 style="@style/TextView.SubTitle1"
                 android:layout_marginLeft="@dimen/_10dp"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:layout_toRightOf="@id/textEmailTitle"
                 android:layout_below="@+id/textName"
                 android:text="@{viewModel.user.email}"
@@ -112,6 +135,7 @@
                 android:layout_marginLeft="@dimen/_10dp"
                 android:inputType="textCapWords"
                 android:enabled="@{viewModel.isEditable}"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.CITY,text.toString())}"
                 android:layout_toRightOf="@id/textCityTitle"
                 android:layout_below="@+id/textMobile"
@@ -137,6 +161,7 @@
                 android:maxLength="10"
                 android:inputType="phone"
                 android:padding="15dp"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 style="@style/TextView.SubTitle1"
                 android:layout_marginLeft="@dimen/_10dp"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
@@ -163,6 +188,7 @@
                 android:id="@+id/textState"
                 tools:text="mp"
                 android:maxLength="10"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:inputType="text"
                 android:padding="15dp"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.STATE,text.toString())}"

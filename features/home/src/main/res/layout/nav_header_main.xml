@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="176dp"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</LinearLayout>
+    <data>
+
+        <variable
+            name="user"
+            type="com.gwl.model.User" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:background="@color/colorPrimary"
+        android:gravity="bottom"
+        android:padding="@dimen/_15dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_gravity="center"
+            loadCircularImage="@{user.profileUrl}"
+            android:layout_height="70dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/textUserName"
+            android:textSize="15sp"
+            tools:text="Test User"
+            android:text="@{user.name}"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/textUserEmail"
+            android:textSize="13sp"
+            tools:text="TestUser@gmail.com"
+            android:text="@{user.email}"
+            android:layout_marginTop="@dimen/_5dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</layout>

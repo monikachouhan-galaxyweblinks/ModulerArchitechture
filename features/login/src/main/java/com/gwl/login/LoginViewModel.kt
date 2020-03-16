@@ -11,7 +11,7 @@ import com.gwl.model.User
 class LoginViewModel : BaseViewModel() {
 
     // region - Public Properties
-    val loginItem by lazy { LoginItem(email = "", password = "") }
+    val loginItem by lazy { LoginItem(email = "gwl@example.com", password = "Gwl@1234") }
     var btnLoginEnable = ObservableField(false)
     var loadedVisibility = ObservableField(false)
     var clearError = ObservableField(false)

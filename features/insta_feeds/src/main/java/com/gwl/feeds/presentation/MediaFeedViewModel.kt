@@ -1,7 +1,6 @@
 package com.gwl.feeds.presentation
 
 import android.util.Log
-import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
@@ -9,19 +8,15 @@ import androidx.paging.PagedList
 import com.gwl.MyApplication
 import com.gwl.cache.db.AppDatabase
 import com.gwl.cache.db.dao.FavoriteDao
-import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewModel
 import com.gwl.core.LoginManager
 import com.gwl.feeds.MediaDataSourceFactory
-import com.gwl.feeds.R
 import com.gwl.feeds.datasource.MediaFeedDataSource
-import com.gwl.model.FavoriteFeed
 import com.gwl.model.InstaFeed
 import com.gwl.networking.client.server.NetworkAPI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 // * Created on 28/1/20.
 /**
@@ -41,7 +36,7 @@ class MediaFeedViewModel : BaseViewModel() {
     val mediaFeeds: ObservableField<List<InstaFeed>> by lazy { ObservableField<List<InstaFeed>>() }
     val onMediaFeedsFailure: ObservableField<String> by lazy { ObservableField<String>() }
     val favDao: FavoriteDao by lazy { AppDatabase.getInstance(MyApplication.instance).favDao() }
-    val dataSource :MediaFeedDataSource by lazy {  MediaFeedDataSource() }
+    val dataSource: MediaFeedDataSource by lazy { MediaFeedDataSource() }
     val pagedListConfig = PagedList.Config.Builder()
         .setInitialLoadSizeHint(FETCH_SIZE)
         .setPageSize(FETCH_SIZE)

@@ -18,6 +18,7 @@ object FeatureModules {
         Modules.fingure,
         Modules.mpin,
         Modules.googleLogin,
+        Modules.search,
         Modules.fbLogin,
         Modules.instaFeed,
         Modules.settings,
@@ -44,6 +45,7 @@ object FeatureModules {
         Modules.signup,
         Modules.instaFeed,
         Modules.settings,
+        Modules.search,
         Modules.fbLogin
     )
 }
@@ -67,6 +69,7 @@ object Modules {
     val playerCore = ":libraries:player-core"
     val launcher = ":features:launcher"
     val profile = ":features:profile"
+
     /*val player = ":features:player_feeds"*/
     val instaFeed = ":features:insta_feeds"
     val signup = ":features:signup"
@@ -75,6 +78,7 @@ object Modules {
     val fingure = ":features:authenticationLock:fingure"
     val googleLogin = ":features:social_login:google_login"
     val fbLogin = ":features:social_login:fblogin"
+    val search = ":features:search"
 }
 
 object Releases {

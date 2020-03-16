@@ -75,7 +75,7 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
         itemRowBinding.setVariable(BR.isFave, isFavorite)
         itemRowBinding.setVariable(BR.likeCount, likeCount)
 
-        videoUri = Uri.parse(data.videos.lowResolution.url)
+        videoUri = Uri.parse(data.videos?.lowResolution?.url)
         itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         //playerFrame.setAspectRatio(16/9f)
         Log.d("VideoFeedViewHolder", "VideoFeedViewHolder count $count ")

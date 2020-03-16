@@ -3,4 +3,7 @@
     <dimen name="_10dp">_10dp</dimen>
     <dimen name="_50dp">_50dp</dimen>
     <dimen name="_5dp">_5dp</dimen>
+
+    <dimen name="edit_text_regular">16sp</dimen>
+
 </resources>

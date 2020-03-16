@@ -8,6 +8,10 @@ class Common {
 
     companion object {
 
+        const val PERMISSION_REQ_CODE: Int = 101
+        const val GALLERY = 1
+        const val CAMERA = 2
+
         const val INTENT_KEY_VISIBILITY: String = "visibility"
         const val ASSESSMENT_TYPE: String = "assessment_type"
         const val PREASSESSMENT: String = "pre_assessment"

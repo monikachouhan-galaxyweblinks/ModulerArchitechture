@@ -2,5 +2,8 @@
 <resources>
     <color name="default_shimmer_color">#e3e1e3</color>
     <color name="demo_light_transparent">#ADABAB</color>
+    <color name="body_text_color">#0f1d2b</color>
+    <color name="hint_color">#FFFFFF</color>
+    <color name="text_hint">#686868</color>
 
 </resources>

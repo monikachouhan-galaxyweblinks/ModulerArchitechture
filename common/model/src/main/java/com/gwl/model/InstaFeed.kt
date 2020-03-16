@@ -10,8 +10,8 @@ import kotlinx.android.parcel.Parcelize
 @Entity
 @Parcelize
 data class InstaFeed(
-/* @SerializedName("caption")
-    var caption: Any?,*/
+/* @SerializedName("caption")*/
+
     @PrimaryKey(autoGenerate = true)
     var itemId: Int = 0,
     @SerializedName("comments")
@@ -23,13 +23,13 @@ data class InstaFeed(
     @SerializedName("id")
     var id: String,
     @SerializedName("images")
-    var images: Images,
+    var images: Images?,
     @SerializedName("location")
     var location: Location?,
     @SerializedName("carousel_media")
-    var carosel: List<CarouselImage>?,
+    var carosel: List<CarouselImage> = listOf(),
     @SerializedName("videos")
-    var videos: Videos,
+    var videos: Videos?,
     @SerializedName("likes")
     var likes: Likes,
     @SerializedName("link")
@@ -41,4 +41,13 @@ data class InstaFeed(
     @SerializedName("user_has_liked")
     var userHasLiked: Boolean,
     var isLiked: Boolean = false
-) : Parcelable
+) : Parcelable {
+    var postcaption: String = arrayOf(
+        "When you can't find the sunshine, be the sunshine.",
+        "The happiest people don't have the best of everything, they make the best of everything.",
+        "Every day may not be good but there's good in every day.",
+        "Handle every situation like a dog. If you can't eat it or play with it, just pee on it and walk away.",
+        "I never make the same mistake twice. I make it like five or six times, you know, just to be sure."
+    ).get(0)
+
+}

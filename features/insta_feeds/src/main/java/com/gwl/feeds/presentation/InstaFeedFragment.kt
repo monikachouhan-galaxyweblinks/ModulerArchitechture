@@ -1,5 +1,6 @@
 package com.gwl.feeds.presentation
 
+import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.LiveData
@@ -11,6 +12,7 @@ import com.gwl.cache.db.dao.FavoriteDao
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseFragment
 import com.gwl.core.initViewModel
+import com.gwl.core.navigateToNextScreen
 import com.gwl.core.networkdetection.ConnectionLiveData
 import com.gwl.core.networkdetection.ConnectionModel
 import com.gwl.core.networkdetection.ConnectionType
@@ -39,10 +41,17 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
     private var liveData: LiveData<PagedList<InstaFeed>>? = null
     private val disposable = CompositeDisposable()
     private var connectionMode: ConnectionModel? = null
-    val favDao: FavoriteDao by lazy { AppDatabase.getInstance(MyApplication.instance).favDao() }
+    private val favDao: FavoriteDao by lazy {
+        AppDatabase.getInstance(MyApplication.instance).favDao()
+    }
 
     companion object {
         const val DATA = "item_data"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        liveData = mViewModel.initPager()
     }
 
     override fun initObservers() {
@@ -58,10 +67,10 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         container.visibility = View.VISIBLE
         adapter.itemClick = this
 
-        liveData = mViewModel.initPager()
         liveData?.observe {
             adapter.submitList(it)
             mViewModel.isApiRunning.set(false)
+            swipeToRefresh?.isRefreshing = false
         }
         MediaListRefreshingLiveData.observe {
             if (it.isNotEmpty()) container?.hideShimmerAdapter()
@@ -97,14 +106,19 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         }
     }
 
-
     override fun onItemClick(item: InstaFeed) {
-
+        activity?.also {
+            val bundle = Bundle().apply {
+                putParcelable(INTENT_KEY_INSTAFEED, item)
+            }
+            System.out.println("bundle $item")
+            it.navigateToNextScreen(UserDetailActivity::class.java, bundle)
+        }
     }
 
     private fun refresh() {
-        liveData?.value?.dataSource?.invalidate()
         swipeToRefresh?.isRefreshing = false
+        liveData?.value?.dataSource?.invalidate()
     }
 
     override fun onDestroy() {

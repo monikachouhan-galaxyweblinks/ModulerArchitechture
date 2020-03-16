@@ -1,14 +1,19 @@
 package com.gwl.core
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import com.gwl.core.Common.Companion.PERMISSION_REQ_CODE
 
 /**
  * @author GWL
@@ -19,6 +24,8 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
     // region - Public properties
     lateinit var mDataBinding: B
     lateinit var mViewModel: V
+    val permissionList =
+        listOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
     // endregion
 
     // region - Lifecycle functions
@@ -68,7 +75,10 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
     open fun initExtras() {}
 
-    open fun setToolBar(toolbar: Toolbar? = null, @DrawableRes icon: Int = R.drawable.ic_toolbar_arrow_back) {
+    open fun setToolBar(
+        toolbar: Toolbar? = null,
+        @DrawableRes icon: Int = R.drawable.ic_toolbar_arrow_back
+    ) {
         toolbar?.also {
             setSupportActionBar(it)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -76,19 +86,47 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
         }
 
     }
+
+    fun requestPermission() {
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this, permissionList[0]) !=
+            PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                this, permissionList[1]
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                ) ||
+                ActivityCompat.shouldShowRequestPermissionRationale(
+                    this, Manifest.permission.CAMERA
+                )
+            ) {
+                ActivityCompat.requestPermissions(
+                    this, permissionList.toTypedArray(), PERMISSION_REQ_CODE
+                )
+                // Show an explanation to the user *asynchronously* -- don't block
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(
+                    this, permissionList.toTypedArray(), PERMISSION_REQ_CODE
+                )
+            }
+        }
+    }
+
+    fun checkStorageAndCameraPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(this, permissionList[0]) !=
+                PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+            this, permissionList[1]
+        ) != PackageManager.PERMISSION_GRANTED
+    }
     // endregion
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return super.onSupportNavigateUp()
     }
-
-    /* fun getStringValue(@StringRes error: Int?): String {
-         return error?.let { getContext().getString(error) } ?: ""
-     }
-     fun getColorValue(@ColorRes error: Int?): Int {
-         return error?.let { getContext().resources.getColor(error) } ?: 0
-     }*/
 
     fun setupToolbar(title: String?, showBackButton: Boolean) {
         supportActionBar?.setHomeButtonEnabled(showBackButton)

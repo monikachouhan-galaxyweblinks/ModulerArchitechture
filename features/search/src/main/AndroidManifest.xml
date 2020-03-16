@@ -1,0 +1,38 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.gwl.search">
+
+    <dist:module
+        dist:instant="false"
+        dist:title="@string/title_search">
+        <dist:delivery>
+            <dist:on-demand />
+        </dist:delivery>
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application>
+        <activity
+            android:name=".ui.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.DefaultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ColoredActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.VoiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.TabActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.InputTypeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.StickyActivity"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>
+

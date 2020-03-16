@@ -4,4 +4,4 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:shimmer_demo_shimmer_color="#73ffffff"
-    android:animateLayoutChanges="true" />
+    android:animateLayoutChanges="false" />

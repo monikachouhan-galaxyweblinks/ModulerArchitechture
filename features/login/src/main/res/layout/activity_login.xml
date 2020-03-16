@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Enter email"
+            android:text="gwl@example.com"
             android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,LoginField.USER_NAME, hasFocus)}"
             android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(LoginField.USER_NAME,text.toString())}"
             android:singleLine="true" />
@@ -38,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Enter password"
+            android:text="Gwl@1234"
             android:inputType="textPassword"
             android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,LoginField.PASSWORD, hasFocus)}"
             android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(LoginField.PASSWORD,text.toString())}"

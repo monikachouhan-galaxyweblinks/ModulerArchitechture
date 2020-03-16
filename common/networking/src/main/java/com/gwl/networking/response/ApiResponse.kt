@@ -52,8 +52,8 @@ open class ApiResponse<T>(
 
     fun hasNextPage(): Boolean {
         return if (isPaginated == null || isPaginated == false) {
-            //false
-            true
+            false
+            //true
         } else {
             isLast == false
         }

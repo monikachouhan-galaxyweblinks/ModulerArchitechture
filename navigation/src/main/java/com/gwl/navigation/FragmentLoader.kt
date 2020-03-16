@@ -1,10 +1,15 @@
 package com.gwl.navigation
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 
 fun String.loadFragmentOrNull(): Fragment? =
     try {
-        this.loadClassOrNull<Fragment>()?.newInstance()
+        val frag = this.loadClassOrNull<Fragment>()?.newInstance()
+        frag?.also {
+            Log.d("loadFragmentOrNull","loadFragmentOrNull called ${frag::class.java.simpleName}" )
+        }
+        frag
     } catch (e: ClassNotFoundException) {
         null
     }
