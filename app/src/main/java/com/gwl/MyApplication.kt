@@ -1,6 +1,7 @@
 package com.gwl
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
 import com.gwl.cache.db.AppDatabase
 import com.gwl.core.CoreApplication
 import com.gwl.core.LoginManager
@@ -17,6 +18,7 @@ class MyApplication : Application() {
     val networkAPI: NetworkAPI by lazy { NetworkAPIFactory.standardClient(this) }
 
     init {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         instance = this
     }
 

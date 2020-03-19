@@ -34,7 +34,7 @@
             android:text="@{user.name}"
             android:layout_marginTop="@dimen/_10dp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/loginPageBackgroundColor"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -45,7 +45,7 @@
             android:text="@{user.email}"
             android:layout_marginTop="@dimen/_5dp"
             android:gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/loginPageBackgroundColor"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
