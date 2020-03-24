@@ -43,7 +43,7 @@ import java.util.List;
 /**
  * @author Miguel Catalan Bañuls
  */
-public class MaterialSearchView extends FrameLayout implements Filter.FilterListener {
+public class MaterialSearchView extends FrameLayout /*implements Filter.FilterListener*/ {
     public static final int REQUEST_VOICE = 9999;
 
     private MenuItem mMenuItem;
@@ -201,20 +201,17 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
             }
         });
 
-        mSearchSrcTextView.setOnFocusChangeListener(new OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    showKeyboard(mSearchSrcTextView);
-                    showSuggestions();
-                }
+        mSearchSrcTextView.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                showKeyboard(mSearchSrcTextView);
+                showSuggestions();
             }
         });
     }
 
     private void startFilter(CharSequence s) {
         if (mAdapter != null && mAdapter instanceof Filterable) {
-            ((Filterable) mAdapter).getFilter().filter(s, MaterialSearchView.this);
+           // ((Filterable) mAdapter).getFilter().filter(s, MaterialSearchView.this);
         }
     }
 
@@ -405,7 +402,7 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
     public void setAdapter(ListAdapter adapter) {
         mAdapter = adapter;
         mSuggestionsListView.setAdapter(adapter);
-        startFilter(mSearchSrcTextView.getText());
+       startFilter(mSearchSrcTextView.getText());
     }
 
     /**
@@ -413,18 +410,14 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
      *
      * @param suggestions array of suggestions
      */
-    public void setSuggestions(String[] suggestions) {
-        if (suggestions != null && suggestions.length > 0) {
+    public void setHistoryORSuggestions(List<String> suggestions) {
+        if (suggestions != null && suggestions.size() > 0) {
             mTintView.setVisibility(VISIBLE);
-            final SearchAdapter adapter = new SearchAdapter(mContext, suggestions, suggestionIcon, ellipsize);
+            Log.d("setHistoryORSuggestions", "setHistoryORSuggestions  " + suggestions.size());
+            final SearchSuggestionAdapter adapter = new SearchSuggestionAdapter(mContext, suggestions, suggestionIcon, ellipsize);
             setAdapter(adapter);
 
-            setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    setQuery((String) adapter.getItem(position), submit);
-                }
-            });
+            setOnItemClickListener((parent, view, position, id) -> setQuery((String) adapter.getItem(position), submit));
         } else {
             mTintView.setVisibility(GONE);
         }
@@ -477,12 +470,9 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
      */
     public void setMenuItem(MenuItem menuItem) {
         this.mMenuItem = menuItem;
-        mMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                showSearch();
-                return true;
-            }
+        mMenuItem.setOnMenuItemClickListener(item -> {
+            showSearch();
+            return true;
         });
     }
 
@@ -614,14 +604,14 @@ public class MaterialSearchView extends FrameLayout implements Filter.FilterList
         this.ellipsize = ellipsize;
     }
 
-    @Override
+/*    @Override
     public void onFilterComplete(int count) {
         if (count > 0) {
             showSuggestions();
         } else {
             dismissSuggestions();
         }
-    }
+    }*/
 
     @Override
     public boolean requestFocus(int direction, Rect previouslyFocusedRect) {

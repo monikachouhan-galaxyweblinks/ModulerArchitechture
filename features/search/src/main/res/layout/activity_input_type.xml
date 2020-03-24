@@ -5,7 +5,7 @@
 
     <!-- Irrelevant stuff -->
     <include
-        layout="@layout/mok_items"
+        layout="@layout/item_row_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize" />

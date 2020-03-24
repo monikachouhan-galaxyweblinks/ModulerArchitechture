@@ -3,6 +3,7 @@ package com.gwl.search.materialsearchview;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,71 +23,73 @@ import java.util.List;
  *
  * @author Miguel Catalan Bañuls
  */
-public class SearchAdapter extends BaseAdapter implements Filterable {
+public class SearchSuggestionAdapter extends BaseAdapter /*implements Filterable*/ {
 
-    private ArrayList<String> data;
-    private String[] suggestions;
+    // private ArrayList<String> data;
+    private List<String> suggestions;
     private Drawable suggestionIcon;
     private LayoutInflater inflater;
     private boolean ellipsize;
 
-    public SearchAdapter(Context context, String[] suggestions) {
+    public SearchSuggestionAdapter(Context context, List<String> suggestions) {
         inflater = LayoutInflater.from(context);
-        data = new ArrayList<>();
+        // data = new ArrayList<>();
         this.suggestions = suggestions;
     }
 
-    public SearchAdapter(Context context, String[] suggestions, Drawable suggestionIcon, boolean ellipsize) {
+    public SearchSuggestionAdapter(Context context, List<String> suggestions, Drawable suggestionIcon, boolean ellipsize) {
         inflater = LayoutInflater.from(context);
-        data = new ArrayList<>();
+        //   data = new ArrayList<>();
         this.suggestions = suggestions;
         this.suggestionIcon = suggestionIcon;
         this.ellipsize = ellipsize;
+        Log.d("setHistoryORSuggestions", "setHistoryORSuggestions 1 " + getCount());
+        Log.d("setHistoryORSuggestions", "setHistoryORSuggestions 2 " + this.suggestions.size());
     }
 
-    @Override
-    public Filter getFilter() {
-        Filter filter = new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                FilterResults filterResults = new FilterResults();
-                if (!TextUtils.isEmpty(constraint)) {
+   /*    @Override
+       public Filter getFilter() {
+           Filter filter = new Filter() {
+               @Override
+               protected FilterResults performFiltering(CharSequence constraint) {
+                   FilterResults filterResults = new FilterResults();
+                   if (!TextUtils.isEmpty(constraint)) {
 
-                    // Retrieve the autocomplete results.
-                    List<String> searchData = new ArrayList<>();
+                       // Retrieve the autocomplete results.
+                       List<String> searchData = new ArrayList<>();
 
-                    for (String string : suggestions) {
-                        if (string.toLowerCase().startsWith(constraint.toString().toLowerCase())) {
-                            searchData.add(string);
-                        }
-                    }
+                       for (String string : suggestions) {
+                           if (string.toLowerCase().startsWith(constraint.toString().toLowerCase())) {
+                               searchData.add(string);
+                           }
+                       }
 
-                    // Assign the data to the FilterResults
-                    filterResults.values = searchData;
-                    filterResults.count = searchData.size();
-                }
-                return filterResults;
-            }
+                       // Assign the data to the FilterResults
+                       filterResults.values = searchData;
+                       filterResults.count = searchData.size();
+                   }
+                   return filterResults;
+               }
 
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                if (results.values != null) {
-                    data = (ArrayList<String>) results.values;
-                    notifyDataSetChanged();
-                }
-            }
-        };
-        return filter;
-    }
+               @Override
+               protected void publishResults(CharSequence constraint, FilterResults results) {
+                   if (results.values != null) {
+                      // data = (ArrayList<String>) results.values;
+                       notifyDataSetChanged();
+                   }
+               }
+           };
+           return filter;
+       }*/
 
     @Override
     public int getCount() {
-        return data.size();
+        return suggestions.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return data.get(position);
+        return suggestions.get(position);
     }
 
     @Override

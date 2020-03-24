@@ -5,7 +5,6 @@ import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewHolder
 import com.gwl.model.ArticlesItem
 
-
 class FeedViewHolder(itemRowBind: ViewDataBinding) :
     BaseViewHolder<ArticlesItem>(itemRowBind) {
     override fun bind(

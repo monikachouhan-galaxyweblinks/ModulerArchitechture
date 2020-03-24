@@ -3,6 +3,7 @@ package com.gwl
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.gwl.navigation.features.LoginNavigation
+import com.gwl.navigation.features.SearchNavigation
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         startLogin()
     }
 
-    private fun startLogin() = LoginNavigation.dynamicStart?.let {
+    private fun startLogin() = SearchNavigation.dynamicStart?.let {
         startActivity(it)
         finish()
     }
