@@ -108,7 +108,7 @@ object Versions {
     val multidex = "2.0.1"
 
     val appcompat = "1.0.2"
-    val design = "1.0.0"
+    val design = "1.2.0-alpha03"
     val cardview = "1.0.0"
     val recyclerview = "1.0.0"
     val constraint = "1.1.3"

@@ -43,11 +43,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }
+//
+//    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+//        activity?.menuInflater?.inflate(R.menu.menu_profile_setting, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//    }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        activity?.menuInflater?.inflate(R.menu.menu_profile_setting, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
