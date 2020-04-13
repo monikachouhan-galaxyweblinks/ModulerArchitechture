@@ -1,17 +1,24 @@
 package com.gwl.core
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import android.os.Build
 import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 
 // region - Public function
 @BindingAdapter("visibleIf")
@@ -27,8 +34,16 @@ fun View.showLoader(visible: Boolean) {
 fun TextView.setColor(color: Int) {
     this.setTextColor(color)
 }
-/*
 
+@BindingAdapter("favTint")
+fun MaterialTextView.setTint(isFav: Boolean) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        val colorRes: Int =if (isFav) R.color.red else R.color.icon_tint_icon
+        this.compoundDrawableTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(context, colorRes))
+    }
+}
+/*
 @BindingAdapter("onCheckedChange")
 fun CheckBox.OnCheckedChange(: Int) {
     this.setTextColor(color)
@@ -44,7 +59,7 @@ fun TextInputLayout.setError(name: String?) {
 fun <T> RecyclerView.setAdapter(adapter: BaseAdapter<T>?, list: MutableList<T>?) {
     setAdapter(adapter)
     adapter?.setData(list)
-    Log.d("setAdapter","====adapter  == $adapter")
+    Log.d("setAdapter", "====adapter  == $adapter")
 }
 
 @BindingAdapter(value = ["pageAdapter", "pageList"], requireAll = false)

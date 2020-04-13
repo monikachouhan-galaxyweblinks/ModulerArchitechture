@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0f1d2b</color>
+    <color name="colorPrimaryDark">#02070C</color>
+    <color name="colorAccent">#BE9C06</color>
+
+    <color name="background_color">#FFFFFF</color>
+    <color name="cardBackground">#000</color>
+
+    <color name="default_shimmer_color">#000</color>
+    <color name="demo_light_transparent">#AD727272</color>
+
+    <color name="body_text_color">#0f1d2b</color>
+    <color name="subtitle_text_color">#EEEAEA</color>
+    <color name="hint_color">#FFFFFF</color>
+    <color name="text_hint">#686868</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="button_bg_color">#0385D0</color>
+    <color name="colorDisable">#66026EBB</color>
+    <color name="nav_menu_title_text">#DAD7D7</color>
+
+    <color name="icon_color">#FFBEBABA</color>
+
+    <color name="icon_tint_icon">#fff</color>
+    <color name="red">#F51606</color>
+    <color name="white">#fff</color>
+
+
+</resources>

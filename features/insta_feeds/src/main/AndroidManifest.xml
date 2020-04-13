@@ -18,6 +18,7 @@
     <application android:usesCleartextTraffic="true">
         <activity
             android:name=".presentation.UserDetailActivity"
+            android:usesCleartextTraffic="true"
             android:screenOrientation="portrait" />
     </application>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#0f1d2b</color>
+  <!--  <color name="colorPrimary">#0f1d2b</color>
     <color name="colorPrimaryDark">#101E2B</color>
     <color name="colorAccent">#F8CF13</color>
 
@@ -45,6 +45,5 @@
     <color name="red">#d32f2f</color>
     <color name="grey">#a9a9a9</color>
     <color name="transparent">#00000000</color>
-    <color name="disableText">#BEBABA</color>
-    <color name="icon_color">#FFBEBABA</color>
+    <color name="disableText">#BEBABA</color>-->
 </resources>

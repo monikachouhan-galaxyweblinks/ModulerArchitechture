@@ -30,7 +30,7 @@
                 android:paddingRight="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp"
                 android:text="Auto play on wifi"
-                android:textAppearance="@style/TextView.SubTitle1" />
+                style="@style/Material.SubTitle" />
 
             <CheckBox
                 android:id="@+id/checkboxAutoPlay"
@@ -58,7 +58,7 @@
                 android:paddingRight="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp"
                 android:text="Dark Theme"
-                android:textAppearance="@style/TextView.SubTitle1" />
+                style="@style/Material.SubTitle" />
 
             <Switch
                 android:id="@+id/darkThemeSwitch"

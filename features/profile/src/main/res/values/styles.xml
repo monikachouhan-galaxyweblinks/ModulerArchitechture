@@ -6,7 +6,6 @@
         <item name="android:windowMinWidthMinor">90%</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="colorAccent">@color/button_color</item>
         <item name="android:background">@color/white</item>
         <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>

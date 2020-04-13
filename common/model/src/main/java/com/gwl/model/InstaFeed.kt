@@ -27,7 +27,7 @@ data class InstaFeed(
     @SerializedName("location")
     var location: Location?,
     @SerializedName("carousel_media")
-    var carosel: List<CarouselImage> = listOf(),
+    var carosel: List<CarouselImage>? = listOf(),
     @SerializedName("videos")
     var videos: Videos?,
     @SerializedName("likes")
@@ -39,15 +39,27 @@ data class InstaFeed(
     @SerializedName("user")
     var instaUser: InstaUser,
     @SerializedName("user_has_liked")
-    var userHasLiked: Boolean,
+    var userHasLiked: Boolean = false,
     var isLiked: Boolean = false
 ) : Parcelable {
     var postcaption: String = arrayOf(
         "When you can't find the sunshine, be the sunshine.",
+        "Set goals you don’t tell anyone about. Achieve them. Then give yourself the highest of fives!",
         "The happiest people don't have the best of everything, they make the best of everything.",
         "Every day may not be good but there's good in every day.",
         "Handle every situation like a dog. If you can't eat it or play with it, just pee on it and walk away.",
         "I never make the same mistake twice. I make it like five or six times, you know, just to be sure."
-    ).get(0)
+    ).random()
 
+    fun getFormattedLikes(): String {
+        return "${likes.count} \n Likes"
+    }
+
+    fun getFormattedComments(): String {
+        return "${comments.count} \n Comments"
+    }
+
+    fun getFormattedViews(): String {
+        return "0 \n Views"
+    }
 }

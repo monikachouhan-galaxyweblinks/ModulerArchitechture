@@ -108,10 +108,11 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
 
     override fun onItemClick(item: InstaFeed) {
         activity?.also {
+            if (item.carosel == null) item.carosel = mutableListOf()
+
             val bundle = Bundle().apply {
                 putParcelable(INTENT_KEY_INSTAFEED, item)
             }
-            System.out.println("bundle $item")
             it.navigateToNextScreen(UserDetailActivity::class.java, bundle)
         }
     }

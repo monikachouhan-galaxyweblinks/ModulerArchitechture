@@ -152,5 +152,4 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
     override fun wantsToPlay() = visibleAreaOffset(this, itemView.parent) >= 0.65
 
     override fun getPlayerOrder() = adapterPosition
-
 }
