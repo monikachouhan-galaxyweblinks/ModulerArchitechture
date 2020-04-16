@@ -3,6 +3,7 @@ package com.gwl.feeds.presentation
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.core.app.ActivityOptionsCompat
 import androidx.lifecycle.LiveData
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ import com.gwl.cache.db.dao.FavoriteDao
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseFragment
 import com.gwl.core.initViewModel
-import com.gwl.core.navigateToNextScreen
+import com.gwl.core.navigateToNextScreenWithAnimation
 import com.gwl.core.networkdetection.ConnectionLiveData
 import com.gwl.core.networkdetection.ConnectionModel
 import com.gwl.core.networkdetection.ConnectionType
@@ -23,6 +24,7 @@ import com.gwl.feeds.databinding.ActivityBasicListBinding
 import com.gwl.model.ArticlesItem
 import com.gwl.model.FavoriteFeed
 import com.gwl.model.InstaFeed
+import com.gwl.model.MediaType
 import com.gwl.navigation.features.AudioDetailNavigation
 import com.gwl.navigation.features.DetailNavigation
 import com.gwl.navigation.features.ImageDetailNavigation
@@ -106,14 +108,39 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         }
     }
 
-    override fun onItemClick(item: InstaFeed) {
+    override fun onItemClick(item: InstaFeed, view: View) {
         activity?.also {
             if (item.carosel == null) item.carosel = mutableListOf()
 
             val bundle = Bundle().apply {
                 putParcelable(INTENT_KEY_INSTAFEED, item)
             }
-            it.navigateToNextScreen(UserDetailActivity::class.java, bundle)
+            val imageViewPair = androidx.core.util.Pair.create<View, String>(
+                if (item.type == MediaType.IMAGE.value) view.findViewById(R.id.imageView) else
+                    view.findViewById(R.id.imageView2), getString(com.gwl.R.string.transition_title)
+            )
+            val likes = androidx.core.util.Pair.create<View, String>(
+                view.findViewById(R.id.likeButton), getString(com.gwl.R.string.transition_like)
+            )
+            val comment = androidx.core.util.Pair.create<View, String>(
+                view.findViewById(R.id.commentButton),
+                getString(com.gwl.R.string.transition_comment)
+            )
+            val view = androidx.core.util.Pair.create<View, String>(
+                view.findViewById(R.id.viewsButton), getString(com.gwl.R.string.transition_view)
+            )
+
+            val options =
+                if (imageViewPair == null || item.type.equals("carousel"))
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        requireActivity(), likes, comment, view
+                    )
+                else ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    requireActivity(), imageViewPair, likes, comment, view
+                )
+            it.navigateToNextScreenWithAnimation(
+                UserDetailActivity::class.java, bundle, options.toBundle()
+            )
         }
     }
 

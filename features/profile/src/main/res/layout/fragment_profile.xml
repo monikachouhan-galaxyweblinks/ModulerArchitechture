@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -80,11 +81,11 @@
                 android:layout_marginTop="@dimen/_10dp"
                 android:layout_toRightOf="@id/textNameTitle"
                 android:enabled="@{viewModel.isEditable}"
+                android:hint="John Richard"
                 android:inputType="textCapWords"
                 android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.NAME,text.toString())}"
                 android:padding="15dp"
-                android:hint="John Richard"
                 android:text="@{viewModel.user.name}"
                 tools:text="Name" />
 
@@ -138,11 +139,11 @@
                 android:layout_marginTop="@dimen/_10dp"
                 android:layout_toRightOf="@id/textCityTitle"
                 android:enabled="@{viewModel.isEditable}"
+                android:hint="Indore"
                 android:inputType="textCapWords"
                 android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.CITY,text.toString())}"
                 android:padding="15dp"
-                android:hint="Indore"
                 android:text="@{viewModel.user.city}"
                 tools:text="City" />
 
@@ -157,7 +158,26 @@
                 android:padding="15dp"
                 android:text="Mobile" />
 
-            <com.gwl.core.MaterialEditText
+            <com.gwl.profile.maskededittext.MaskedEditText
+                android:id="@+id/textMobile"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textEmail"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_toRightOf="@id/textPhoneTitle"
+                android:enabled="@{viewModel.isEditable}"
+                android:hint="9190095900"
+                android:inputType="phone|number"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
+                android:padding="15dp"
+                android:text="@{viewModel.user.mobile}"
+                app:keep_hint="false"
+                mask:allowed_chars="1234567890"
+                mask:mask="#####-#####" />
+            <!--<com.gwl.core.MaterialEditText
                 android:id="@+id/textMobile"
                 style="@style/Material.EditText"
                 android:layout_width="match_parent"
@@ -169,12 +189,14 @@
                 android:enabled="@{viewModel.isEditable}"
                 android:inputType="phone"
                 android:maxLength="15"
+                android:digits="+() 1234567890-"
+                android:visibility="gone"
                 android:hint="+919190095900"
                 android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
                 android:padding="15dp"
                 android:text="@{viewModel.user.mobile}"
-                tools:text="999111" />
+                tools:text="999111" />-->
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textStateTitle"
@@ -197,9 +219,9 @@
                 android:layout_marginTop="@dimen/_10dp"
                 android:layout_toRightOf="@id/textStateTitle"
                 android:enabled="@{viewModel.isEditable}"
+                android:hint="M.P."
                 android:inputType="text"
                 android:maxLength="10"
-                android:hint="M.P."
                 android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.STATE,text.toString())}"
                 android:padding="15dp"

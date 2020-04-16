@@ -18,8 +18,8 @@
     <application android:usesCleartextTraffic="true">
         <activity
             android:name=".presentation.UserDetailActivity"
-            android:usesCleartextTraffic="true"
-            android:screenOrientation="portrait" />
+            android:configChanges="keyboardHidden|screenSize|orientation"
+            android:usesCleartextTraffic="true" />
     </application>
 
 </manifest>

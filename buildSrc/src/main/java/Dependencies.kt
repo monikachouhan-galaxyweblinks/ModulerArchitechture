@@ -134,7 +134,7 @@ object Versions {
     val koin = "2.0.0-beta-1"
     val shimmerVersion = "2.1.0"
     val releaseVersion = "3.7.0.2905-A1"
-    val exoPlayer2Version = "2.10.1"
+    val exoPlayer2Version = "2.9.6"
     val butterKnifVersion = "10.1.0"
 
     val roomVersion = "2.2.3"

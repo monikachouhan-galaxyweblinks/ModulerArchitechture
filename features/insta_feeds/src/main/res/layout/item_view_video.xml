@@ -50,14 +50,13 @@
             android:layout_marginLeft="@dimen/_10dp"
             android:layout_marginTop="@dimen/_10dp"
             android:layout_marginRight="@dimen/_10dp"
-            android:onClick="@{(v)-> itemClick.onItemClick(item)}"
+            android:onClick="@{(v)-> itemClick.onItemClick(item,v)}"
             app:cardCornerRadius="3dp"
             app:cardElevation="3dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                 android:orientation="vertical"
                 android:paddingTop="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp">
@@ -107,12 +106,10 @@
 
                     <com.google.android.exoplayer2.ui.PlayerView
                         android:id="@+id/playerView"
-                        android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                         visibleIf="@{item.type != MediaType.IMAGE.value}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:controller_layout_id="@layout/exo_playback_controls"
-                        app:resize_mode="fixed_width"
                         app:show_buffering="always"
                         app:shutter_background_color="?attr/colorButtonNormal"
                         app:surface_type="surface_view"
@@ -121,22 +118,22 @@
                     <ImageView
                         android:id="@+id/imageView"
                         imageUrl="@{item.images.standardResolution.url}"
-                        android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                         visibleIf="@{item.type == MediaType.IMAGE.value || !isPlaying}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"
+                        android:transitionName="@string/transition_title" />
 
                     <ImageView
                         android:id="@+id/imageView2"
                         visibleIf="@{item.type == MediaType.MP3.value}"
-                        android:onClick="@{(v)-> itemClick.onItemClick(item)}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/music_bg_thumbnail" />
+                        android:src="@drawable/music_bg_thumbnail"
+                        android:transitionName="@string/transition_title" />
 
                 </FrameLayout>
 
@@ -160,21 +157,23 @@
                         android:drawableStart="@drawable/ic_eye"
                         android:drawablePadding="@dimen/_5dp"
                         android:gravity="center_vertical"
-                        android:text="0 Views" />
+                        android:text="0 Views"
+                        android:transitionName="@string/transition_view" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/likeButton"
                         style="@style/Material.SubTitle2.WithDrawable"
+                        favTint="@{isFave}"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        favTint="@{isFave}"
                         android:drawableStart="@{!isFave ? @drawable/ic_like_outline : @drawable/ic_fill_heart}"
                         android:drawablePadding="@dimen/_5dp"
                         android:foreground="?attr/selectableItemBackground"
                         android:gravity="center_vertical"
                         android:onClick="@{(v)-> itemClick.onViewClicked(v,item,position)}"
-                        android:text="@{!isFave ? String.valueOf(item.likes.count)+` Likes` : String.valueOf(item.likes.count+1)+` Likes`}" />
+                        android:text="@{!isFave ? String.valueOf(item.likes.count)+` Likes` : String.valueOf(item.likes.count+1)+` Likes`}"
+                        android:transitionName="@string/transition_like" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/commentButton"
@@ -185,7 +184,8 @@
                         android:drawableStart="@drawable/ic_comment"
                         android:drawablePadding="@dimen/_5dp"
                         android:gravity="center_vertical"
-                        android:text="@{String.valueOf(item.comments.count)+` Comments`}" />
+                        android:text="@{String.valueOf(item.comments.count)+` Comments`}"
+                        android:transitionName="@string/transition_comment" />
 
                 </RelativeLayout>
 

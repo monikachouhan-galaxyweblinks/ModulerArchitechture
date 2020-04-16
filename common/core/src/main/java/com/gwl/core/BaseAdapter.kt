@@ -59,7 +59,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
 
     interface OnItemClickListener<T> {
-        fun onItemClick(item: T)
+        fun onItemClick(item: T, view: View)
         fun onViewClicked(view: View, item: T, position: Int)
     }
 }

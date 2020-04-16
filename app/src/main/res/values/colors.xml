@@ -46,4 +46,5 @@
     <color name="grey">#a9a9a9</color>
     <color name="transparent">#00000000</color>
     <color name="disableText">#BEBABA</color>-->
+  <color name="white">#FFF4F3F0</color>
 </resources>

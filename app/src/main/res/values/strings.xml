@@ -26,4 +26,8 @@
     <string name="title_feeds">Feeds</string>
     <string name="title_settings">Settings</string>
     <string name="title_search">Search</string>
+    <string name="transition_title">Transition</string>
+    <string name="transition_like">Like</string>
+    <string name="transition_comment">Comment</string>
+    <string name="transition_view">View</string>
 </resources>
