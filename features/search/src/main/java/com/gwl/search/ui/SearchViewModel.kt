@@ -21,25 +21,32 @@ class SearchViewModel : BaseViewModel() {
     val searchRepository: SearchRepository by lazy { SearchRepository() }
     val data: ObservableField<List<SearchItem>> by lazy { ObservableField<List<SearchItem>>() }
     val defaultList: MutableLiveData<List<SearchItem>> by lazy { MutableLiveData<List<SearchItem>>() }
-    var searchHistory: LiveData<List<SearchHistory>> = searchRepository.getSearchHistory()
+    // var searchHistory: LiveData<List<SearchHistory>> = searchRepository.getSearchHistory()
     var lastSearchTerm: String = ""
+    val searchHistory: LiveData<List<SearchHistory>> get() = _searchHistory
+    private var _searchHistory: MutableLiveData<List<SearchHistory>> = MutableLiveData()
 
     init {
+        GlobalScope.launch(Dispatchers.IO) {
+            _searchHistory.postValue((searchRepository.searchDao.getSearchHistories()))
+        }
         initData()
     }
 
     fun initData() {
         val value = searchRepository.getJsonDataFromAsset()
         defaultList.postValue(value)
-        Log.d("initData", "initData ${defaultList.value?.size} ")
+        Log.e("initData", "initData ${defaultList.value?.size} ")
         data.set(value)
     }
 
     fun addSearchHistory(searchTerm: String) {
         GlobalScope.launch(Dispatchers.IO) {
+            Log.e("addSearchHistory iii ", "${searchTerm}")
             searchRepository.searchDao.add(SearchHistory(history = searchTerm))
-            Log.d(
-                "addSearchHistory", "addSearchHistory ${searchRepository.searchDao.getSearchHistories()} "
+            Log.e(
+                "addSearchHistory xxx ",
+                "addSearchHistory ${searchRepository.searchDao.getSearchHistories()} "
             )
         }
     }
@@ -50,10 +57,15 @@ class SearchViewModel : BaseViewModel() {
 
     fun updateData(newText: String) {
         val list = defaultList.value?.filter { it.title.contains(newText) }
-        Log.d("initData", "onQueryTextChange ${defaultList.value?.size} ")
+        Log.e("updateData", "onQueryTextChange ${defaultList.value?.size}   ${newText}")
         data.set(list)
         if (list?.isNotEmpty() == true)
             lastSearchTerm = newText
 
+    }
+
+    fun getMatchedSuggetion(text: String): List<String> {
+        val allData = searchRepository.searchDao.getSearchHistories().map { it.history }
+        return allData.filter { it.contains(text, true) }
     }
 }

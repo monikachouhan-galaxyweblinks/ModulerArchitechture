@@ -15,3 +15,9 @@ data class SearchHistory(
     var id: Int = 0,
     var history: String
 ) : Parcelable
+{
+    override fun toString(): String {
+        return "SearchHistory(id=$id, history='$history')"
+    }
+
+}

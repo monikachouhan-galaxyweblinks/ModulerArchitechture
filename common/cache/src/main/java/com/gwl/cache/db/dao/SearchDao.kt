@@ -19,9 +19,11 @@ interface SearchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addList(histories: List<SearchHistory>)
 
-    @Query("SELECT * FROM searchhistory")
+    @Query("SELECT * FROM searchhistory  ORDER BY history DESC LIMIT 5")
     fun getAllSearchHistory(): LiveData<List<SearchHistory>>
 
-    @Query("SELECT * FROM searchhistory")
+    @Query("SELECT * FROM searchhistory ORDER BY history DESC LIMIT 5")
     fun getSearchHistories(): List<SearchHistory>
+
+
 }

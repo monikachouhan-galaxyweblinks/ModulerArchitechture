@@ -7,7 +7,6 @@ import android.speech.RecognizerIntent
 import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
 import com.gwl.core.BaseActivity
 import com.gwl.search.BR
 import com.gwl.search.R
@@ -15,6 +14,10 @@ import com.gwl.search.databinding.ActivityDefaultBinding
 import com.gwl.search.materialsearchview.MaterialSearchView
 import com.gwl.search.materialsearchview.MaterialSearchView.SearchViewListener
 import kotlinx.android.synthetic.main.activity_default.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SearchActivity : BaseActivity<ActivityDefaultBinding, SearchViewModel>() {
     override fun getLayoutId(): Int {
@@ -34,50 +37,45 @@ class SearchActivity : BaseActivity<ActivityDefaultBinding, SearchViewModel>() {
     override fun initObservers() {
         super.initObservers()
         initSearch()
-        mViewModel.searchHistory.observe { it ->
-            Log.d("initData", "searchHistory ${it.size} ")
-            Log.d("initData", "searchHistory array ${it.map { it.history }.size} ")
-            search_view?.setHistoryORSuggestions(it.map { it.history })
-        }
     }
 
-    fun initSearch() {
+    private fun initSearch() {
+        mViewModel.searchHistory.observe {
+            val historyList: List<String> = it.map { it.history }
+            search_view?.setHistoryORSuggestions(historyList)
+        }
+        mViewModel.searchRepository.searchDao.getAllSearchHistory().observe {
+            search_view?.setHistoryORSuggestions(it.map { it.history })
+        }
         search_view?.setVoiceSearch(false)
         search_view?.setCursorDrawable(R.drawable.custom_cursor)
         search_view?.setEllipsize(true)
-        // Log.d("initData", "searchHistory array ${it.map { it.history }.size} ")
         search_view?.setHistoryORSuggestions(mViewModel.searchHistory.value?.map { it.history })
-        // search_view?.setHistoryORSuggestions(mViewModel.getSearchHistory())
         search_view?.setOnQueryTextListener(object : MaterialSearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                if (mViewModel.lastSearchTerm.isNotEmpty()) {
-                    mViewModel.addSearchHistory(mViewModel.lastSearchTerm)
+                if (query.isNotEmpty()) {
+                    mViewModel.addSearchHistory(query)
                 }
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                //Do some magic
+                GlobalScope.launch(Dispatchers.IO) {
+                    val matchedList = mViewModel.getMatchedSuggetion(newText)
+                    withContext(Dispatchers.Main) {
+                        search_view?.setHistoryORSuggestions(matchedList)
+                    }
+                }
                 mViewModel.updateData(newText)
                 return true
             }
         })
         search_view?.setOnSearchViewListener(object : SearchViewListener {
-            override fun onSearchViewShown() {
-                //Do some magic
-            }
+            override fun onSearchViewShown() {}
 
             override fun onSearchViewClosed() {
-                //Do some magic
-                // mViewModel.data.set(mViewModel.defaultList)
                 if (mViewModel.lastSearchTerm.isNotEmpty()) {
                     mViewModel.addSearchHistory(mViewModel.lastSearchTerm)
-                    Snackbar.make(
-                            findViewById(R.id.container),
-                            "Query: onSearchViewClosed",
-                            Snackbar.LENGTH_LONG
-                        )
-                        .show()
                 }
             }
         })
@@ -98,11 +96,7 @@ class SearchActivity : BaseActivity<ActivityDefaultBinding, SearchViewModel>() {
         }
     }
 
-    override fun onActivityResult(
-        requestCode: Int,
-        resultCode: Int,
-        data: Intent?
-    ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == MaterialSearchView.REQUEST_VOICE && resultCode == Activity.RESULT_OK) {
             val matches =
                 data!!.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
