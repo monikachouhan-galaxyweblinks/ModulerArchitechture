@@ -60,10 +60,7 @@ class SuggestionAdapter : BaseAdapter, Filterable {
                 return filterResults
             }
 
-            override fun publishResults(
-                constraint: CharSequence,
-                results: FilterResults
-            ) {
+            override fun publishResults(constraint: CharSequence, results: FilterResults) {
                 if (results.values != null) {
                     data = results.values as ArrayList<String>
                     notifyDataSetChanged()
@@ -73,7 +70,6 @@ class SuggestionAdapter : BaseAdapter, Filterable {
     }
 
     override fun getCount(): Int {
-        Log.e("getCount  ", "getCount  ${data.size}")
         return data.size
     }
 
@@ -107,7 +103,6 @@ class SuggestionAdapter : BaseAdapter, Filterable {
     private inner class SuggestionsViewHolder(convertView: View) {
         var textView: TextView
         var imageView: ImageView? = null
-
         init {
             textView =
                 convertView.findViewById<View>(R.id.suggestion_text) as TextView

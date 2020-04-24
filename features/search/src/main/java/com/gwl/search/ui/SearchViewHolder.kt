@@ -13,7 +13,6 @@ class SearchViewHolder(itemRowBind: ViewDataBinding) : BaseViewHolder<SearchItem
         onItemClickListener: BaseAdapter.OnItemClickListener<SearchItem>?
     ) {
         super.bind(data, null)
-        Log.d("SearchViewHolder", "SearchViewHolder $data")
         itemRowBinding.setVariable(BR.item, data)
     }
 }

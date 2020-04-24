@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.text.TextUtils
-import android.util.Log
 import android.view.Menu
 import com.gwl.core.BaseActivity
 import com.gwl.search.BR
@@ -61,9 +60,11 @@ class SearchActivity : BaseActivity<ActivityDefaultBinding, SearchViewModel>() {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 GlobalScope.launch(Dispatchers.IO) {
-                    val matchedList = mViewModel.getMatchedSuggetion(newText)
-                    withContext(Dispatchers.Main) {
-                        search_view?.setHistoryORSuggestions(matchedList)
+                    if (newText.length > 0) {
+                        val matchedList = mViewModel.getMatchedSuggestion(newText)
+                        withContext(Dispatchers.Main) {
+                            search_view?.setHistoryORSuggestions(matchedList)
+                        }
                     }
                 }
                 mViewModel.updateData(newText)

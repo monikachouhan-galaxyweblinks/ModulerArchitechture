@@ -26,25 +26,20 @@ class SuggestionListAdapter(val listdata: List<String>, val itmClick: Suggestion
     }
 
     override fun getItemCount(): Int {
-        Log.e("Suggestio count ", "${listdata.size}")
         return listdata.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView
-
         init {
             textView = itemView.findViewById(R.id.suggestion_text) as TextView
         }
-
         fun bind(itmClick: SuggestionClick?, item: String) {
             itemView.setOnClickListener {
                 itmClick?.onclick(item)
             }
         }
     }
-
-    // RecyclerView recyclerView;
 }
 
 interface SuggestionClick {

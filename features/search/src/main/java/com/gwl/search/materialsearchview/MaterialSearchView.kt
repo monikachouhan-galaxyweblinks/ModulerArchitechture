@@ -32,7 +32,7 @@ import com.gwl.search.materialsearchview.utils.AnimationUtil
 /**
  * @author Miguel Catalan Bañuls
  */
-class MaterialSearchView /*implements Filter.FilterListener*/ @JvmOverloads constructor(
+class MaterialSearchView @JvmOverloads constructor(
     private val mContext: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -506,21 +506,6 @@ class MaterialSearchView /*implements Filter.FilterListener*/ @JvmOverloads cons
     private fun setVisibleWithAnimation() {
         val animationListener: AnimationUtil.AnimationListener =
             object : AnimationUtil.AnimationListener {
-                /*   override fun onAnimationStart(view: View): Boolean {
-                       return false
-                   }
-
-                   override fun onAnimationEnd(view: View): Boolean {
-                       if (mSearchViewListener != null) {
-                           mSearchViewListener!!.onSearchViewShown()
-                       }
-                       return false
-                   }
-
-                   override fun onAnimationCancel(view: View): Boolean {
-                       return false
-                   }
-   */
                 override fun onAnimationStart(view: View?): Boolean {
                     return false
                 }
