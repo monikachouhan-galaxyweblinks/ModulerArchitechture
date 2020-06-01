@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="invisible">
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/search_layover_bg"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,20 +37,20 @@
                 android:singleLine="true"
                 android:textColor="#212121"
                 android:textColorHint="#727272"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/action_up_btn"
                 style="@style/MSV_ImageButton"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_action_navigation_arrow_back"/>
+                android:src="@drawable/ic_action_navigation_arrow_back" />
 
             <ImageButton
                 android:id="@+id/action_voice_btn"
                 style="@style/MSV_ImageButton"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/ic_action_voice_search"/>
+                android:src="@drawable/ic_action_voice_search" />
 
             <ImageButton
                 android:id="@+id/action_empty_btn"
@@ -58,22 +58,36 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_action_navigation_close"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dip"
                 android:layout_alignParentBottom="true"
                 android:background="#fff"
-                android:backgroundTint="#10000000"/>
+                android:backgroundTint="#10000000" />
         </RelativeLayout>
 
-
-        <ListView
-            android:id="@+id/suggestion_list"
+        <com.gwl.search.materialsearchview.utils.MaxHeightLinear
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:divider="@android:color/transparent"/>
+            android:fillViewport="true"
+            android:orientation="vertical"
+            app:maxHeight="400dp">
+
+            <ListView
+                android:id="@+id/suggestion_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:divider="@android:color/transparent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleViewSuggestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white" />
+        </com.gwl.search.materialsearchview.utils.MaxHeightLinear>
+
     </LinearLayout>
 </FrameLayout>

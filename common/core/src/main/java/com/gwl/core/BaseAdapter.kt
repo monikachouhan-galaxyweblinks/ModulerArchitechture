@@ -30,7 +30,7 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
      * Call setData() to set dataset.
      */
     fun setData(list: MutableList<T>?) {
-        if (this.list != null) this.list?.clear()
+        //if (this.list != null) this.list?.clear()
         this.list = list
         notifyDataSetChanged()
     }
@@ -51,14 +51,16 @@ abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseViewHolder<T>>() {
         }
     }
 
-    override fun getItemCount(): Int = if (list != null) list!!.size else 0
+    override fun getItemCount(): Int {
+        return if (list != null) list!!.size else 0
+    }
 
     override fun getItemViewType(position: Int): Int = position
 
 
     interface OnItemClickListener<T> {
         fun onItemClick(item: T)
-        fun onViewClicked(view: View, item: T,position: Int)
+        fun onViewClicked(view: View, item: T, position: Int)
     }
 }
 

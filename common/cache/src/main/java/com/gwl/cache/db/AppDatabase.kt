@@ -5,12 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.gwl.cache.db.dao.CustomTypeConverter
-import com.gwl.cache.db.dao.FavoriteDao
-import com.gwl.cache.db.dao.FeedDao
-import com.gwl.cache.db.dao.UserDao
+import com.gwl.cache.db.dao.*
 import com.gwl.model.FavoriteFeed
 import com.gwl.model.InstaFeed
+import com.gwl.model.SearchHistory
 import com.gwl.model.User
 
 /**
@@ -18,12 +16,17 @@ import com.gwl.model.User
  */
 
 @TypeConverters(CustomTypeConverter::class)
-@Database(entities = [User::class, InstaFeed::class, FavoriteFeed::class], version = 5, exportSchema = false)
+@Database(
+    entities = [User::class, InstaFeed::class, FavoriteFeed::class, SearchHistory::class],
+    version = 6,
+    exportSchema = false
+)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
     abstract fun feedDao(): FeedDao
     abstract fun favDao(): FavoriteDao
+    abstract fun searchDao(): SearchDao
 
     companion object {
 

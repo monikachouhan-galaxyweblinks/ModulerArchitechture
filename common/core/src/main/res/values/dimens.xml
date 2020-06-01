@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="_10dp">_10dp</dimen>
-    <dimen name="_50dp">_50dp</dimen>
-    <dimen name="_5dp">_5dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_50dp">50dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
 
     <dimen name="edit_text_regular">16sp</dimen>
 
