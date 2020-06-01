@@ -2,6 +2,7 @@ package com.gwl.model
 
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
@@ -9,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
  * @author GWL
  */
 @Parcelize
-@Entity
+@Entity(indices =  [Index(value = ["history"], unique = true)])
 data class SearchHistory(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
