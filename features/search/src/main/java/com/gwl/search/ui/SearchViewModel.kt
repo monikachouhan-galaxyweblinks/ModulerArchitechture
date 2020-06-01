@@ -1,6 +1,7 @@
 package com.gwl.search.ui
 
 import android.util.Log
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +20,7 @@ class SearchViewModel : BaseViewModel() {
 
     val mAdapter = SearchAdapter()
     val searchRepository: SearchRepository by lazy { SearchRepository() }
+    val showSearch : ObservableBoolean by lazy { ObservableBoolean() }
     val data: ObservableField<List<SearchItem>> by lazy { ObservableField<List<SearchItem>>() }
     val defaultList: MutableLiveData<List<SearchItem>> by lazy { MutableLiveData<List<SearchItem>>() }
     var lastSearchTerm: String = ""

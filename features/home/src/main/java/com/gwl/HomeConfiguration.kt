@@ -9,7 +9,8 @@ import com.gwl.navigation.loadFragmentOrNull
 
 object HomeConfiguration {
     val feedMenu by lazy {
-        CustomMenu(FragmentNavigation.PLAYER_FEED,
+        CustomMenu(
+            FragmentNavigation.PLAYER_FEED,
             null,
             StringUtil.getString(R.string.feed),
             R.drawable.ic_home
@@ -24,6 +25,12 @@ object HomeConfiguration {
                 null,
                 StringUtil.getString(R.string.profile),
                 R.drawable.ic_profile
+            ),
+            CustomMenu(
+                FragmentNavigation.SEARCH,
+                null,
+                StringUtil.getString(R.string.search),
+                R.drawable.ic_search
             ),
             CustomMenu(
                 FragmentNavigation.SETTINGS,

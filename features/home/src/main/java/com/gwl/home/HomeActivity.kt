@@ -4,6 +4,7 @@ import android.util.Log
 import com.gwl.base.BottomNavigationActivity
 import com.gwl.core.initViewModel
 import com.gwl.home.databinding.ActivityHome1Binding
+import com.gwl.navigation.features.SearchNavigation
 
 class HomeActivity : BottomNavigationActivity<ActivityHome1Binding, HomeViewModel>() {
 
@@ -14,6 +15,10 @@ class HomeActivity : BottomNavigationActivity<ActivityHome1Binding, HomeViewMode
     // region - Click events
     override fun onProfileSelect(fromSideMenu: Boolean) {
         Log.e(HomeActivity::class.java.simpleName, "onProfileSelect")
+    }
+
+    override fun onSearchSelect(fromSideMenu: Boolean) {
+        Log.e(HomeActivity::class.java.simpleName, "onSearchSelect")
     }
 
     override fun onSettingSelect(fromSideMenu: Boolean) {

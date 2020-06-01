@@ -5,32 +5,44 @@ import android.content.Intent
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.text.TextUtils
+import android.util.Log
 import android.view.Menu
-import com.gwl.core.BaseActivity
+import android.view.MenuInflater
+import android.view.View
+import com.gwl.core.BaseFragment
+import com.gwl.core.initViewModel
 import com.gwl.search.BR
 import com.gwl.search.R
 import com.gwl.search.databinding.ActivitySearchBinding
 import com.gwl.search.materialsearchview.MaterialSearchView
-import com.gwl.search.materialsearchview.MaterialSearchView.SearchViewListener
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
+/**
+ * @author Miguel Catalan Bañuls
+ */
+class SearchFragment : BaseFragment<ActivitySearchBinding, SearchViewModel>() {
+
+    override fun getBindingVariable(): Int {
+        return BR.viewModel
+    }
+
     override fun getLayoutId(): Int {
         return R.layout.activity_search
     }
 
     override fun getViewModel(): SearchViewModel {
-        return SearchViewModel()
+        return initViewModel { SearchViewModel() }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setToolBar(toolbar)
-        mDataBinding.setVariable(BR.viewModel, mViewModel)
+        setHasOptionsMenu(true)
+        toolbar?.visibility = View.GONE
+        //  setToolBar(toolbar)
     }
 
     override fun initObservers() {
@@ -71,10 +83,14 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
                 return true
             }
         })
-        search_view?.setOnSearchViewListener(object : SearchViewListener {
-            override fun onSearchViewShown() {}
+        search_view?.setOnSearchViewListener(object : MaterialSearchView.SearchViewListener {
+            override fun onSearchViewShown() {
+                Log.d("setOnSearchViewListener", "setOnSearchViewListener")
+                mViewModel.showSearch.set(true)
+            }
 
             override fun onSearchViewClosed() {
+                mViewModel.showSearch.set(false)
                 if (mViewModel.lastSearchTerm.isNotEmpty()) {
                     mViewModel.addSearchHistory(mViewModel.lastSearchTerm)
                 }
@@ -82,19 +98,18 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
         })
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_main, menu)
         val item = menu.findItem(R.id.action_search)
         search_view?.setMenuItem(item)
-        return true
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onBackPressed() {
+    override fun onDetach() {
         if (search_view?.isSearchOpen == true) {
             search_view?.closeSearch()
-        } else {
-            super.onBackPressed()
         }
+        super.onDetach()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -111,4 +126,5 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
-}
+
+}// Required empty public constructor

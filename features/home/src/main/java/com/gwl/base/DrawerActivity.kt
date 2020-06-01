@@ -31,6 +31,7 @@ abstract class DrawerActivity<B : ViewDataBinding, V : BaseViewModel> : BaseActi
     val SELECTED_ITEM = 0
     abstract fun onFeedSelect(fromSideMenu: Boolean)
     abstract fun onProfileSelect(fromSideMenu: Boolean)
+    abstract fun onSearchSelect(fromSideMenu: Boolean)
     abstract fun onSettingSelect(fromSideMenu: Boolean)
     abstract fun onAboutSelect(fromSideMenu: Boolean)
     abstract fun onLogoutSelect(fromSideMenu: Boolean)

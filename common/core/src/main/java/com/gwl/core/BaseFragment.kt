@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -25,8 +28,10 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
     lateinit var mDataBinding: B
     lateinit var mViewModel: V
     var isFirst: Boolean = false
-    val permissionList =
-        listOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+    val permissionList = listOf(
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA
+    )
     // endregion
 
     // region - Lifecycle functions
@@ -52,6 +57,18 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
         // }
     }
 
+    open fun setToolBar(
+        toolbar: Toolbar? = null,
+        @DrawableRes icon: Int = R.drawable.ic_toolbar_arrow_back
+    ) {
+        toolbar?.also {
+            (activity as? AppCompatActivity)?.apply {
+            setSupportActionBar(it)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setHomeAsUpIndicator(icon)
+        }}
+
+    }
     // endregion
     fun <T> LiveData<T>.observe(performTask: (it: T) -> Unit) {
         this.observe(this@BaseFragment, Observer {
@@ -96,7 +113,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
                 it, permissionList[1]
             ) != PackageManager.PERMISSION_GRANTED
         }
-    return false
+        return false
     }
 
     open fun initObservers() {}

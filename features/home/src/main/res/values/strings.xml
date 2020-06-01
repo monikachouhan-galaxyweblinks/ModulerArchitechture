@@ -5,6 +5,7 @@
     <string name="feed">Feed</string>
     <string name="profile">Profile</string>
     <string name="setting">Setting</string>
+    <string name="search">Search</string>
     <string name="about">About</string>
     <string name="logout">Logout</string>
 </resources>
