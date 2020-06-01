@@ -29,11 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="@android:color/white"
             app:elevation="@dimen/_4dp"
             app:headerLayout="@layout/nav_header_main"
-            app:itemIconTint="@color/gray"
-            app:itemTextColor="@color/title_text_color"
+            app:itemIconTint="@color/icon_color"
+            app:itemTextColor="@color/nav_menu_title_text"
             app:menu="@menu/dashboard_drawer_menu">
 
         </com.google.android.material.navigation.NavigationView>

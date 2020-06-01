@@ -5,10 +5,18 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.os.Build
+import android.os.Bundle
 import android.provider.MediaStore
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.telephony.PhoneNumberUtils
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import androidx.annotation.RequiresApi
 import com.example.profile.BR
 import com.example.profile.R
 import com.example.profile.databinding.FragmentProfileBinding
@@ -44,7 +52,14 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         return BR.viewModel
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            maskingMobileNumber()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.menu_profile_setting, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -113,7 +128,44 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         startActivityForResult(intent, CAMERA)
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    private fun maskingMobileNumber() {
+       // textMobile.addTextChangedListener(PhoneNumberFormattingTextWatcher())
+       // textMobile.addTextChangedListener( MaskWatcher("(+91) #####-#####"));
+
+        /*textMobile.addTextChangedListener(object : TextWatcher {
+            private var mFormatting // this is a flag which prevents the  stack overflow.
+                    = false
+            private var mAfter = 0
+            override fun afterTextChanged(p0: Editable?) {
+                if (!mFormatting) {
+                    mFormatting = true
+                    // using US or RU formatting...
+                    if (mAfter != 0) // in case back space ain't clicked...
+                    {
+                        PhoneNumberUtils.formatNumber(
+                            p0, PhoneNumberUtils.getFormatTypeForLocale(Locale.US)
+                        )
+                        mFormatting = false
+                        //  val num: String = p0.toString()
+                        //  val data: String = PhoneNumberUtils.formatNumber(num, "US")
+
+                    }
+                    mFormatting = false
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                mAfter = p3 // flag to detect backspace..
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+        })*/
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             activity?.also {

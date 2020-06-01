@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -18,188 +20,213 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:focusable="false"
         android:clickable="true"
+        android:focusable="false"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="250dp"
             android:background="@color/colorPrimary"
-            android:focusable="false"
             android:clickable="true"
-            android:gravity="center"
+            android:focusable="false"
             android:focusableInTouchMode="true"
-            android:layout_height="250dp">
+            android:gravity="center">
 
-            <ImageView
+            <com.gwl.core.customview.CircleImageView
                 android:id="@+id/profileImage"
-                android:layout_width="130dp"
-                android:background="@drawable/profile_outline"
-                android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
                 loadCircularImage="@{viewModel.user.profileUrl}"
-                android:layout_height="130dp" />
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:background="@drawable/profile_outline"
+                android:scaleType="centerCrop" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
                 visibleIf="@{viewModel.isEditable}"
-                android:onClick="@{()->viewModel.askToChangeProfile()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignEnd="@id/profileImage"
                 android:layout_alignBottom="@id/profileImage"
-                android:src="@drawable/ic_edit_white_24dp"
-                android:layout_height="wrap_content" />
+                android:onClick="@{()->viewModel.askToChangeProfile()}"
+                app:srcCompat="@drawable/ic_edit_white_24dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_20dp"
-            android:padding="15dp"
-            android:focusable="false"
             android:clickable="true"
+            android:focusable="false"
             android:focusableInTouchMode="true"
-            android:layout_height="match_parent">
+            android:padding="15dp">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textNameTitle"
-                style="@style/TextView.SubTitle1"
+                style="@style/Material.SubTitle"
                 android:layout_width="wrap_content"
-                android:ems="5"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10dp"
+                android:ems="5"
                 android:padding="15dp"
                 android:text="Name" />
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_marginTop="@dimen/_10dp"
+            <com.gwl.core.MaterialEditText
                 android:id="@+id/textName"
-                tools:text="Name"
-                android:padding="15dp"
-                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.NAME,text.toString())}"
-                android:enabled="@{viewModel.isEditable}"
-                style="@style/TextView.SubTitle1"
-                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
-                android:inputType="textCapWords"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
                 android:layout_toRightOf="@id/textNameTitle"
-                android:text="@{viewModel.user.name}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textEmailTitle"
-                android:text="Email"
-                android:padding="15dp"
-                android:ems="5"
-                style="@style/TextView.SubTitle1"
-                android:layout_below="@+id/textName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textEmail"
-                tools:text="Email"
-                android:inputType="textEmailAddress"
-                android:padding="15dp"
-                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.EMAIL,text.toString())}"
                 android:enabled="@{viewModel.isEditable}"
-                style="@style/TextView.SubTitle1"
-                android:layout_marginLeft="@dimen/_10dp"
-                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
-                android:layout_toRightOf="@id/textEmailTitle"
-                android:layout_below="@+id/textName"
-                android:text="@{viewModel.user.email}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textCityTitle"
-                android:text="City"
-                android:ems="5"
-                android:padding="15dp"
-                style="@style/TextView.SubTitle1"
-                android:layout_below="@+id/textPhoneTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textCity"
-                tools:text="City"
-                android:padding="15dp"
-                style="@style/TextView.SubTitle1"
-                android:layout_marginLeft="@dimen/_10dp"
+                android:hint="John Richard"
                 android:inputType="textCapWords"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.NAME,text.toString())}"
+                android:padding="15dp"
+                android:text="@{viewModel.user.name}"
+                tools:text="Name" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textEmailTitle"
+                style="@style/Material.SubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textName"
+                android:layout_marginTop="@dimen/_10dp"
+                android:ems="5"
+                android:padding="15dp"
+                android:text="Email" />
+
+            <com.gwl.core.MaterialEditText
+                android:id="@+id/textEmail"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textName"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_toRightOf="@id/textEmailTitle"
                 android:enabled="@{viewModel.isEditable}"
+                android:hint="JohnRichard@xyz.xy"
+                android:inputType="textEmailAddress"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.EMAIL,text.toString())}"
+                android:padding="15dp"
+                android:text="@{viewModel.user.email}"
+                tools:text="Email" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textCityTitle"
+                style="@style/Material.SubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textPhoneTitle"
+                android:layout_marginTop="@dimen/_10dp"
+                android:ems="5"
+                android:padding="15dp"
+                android:text="City" />
+
+            <com.gwl.core.MaterialEditText
+                android:id="@+id/textCity"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textMobile"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_toRightOf="@id/textCityTitle"
+                android:enabled="@{viewModel.isEditable}"
+                android:hint="Indore"
+                android:inputType="textCapWords"
                 android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.CITY,text.toString())}"
-                android:layout_toRightOf="@id/textCityTitle"
-                android:layout_below="@+id/textMobile"
+                android:padding="15dp"
                 android:text="@{viewModel.user.city}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                tools:text="City" />
 
-            <TextView
-                android:layout_marginTop="@dimen/_10dp"
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textPhoneTitle"
-                android:text="Mobile"
-                android:ems="5"
-                android:padding="15dp"
-                style="@style/TextView.SubTitle1"
+                style="@style/Material.SubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/textEmailTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <androidx.appcompat.widget.AppCompatEditText
                 android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textMobile"
-                tools:text="999111"
-                android:maxLength="10"
-                android:inputType="phone"
-                android:padding="15dp"
-                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
-                style="@style/TextView.SubTitle1"
-                android:layout_marginLeft="@dimen/_10dp"
-                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
-                android:layout_toRightOf="@id/textPhoneTitle"
-                android:layout_below="@+id/textEmail"
-                android:enabled="@{viewModel.isEditable}"
-                android:text="@{viewModel.user.mobile}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginTop="@dimen/_10dp"
-                android:id="@+id/textStateTitle"
-                android:text="State"
                 android:ems="5"
                 android:padding="15dp"
-                style="@style/TextView.SubTitle1"
-                android:layout_below="@+id/textCityTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:text="Mobile" />
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <com.gwl.profile.maskededittext.MaskedEditText
+                android:id="@+id/textMobile"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textEmail"
+                android:layout_marginLeft="@dimen/_10dp"
                 android:layout_marginTop="@dimen/_10dp"
+                android:layout_toRightOf="@id/textPhoneTitle"
+                android:enabled="@{viewModel.isEditable}"
+                android:hint="9190095900"
+                android:inputType="phone|number"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
+                android:padding="15dp"
+                android:text="@{viewModel.user.mobile}"
+                app:keep_hint="false"
+                mask:allowed_chars="1234567890"
+                mask:mask="#####-#####" />
+            <!--<com.gwl.core.MaterialEditText
+                android:id="@+id/textMobile"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textEmail"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_toRightOf="@id/textPhoneTitle"
+                android:enabled="@{viewModel.isEditable}"
+                android:inputType="phone"
+                android:maxLength="15"
+                android:digits="+() 1234567890-"
+                android:visibility="gone"
+                android:hint="+919190095900"
+                android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
+                android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.MOBILE,text.toString())}"
+                android:padding="15dp"
+                android:text="@{viewModel.user.mobile}"
+                tools:text="999111" />-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textStateTitle"
+                style="@style/Material.SubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textCityTitle"
+                android:layout_marginTop="@dimen/_10dp"
+                android:ems="5"
+                android:padding="15dp"
+                android:text="State" />
+
+            <com.gwl.core.MaterialEditText
                 android:id="@+id/textState"
-                tools:text="mp"
+                style="@style/Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textCity"
+                android:layout_marginLeft="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_toRightOf="@id/textStateTitle"
+                android:enabled="@{viewModel.isEditable}"
+                android:hint="M.P."
+                android:inputType="text"
                 android:maxLength="10"
                 android:onFocusChange="@{ (view, hasFocus) -> viewModel.onFocusChanged(view,hasFocus)}"
-                android:inputType="text"
-                android:padding="15dp"
                 android:onTextChanged="@{(text, start, before, count) -> viewModel.afterTextChange(UserField.STATE,text.toString())}"
-                style="@style/TextView.SubTitle1"
-                android:enabled="@{viewModel.isEditable}"
-                android:layout_marginLeft="@dimen/_10dp"
-                android:layout_toRightOf="@id/textStateTitle"
-                android:layout_below="@+id/textCity"
+                android:padding="15dp"
                 android:text="@{viewModel.user.state}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                tools:text="mp" />
 
         </RelativeLayout>
     </LinearLayout>

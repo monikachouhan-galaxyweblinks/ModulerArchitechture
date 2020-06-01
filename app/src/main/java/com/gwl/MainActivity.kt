@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         startLogin()
     }
 
-    private fun startLogin() = SearchNavigation.dynamicStart?.let {
+    private fun startLogin() = LoginNavigation.dynamicStart?.let {
         startActivity(it)
         finish()
     }

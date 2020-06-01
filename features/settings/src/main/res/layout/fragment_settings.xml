@@ -8,31 +8,67 @@
             type="com.gwl.settings.SettingsViewModel" />
     </data>
 
-    <RelativeLayout
-        android:orientation="vertical"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:padding="@dimen/_10dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_10dp">
 
-        <TextView
-            android:id="@+id/autoPlay"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/_10dp"
-            android:paddingBottom="@dimen/_10dp"
-            android:paddingRight="@dimen/_10dp"
-            android:text="Auto play on wifi"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/checkboxAutoPlay"
-            android:textAppearance="@style/TextView.SubTitle1" />
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:id="@+id/checkboxAutoPlay"
-            android:paddingTop="@dimen/_10dp"
-            android:paddingBottom="@dimen/_10dp"
-            android:checked="@={viewmodel.isAutoPlay}"
-            android:layout_alignParentRight="true"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/autoPlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/checkboxAutoPlay"
+                android:paddingTop="@dimen/_10dp"
+                android:paddingRight="@dimen/_10dp"
+                android:paddingBottom="@dimen/_10dp"
+                android:text="Auto play on wifi"
+                style="@style/Material.SubTitle" />
+
+            <CheckBox
+                android:id="@+id/checkboxAutoPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:checked="@={viewmodel.isAutoPlay}"
+                android:paddingTop="@dimen/_10dp"
+                android:paddingBottom="@dimen/_10dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/darkThem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/darkThemeSwitch"
+                android:paddingTop="@dimen/_10dp"
+                android:paddingRight="@dimen/_10dp"
+                android:paddingBottom="@dimen/_10dp"
+                android:text="Dark Theme"
+                style="@style/Material.SubTitle" />
+
+            <Switch
+                android:id="@+id/darkThemeSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:checked="@={viewmodel.isDarkTheme}"
+                android:paddingTop="@dimen/_10dp"
+                android:paddingBottom="@dimen/_10dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
 </layout>

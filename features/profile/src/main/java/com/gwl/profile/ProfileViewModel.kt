@@ -1,5 +1,6 @@
 package com.gwl.profile
 
+import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
@@ -19,6 +20,7 @@ class ProfileViewModel : BaseViewModel() {
     var mPickProfilePicture = MutableLiveData<Boolean>()
 
     fun updateUser() {
+        Log.e("updateUser  ", "${user}")
         loginManager.setUser(user)
     }
 

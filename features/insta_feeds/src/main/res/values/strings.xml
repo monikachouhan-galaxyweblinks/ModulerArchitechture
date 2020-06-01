@@ -42,6 +42,7 @@
     "waypoints for the user."
 
   </string>
+  <string name="player_error">Player error %1$d</string>
   <string name="action_settings">Auto play when wifi</string>
   <string name="title_activity_single_player">Single Player Activity</string>
 </resources>

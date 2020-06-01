@@ -76,6 +76,7 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
         itemRowBinding.setVariable(BR.likeCount, likeCount)
 
         videoUri = Uri.parse(data.videos?.lowResolution?.url)
+        Log.e("videoUri  ",videoUri.toString());
         itemRowBinding.setVariable(BR.itemClick, onItemClickListener)
         //playerFrame.setAspectRatio(16/9f)
         Log.d("VideoFeedViewHolder", "VideoFeedViewHolder count $count ")
@@ -152,5 +153,4 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
     override fun wantsToPlay() = visibleAreaOffset(this, itemView.parent) >= 0.65
 
     override fun getPlayerOrder() = adapterPosition
-
 }

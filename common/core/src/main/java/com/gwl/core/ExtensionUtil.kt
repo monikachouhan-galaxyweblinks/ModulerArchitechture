@@ -22,6 +22,12 @@ fun Activity.navigateToNextScreen(screen: Class<*>, bundle: Bundle) {
     startActivity(Intent(this, screen).apply { putExtras(bundle) })
 }
 
+fun Activity.navigateToNextScreenWithAnimation(
+    screen: Class<*>, bundle: Bundle, animationBundle: Bundle?
+) {
+    startActivity(Intent(this, screen).apply { putExtras(bundle) }, animationBundle)
+}
+
 inline fun <reified T : BaseViewModel> AppCompatActivity.initViewModel(noinline creator: (() -> T)? = null): T {
     return if (creator == null)
         ViewModelProviders.of(this).get(T::class.java)

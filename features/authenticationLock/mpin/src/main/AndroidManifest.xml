@@ -12,10 +12,8 @@
     </dist:module>
 
 
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+    <application>
+
         <activity android:name="com.gwl.mpin.activity.MpinActivity"></activity>
 
     </application>

@@ -26,6 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
+            app:itemIconTint="@color/icon_color"
+            app:itemTextColor="@color/icon_color"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation_menu" />
     </RelativeLayout>

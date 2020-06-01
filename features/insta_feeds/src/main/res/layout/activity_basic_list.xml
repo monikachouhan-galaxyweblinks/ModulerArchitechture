@@ -14,9 +14,9 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:background="#A3DDE7FD"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/cardBackground"
         tools:context="com.gwl.feeds.presentation.MediaFeedFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
