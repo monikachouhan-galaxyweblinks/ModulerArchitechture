@@ -1,6 +1,7 @@
 package com.gwl.feeds.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
@@ -39,7 +40,7 @@ import kotlinx.coroutines.withContext
 class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewModel>(),
     BaseAdapter.OnItemClickListener<InstaFeed> {
 
-    private val adapter = MediaFeedAdapter()
+    private val adapter by lazy { MediaFeedAdapter() }
     private var liveData: LiveData<PagedList<InstaFeed>>? = null
     private val disposable = CompositeDisposable()
     private var connectionMode: ConnectionModel? = null
@@ -87,6 +88,13 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
                 updateAutoPlaySetting()
             }
         }
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        Log.d("updateAutoPlaySetting", " onHiddenChanged $hidden")
+        if (!hidden)
+            updateAutoPlaySetting()
     }
 
     override fun onViewClicked(view: View, item: InstaFeed, position: Int) {
@@ -147,6 +155,12 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
     private fun refresh() {
         swipeToRefresh?.isRefreshing = false
         liveData?.value?.dataSource?.invalidate()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("updateAutoPlaySetting", " onResume")
+        updateAutoPlaySetting()
     }
 
     override fun onDestroy() {

@@ -9,6 +9,7 @@ import com.gwl.MyApplication
 import com.gwl.cache.db.AppDatabase
 import com.gwl.cache.db.dao.FavoriteDao
 import com.gwl.core.BaseViewModel
+import com.gwl.core.KEY_AUTO_PLAY_SETTING
 import com.gwl.core.LoginManager
 import com.gwl.feeds.MediaDataSourceFactory
 import com.gwl.feeds.datasource.MediaFeedDataSource
@@ -26,7 +27,6 @@ class MediaFeedViewModel : BaseViewModel() {
 
     companion object {
         const val FETCH_SIZE = 5
-        const val KEY_AUTO_PLAY_SETTING = "autoplay"
         const val PREFETCH_DISTANCE = 20
     }
 

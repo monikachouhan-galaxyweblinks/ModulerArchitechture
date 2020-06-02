@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import androidx.lifecycle.Observer
 import com.gwl.core.BaseFragment
 import com.gwl.core.initViewModel
 import com.gwl.search.BR
@@ -50,14 +51,19 @@ class SearchFragment : BaseFragment<ActivitySearchBinding, SearchViewModel>() {
         initSearch()
     }
 
+    override fun removeObservers() {
+        super.removeObservers()
+
+    }
     private fun initSearch() {
         mViewModel.searchHistory.observe {
-            val historyList: List<String> = it.map { it.history }
+            val historyList: List<String> = it?.map { it.history } ?: listOf()
             search_view?.setHistoryORSuggestions(historyList)
         }
-        mViewModel.searchRepository.searchDao.getAllSearchHistory().observe {
-            search_view?.setHistoryORSuggestions(it.map { it.history })
-        }
+        mViewModel.searchRepository.searchDao.getAllSearchHistory().observe(viewLifecycleOwner,
+            Observer {
+                search_view?.setHistoryORSuggestions(it.map { it.history })
+            })
         search_view?.setVoiceSearch(false)
         search_view?.setCursorDrawable(R.drawable.custom_cursor)
         search_view?.setEllipsize(true)

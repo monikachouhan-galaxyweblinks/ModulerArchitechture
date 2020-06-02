@@ -3,18 +3,21 @@ package com.gwl.settings
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.MutableLiveData
 import com.gwl.MyApplication
-import com.gwl.core.BaseViewModel
-import com.gwl.core.LoginManager
+import com.gwl.core.*
 
 /**
  * @author GWL
  */
 class SettingsViewModel : BaseViewModel() {
     private val loginManager: LoginManager by lazy { MyApplication.loginManager }
-    val isAutoPlay: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
-    val isDarkTheme: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+    val isAutoPlay: SingleLiveData<Boolean> by lazy { SingleLiveData<Boolean>() }
+    val isDarkTheme: SingleLiveData<Boolean> by lazy { SingleLiveData<Boolean>() }
 
     init {
+        refreshSettings()
+    }
+
+    fun refreshSettings() {
         isAutoPlay.postValue(loginManager.getBoolean(KEY_AUTO_PLAY_SETTING))
         isDarkTheme.postValue(loginManager.getBoolean(KEY_THEME_SETTING))
     }

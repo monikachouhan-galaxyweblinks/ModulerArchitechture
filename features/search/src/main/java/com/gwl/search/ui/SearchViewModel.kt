@@ -24,7 +24,7 @@ class SearchViewModel : BaseViewModel() {
     val data: ObservableField<List<SearchItem>> by lazy { ObservableField<List<SearchItem>>() }
     val defaultList: MutableLiveData<List<SearchItem>> by lazy { MutableLiveData<List<SearchItem>>() }
     var lastSearchTerm: String = ""
-    val searchHistory: LiveData<List<SearchHistory>> get() = _searchHistory
+    val searchHistory: MutableLiveData<List<SearchHistory>> get() = _searchHistory
     private var _searchHistory: MutableLiveData<List<SearchHistory>> = MutableLiveData()
 
     init {

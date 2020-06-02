@@ -8,6 +8,9 @@ import com.gwl.model.User
 /**
  * Save User information
  * */
+const val KEY_AUTO_PLAY_SETTING = "autoplay"
+const val KEY_THEME_SETTING = "darktheme"
+
 class LoginManager private constructor(context: Context) {
     companion object {
         private const val SHARED_PREFS_NAME = "Moduler_APP"

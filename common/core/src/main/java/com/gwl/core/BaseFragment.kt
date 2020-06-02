@@ -53,6 +53,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
         mDataBinding.setVariable(getBindingVariable(), mViewModel)
         mDataBinding.lifecycleOwner = this
         mDataBinding.executePendingBindings()
+        removeObservers()
         initObservers()
         // }
     }
@@ -63,16 +64,19 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
     ) {
         toolbar?.also {
             (activity as? AppCompatActivity)?.apply {
-            setSupportActionBar(it)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-            supportActionBar?.setHomeAsUpIndicator(icon)
-        }}
-
+                setSupportActionBar(it)
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                supportActionBar?.setHomeAsUpIndicator(icon)
+            }
+        }
     }
+
     // endregion
     fun <T> LiveData<T>.observe(performTask: (it: T) -> Unit) {
-        this.observe(this@BaseFragment, Observer {
-            performTask(it)
+        this.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                performTask(it)
+            }
         })
     }
 
@@ -117,6 +121,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
     }
 
     open fun initObservers() {}
+    open fun removeObservers() {}
     open fun initExtras() {}
 
     // region - Abstract functions

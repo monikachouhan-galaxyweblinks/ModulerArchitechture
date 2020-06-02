@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
  * @author GWL
  * @Created on 02/8/19.
  */
-class ActionLiveData<T> : MutableLiveData<T>() {
+class SingleLiveData<T> : MutableLiveData<T>() {
 
     @MainThread
     override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
