@@ -21,12 +21,11 @@ class BlogSyncWorker(context: Context, workerParams: WorkerParameters) :
     }
 
     override suspend fun onSuccess(result: BlogPostResponse?, id: Int) {
-
         bloagDao.update(state = SyncState.SUCCESS, id = id)
 
     }
 
     override fun onFailure(result: APIError?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
