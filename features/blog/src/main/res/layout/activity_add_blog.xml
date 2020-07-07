@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.blog.addblog.AddBlogViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:context=".LoginActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_blog"
+            android:textSize="@dimen/text_heading6" />
+
+        <com.gwl.core.MaterialEditText
+            android:id="@+id/etTitle"
+            style="@style/Material.EditText.Blog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:hint="@string/enter_title" />
+
+        <com.gwl.core.MaterialEditText
+            android:id="@+id/etBody"
+            style="@style/Material.EditText.Blog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="top|left"
+            android:hint="@string/enter_message"
+            android:minLines="5" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:onClick="@{()->viewModel.onSubmitClick()}"
+            android:text="@string/submit" />
+
+    </LinearLayout>
+</layout>

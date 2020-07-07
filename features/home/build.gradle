@@ -7,6 +7,7 @@ android {
             minifyEnabled false
             // 1 for only Drawer , 2 for only BottomBar , 3 for Both
             buildConfigField "Integer", "IS_DRAWER", '3'
+            buildConfigField "Integer", "IS_SYNC", '1'
             signingConfig signingConfigs.debug
             testCoverageEnabled true
         }
@@ -14,6 +15,7 @@ android {
             debuggable false
             minifyEnabled false
             buildConfigField "Integer", "IS_DRAWER", '3'
+            buildConfigField "Integer", "IS_SYNC", '1'
         }
     }
 }

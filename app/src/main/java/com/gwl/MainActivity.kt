@@ -2,6 +2,7 @@ package com.gwl
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.gwl.navigation.features.BlogNavigation
 import com.gwl.navigation.features.LoginNavigation
 import com.gwl.navigation.features.SearchNavigation
 
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
         startLogin()
     }
 
-    private fun startLogin() = LoginNavigation.dynamicStart?.let {
+    // TODO  replace BlogNavigation with LoginNavigation
+    private fun startLogin() = BlogNavigation.dynamicStart?.let {
         startActivity(it)
         finish()
     }

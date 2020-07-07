@@ -22,7 +22,8 @@ object FeatureModules {
         Modules.fbLogin,
         Modules.instaFeed,
         Modules.settings,
-        Modules.signup
+        Modules.signup,
+        Modules.blog
     )
 
     val settingModules = arrayOf(
@@ -46,7 +47,8 @@ object FeatureModules {
         Modules.instaFeed,
         Modules.settings,
         Modules.search,
-        Modules.fbLogin
+        Modules.fbLogin,
+        Modules.blog
     )
 }
 
@@ -73,6 +75,7 @@ object Modules {
     /*val player = ":features:player_feeds"*/
     val instaFeed = ":features:insta_feeds"
     val signup = ":features:signup"
+    val blog = ":features:blog"
     val mpinauthentication = ":features:authenticationLock:mpin:mpinauthentication"
     val mpin = ":features:authenticationLock:mpin"
     val fingure = ":features:authenticationLock:fingure"

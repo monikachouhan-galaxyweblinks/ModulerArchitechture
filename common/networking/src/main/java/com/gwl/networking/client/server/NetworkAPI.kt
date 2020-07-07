@@ -3,10 +3,7 @@ package com.gwl.networking.client.server
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.gwl.model.ArticlesItem
-import com.gwl.model.FeedResponse
-import com.gwl.model.InstaFeed
-import com.gwl.model.ResponseData
+import com.gwl.model.*
 import com.gwl.networking.R
 import com.gwl.networking.response.ApiResponse
 import com.gwl.networking.result.APIError
@@ -34,6 +31,11 @@ class NetworkAPI(retrofit: Retrofit) : NetworkAPIContract() {
 
     private val authService = retrofit.create(AuthenticationService::class.java)
     private val decoder = Gson()
+
+
+    override suspend fun postBlog(request: PostBlogRequest): Call<BlogPostResponse> {
+        return authService.postBlog(signupUser = request)
+    }
 
     override suspend fun getList(): Call<ApiResponse<ResponseData>> {
         return authService.getList()

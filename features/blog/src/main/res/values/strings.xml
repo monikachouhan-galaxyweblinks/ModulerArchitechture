@@ -1,0 +1,9 @@
+<resources>
+    <string name="enter_title">Enter Title</string>
+    <string name="add_blog">Add Blog</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="submit">Submit</string>
+    <string name="success">Blog posted successfully</string>
+    <string name="failed">Blog posted failed</string>
+    <string name="all_fields_are_mandatory">All fields are mandatory</string>
+</resources>

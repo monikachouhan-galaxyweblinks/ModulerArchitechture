@@ -1,8 +1,6 @@
 package com.gwl.networking.client.server
 
-import com.gwl.model.ArticlesItem
-import com.gwl.model.InstaFeed
-import com.gwl.model.ResponseData
+import com.gwl.model.*
 import com.gwl.networking.response.ApiResponse
 import com.gwl.networking.result.APIResult
 import retrofit2.Call
@@ -10,6 +8,7 @@ import retrofit2.Call
 
 abstract class NetworkAPIContract {
 
+    abstract suspend fun postBlog(request: PostBlogRequest): Call<BlogPostResponse>
     abstract suspend fun getList(): Call<ApiResponse<ResponseData>>
     abstract suspend fun getInstaFeeds(): APIResult<List<InstaFeed>>
     abstract suspend fun getPlayerFeeds(
