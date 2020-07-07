@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,35 +13,40 @@
             type="com.gwl.model.BlogPostResponse" />
     </data>
 
-    <LinearLayout
-        android:id="@+id/ll"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10dp"
-        android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:elevation="@dimen/_4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_4dp"
+        app:cardElevation="@dimen/_4dp"
+        app:contentPadding="@dimen/_10dp"
+        app:cardUseCompatPadding="true">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@{item.title}"
-        tools:text="Author" />
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10dp"
-        android:ellipsize="end"
-        android:text="@{item.body}"
-        tools:text="Author" />
+            <TextView
+                style="@style/TextView.Body.Bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{item.title}"
+                tools:text="Author" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/_10dp"
-        android:background="#B3AFAF" />
-</LinearLayout>
-    </layout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:text="@{item.body}"
+                tools:text="Author" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

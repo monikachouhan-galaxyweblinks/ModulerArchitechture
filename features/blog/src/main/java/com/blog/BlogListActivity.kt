@@ -36,6 +36,11 @@ class BlogListActivity : BaseActivity<ActivityBlogListBinding, BlogViewModel>() 
         }
         initView()
     }
+    override fun onSupportNavigateUp(): Boolean {
+        supportFinishAfterTransition()
+        return super.onSupportNavigateUp()
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
@@ -58,7 +63,7 @@ class BlogListActivity : BaseActivity<ActivityBlogListBinding, BlogViewModel>() 
     private fun initView() {
         recyclerViewData.adapter = listAdapter
         mViewModel.getBlogData().observe(this@BlogListActivity, Observer {
-            if (it.isNotEmpty()) listAdapter.blogPostResponseList = it
+            if (it.isNotEmpty()) listAdapter.blogPostResponseList = it.reversed()
         })
     }
 }
