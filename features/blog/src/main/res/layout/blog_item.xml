@@ -6,6 +6,7 @@
     <data>
 
         <import type="android.view.View" />
+        <import type="com.aucto.model.SyncState" />
 
 
         <variable
@@ -16,19 +17,20 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/_4dp"
-        app:cardBackgroundColor="@color/white"
+        app:cardBackgroundColor="@{item.syncStatus == SyncState.SUCCESS ? @color/white : @color/grey }"
         app:cardCornerRadius="@dimen/_4dp"
-        app:cardElevation="@dimen/_4dp"
+        app:cardElevation="1dp"
         app:contentPadding="@dimen/_10dp"
-        app:cardUseCompatPadding="true">
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginLeft="@dimen/_10dp"
+        android:layout_marginRight="@dimen/_10dp">
 
         <LinearLayout
             android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
             android:orientation="vertical">
 
             <TextView
