@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.gwl.model.ArticlesItem" />
+            type="com.aucto.model.ArticlesItem" />
     </data>
 
     <LinearLayout

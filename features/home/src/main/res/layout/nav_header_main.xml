@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.gwl.model.User" />
+            type="com.aucto.model.User" />
 
         <import type="android.view.View" />
     </data>

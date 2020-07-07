@@ -4,7 +4,7 @@
     <data>
         <variable
             name="image"
-            type="com.gwl.model.Images" />
+            type="com.aucto.model.Images" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"

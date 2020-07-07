@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore;
+package com.aucto.playercore;
 
 /**
  * This is an addition layer used in PlayerManager. Setting this where

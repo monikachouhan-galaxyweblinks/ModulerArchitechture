@@ -2,7 +2,7 @@
  * All dependencies and gradle constants declared here.
  */
 object ApplicationId {
-    const val id = "com.gwl"
+    const val id = "com.aucto"
 }
 
 /**
@@ -11,43 +11,16 @@ object ApplicationId {
  */
 object FeatureModules {
     var modules = arrayOf(
-        Modules.home,
-        Modules.launcher,
-        Modules.login,
-        Modules.profile,
-        Modules.fingure,
-        Modules.mpin,
-        Modules.googleLogin,
-        Modules.search,
-        Modules.fbLogin,
-        Modules.instaFeed,
-        Modules.settings,
-        Modules.signup,
         Modules.blog
     )
 
     val settingModules = arrayOf(
         Modules.app,
         Modules.networking,
-        Modules.exoplayerLib,
-        Modules.playerCore,
         Modules.model,
         Modules.core,
         Modules.navigation,
-        Modules.login,
-        Modules.home,
-        Modules.profile,
-        Modules.launcher,
         Modules.cache,
-        Modules.presentation,
-        Modules.mpinauthentication,
-        Modules.fingure,
-        Modules.googleLogin,
-        Modules.signup,
-        Modules.instaFeed,
-        Modules.settings,
-        Modules.search,
-        Modules.fbLogin,
         Modules.blog
     )
 }
@@ -227,7 +200,7 @@ object SupportLibraries {
 
 object GoogleLibraries {
     val auth = "com.google.android.gms:play-services-auth:${Versions.googleAuth}"
-    val playCore = "com.google.android.play:core:${Versions.playCore}"
+   // val playCore = "com.google.android.play:core:${Versions.playCore}"
 }
 
 object FirebaseLibraries {

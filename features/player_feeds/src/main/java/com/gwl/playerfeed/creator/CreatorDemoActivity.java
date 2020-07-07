@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed.creator;
+package com.aucto.playerfeed.creator;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,12 +27,12 @@ import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.MyApplication;
+import com.aucto.MyApplication;
 
-import com.gwl.playerfeed.ExoCreator;
-import com.gwl.playerfeed.Playable;
-import com.gwl.playerfeed.ToroExo;
-import com.gwl.playerfeed.R;
+import com.aucto.playerfeed.ExoCreator;
+import com.aucto.playerfeed.Playable;
+import com.aucto.playerfeed.ToroExo;
+import com.aucto.playerfeed.R;
 
 /**
  * @author eneim (2018/02/07).

@@ -7,15 +7,15 @@
 
         <import type="android.view.View" />
 
-        <import type="com.gwl.model.MediaType" />
+        <import type="com.aucto.model.MediaType" />
 
         <variable
             name="viewModel"
-            type="com.gwl.details.VideoDetailViewModel" />
+            type="com.aucto.details.VideoDetailViewModel" />
 
         <variable
             name="item"
-            type="com.gwl.model.ArticlesItem" />
+            type="com.aucto.model.ArticlesItem" />
     </data>
 
     <LinearLayout

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.gwl.playerfeed.presentation.MediaFeedViewModel" />
+            type="com.aucto.playerfeed.presentation.MediaFeedViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,14 +17,14 @@
         android:background="#A3D8D4D4"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.gwl.playerfeed.presentation.MediaFeedFragment">
+        tools:context="com.aucto.playerfeed.presentation.MediaFeedFragment">
 
         <com.gwl.toro.widget.Container
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.gwl.playerfeed.presentation.MediaFeedFragment"
+            tools:context="com.aucto.playerfeed.presentation.MediaFeedFragment"
             tools:showIn="@layout/activity_basic_list" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

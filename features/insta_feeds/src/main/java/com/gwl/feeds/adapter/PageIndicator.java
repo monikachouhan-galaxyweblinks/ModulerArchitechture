@@ -1,4 +1,4 @@
-package com.gwl.feeds.adapter;
+package com.aucto.feeds.adapter;
 
 import androidx.viewpager.widget.ViewPager;
 

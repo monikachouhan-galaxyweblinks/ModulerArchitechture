@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.content.Context;
 import android.net.Uri;
@@ -23,9 +23,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.source.ads.AdsLoader;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.annotations.Beta;
-import com.gwl.playercore.helper.ToroPlayerHelper;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.annotations.Beta;
+import com.aucto.playercore.helper.ToroPlayerHelper;
 
 /**
  * A {@link ToroPlayerHelper} to integrate ExoPlayer IMA Extension. Work together with {@link AdsPlayable}.

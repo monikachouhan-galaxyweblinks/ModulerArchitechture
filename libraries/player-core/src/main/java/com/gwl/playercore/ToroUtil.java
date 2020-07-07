@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore;
+package com.aucto.playercore;
 
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -24,7 +24,7 @@ import android.view.ViewParent;
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import com.gwl.playercore.widget.Container;
+import com.aucto.playercore.widget.Container;
 
 /**
  * @author eneim | 5/31/17.

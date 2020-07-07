@@ -7,15 +7,15 @@
 
         <import type="android.view.View" />
 
-        <import type="com.gwl.model.MediaType" />
+        <import type="com.aucto.model.MediaType" />
 
         <variable
             name="itemClick"
-            type="com.gwl.core.BaseAdapter.OnItemClickListener" />
+            type="com.aucto.core.BaseAdapter.OnItemClickListener" />
 
         <variable
             name="item"
-            type="com.gwl.model.InstaFeed" />
+            type="com.aucto.model.InstaFeed" />
 
         <variable
             name="position"
@@ -23,7 +23,7 @@
 
         <variable
             name="pagerAdapter"
-            type="com.gwl.feeds.adapter.SlidingImageAdapter" />
+            type="com.aucto.feeds.adapter.SlidingImageAdapter" />
 
         <variable
             name="isPlaying"

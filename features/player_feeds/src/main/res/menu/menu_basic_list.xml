@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+  ~ Copyright (c) 2018 Nam Nguyen, nam@aucto.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.gwl.playerfeed.presentation.MediaFeedFragment">
+    tools:context="com.aucto.playerfeed.presentation.MediaFeedFragment">
   <item
       android:id="@+id/action_autoPlaySettings"
       android:checkable="true"

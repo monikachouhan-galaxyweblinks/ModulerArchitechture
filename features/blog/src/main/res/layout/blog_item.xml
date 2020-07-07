@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.gwl.model.BlogPostResponse" />
+            type="com.aucto.model.BlogPostResponse" />
     </data>
 
     <LinearLayout

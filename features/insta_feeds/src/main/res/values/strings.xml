@@ -1,5 +1,5 @@
 <!--
-  ~ Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+  ~ Copyright (c) 2018 Nam Nguyen, nam@aucto.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -45,4 +45,10 @@
   <string name="player_error">Player error %1$d</string>
   <string name="action_settings">Auto play when wifi</string>
   <string name="title_activity_single_player">Single Player Activity</string>
+
+  <string name="client_id">475841799170709</string>
+  <string name="redirect_url">https://instagram.com/</string>
+  <string name="base_url">https://api.instagram.com/</string>
+  <string name="get_user_info_url">https://api.instagram.com/v1/users/self/?access_token=</string>
+
 </resources>

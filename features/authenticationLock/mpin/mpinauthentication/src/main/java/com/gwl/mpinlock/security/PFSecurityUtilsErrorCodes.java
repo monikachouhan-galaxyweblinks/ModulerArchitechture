@@ -1,4 +1,4 @@
-package com.gwl.mpinlock.security;
+package com.aucto.mpinlock.security;
 
 public class PFSecurityUtilsErrorCodes {
     public static final int ERROR_LOAD_KEY_STORE = 100101;

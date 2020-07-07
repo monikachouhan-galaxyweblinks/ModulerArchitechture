@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.content.Context;
 import android.net.Uri;
@@ -37,8 +37,8 @@ import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import java.io.IOException;
 
-import static com.gwl.playercore.ToroUtil.checkNotNull;
-import static com.gwl.playerfeed.ToroExo.with;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playerfeed.ToroExo.with;
 
 /**
  * Usage: use this as-it or inheritance.

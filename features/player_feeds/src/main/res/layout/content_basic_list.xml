@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+  ~ Copyright (c) 2018 Nam Nguyen, nam@aucto.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -23,6 +23,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.gwl.playerfeed.presentation.MediaFeedFragment"
+    tools:context="com.aucto.playerfeed.presentation.MediaFeedFragment"
     tools:showIn="@layout/activity_basic_list"
     />

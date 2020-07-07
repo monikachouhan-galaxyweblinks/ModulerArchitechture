@@ -6,7 +6,6 @@ dependencies {
     implementation SupportLibraries.recyclerview
     implementation Libraries.shimmer
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation project(Modules.playerCore)
 
     implementation SupportLibraries.design
     implementation Libraries.lifecycleExtensions
@@ -17,10 +16,14 @@ dependencies {
     testImplementation TestLibraries.lifecycleTesting
 
     implementation project(Modules.model)
+    implementation project(Modules.cache)
     implementation project(Modules.networking)
     api Libraries.glide
     kapt Libraries.glideCompiler
     implementation 'androidx.palette:palette-ktx:1.0.0'
+    implementation "androidx.work:work-runtime-ktx:2.3.4"
+    implementation Libraries.roomDB
+    kapt Libraries.roomCompiler
 }
 
 sourceCompatibility = "8"

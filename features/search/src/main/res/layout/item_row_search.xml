@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.gwl.model.SearchItem" />
+            type="com.aucto.model.SearchItem" />
     </data>
 
     <LinearLayout

@@ -3,12 +3,14 @@ package com.gwl.feeds.presentation
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.gwl.MyApplication
 import com.gwl.cache.db.AppDatabase
 import com.gwl.cache.db.dao.FavoriteDao
 import com.gwl.core.BaseViewModel
+import com.gwl.core.KEY_ACCESS_TOKEN
 import com.gwl.core.KEY_AUTO_PLAY_SETTING
 import com.gwl.core.LoginManager
 import com.gwl.feeds.MediaDataSourceFactory
@@ -23,7 +25,7 @@ import kotlinx.coroutines.launch
 /**
  * @author GWL
  */
-class MediaFeedViewModel : BaseViewModel() {
+class MediaFeedViewModel : BaseViewModel(), AuthenticationListener {
 
     companion object {
         const val FETCH_SIZE = 5
@@ -34,6 +36,7 @@ class MediaFeedViewModel : BaseViewModel() {
     val networkAPI: NetworkAPI by lazy { MyApplication.instance.networkAPI }
     val isApiRunning: ObservableField<Boolean> by lazy { ObservableField<Boolean>(true) }
     val mediaFeeds: ObservableField<List<InstaFeed>> by lazy { ObservableField<List<InstaFeed>>() }
+    val showDialog: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val onMediaFeedsFailure: ObservableField<String> by lazy { ObservableField<String>() }
     val favDao: FavoriteDao by lazy { AppDatabase.getInstance(MyApplication.instance).favDao() }
     val dataSource: MediaFeedDataSource by lazy { MediaFeedDataSource() }
@@ -44,6 +47,14 @@ class MediaFeedViewModel : BaseViewModel() {
         .setEnablePlaceholders(false)
         .build()
 
+    var liveData: LiveData<PagedList<InstaFeed>>? = null
+
+    fun initData() {
+        if (loginManager.getString(KEY_ACCESS_TOKEN).isNullOrEmpty()) {
+            showDialog.postValue(true)
+        } else liveData = initPager()
+    }
+
     fun initPager(): LiveData<PagedList<InstaFeed>> {
         isApiRunning.set(true)
         return LivePagedListBuilder<Int, InstaFeed>(
@@ -52,6 +63,13 @@ class MediaFeedViewModel : BaseViewModel() {
                 true
             ), pagedListConfig
         ).build()
+    }
+
+    override fun onTokenReceived(auth_token: String?) {
+        loginManager.setString(KEY_ACCESS_TOKEN, auth_token ?: "")
+        auth_token?.also {
+            liveData = initPager()
+        }
     }
 
     fun checkIsFav(id: String): Boolean {

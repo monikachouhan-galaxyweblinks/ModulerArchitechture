@@ -1,11 +1,11 @@
-package com.gwl.mpinlock.viewmodels;
+package com.aucto.mpinlock.viewmodels;
 
 import android.content.Context;
 
-import com.gwl.mpinlock.security.callbacks.PFPinCodeHelperCallback;
-import com.gwl.mpinlock.security.PFResult;
-import com.gwl.mpinlock.security.PFSecurityManager;
-import com.gwl.mpinlock.security.livedata.PFLiveData;
+import com.aucto.mpinlock.security.callbacks.PFPinCodeHelperCallback;
+import com.aucto.mpinlock.security.PFResult;
+import com.aucto.mpinlock.security.PFSecurityManager;
+import com.aucto.mpinlock.security.livedata.PFLiveData;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

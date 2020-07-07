@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.content.Context;
 import android.os.Looper;
@@ -28,10 +28,10 @@ import com.google.android.exoplayer2.drm.DrmSessionManager;
 import com.google.android.exoplayer2.drm.FrameworkMediaCrypto;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.media.VolumeInfo;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.media.VolumeInfo;
 
-import static com.gwl.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
 
 /**
  * A custom {@link SimpleExoPlayer} that also notify the change of Volume.

@@ -18,24 +18,7 @@
             <option value="$PROJECT_DIR$/common/model" />
             <option value="$PROJECT_DIR$/common/networking" />
             <option value="$PROJECT_DIR$/features" />
-            <option value="$PROJECT_DIR$/features/authenticationLock" />
-            <option value="$PROJECT_DIR$/features/authenticationLock/fingure" />
-            <option value="$PROJECT_DIR$/features/authenticationLock/mpin" />
-            <option value="$PROJECT_DIR$/features/authenticationLock/mpin/mpinauthentication" />
-            <option value="$PROJECT_DIR$/features/home" />
-            <option value="$PROJECT_DIR$/features/insta_feeds" />
-            <option value="$PROJECT_DIR$/features/launcher" />
-            <option value="$PROJECT_DIR$/features/login" />
-            <option value="$PROJECT_DIR$/features/profile" />
-            <option value="$PROJECT_DIR$/features/search" />
-            <option value="$PROJECT_DIR$/features/settings" />
-            <option value="$PROJECT_DIR$/features/signup" />
-            <option value="$PROJECT_DIR$/features/social_login" />
-            <option value="$PROJECT_DIR$/features/social_login/fblogin" />
-            <option value="$PROJECT_DIR$/features/social_login/google_login" />
-            <option value="$PROJECT_DIR$/libraries" />
-            <option value="$PROJECT_DIR$/libraries/exoplayer" />
-            <option value="$PROJECT_DIR$/libraries/player-core" />
+            <option value="$PROJECT_DIR$/features/blog" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/search" />
           </set>

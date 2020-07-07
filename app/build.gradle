@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion Versions.compileSdk
@@ -52,11 +51,9 @@ dependencies {
     api project(Modules.core)
     api project(Modules.networking)
     api project(Modules.navigation)
-    api project(Modules.presentation)
-    api project(Modules.exoplayerLib)
 
     api Libraries.multidex
-    api GoogleLibraries.playCore
+   // api GoogleLibraries.playCore
     api Libraries.roomDB
     kapt Libraries.roomCompiler
     api SupportLibraries.recyclerview

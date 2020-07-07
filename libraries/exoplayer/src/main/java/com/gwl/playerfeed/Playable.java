@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
@@ -33,10 +33,10 @@ import com.google.android.exoplayer2.text.TextOutput;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.video.VideoListener;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.annotations.RemoveIn;
-import com.gwl.playercore.media.PlaybackInfo;
-import com.gwl.playercore.media.VolumeInfo;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.annotations.RemoveIn;
+import com.aucto.playercore.media.PlaybackInfo;
+import com.aucto.playercore.media.VolumeInfo;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArraySet;
 

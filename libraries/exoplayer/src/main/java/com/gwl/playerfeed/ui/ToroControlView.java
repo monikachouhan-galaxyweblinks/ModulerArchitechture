@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed.ui;
+package com.aucto.playerfeed.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -28,11 +28,11 @@ import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerControlView;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.ui.TimeBar;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.exoplayer.R;
-import com.gwl.playerfeed.ToroExo;
-import com.gwl.playerfeed.ToroExoPlayer;
-import com.gwl.playercore.media.VolumeInfo;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.exoplayer.R;
+import com.aucto.playerfeed.ToroExo;
+import com.aucto.playerfeed.ToroExoPlayer;
+import com.aucto.playercore.media.VolumeInfo;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

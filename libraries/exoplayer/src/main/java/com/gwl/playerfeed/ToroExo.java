@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
@@ -40,9 +40,9 @@ import com.google.android.exoplayer2.drm.UnsupportedDrmException;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.upstream.HttpDataSource;
 import com.google.android.exoplayer2.util.Util;
-import com.gwl.playercore.exoplayer.R;
-import com.gwl.playercore.media.DrmMedia;
-import com.gwl.playercore.media.VolumeInfo;
+import com.aucto.playercore.exoplayer.R;
+import com.aucto.playercore.media.DrmMedia;
+import com.aucto.playercore.media.VolumeInfo;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -54,8 +54,8 @@ import java.util.UUID;
 import static android.widget.Toast.LENGTH_SHORT;
 import static com.google.android.exoplayer2.drm.UnsupportedDrmException.REASON_UNSUPPORTED_SCHEME;
 import static com.google.android.exoplayer2.util.Util.getDrmUuid;
-import static com.gwl.playercore.ToroUtil.checkNotNull;
-import static com.gwl.playercore.exoplayer.BuildConfig.LIB_NAME;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playercore.exoplayer.BuildConfig.LIB_NAME;
 import static java.lang.Runtime.getRuntime;
 
 /**
@@ -107,7 +107,7 @@ public final class ToroExo {
     this.playerPools = new HashMap<>();
     this.creators = new HashMap<>();
 
-    // Adapt from ExoPlayer gwl app. Start this on demand.
+    // Adapt from ExoPlayer aucto app. Start this on demand.
     CookieManager cookieManager = new CookieManager();
     cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
     if (CookieHandler.getDefault() != cookieManager) {

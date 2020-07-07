@@ -17,16 +17,16 @@
 
     <application android:usesCleartextTraffic="true">
         <activity
-            android:name="com.gwl.details.audio.AudioDetailActivity"
+            android:name="com.aucto.details.audio.AudioDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.gwl.details.VideoDetailActivity"
+            android:name="com.aucto.details.VideoDetailActivity"
             android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme" />
         <activity
-            android:name="com.gwl.details.image.ImageDetailActivity"
+            android:name="com.aucto.details.image.ImageDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity

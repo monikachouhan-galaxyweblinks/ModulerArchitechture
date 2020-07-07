@@ -1,4 +1,4 @@
-package com.gwl.mpinlock;
+package com.aucto.mpinlock;
 
 import android.content.Context;
 

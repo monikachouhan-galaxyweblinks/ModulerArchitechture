@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore.widget;
+package com.aucto.playercore.widget;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -23,8 +23,8 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.collection.ArraySet;
 
-import com.gwl.playercore.PlayerDispatcher;
-import com.gwl.playercore.ToroPlayer;
+import com.aucto.playercore.PlayerDispatcher;
+import com.aucto.playercore.ToroPlayer;
 
 import java.util.ArrayList;
 import java.util.List;

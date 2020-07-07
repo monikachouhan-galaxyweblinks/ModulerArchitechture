@@ -1,8 +1,8 @@
-package com.gwl.mpinlock.security;
+package com.aucto.mpinlock.security;
 
 import android.content.Context;
 
-import com.gwl.mpinlock.security.callbacks.PFPinCodeHelperCallback;
+import com.aucto.mpinlock.security.callbacks.PFPinCodeHelperCallback;
 
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 

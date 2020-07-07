@@ -3,13 +3,13 @@
 
     <data>
 
-        <import type="com.gwl.model.MediaType" />
+        <import type="com.aucto.model.MediaType" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="com.gwl.feeds.presentation.UserDetailViewModel" />
+            type="com.aucto.feeds.presentation.UserDetailViewModel" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

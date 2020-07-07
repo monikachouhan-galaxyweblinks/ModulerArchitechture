@@ -1,4 +1,4 @@
-package com.gwl.mpinlock.security;
+package com.aucto.mpinlock.security;
 
 import android.annotation.TargetApi;
 import android.content.Context;

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.blog.addblog.AddBlogViewModel" />
+            type="com.aucto.addblog.AddBlogViewModel" />
     </data>
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:text="@string/add_blog"
             android:textSize="@dimen/text_heading6" />
 
-        <com.gwl.core.MaterialEditText
+        <com.aucto.core.MaterialEditText
             android:id="@+id/etTitle"
             style="@style/Material.EditText.Blog"
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             android:layout_marginTop="@dimen/_10dp"
             android:hint="@string/enter_title" />
 
-        <com.gwl.core.MaterialEditText
+        <com.aucto.core.MaterialEditText
             android:id="@+id/etBody"
             style="@style/Material.EditText.Blog"
             android:layout_width="match_parent"

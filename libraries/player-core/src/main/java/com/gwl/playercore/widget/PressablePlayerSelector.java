@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore.widget;
+package com.aucto.playercore.widget;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.gwl.playercore.PlayerSelector;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.ToroUtil;
-import com.gwl.playercore.annotations.Beta;
+import com.aucto.playercore.PlayerSelector;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.ToroUtil;
+import com.aucto.playercore.annotations.Beta;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,8 +31,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
-import static com.gwl.playercore.widget.Common.allowsToPlay;
-import static com.gwl.playercore.widget.Common.findFirst;
+import static com.aucto.playercore.widget.Common.allowsToPlay;
+import static com.aucto.playercore.widget.Common.findFirst;
 import static java.util.Collections.singletonList;
 
 /**

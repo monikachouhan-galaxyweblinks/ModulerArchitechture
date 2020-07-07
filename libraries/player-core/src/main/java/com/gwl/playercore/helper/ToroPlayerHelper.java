@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore.helper;
+package com.aucto.playercore.helper;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -25,15 +25,15 @@ import androidx.annotation.FloatRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.RestrictTo;
 
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.ToroPlayer.EventListener;
-import com.gwl.playercore.ToroPlayer.State;
-import com.gwl.playercore.annotations.RemoveIn;
-import com.gwl.playercore.media.PlaybackInfo;
-import com.gwl.playercore.media.VolumeInfo;
-import com.gwl.playercore.widget.Container;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.ToroPlayer.EventListener;
+import com.aucto.playercore.ToroPlayer.State;
+import com.aucto.playercore.annotations.RemoveIn;
+import com.aucto.playercore.media.PlaybackInfo;
+import com.aucto.playercore.media.VolumeInfo;
+import com.aucto.playercore.widget.Container;
 
-import static com.gwl.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
 
 /**
  * General definition of a helper class for a specific {@link ToroPlayer}. This class helps

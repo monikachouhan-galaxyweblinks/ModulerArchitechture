@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed.presentation;
+package com.aucto.playerfeed.presentation;
 
 import android.content.Context;
 
 import androidx.core.util.Pair;
 
-import com.gwl.MyApplication;
+import com.aucto.MyApplication;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import io.reactivex.Observable;
 
 /**
- * Parsing some html for the gwl app.
+ * Parsing some html for the aucto app.
  *
  * @author eneim (2018/01/23).
  */

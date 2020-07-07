@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore;
+package com.aucto.playercore;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import com.gwl.playercore.media.PlaybackInfo;
-import com.gwl.playercore.widget.Container;
+import com.aucto.playercore.media.PlaybackInfo;
+import com.aucto.playercore.widget.Container;
 import java.util.LinkedHashMap;
 
 /**

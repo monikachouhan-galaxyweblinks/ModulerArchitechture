@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore.widget;
+package com.aucto.playercore.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -39,12 +39,12 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.customview.view.AbsSavedState;
 import androidx.recyclerview.widget.RecyclerView;
-import com.gwl.playercore.CacheManager;
-import com.gwl.playercore.PlayerDispatcher;
-import com.gwl.playercore.PlayerSelector;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.annotations.RemoveIn;
-import com.gwl.playercore.media.PlaybackInfo;
+import com.aucto.playercore.CacheManager;
+import com.aucto.playercore.PlayerDispatcher;
+import com.aucto.playercore.PlayerSelector;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.annotations.RemoveIn;
+import com.aucto.playercore.media.PlaybackInfo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,8 +54,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static android.content.Context.POWER_SERVICE;
-import static com.gwl.playercore.ToroUtil.checkNotNull;
-import static com.gwl.playercore.widget.Common.max;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playercore.widget.Common.max;
 
 /**
  * A custom {@link RecyclerView} that is capable of managing and controlling the {@link ToroPlayer}s'

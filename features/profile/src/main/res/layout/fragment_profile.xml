@@ -8,13 +8,13 @@
 
         <import type="android.view.View" />
 
-        <import type="com.gwl.model.MediaType" />
+        <import type="com.aucto.model.MediaType" />
 
-        <import type="com.gwl.model.UserField" />
+        <import type="com.aucto.model.UserField" />
 
         <variable
             name="viewModel"
-            type="com.gwl.profile.ProfileViewModel" />
+            type="com.aucto.profile.ProfileViewModel" />
     </data>
 
     <LinearLayout
@@ -177,7 +177,7 @@
                 app:keep_hint="false"
                 mask:allowed_chars="1234567890"
                 mask:mask="#####-#####" />
-            <!--<com.gwl.core.MaterialEditText
+            <!--<auctoto.core.MaterialEditText
                 android:id="@+id/textMobile"
                 style="@style/Material.EditText"
                 android:layout_width="match_parent"

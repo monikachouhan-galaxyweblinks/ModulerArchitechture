@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.net.Uri;
 import android.widget.Toast;
@@ -32,10 +32,10 @@ import com.google.android.exoplayer2.trackselection.MappingTrackSelector.MappedT
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.playercore.exoplayer.R;
+import com.aucto.playercore.exoplayer.R;
 
 import static com.google.android.exoplayer2.trackselection.MappingTrackSelector.MappedTrackInfo.RENDERER_SUPPORT_UNSUPPORTED_TRACKS;
-import static com.gwl.playerfeed.ToroExo.toro;
+import static com.aucto.playerfeed.ToroExo.toro;
 
 /**
  * Making {@link Playable} extensible. This can be used with custom {@link ExoCreator}. Extending
@@ -51,7 +51,7 @@ public class ExoPlayable extends PlayableImpl {
 
   private EventListener listener;
 
-  // Adapt from ExoPlayer gwl.
+  // Adapt from ExoPlayer aucto.
   @SuppressWarnings("WeakerAccess") protected boolean inErrorState = false;
   @SuppressWarnings("WeakerAccess") protected TrackGroupArray lastSeenTrackGroupArray;
 
@@ -178,7 +178,7 @@ public class ExoPlayable extends PlayableImpl {
 
     @Override public void onPositionDiscontinuity(int reason) {
       if (inErrorState) {
-        // Adapt from ExoPlayer gwl.
+        // Adapt from ExoPlayer aucto.
         // "This will only occur if the user has performed a seek whilst in the error state. Update
         // the resume position so that if the user then retries, playback will resume from the
         // position to which they seek." - ExoPlayer

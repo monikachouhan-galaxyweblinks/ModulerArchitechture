@@ -1,4 +1,4 @@
-package com.gwl.mpinlock.views;
+package com.aucto.mpinlock.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

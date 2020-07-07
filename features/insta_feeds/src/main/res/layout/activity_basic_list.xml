@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.gwl.feeds.presentation.MediaFeedViewModel" />
+            type="com.aucto.feeds.presentation.MediaFeedViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         android:background="@color/cardBackground"
-        tools:context="com.gwl.feeds.presentation.MediaFeedFragment">
+        tools:context="com.aucto.feeds.presentation.MediaFeedFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"

@@ -1,7 +1,7 @@
-package com.gwl.mpinlock.security.callbacks;
+package com.aucto.mpinlock.security.callbacks;
 
 
-import com.gwl.mpinlock.security.PFResult;
+import com.aucto.mpinlock.security.PFResult;
 
 public interface PFPinCodeHelperCallback<T> {
     void onResult(PFResult<T> result);

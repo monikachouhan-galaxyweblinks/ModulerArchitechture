@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.net.Uri;
 
@@ -28,15 +28,15 @@ import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.ToroPlayer.VolumeChangeListeners;
-import com.gwl.playercore.ToroUtil;
-import com.gwl.playercore.media.PlaybackInfo;
-import com.gwl.playercore.media.VolumeInfo;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.ToroPlayer.VolumeChangeListeners;
+import com.aucto.playercore.ToroUtil;
+import com.aucto.playercore.media.PlaybackInfo;
+import com.aucto.playercore.media.VolumeInfo;
 
-import static com.gwl.playercore.ToroUtil.checkNotNull;
-import static com.gwl.playercore.media.PlaybackInfo.INDEX_UNSET;
-import static com.gwl.playercore.media.PlaybackInfo.TIME_UNSET;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playercore.media.PlaybackInfo.INDEX_UNSET;
+import static com.aucto.playercore.media.PlaybackInfo.TIME_UNSET;
 
 /**
  * [20180225]

@@ -1,4 +1,4 @@
-package com.gwl.feeds.adapter;
+package com.aucto.feeds.adapter;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,7 +18,7 @@ import androidx.core.view.MotionEventCompat;
 import androidx.core.view.ViewConfigurationCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.gwl.feeds.R;
+import com.aucto.feeds.R;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 import static android.widget.LinearLayout.HORIZONTAL;

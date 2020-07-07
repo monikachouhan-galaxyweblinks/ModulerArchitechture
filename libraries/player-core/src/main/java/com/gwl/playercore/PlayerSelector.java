@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore;
+package com.aucto.playercore;
 
 import androidx.annotation.NonNull;
-import com.gwl.playercore.annotations.Sorted;
-import com.gwl.playercore.widget.Container;
+import com.aucto.playercore.annotations.Sorted;
+import com.aucto.playercore.widget.Container;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-import static com.gwl.playercore.ToroUtil.visibleAreaOffset;
-import static com.gwl.playercore.annotations.Sorted.Order.ASCENDING;
+import static com.aucto.playercore.ToroUtil.visibleAreaOffset;
+import static com.aucto.playercore.annotations.Sorted.Order.ASCENDING;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 

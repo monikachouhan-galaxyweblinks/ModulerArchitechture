@@ -16,8 +16,8 @@
     </dist:module>
 
     <application>
-        <activity android:name=".addblog.AddBlogActivity" />
-        <activity android:name=".BlogListActivity" />
+        <activity android:name="com.aucto.addblog.AddBlogActivity" />
+        <activity android:name="com.aucto.BlogListActivity" />
     </application>
 
 </manifest>

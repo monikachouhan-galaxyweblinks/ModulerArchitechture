@@ -14,7 +14,7 @@
 
     <application>
 
-        <activity android:name="com.gwl.mpin.activity.MpinActivity"></activity>
+        <activity android:name="com.aucto.mpin.activity.MpinActivity"></activity>
 
     </application>
 

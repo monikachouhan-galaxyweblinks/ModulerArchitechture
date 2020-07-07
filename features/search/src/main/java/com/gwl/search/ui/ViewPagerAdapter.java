@@ -1,4 +1,4 @@
-package com.gwl.search.ui;
+package com.aucto.search.ui;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

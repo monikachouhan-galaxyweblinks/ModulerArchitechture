@@ -1,4 +1,4 @@
-package com.gwl.mpinlock.security;
+package com.aucto.mpinlock.security;
 
 /**
  * Created by aleksandr on 2018/02/10.

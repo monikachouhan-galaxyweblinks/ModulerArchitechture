@@ -3,7 +3,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.gwl.mpin.activity.MPinViewModel" />
+            type="com.aucto.mpin.activity.MPinViewModel" />
     </data>
 
     <FrameLayout

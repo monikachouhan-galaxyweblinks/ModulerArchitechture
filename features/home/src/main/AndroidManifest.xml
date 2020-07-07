@@ -14,7 +14,7 @@
     </dist:module>
 
     <application>
-        <activity android:name="com.gwl.home.HomeActivity"
+        <activity android:name="com.aucto.home.HomeActivity"
             android:windowSoftInputMode="adjustNothing"/>
     </application>
 

@@ -1,4 +1,4 @@
-package com.gwl.search.materialsearchview.utils;
+package com.aucto.search.materialsearchview.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gwl.search.R;
+import com.aucto.search.R;
 
 public class MaxHeightLinear extends LinearLayout {
     private int mMaxHeight = 400;

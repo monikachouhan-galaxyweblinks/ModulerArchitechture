@@ -1,4 +1,4 @@
-package com.gwl.mpinlock.security;
+package com.aucto.mpinlock.security;
 
 public class PFSecurityManager {
     private static final PFSecurityManager ourInstance = new PFSecurityManager();

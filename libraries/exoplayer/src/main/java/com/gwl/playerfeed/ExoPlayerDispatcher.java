@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import com.google.android.exoplayer2.DefaultControlDispatcher;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.annotations.Beta;
-import com.gwl.playercore.widget.PressablePlayerSelector;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.annotations.Beta;
+import com.aucto.playercore.widget.PressablePlayerSelector;
 
 /**
  * @author eneim (2018/08/18).

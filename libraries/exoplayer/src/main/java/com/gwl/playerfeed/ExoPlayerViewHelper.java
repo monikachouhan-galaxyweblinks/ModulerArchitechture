@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package com.gwl.playerfeed;
+package com.aucto.playerfeed;
 
 import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ui.PlayerView;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.annotations.RemoveIn;
-import com.gwl.playercore.helper.ToroPlayerHelper;
-import com.gwl.playercore.media.PlaybackInfo;
-import com.gwl.playercore.media.VolumeInfo;
-import com.gwl.playercore.widget.Container;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.annotations.RemoveIn;
+import com.aucto.playercore.helper.ToroPlayerHelper;
+import com.aucto.playercore.media.PlaybackInfo;
+import com.aucto.playercore.media.VolumeInfo;
+import com.aucto.playercore.widget.Container;
 
-import static com.gwl.playercore.ToroUtil.checkNotNull;
-import static com.gwl.playerfeed.ToroExo.with;
+import static com.aucto.playercore.ToroUtil.checkNotNull;
+import static com.aucto.playerfeed.ToroExo.with;
 
 /**
  * An implementation of {@link ToroPlayerHelper} where the actual Player is an {@link ExoPlayer}

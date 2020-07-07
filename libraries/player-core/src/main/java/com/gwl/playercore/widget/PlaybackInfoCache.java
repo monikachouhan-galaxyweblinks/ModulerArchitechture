@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2018 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore.widget;
+package com.aucto.playercore.widget;
 
 import android.annotation.SuppressLint;
 import android.util.SparseArray;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import com.gwl.playercore.CacheManager;
-import com.gwl.playercore.ToroPlayer;
-import com.gwl.playercore.ToroUtil;
-import com.gwl.playercore.media.PlaybackInfo;
+import com.aucto.playercore.CacheManager;
+import com.aucto.playercore.ToroPlayer;
+import com.aucto.playercore.ToroUtil;
+import com.aucto.playercore.media.PlaybackInfo;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import static com.gwl.playercore.media.PlaybackInfo.SCRAP;
-import static com.gwl.playercore.widget.Common.ORDER_COMPARATOR_INT;
+import static com.aucto.playercore.media.PlaybackInfo.SCRAP;
+import static com.aucto.playercore.widget.Common.ORDER_COMPARATOR_INT;
 
 /**
  * @author eneim (2018/04/24).

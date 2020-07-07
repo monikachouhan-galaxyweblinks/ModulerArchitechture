@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.gwl.fingerLock.FingerPrintViewModel" />
+            type="com.aucto.fingerLock.FingerPrintViewModel" />
 
     </data>
 

@@ -1,4 +1,4 @@
-package com.gwl.search.ui;
+package com.aucto.search.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.gwl.search.R;
-import com.gwl.search.materialsearchview.MaterialSearchView;
+import com.aucto.search.R;
+import com.aucto.search.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 

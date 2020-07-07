@@ -14,7 +14,7 @@
     </dist:module>
 
     <application>
-        <activity android:name="com.gwl.launchermodule.LauncherActivity"/>
+        <activity android:name="com.aucto.launchermodule.LauncherActivity"/>
     </application>
 
 </manifest>

@@ -5,7 +5,7 @@
 
         <variable
             name="viewmodel"
-            type="com.gwl.settings.SettingsViewModel" />
+            type="com.aucto.settings.SettingsViewModel" />
     </data>
 
     <LinearLayout

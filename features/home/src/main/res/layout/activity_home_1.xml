@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.gwl.home.HomeViewModel" />
+            type="com.aucto.home.HomeViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout

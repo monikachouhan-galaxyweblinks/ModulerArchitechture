@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
-import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gwl.MyApplication
 import com.gwl.cache.db.AppDatabase
@@ -41,12 +39,12 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
     BaseAdapter.OnItemClickListener<InstaFeed> {
 
     private val adapter by lazy { MediaFeedAdapter() }
-    private var liveData: LiveData<PagedList<InstaFeed>>? = null
     private val disposable = CompositeDisposable()
     private var connectionMode: ConnectionModel? = null
     private val favDao: FavoriteDao by lazy {
         AppDatabase.getInstance(MyApplication.instance).favDao()
     }
+    private var authenticationDialog: AuthenticationDialog? = null
 
     companion object {
         const val DATA = "item_data"
@@ -54,7 +52,8 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        liveData = mViewModel.initPager()
+        mViewModel.initData()
+        // liveData = mViewModel.initPager()
     }
 
     override fun initObservers() {
@@ -70,7 +69,13 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         container.visibility = View.VISIBLE
         adapter.itemClick = this
 
-        liveData?.observe {
+        mViewModel.showDialog.observe {
+            authenticationDialog =
+                AuthenticationDialog(this@InstaFeedFragment?.requireContext(), mViewModel)
+            authenticationDialog?.setCancelable(true)
+            authenticationDialog?.show()
+        }
+        mViewModel.liveData?.observe {
             adapter.submitList(it)
             mViewModel.isApiRunning.set(false)
             swipeToRefresh?.isRefreshing = false
@@ -154,7 +159,7 @@ class InstaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
 
     private fun refresh() {
         swipeToRefresh?.isRefreshing = false
-        liveData?.value?.dataSource?.invalidate()
+        mViewModel.liveData?.value?.dataSource?.invalidate()
     }
 
     override fun onResume() {

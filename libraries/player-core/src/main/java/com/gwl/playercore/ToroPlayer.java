@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2017 Nam Nguyen, nam@gwl.com
+ * Copyright (c) 2017 Nam Nguyen, nam@aucto.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.gwl.playercore;
+package com.aucto.playercore;
 
 import android.view.View;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
-import com.gwl.playercore.media.PlaybackInfo;
-import com.gwl.playercore.media.VolumeInfo;
-import com.gwl.playercore.widget.Container;
+import com.aucto.playercore.media.PlaybackInfo;
+import com.aucto.playercore.media.VolumeInfo;
+import com.aucto.playercore.widget.Container;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.concurrent.CopyOnWriteArraySet;
