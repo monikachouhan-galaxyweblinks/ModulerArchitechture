@@ -21,7 +21,9 @@
         app:cardCornerRadius="@dimen/_4dp"
         app:cardElevation="1dp"
         app:contentPadding="@dimen/_10dp"
-        app:cardUseCompatPadding="true">
+        android:layout_marginTop="@dimen/_10dp"
+        android:layout_marginLeft="@dimen/_10dp"
+        android:layout_marginRight="@dimen/_10dp">
 
         <LinearLayout
             android:id="@+id/ll"

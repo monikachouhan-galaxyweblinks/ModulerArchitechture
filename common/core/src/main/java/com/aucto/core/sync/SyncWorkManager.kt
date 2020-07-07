@@ -32,7 +32,11 @@ abstract class SyncWorkManager<REQ, RES>(context: Context, workerParams: WorkerP
             Log.e("SyncWorkManager", " performTask called before $data")
             val result = performTask(data)
             Log.e("SyncWorkManager", " performTask called $result")
+            if(result is APIResult.Failure) {
+                Result.retry()
+                Log.e("SyncWorkManager", " performTask RETY ${result.details}")
 
+            }
             handleResponse(result)
         } catch (e: Exception) {
             Log.e("SyncWorkManager", e.toString())
