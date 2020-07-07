@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
 
         <import type="android.view.View" />
 
@@ -16,42 +16,79 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:orientation="vertical"
-        android:padding="10dp"
         tools:context=".LoginActivity">
-
-        <TextView
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_blog"
-            android:textSize="@dimen/text_heading6" />
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-        <com.aucto.core.MaterialEditText
-            android:id="@+id/etTitle"
-            style="@style/Material.EditText.Blog"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="@string/add_blog"
+                app:titleTextColor="@color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
-            android:hint="@string/enter_title" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_20dp"
+            android:paddingRight="@dimen/_20dp">
 
-        <com.aucto.core.MaterialEditText
-            android:id="@+id/etBody"
-            style="@style/Material.EditText.Blog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
-            android:gravity="top|left"
-            android:hint="@string/enter_message"
-            android:minLines="5" />
+            <TextView
+                style="@style/TextView.Body.Bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30dp"
+                android:text="@string/add_blog" />
 
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
-            android:onClick="@{()->viewModel.onSubmitClick()}"
-            android:text="@string/submit" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiTitle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:hint="@string/enter_title"
+                app:hintAnimationEnabled="false">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTitle"
+                    style="@style/Material.EditText.Blog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tiMessage"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:hint="@string/enter_message"
+                app:hintAnimationEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBody"
+                    style="@style/Material.EditText.Blog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:gravity="top|left" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10dp"
+                android:text="@string/submit" />
+
+        </LinearLayout>
     </LinearLayout>
 </layout>

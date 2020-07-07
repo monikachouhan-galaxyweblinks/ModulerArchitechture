@@ -8,6 +8,7 @@ import com.aucto.MyApplication
 import com.aucto.core.BaseActivity
 import com.aucto.core.initViewModel
 import com.aucto.model.PostBlogRequest
+import kotlinx.android.synthetic.main.activity_add_blog.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,6 +18,8 @@ class AddBlogActivity : BaseActivity<ActivityAddBlogBinding, AddBlogViewModel>()
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_add_blog)
         mDataBinding.viewModel = getViewModel()
+        setToolBar(toolbar)
+        supportActionBar?.title = getString(R.string.add_blog)
         initObserver()
     }
 
@@ -41,15 +44,31 @@ class AddBlogActivity : BaseActivity<ActivityAddBlogBinding, AddBlogViewModel>()
             finish()
         }
         mDataBinding.btnSubmit.setOnClickListener {
-            if (mDataBinding.etTitle.toString().isEmpty() || mDataBinding.etBody.toString()
-                    .isEmpty()
-            ) {
+            validatePost()
+        }
+    }
+
+    private fun validatePost() {
+        when {
+            mDataBinding.etTitle.toString().trim().isEmpty() -> {
                 Toast.makeText(
-                    this, getString(R.string.all_fields_are_mandatory), Toast.LENGTH_SHORT
+                    this@AddBlogActivity,
+                    getString(R.string.all_fields_are_mandatory),
+                    Toast.LENGTH_SHORT
                 ).show()
-                return@setOnClickListener
+                return
             }
-            GlobalScope.launch(Dispatchers.IO) {
+            mDataBinding.etBody.toString()
+                .trim().isEmpty() -> {
+                Toast.makeText(
+                    this@AddBlogActivity,
+                    getString(R.string.all_fields_are_mandatory),
+                    Toast.LENGTH_SHORT
+                ).show()
+                return
+            }
+            else -> {
+                GlobalScope.launch(Dispatchers.IO) {
                 mViewModel.postBlog(
                     PostBlogRequest(
                         mDataBinding.etTitle.text.toString(),
@@ -60,13 +79,7 @@ class AddBlogActivity : BaseActivity<ActivityAddBlogBinding, AddBlogViewModel>()
 
             finish()
         }
-        /*mViewModel.onSubmitClick.observe {
-        Log.e("dfgdfg fd ","onSubmitClick  onSubmitClick")
-            GlobalScope.launch(Dispatchers.IO) {
-             val result=   mViewModel.postBlog(PostBlogRequest("tesde ","ddgdgdgd g",1))
-                Log.e("dfgdfg fd ","${result.value}")
-            }
-        }*/
+        }
     }
 
 }
