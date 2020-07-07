@@ -1,6 +1,7 @@
 package com.aucto.core.sync
 
 import android.content.Context
+import android.util.Log
 import androidx.work.WorkerParameters
 import com.aucto.cache.db.AppDatabase
 import com.aucto.model.BlogPostResponse
@@ -20,9 +21,9 @@ class BlogSyncWorker(context: Context, workerParams: WorkerParameters) :
     }
 
     override suspend fun onSuccess(result: BlogPostResponse?, id: Int) {
-        result?.also {
-            bloagDao.update(state = SyncState.SUCCESS, id = id)
-        }
+
+        bloagDao.update(state = SyncState.SUCCESS, id = id)
+
     }
 
     override fun onFailure(result: APIError?) {

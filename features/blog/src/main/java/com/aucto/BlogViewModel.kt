@@ -14,7 +14,7 @@ class BlogViewModel : BaseViewModel() {
     val loginManager: LoginManager by lazy { MyApplication.loginManager }
     private val blogDao by lazy { MyApplication.database.blogDao() }
     fun getBlogData(): LiveData<List<BlogPostResponse>> {
-        return blogDao.getAllBlogList()
+        return blogDao.getAllSuccessBlogList()
     }
 
     fun onFocusChanged(view: View, hasFocus: Boolean) {
