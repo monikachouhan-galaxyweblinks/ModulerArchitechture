@@ -22,17 +22,18 @@ abstract class SyncWorkManager<REQ, RES>(context: Context, workerParams: WorkerP
     val networkAPI: NetworkAPI by lazy { NetworkAPIFactory.standardClient(context) }
 
     abstract suspend fun performTask(request: REQ): APIResult<RES>
-    abstract suspend fun onSuccess(result: RES?,id :Int)
+    abstract fun getData(): REQ
+    abstract suspend fun onSuccess(result: RES?, id: Int)
     abstract fun onFailure(result: APIError?)
 
     // region - Override function
     override suspend fun doWork(): Result {
         try {
-            val data = inputData.getParcelable(KEY_DATA_TO_SYNC) as REQ
+            val data = getData() //inputData.getParcelable() as REQ
             Log.e("SyncWorkManager", " performTask called before $data")
             val result = performTask(data)
             Log.e("SyncWorkManager", " performTask called $result")
-            if(result is APIResult.Failure) {
+            if (result is APIResult.Failure) {
                 Result.retry()
                 Log.e("SyncWorkManager", " performTask RETY ${result.details}")
 

@@ -26,12 +26,12 @@ object HomeConfiguration {
                 StringUtil.getString(R.string.profile),
                 R.drawable.ic_profile
             ),
-            CustomMenu(
-                FragmentNavigation.SEARCH,
-                null,
-                StringUtil.getString(R.string.search),
-                R.drawable.ic_search
-            ),
+//            CustomMenu(
+//                FragmentNavigation.SEARCH,
+//                null,
+//                StringUtil.getString(R.string.search),
+//                R.drawable.ic_search
+//            ),
             CustomMenu(
                 FragmentNavigation.SETTINGS,
                 null,

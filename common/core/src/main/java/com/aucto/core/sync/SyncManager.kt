@@ -3,6 +3,7 @@ package com.aucto.core.sync
 import android.content.Context
 import androidx.work.*
 import com.aucto.model.PostBlogRequest
+import com.google.gson.Gson
 
 object SyncManager {
 
@@ -22,8 +23,9 @@ object SyncManager {
 
     fun createPost(context: Context, request: PostBlogRequest, localDBId: Int) {
         val dataBuilder = Data.Builder()
-        dataBuilder.putInt(KEY_DATA_DB_ID, localDBId)
-        val data = dataBuilder.build().putParcelable(KEY_DATA_TO_SYNC, request)
+        dataBuilder.putInt(KEY_DATA_DB_ID,  localDBId)
+        dataBuilder.putString(KEY_DATA_TO_SYNC, Gson().toJson(request))
+        val data = dataBuilder.build()
         sync(context, data, BlogSyncWorker::class.java)
     }
 
