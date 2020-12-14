@@ -1,3 +1,2 @@
-include ':search'
 include FeatureModules.settingModules
 rootProject.name = 'ModuleArchitechure'
