@@ -5,5 +5,5 @@ apply plugin: 'kotlin-android-extensions'
 dependencies {
     implementation SupportLibraries.recyclerview
     implementation Libraries.glide
-    implementation Libraries.paging
+    //implementation Libraries.paging
 }

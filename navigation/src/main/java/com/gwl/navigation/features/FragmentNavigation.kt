@@ -5,7 +5,8 @@ package com.gwl.navigation.features
  * @author GWL
  */
 object FragmentNavigation {
-    const val PLAYER_FEED = "com.gwl.feeds.presentation.InstaFeedFragment"
+    //const val PLAYER_FEED = "com.gwl.feeds.presentation.InstaFeedFragment"
+    const val PLAYER_FEED = "com.gwl.playerfeed.presentation.MediaFeedFragment"
     const val PROFILE = "com.gwl.profile.ProfileFragment"
     const val SETTINGS = "com.gwl.settings.SettingFragment"
     const val SEARCH = "com.gwl.search.ui.SearchFragment"

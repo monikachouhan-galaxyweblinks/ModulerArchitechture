@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.`kotlin-dsl`
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -10,7 +9,7 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    //  implementation(kotlin("stdlib-jdk8"))
 }
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {

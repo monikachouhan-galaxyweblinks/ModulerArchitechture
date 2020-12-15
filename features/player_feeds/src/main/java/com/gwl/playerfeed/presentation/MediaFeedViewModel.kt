@@ -1,37 +1,58 @@
 package com.gwl.playerfeed.presentation
 
 import android.util.Log
+import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
+import androidx.lifecycle.viewModelScope
+import androidx.paging.*
 import com.gwl.MyApplication
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewModel
 import com.gwl.core.LoginManager
 import com.gwl.model.ArticlesItem
 import com.gwl.model.MediaType
+import com.gwl.networking.client.server.NetworkAPI
+import com.gwl.networking.result.APIResult
 import com.gwl.playerfeed.MediaDataSourceFactory
 import com.gwl.playerfeed.datasource.MediaFeedDataSource
-import com.networking.client.server.NetworkAPI
-import com.networking.result.APIResult
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.gwl.playerfeed.datasource.PostDataSource
+import kotlinx.coroutines.*
 
 // * Created on 28/1/20.
 /**
  * @author GWL
  */
 class MediaFeedViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<ArticlesItem> {
-    override fun onItemClick(item: ArticlesItem) {
+    override fun onItemClick(item: ArticlesItem, view: View) {
         Log.e("clickckck ", "${item.type?.name} fcghfgh")
         when (item.type) {
             MediaType.IMAGE -> imageItemClick.postValue(item)
             MediaType.VIDEO -> videoItemClick.postValue(item)
             MediaType.MP3 -> audioItemClick.postValue(item)
         }
+    }
+
+    override fun onViewClicked(view: View, item: ArticlesItem, position: Int) {
+        // TODO("Not yet implemented")
+    }
+
+    private val viewModelJob = SupervisorJob()
+
+    /**
+     * This is the main scope for all coroutines launched by MainViewModel.
+     * Since we pass viewModelJob, you can cancel all coroutines
+     * launched by uiScope by calling viewModelJob.cancel()
+     */
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    /**
+     * Cancel all coroutines when the ViewModel is cleared
+     */
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 
     companion object {
@@ -64,6 +85,10 @@ class MediaFeedViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<Arti
             ), pagedListConfig
         ).build()
     }
+
+    fun initPaged3Data() = Pager(PagingConfig(pageSize = 6)) {
+        PostDataSource(networkAPI)
+    }.flow.cachedIn(viewModelScope)
 
     fun getList() {
         GlobalScope.launch(Dispatchers.IO) {

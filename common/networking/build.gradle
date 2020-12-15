@@ -2,13 +2,13 @@ apply from: "$rootDir/common-android-library.gradle"
 
 dependencies {
 //    implementation project(':app')
-        api Libraries.ktx
-        api Libraries.coroutinescore
-        api Libraries.coroutinesandroid
-        api Libraries.kotlincoroutinesretrofit
-        api Libraries.loggingInterceptor
-        api Libraries.retrofit
-        api Libraries.retrofitgson
-        api SupportLibraries.appcompat
+       // implementation Libraries.ktx
+       // implementation Libraries.coroutinescore
+        implementation Libraries.coroutinesandroid
+        implementation Libraries.kotlincoroutinesretrofit
+        implementation Libraries.loggingInterceptor
+        implementation Libraries.retrofit
+        implementation Libraries.retrofitgson
+        implementation SupportLibraries.appcompat
         implementation project(Modules.model)
 }

@@ -7,6 +7,8 @@ dependencies {
     kapt Libraries.lifecycleCompiler
     implementation Libraries.roomDB
     kapt Libraries.roomCompiler
+    implementation Libraries.retrofitgson
+
 }
 
 sourceCompatibility = "8"

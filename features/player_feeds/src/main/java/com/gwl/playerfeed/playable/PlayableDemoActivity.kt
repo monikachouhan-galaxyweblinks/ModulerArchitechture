@@ -26,10 +26,10 @@ import androidx.appcompat.app.AppCompatActivity
 import butterknife.ButterKnife
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.DebugTextViewHelper
+import com.gwl.playercore.media.VolumeInfo
 import com.gwl.playerfeed.ExoPlayable
 import com.gwl.playerfeed.Playable
 import com.gwl.playerfeed.ToroExo
-import com.gwl.toro.media.VolumeInfo
 import kotlinx.android.synthetic.main.activity_demo_playable.debugText
 import kotlinx.android.synthetic.main.activity_demo_playable.playerView
 import com.gwl.playerfeed.R

@@ -21,23 +21,20 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ViewDataBinding
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.ui.PlayerView
 import com.gwl.ExoConfig
-import com.gwl.MyApplication
 import com.gwl.core.BaseAdapter
 import com.gwl.core.BaseViewHolder
 import com.gwl.model.ArticlesItem
+import com.gwl.playercore.ToroPlayer
+import com.gwl.playercore.ToroUtil.visibleAreaOffset
+import com.gwl.playercore.media.PlaybackInfo
+import com.gwl.playercore.widget.Container
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.ExoPlayerViewHelper
 import com.gwl.playerfeed.R
-import com.gwl.toro.ToroPlayer
-import com.gwl.toro.ToroPlayer.EventListener
-import com.gwl.toro.ToroUtil.visibleAreaOffset
-import com.gwl.toro.media.PlaybackInfo
-import com.gwl.toro.widget.Container
+
 
 /**
  * @author eneim (2018/01/23).
@@ -54,7 +51,7 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
     val artWork: ImageView = itemView.findViewById(R.id.imageView)
     private var helper: ExoPlayerViewHelper? = null
     open var videoUri: Uri? = null
-    var listener: EventListener? = null
+    var listener: ToroPlayer.EventListener? = null
     open var autoplay: Boolean = false
     val isPlaying: ObservableBoolean by lazy { ObservableBoolean(false) }
 
@@ -83,7 +80,7 @@ open class VideoFeedViewHolder(itemRowBind: ViewDataBinding) :
             ExoConfig.config!!
         )
         if (listener == null) {
-            listener = object : EventListener {
+            listener = object : ToroPlayer.EventListener {
                 override fun onFirstFrameRendered() {
                     Log.d("VideoFeedViewHolder", " initialize onFirstFrameRendered")
                 }

@@ -1,20 +1,36 @@
 package com.gwl.playerfeed.datasource
 
-import com.gwl.MyApplication
-import com.gwl.core.datasource.PathDataSource
-import com.gwl.model.Media
+import androidx.paging.PagingSource
 import com.gwl.model.ArticlesItem
+import com.gwl.model.Media
 import com.gwl.model.MediaType
+import com.gwl.networking.client.server.NetworkAPI
 import com.gwl.networking.result.APIResult
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-class MediaFeedDataSource : PathDataSource<ArticlesItem>(MyApplication.instance.networkAPI) {
-    override suspend fun fetch(page: Int, count: Int): APIResult<List<ArticlesItem>> {
-        return api.getPlayerFeeds(page, count)
-            .mapArticles { it?.toMutableList()?.getList() ?: listOf() }
+class PostDataSource(private val apiService: NetworkAPI) : PagingSource<Int, ArticlesItem>() {
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticlesItem> {
+        try {
+            val currentLoadingPageKey = params.key ?: 1
+            val response: APIResult<List<ArticlesItem>> =
+                apiService.getPlayerFeeds(currentLoadingPageKey)
+                    .mapArticles { it?.toMutableList()?.getList() ?: listOf() }
+
+            val responseData = mutableListOf<ArticlesItem>()
+            val data = response.value?.data ?: emptyList()
+            responseData.addAll(data)
+
+            val prevKey = if (currentLoadingPageKey == 1) null else currentLoadingPageKey - 1
+
+            return LoadResult.Page(
+                data = responseData,
+                prevKey = prevKey,
+                nextKey = currentLoadingPageKey.plus(1)
+            )
+        } catch (e: Exception) {
+            return LoadResult.Error(e)
+        }
     }
-
     private fun MutableList<ArticlesItem>.getList(): List<ArticlesItem> {
         this.forEach {
             val media = getMediaMockList()

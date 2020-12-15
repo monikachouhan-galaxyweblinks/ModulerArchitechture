@@ -5,7 +5,7 @@ import com.gwl.core.datasource.PathDataSource
 import com.gwl.model.ArticlesItem
 import com.gwl.model.Media
 import com.gwl.model.MediaType
-import com.networking.result.APIResult
+import com.gwl.networking.result.APIResult
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

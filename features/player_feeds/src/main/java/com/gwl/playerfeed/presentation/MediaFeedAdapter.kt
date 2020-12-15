@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.gwl.core.BaseViewHolder
 import com.gwl.model.MediaType
@@ -15,7 +16,7 @@ import com.gwl.playerfeed.R
 /**
  * @author GWL
  */
-class MediaFeedAdapter : PagedListAdapter<ArticlesItem, BaseViewHolder<ArticlesItem>>(MediaCallback) {
+class MediaFeedAdapter : PagingDataAdapter<ArticlesItem, BaseViewHolder<ArticlesItem>>(MediaCallback) {
 
     companion object {
         val VIDEO_VIEW_TYPE = 0

@@ -13,7 +13,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PaginationBoundryCallBack<T>(
+class PaginationBoundryCallBack<T :Any>(
     val source: PaginationDataSource<T>,
     val pageConfiguration: PageConfiguration,
     val boundryCallbackListener: BoundryCallbackListener<T>,

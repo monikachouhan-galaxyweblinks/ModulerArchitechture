@@ -11,7 +11,8 @@ dependencies {
 
     //noinspection GradleDependency
     implementation Libraries.exoPlayer
-    implementation Libraries.paging
+    //TODO("uncomment")
+   // implementation Libraries.paging
 
     //noinspection GradleCompatible
     implementation SupportLibraries.design

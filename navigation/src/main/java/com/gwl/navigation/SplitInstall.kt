@@ -1,5 +1,6 @@
 package com.gwl.navigation
 
+/*
 import android.content.Context
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
@@ -18,3 +19,4 @@ object SplitInstall {
         manager.startInstall(request)
     }
 }
+*/

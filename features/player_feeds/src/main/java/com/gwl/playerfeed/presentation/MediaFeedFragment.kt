@@ -1,9 +1,9 @@
 package com.gwl.playerfeed.presentation
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gwl.core.BaseFragment
 import com.gwl.core.initViewModel
@@ -14,18 +14,22 @@ import com.gwl.model.ArticlesItem
 import com.gwl.navigation.features.AudioDetailNavigation
 import com.gwl.navigation.features.DetailNavigation
 import com.gwl.navigation.features.ImageDetailNavigation
+import com.gwl.playercore.CacheManager
 import com.gwl.playerfeed.BR
 import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityBasicListBinding
-import com.gwl.toro.CacheManager
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.content_basic_list.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewModel>() {
 
     private val adapter = MediaFeedAdapter()
     private val disposable = CompositeDisposable()
     private var connectionMode: ConnectionModel? = null
+    private var searchJob: Job? = null
 
     companion object {
         const val DATA = "item_data"
@@ -42,11 +46,11 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         }
         adapter.itemClick = mViewModel
 
-        mViewModel.initPager().observe {
-            adapter.submitList(it)
-            mViewModel.isApiRunning.set(false)
-        }
-
+        /*    mViewModel.initPager().observe {
+                adapter.submitList(it)
+                mViewModel.isApiRunning.set(false)
+            }*/
+        setupViewWithPage3()
         setHasOptionsMenu(true)
 
         context?.also { it ->
@@ -60,6 +64,15 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         mViewModel.imageItemClick.observe { showImageDetail(it) }
     }
 
+    private fun setupViewWithPage3() {
+        searchJob?.cancel()
+        searchJob = lifecycleScope.launch {
+            mViewModel.initPaged3Data().collectLatest {
+                adapter.submitData(it)
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         disposable.clear()
@@ -69,7 +82,7 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         return R.layout.activity_basic_list
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.menu_basic_list, menu)
         val item = menu!!.findItem(R.id.action_autoPlaySettings)
         item.isChecked = mViewModel.getAutoPlayPref()

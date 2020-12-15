@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation Libraries.roomDB
     kapt Libraries.roomCompiler
-    api Libraries.retrofitgson
+    implementation Libraries.retrofitgson
     implementation SupportLibraries.appcompat
 }
 androidExtensions {

@@ -20,12 +20,12 @@ object FeatureModules {
         Modules.googleLogin,
         Modules.search,
         Modules.fbLogin,
-        Modules.instaFeed,
+        Modules.player,
         Modules.settings,
         Modules.signup
     )
 
-     val settingModules = arrayOf(
+     var settingModules = arrayOf(
         Modules.app,
         Modules.networking,
         Modules.exoplayerLib,
@@ -38,12 +38,11 @@ object FeatureModules {
         Modules.profile,
         Modules.launcher,
         Modules.cache,
-        Modules.presentation,
         Modules.mpinauthentication,
         Modules.fingure,
         Modules.googleLogin,
         Modules.signup,
-        Modules.instaFeed,
+        Modules.player,
         Modules.settings,
         Modules.search,
         Modules.fbLogin
@@ -70,7 +69,7 @@ object Modules {
     const val launcher = ":features:launcher"
     const val profile = ":features:profile"
 
-    /*const val player = ":features:player_feeds"*/
+    const val player = ":features:player_feeds"
     const val instaFeed = ":features:insta_feeds"
     const val signup = ":features:signup"
     const val mpinauthentication = ":features:authenticationLock:mpin:mpinauthentication"
@@ -117,7 +116,7 @@ object Versions {
     const val ktx = "1.0.0-alpha1"
     const val coroutines = "1.2.0"
 
-    const val kotlin = "1.3.50"
+    const val kotlin = "1.3.72"
     const val timber = "4.7.1"
     const val rxjava = "2.2.6"
     const val rxkotlin = "2.3.0"
@@ -134,13 +133,14 @@ object Versions {
     const val koin = "2.0.0-beta-1"
     const val shimmerVersion = "2.1.0"
     const val releaseVersion = "3.7.0.2905-A1"
-    const val exoPlayer2Version = "2.9.6"
+    const val exoPlayer2Version = "2.10.0"
     const val butterKnifVersion = "10.1.0"
 
     const val roomVersion = "2.2.3"
     const val roomCompiler = "2.2.3"
     const val playCore = "1.6.4"
-    const val pagingVersion = "2.1.1"
+    const val pagingVersion = "3.0.0-alpha08"
+    const val paging2Version = "2.1.1"
 
     const val databindingCompiler = "3.5.3"
 
@@ -172,6 +172,7 @@ object Libraries {
     const val flexBox = "com.google.android:flexbox:1.1.0"
 
     //paging
+    const val paging2 = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
     const val paging = "androidx.paging:paging-runtime:${Versions.pagingVersion}"
 
     const val maps = "com.google.android.gms:play-services-maps:${Versions.maps}"

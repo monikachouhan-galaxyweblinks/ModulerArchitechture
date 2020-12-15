@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 /**
  * Pagination generic base implementation
  */
-abstract class PagingDataSource<T>(
+abstract class PagingDataSource<T:Any>(
     open val source: PaginationDataSource<T>,
     open val isPagination: Boolean = true
 ) : PageKeyedDataSource<Int, T>() {

@@ -52,17 +52,16 @@ dependencies {
     api project(Modules.core)
     api project(Modules.networking)
     api project(Modules.navigation)
-    api project(Modules.presentation)
-    api project(Modules.exoplayerLib)
+    implementation project(Modules.exoplayerLib)
 
     api Libraries.multidex
-    api GoogleLibraries.playCore
+ //   api GoogleLibraries.playCore
     api Libraries.roomDB
     kapt Libraries.roomCompiler
     api SupportLibraries.recyclerview
 
-    api Libraries.ktx
-    api Libraries.kotlin
+   // implementation Libraries.ktx
+   // implementation Libraries.kotlin
 
     api SupportLibraries.design
 }
