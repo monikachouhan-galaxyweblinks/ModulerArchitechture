@@ -3,6 +3,5 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 dependencies {
-    implementation project(Modules.app)
-    api FacebookLibraries.sdk
+    implementation FacebookLibraries.sdk
 }

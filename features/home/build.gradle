@@ -19,6 +19,5 @@ android {
 }
 
 dependencies {
-    implementation SupportLibraries.appcompat
-    //implementation project(Modules.navigation)
+  //implementation project(Modules.navigation)
 }

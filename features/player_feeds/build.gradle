@@ -32,8 +32,7 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
 
     //noinspection GradleCompatible
-    implementation SupportLibraries.design
-    implementation SupportLibraries.cardview
+   implementation SupportLibraries.cardview
     // implementation "com.android.support:support-vector-drawable:${rootProject.ext.supportLibraryVersion}"
 
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.12.1'

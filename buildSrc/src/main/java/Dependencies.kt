@@ -12,7 +12,6 @@ object ApplicationId {
 object FeatureModules {
     var modules = arrayOf(
         Modules.home,
-        Modules.launcher,
         Modules.login,
         Modules.profile,
         Modules.fingure,
@@ -21,8 +20,8 @@ object FeatureModules {
         Modules.search,
         Modules.fbLogin,
         Modules.player,
-        Modules.settings,
-        Modules.signup
+        Modules.settings/*,
+        Modules.signup*/
     )
 
      var settingModules = arrayOf(
@@ -36,12 +35,13 @@ object FeatureModules {
         Modules.login,
         Modules.home,
         Modules.profile,
-        Modules.launcher,
         Modules.cache,
         Modules.mpinauthentication,
         Modules.fingure,
         Modules.googleLogin,
+/*
         Modules.signup,
+*/
         Modules.player,
         Modules.settings,
         Modules.search,
@@ -97,7 +97,7 @@ object Versions {
 
     const val googleAuth = "16.0.1"
 
-    const val googleServices = "4.3.3"
+    const val googleServices = "4.3.4"
 
     const val firebaseAuth = "16.0.4"
     const val firebaseCore = "16.0.4"
@@ -113,10 +113,10 @@ object Versions {
     const val constraint = "1.1.3"
     const val maps = "15.0.1"
 
-    const val ktx = "1.0.0-alpha1"
+    const val ktx = "1.3.2"
     const val coroutines = "1.2.0"
 
-    const val kotlin = "1.3.72"
+    const val kotlin = "1.4.21"
     const val timber = "4.7.1"
     const val rxjava = "2.2.6"
     const val rxkotlin = "2.3.0"
@@ -132,6 +132,7 @@ object Versions {
     const val crashlytics = "2.9.9"
     const val koin = "2.0.0-beta-1"
     const val shimmerVersion = "2.1.0"
+    const val swipeRefresh = "1.1.0"
     const val releaseVersion = "3.7.0.2905-A1"
     const val exoPlayer2Version = "2.10.0"
     const val butterKnifVersion = "10.1.0"
@@ -212,6 +213,7 @@ object Libraries {
     const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     const val shimmer = "io.supercharge:shimmerlayout:${Versions.shimmerVersion}"
+    const val swipeReresh = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.shimmerVersion}"
 
 }
 

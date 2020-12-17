@@ -9,6 +9,6 @@ dependencies {
         implementation Libraries.loggingInterceptor
         implementation Libraries.retrofit
         implementation Libraries.retrofitgson
-        implementation SupportLibraries.appcompat
+       // implementation SupportLibraries.appcompat
         implementation project(Modules.model)
 }

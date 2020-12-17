@@ -30,7 +30,11 @@ android {
 dependencies {
     implementation project(Modules.app)
     implementation Libraries.retrofitgson
-
+    implementation Libraries.kotlin
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.design
+    implementation SupportLibraries.constrainLayout
+    implementation Libraries.ktx
     /* implementation project(Modules.core)
      implementation project(Modules.navigation)*/
    // implementation Libraries.kotlin
@@ -38,4 +42,8 @@ dependencies {
     implementation SupportLibraries.constrainLayout*/
     //implementation Libraries.multidex
   //  implementation project(Modules.model)
+
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

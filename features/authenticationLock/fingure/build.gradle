@@ -4,13 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 apply from: "$rootDir/common-android-dynamic-feature.gradle"
 
 android {
-    compileSdkVersion 29
-
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
-        minSdkVersion 23
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
 
     }
 
@@ -25,8 +24,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':app')
-    implementation project(Modules.navigation)
 //    implementation 'androidx.appcompat:appcompat:1.1.0'
 
 
