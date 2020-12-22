@@ -10,6 +10,7 @@ dependencies {
 
     implementation SupportLibraries.design
     implementation Libraries.lifecycleExtensions
+    implementation Libraries.coroutinesandroid
     implementation("androidx.paging:paging-runtime-ktx:${Versions.pagingVersion}") {
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
         exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
