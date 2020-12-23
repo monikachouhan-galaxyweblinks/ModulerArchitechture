@@ -13,7 +13,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.gwl.core.Common.Companion.PERMISSION_REQ_CODE
+import kotlinx.coroutines.launch
 
 /**
  * @author GWL
@@ -57,7 +59,9 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
         //TODO - Need to set binding variables
         // mDataBinding.setVariable(BR.viewModel, mViewModel)
         mDataBinding.executePendingBindings()
-        initObservers()
+        lifecycleScope.launch {
+            initObservers()
+        }
         initExtras()
         setToolBar()
     }
@@ -71,7 +75,7 @@ abstract class BaseActivity<B : ViewDataBinding, V : BaseViewModel> : AppCompatA
     }
 
 
-    open fun initObservers() {}
+    open suspend fun initObservers() {}
 
     open fun initExtras() {}
 

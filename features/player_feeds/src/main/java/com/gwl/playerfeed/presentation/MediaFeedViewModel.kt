@@ -4,7 +4,6 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.gwl.MyApplication
@@ -19,18 +18,20 @@ import com.gwl.playerfeed.MediaDataSourceFactory
 import com.gwl.playerfeed.datasource.MediaFeedDataSource
 import com.gwl.playerfeed.datasource.PostDataSource
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableStateFlow
 
 // * Created on 28/1/20.
 /**
  * @author GWL
  */
+@ExperimentalCoroutinesApi
 class MediaFeedViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<ArticlesItem> {
     override fun onItemClick(item: ArticlesItem, view: View) {
         Log.e("clickckck ", "${item.type?.name} fcghfgh")
         when (item.type) {
-            MediaType.IMAGE -> imageItemClick.postValue(item)
-            MediaType.VIDEO -> videoItemClick.postValue(item)
-            MediaType.MP3 -> audioItemClick.postValue(item)
+            MediaType.IMAGE -> imageItemClick.value = item
+            MediaType.VIDEO -> videoItemClick.value = item
+            MediaType.MP3 -> audioItemClick.value = item
         }
     }
 
@@ -62,9 +63,9 @@ class MediaFeedViewModel : BaseViewModel(), BaseAdapter.OnItemClickListener<Arti
     }
 
     val loginManager: LoginManager by lazy { MyApplication.loginManager }
-    val videoItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
-    val imageItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
-    val audioItemClick: MutableLiveData<ArticlesItem> = MutableLiveData()
+    val videoItemClick: MutableStateFlow<ArticlesItem> = MutableStateFlow(ArticlesItem())
+    val imageItemClick: MutableStateFlow<ArticlesItem> = MutableStateFlow(ArticlesItem())
+    val audioItemClick: MutableStateFlow<ArticlesItem> = MutableStateFlow(ArticlesItem())
     val networkAPI: NetworkAPI by lazy { MyApplication.instance.networkAPI }
     val isApiRunning: ObservableField<Boolean> by lazy { ObservableField<Boolean>(true) }
     val mediaFeeds: ObservableField<List<ArticlesItem>> by lazy { ObservableField<List<ArticlesItem>>() }

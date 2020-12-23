@@ -92,7 +92,7 @@ object Versions {
     const val gradle = "3.5.2"
 
     const val compileSdk = 28
-    const val minSdk = 18
+    const val minSdk = 23
     const val targetSdk = 28
 
     const val googleAuth = "16.0.1"
@@ -114,7 +114,7 @@ object Versions {
     const val maps = "15.0.1"
 
     const val ktx = "1.3.2"
-    const val coroutines = "1.2.0"
+    const val coroutines = "1.3.6"
 
     const val kotlin = "1.4.21"
     const val timber = "4.7.1"

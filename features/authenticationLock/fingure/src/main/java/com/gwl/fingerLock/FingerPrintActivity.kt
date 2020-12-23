@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.KeyProperties
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.fingure.BR
 import com.fingure.R
@@ -145,7 +146,6 @@ class FingerPrintActivity : BaseActivity<ActivityFingerPrintBinding, FingerPrint
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     fun cipherInit(): Boolean {
         try {
             cipher = Cipher.getInstance(

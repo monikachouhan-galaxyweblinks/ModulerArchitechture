@@ -2,12 +2,14 @@ package com.gwl.login
 
 import android.view.View
 import androidx.databinding.ObservableField
-import androidx.lifecycle.MutableLiveData
 import com.gwl.MyApplication
 import com.gwl.core.BaseViewModel
 import com.gwl.model.LoginItem
 import com.gwl.model.User
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 
+@ExperimentalCoroutinesApi
 class LoginViewModel : BaseViewModel() {
 
     // region - Public Properties
@@ -15,14 +17,14 @@ class LoginViewModel : BaseViewModel() {
     var btnLoginEnable = ObservableField(false)
     var loadedVisibility = ObservableField(false)
     var clearError = ObservableField(false)
-    val loginError by lazy { MutableLiveData<String>() }
+    val loginError by lazy { MutableStateFlow<String>("") }
     val emailError by lazy { ObservableField<String>() }
     val passwordError by lazy { ObservableField<String>() }
-    var navigateOnNext: MutableLiveData<Boolean> = MutableLiveData()
-    var navigateForGoogleLogin: MutableLiveData<Boolean> = MutableLiveData()
-    var navigateForFacebookLogin: MutableLiveData<Boolean> = MutableLiveData()
-    var onLoginError: MutableLiveData<String> = MutableLiveData()
-    val showKeyboard by lazy { MutableLiveData<Boolean>() }
+    var navigateOnNext: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    var navigateForGoogleLogin: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    var navigateForFacebookLogin: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    var onLoginError: MutableStateFlow<String> = MutableStateFlow("")
+    val showKeyboard by lazy { MutableStateFlow<Boolean>(false) }
     val loginManager by lazy { MyApplication.loginManager }
     // endregion
 
@@ -30,14 +32,14 @@ class LoginViewModel : BaseViewModel() {
     fun onFocusChanged(view: View, loginField: LoginField, hasFocus: Boolean) {
         updateError(hasFocus)
         if (loginField == LoginField.PASSWORD)
-            showKeyboard.postValue(true)
+            showKeyboard.value = true
     }
     // endregion
 
     // region - Button Clicks
     fun onLoginClick() {
         updateLoading(true)
-        showKeyboard.postValue(false)
+        showKeyboard.value = false
         if (loginItem.isValidCredential) {
             loginManager.persistUser(true)
             val user = User().apply {
@@ -45,21 +47,21 @@ class LoginViewModel : BaseViewModel() {
                 email = "gwl@example.com"
             }
             loginManager.setUser(user)
-            navigateOnNext.postValue(true)
+            navigateOnNext.value = true
 
         } else {
             updateLoading(false)
             loginError.value = "Invalid credential."
-            onLoginError.postValue(loginError.value)
+            onLoginError.value = loginError.value
         }
     }
 
     fun onGoogleLoginClick() {
-        navigateForGoogleLogin.postValue(true)
+        navigateForGoogleLogin.value = true
     }
 
     fun onFacebookLoginClick() {
-        navigateForFacebookLogin.postValue(true)
+        navigateForFacebookLogin.value = true
     }
 
     // endregion

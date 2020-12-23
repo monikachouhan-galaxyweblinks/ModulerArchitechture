@@ -20,7 +20,9 @@ import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityDetailBinding
 import com.gwl.playerfeed.presentation.MediaFeedFragment
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class VideoDetailActivity : BaseActivity<ActivityDetailBinding, VideoDetailViewModel>() {
     lateinit var item: ArticlesItem
     var fullscreen = false

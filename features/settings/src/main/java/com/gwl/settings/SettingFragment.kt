@@ -1,14 +1,16 @@
 package com.gwl.settings
 
 import android.util.Log
-import androidx.lifecycle.Observer
 import com.gwl.MyApplication
 import com.gwl.core.BaseFragment
 import com.gwl.core.KEY_THEME_SETTING
 import com.gwl.core.LoginManager
 import com.gwl.core.initViewModel
 import com.gwl.settings.databinding.FragmentSettingsBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
 
+@ExperimentalCoroutinesApi
 class SettingFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>() {
     private val loginManager: LoginManager by lazy { MyApplication.loginManager }
     override fun getLayoutId(): Int = R.layout.fragment_settings
@@ -17,13 +19,16 @@ class SettingFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>
         return initViewModel { SettingsViewModel() }
     }
 
-    override fun initObservers() {
+    override suspend fun initObservers() {
         super.initObservers()
-        mViewModel.isAutoPlay.observe(viewLifecycleOwner, Observer {
+        mViewModel.isAutoPlay.collectLatest {
             mViewModel.updateAutoPlaySetting(isChecked = it)
-        })
-        mViewModel.isDarkTheme.observe {
+            mDataBinding.checkboxAutoPlay.isChecked = it
+
+        }
+        mViewModel.isDarkTheme.collectLatest {
             Log.d("IT_SAMPLE", "" + loginManager.getBoolean(KEY_THEME_SETTING) + "_" + it)
+            mDataBinding.darkThemeSwitch.isChecked = it
             if (loginManager.getBoolean(KEY_THEME_SETTING) != it) {
                 mViewModel.updateDarkThemeSetting(isChecked = it)
             }
@@ -39,8 +44,8 @@ class SettingFragment : BaseFragment<FragmentSettingsBinding, SettingsViewModel>
 
     override fun removeObservers() {
         super.removeObservers()
-        mViewModel.isAutoPlay.removeObservers(this)
-        mViewModel.isDarkTheme.removeObservers(this)
+        /*  mViewModel.isAutoPlay.removeObservers(this)
+          mViewModel.isDarkTheme.removeObservers(this)*/
     }
 
     override fun getBindingVariable(): Int {

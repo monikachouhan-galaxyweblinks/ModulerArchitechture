@@ -13,11 +13,10 @@ import com.gwl.search.databinding.ActivitySearchBinding
 import com.gwl.search.materialsearchview.MaterialSearchView
 import com.gwl.search.materialsearchview.MaterialSearchView.SearchViewListener
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collectLatest
 
+@ExperimentalCoroutinesApi
 class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
     override fun getLayoutId(): Int {
         return R.layout.activity_search
@@ -33,13 +32,13 @@ class SearchActivity : BaseActivity<ActivitySearchBinding, SearchViewModel>() {
         mDataBinding.setVariable(BR.viewModel, mViewModel)
     }
 
-    override fun initObservers() {
+    override suspend fun initObservers() {
         super.initObservers()
         initSearch()
     }
 
-    private fun initSearch() {
-        mViewModel.searchHistory.observe {
+    private suspend fun initSearch() {
+        mViewModel.searchHistory.collectLatest {
             val historyList: List<String> = it.map { it.history }
             search_view?.setHistoryORSuggestions(historyList)
         }

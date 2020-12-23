@@ -1,42 +1,42 @@
 package com.gwl.search.ui
 
-import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.gwl.core.BaseViewModel
 import com.gwl.model.SearchHistory
 import com.gwl.model.SearchItem
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 // * Created on 16/3/20.
 /**
  * @author GWL
  */
+@ExperimentalCoroutinesApi
 class SearchViewModel : BaseViewModel() {
 
     val mAdapter = SearchAdapter()
     val searchRepository: SearchRepository by lazy { SearchRepository() }
-    val showSearch : ObservableBoolean by lazy { ObservableBoolean() }
+    val showSearch: ObservableBoolean by lazy { ObservableBoolean() }
     val data: ObservableField<List<SearchItem>> by lazy { ObservableField<List<SearchItem>>() }
-    val defaultList: MutableLiveData<List<SearchItem>> by lazy { MutableLiveData<List<SearchItem>>() }
+    val defaultList: MutableStateFlow<List<SearchItem>> by lazy { MutableStateFlow<List<SearchItem>>(listOf()) }
     var lastSearchTerm: String = ""
-    val searchHistory: MutableLiveData<List<SearchHistory>> get() = _searchHistory
-    private var _searchHistory: MutableLiveData<List<SearchHistory>> = MutableLiveData()
+    val searchHistory: MutableStateFlow<List<SearchHistory>> get() = _searchHistory
+    private var _searchHistory: MutableStateFlow<List<SearchHistory>> = MutableStateFlow(listOf())
 
     init {
         GlobalScope.launch(Dispatchers.IO) {
-            _searchHistory.postValue((searchRepository.searchDao.getSearchHistories()))
+            _searchHistory.value=searchRepository.searchDao.getSearchHistories()
         }
         initData()
     }
 
     private fun initData() {
         val value = searchRepository.getJsonDataFromAsset()
-        defaultList.postValue(value)
+        defaultList.value = value
         data.set(value)
     }
 

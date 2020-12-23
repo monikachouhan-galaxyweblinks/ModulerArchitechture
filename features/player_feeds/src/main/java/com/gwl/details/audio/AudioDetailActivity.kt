@@ -18,7 +18,9 @@ import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityAudioDetailBinding
 import com.gwl.playerfeed.presentation.MediaFeedFragment
 import kotlinx.android.synthetic.main.activity_audio_detail.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 class AudioDetailActivity : BaseActivity<ActivityAudioDetailBinding, VideoDetailViewModel>() {
     lateinit var item: ArticlesItem
 

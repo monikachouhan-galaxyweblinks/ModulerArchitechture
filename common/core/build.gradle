@@ -7,6 +7,8 @@ dependencies {
     implementation Libraries.shimmer
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation project(Modules.playerCore)
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
 
     implementation SupportLibraries.design
     implementation Libraries.lifecycleExtensions

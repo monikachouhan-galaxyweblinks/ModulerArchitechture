@@ -53,6 +53,7 @@ dependencies {
     api project(Modules.networking)
     api project(Modules.navigation)
     implementation project(Modules.exoplayerLib)
+    api Libraries.coroutinescore
 
     implementation Libraries.multidex
  //   api GoogleLibraries.playCore

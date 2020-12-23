@@ -19,6 +19,7 @@ import com.gwl.search.materialsearchview.MaterialSearchView
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -46,20 +47,24 @@ class SearchFragment : BaseFragment<ActivitySearchBinding, SearchViewModel>() {
         //  setToolBar(toolbar)
     }
 
-    override fun initObservers() {
+    override suspend fun initObservers() {
         super.initObservers()
         initSearch()
+        initListeners()
     }
 
     override fun removeObservers() {
         super.removeObservers()
 
     }
-    private fun initSearch() {
-        mViewModel.searchHistory.observe {
+    private suspend fun initSearch() {
+        mViewModel.searchHistory.collectLatest {
             val historyList: List<String> = it?.map { it.history } ?: listOf()
             search_view?.setHistoryORSuggestions(historyList)
         }
+    }
+
+    private fun initListeners() {
         mViewModel.searchRepository.searchDao.getAllSearchHistory().observe(viewLifecycleOwner,
             Observer {
                 search_view?.setHistoryORSuggestions(it.map { it.history })

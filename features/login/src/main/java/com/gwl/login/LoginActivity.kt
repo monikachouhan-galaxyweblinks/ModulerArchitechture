@@ -10,7 +10,10 @@ import com.gwl.navigation.features.FacebookLoginNavigation
 import com.gwl.navigation.features.GoogleLoginNavigation
 import com.gwl.navigation.features.HomeNavigation
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
 
+@ExperimentalCoroutinesApi
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun getLayoutId(): Int {
@@ -24,14 +27,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun getViewModel(): LoginViewModel = initViewModel { LoginViewModel() }
 
-    override fun initObservers() {
+    override suspend fun initObservers() {
         super.initObservers()
         mViewModel.apply {
-            navigateOnNext.observe { navigateOnHome() }
-            navigateForGoogleLogin.observe { navigateOnGoogleLogin() }
-            navigateForFacebookLogin.observe { navigateOnFacebookLogin() }
-            onLoginError.observe { container?.showSnackbar(it) }
-            showKeyboard.observe { container?.setKeyboardShown(this@LoginActivity, it) }
+            navigateOnNext.collectLatest { navigateOnHome() }
+            navigateForGoogleLogin.collectLatest { navigateOnGoogleLogin() }
+            navigateForFacebookLogin.collectLatest { navigateOnFacebookLogin() }
+            onLoginError.collectLatest { container?.showSnackbar(it) }
+            showKeyboard.collectLatest { container?.setKeyboardShown(this@LoginActivity, it) }
         }
     }
 

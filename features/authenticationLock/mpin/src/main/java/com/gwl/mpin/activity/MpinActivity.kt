@@ -14,13 +14,15 @@ import com.gwl.navigation.features.HomeNavigation
 import com.mpin.BR
 import com.mpin.R
 import com.mpin.databinding.ActivityMpinBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
 
+@ExperimentalCoroutinesApi
 class MpinActivity : BaseActivity<ActivityMpinBinding, MPinViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mDataBinding.setVariable(BR.viewModel, mViewModel)
-        initializeObservers()
         showLockScreenFragment()
     }
 
@@ -34,9 +36,14 @@ class MpinActivity : BaseActivity<ActivityMpinBinding, MPinViewModel>() {
         }
     }
 
-    private fun initializeObservers() {
-        mViewModel.showToast.observe { showToast(it) }
-        mViewModel.navigateToHome.observe { redirectToHomeScreen() }
+    override suspend fun initObservers() {
+        super.initObservers()
+        initializeObservers()
+    }
+
+    private suspend fun initializeObservers() {
+        mViewModel.showToast.collectLatest { showToast(it) }
+        mViewModel.navigateToHome.collectLatest { redirectToHomeScreen() }
     }
 
     private fun showLockScreenFragment() {

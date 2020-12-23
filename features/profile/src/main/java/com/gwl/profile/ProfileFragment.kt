@@ -25,10 +25,13 @@ import com.gwl.core.Common.Companion.CAMERA
 import com.gwl.core.FilesUtil.getRealPathFromGalleryUri
 import com.gwl.core.FilesUtil.getRealPathFromURI
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
 import java.io.File
 
 private const val ARG_PARAM = "data"
 
+@ExperimentalCoroutinesApi
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
     var mPickProfilePictureClick: Boolean = false
 
@@ -38,11 +41,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
         return initViewModel { ProfileViewModel() }
     }
 
-    override fun initObservers() {
+    override suspend fun initObservers() {
         super.initObservers()
         if (!checkStorageAndCameraPermission()) requestPermission()
         setHasOptionsMenu(true)
-        mViewModel.mPickProfilePicture.observe {
+        mViewModel.mPickProfilePicture.collectLatest {
             mPickProfilePictureClick = it
             if (checkStorageAndCameraPermission()) requestPermission() else showPictureDialog()
         }

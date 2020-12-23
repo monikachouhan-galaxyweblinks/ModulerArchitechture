@@ -22,6 +22,7 @@
 
             <TextView
                 android:id="@+id/autoPlay"
+                style="@style/Material.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -29,15 +30,13 @@
                 android:paddingTop="@dimen/_10dp"
                 android:paddingRight="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp"
-                android:text="Auto play on wifi"
-                style="@style/Material.SubTitle" />
+                android:text="Auto play on wifi" />
 
             <CheckBox
                 android:id="@+id/checkboxAutoPlay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:checked="@={viewmodel.isAutoPlay}"
                 android:paddingTop="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp" />
         </RelativeLayout>
@@ -50,6 +49,7 @@
 
             <TextView
                 android:id="@+id/darkThem"
+                style="@style/Material.SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -57,15 +57,13 @@
                 android:paddingTop="@dimen/_10dp"
                 android:paddingRight="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp"
-                android:text="Dark Theme"
-                style="@style/Material.SubTitle" />
+                android:text="Dark Theme" />
 
             <Switch
                 android:id="@+id/darkThemeSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:checked="@={viewmodel.isDarkTheme}"
                 android:paddingTop="@dimen/_10dp"
                 android:paddingBottom="@dimen/_10dp" />
         </RelativeLayout>

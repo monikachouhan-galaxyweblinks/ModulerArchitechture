@@ -20,10 +20,12 @@ import com.gwl.playerfeed.R
 import com.gwl.playerfeed.databinding.ActivityBasicListBinding
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.content_basic_list.*
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@ExperimentalCoroutinesApi
 class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewModel>() {
 
     private val adapter = MediaFeedAdapter()
@@ -35,7 +37,7 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
         const val DATA = "item_data"
     }
 
-    override fun initObservers() {
+    override suspend fun initObservers() {
         super.initObservers()
         mDataBinding.setVariable(BR.viewModel, mViewModel)
 
@@ -59,9 +61,9 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
                 updateAutoPlaySetting()
             }
         }
-        mViewModel.audioItemClick.observe { showAudioDetail(it) }
-        mViewModel.videoItemClick.observe { showVideoDetail(it) }
-        mViewModel.imageItemClick.observe { showImageDetail(it) }
+        mViewModel.audioItemClick.collectLatest { showAudioDetail(it) }
+        mViewModel.videoItemClick.collectLatest { showVideoDetail(it) }
+        mViewModel.imageItemClick.collectLatest { showImageDetail(it) }
     }
 
     private fun setupViewWithPage3() {
@@ -84,7 +86,7 @@ class MediaFeedFragment : BaseFragment<ActivityBasicListBinding, MediaFeedViewMo
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.menu_basic_list, menu)
-        val item = menu!!.findItem(R.id.action_autoPlaySettings)
+        val item = menu.findItem(R.id.action_autoPlaySettings)
         item.isChecked = mViewModel.getAutoPlayPref()
         super.onCreateOptionsMenu(menu, inflater)
     }

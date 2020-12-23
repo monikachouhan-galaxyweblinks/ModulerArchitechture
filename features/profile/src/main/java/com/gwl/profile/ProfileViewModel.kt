@@ -3,21 +3,23 @@ package com.gwl.profile
 import android.util.Log
 import android.view.View
 import androidx.databinding.ObservableBoolean
-import androidx.lifecycle.MutableLiveData
 import com.gwl.MyApplication
 import com.gwl.core.BaseViewModel
 import com.gwl.core.Common
 import com.gwl.core.LoginManager
 import com.gwl.model.UserField
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 
 /**
  * @author GWL
  */
+@ExperimentalCoroutinesApi
 class ProfileViewModel : BaseViewModel() {
     val user = MyApplication.loginManager.getUser()
     val isEditable: ObservableBoolean by lazy { ObservableBoolean(false) }
     val loginManager: LoginManager by lazy { MyApplication.loginManager }
-    var mPickProfilePicture = MutableLiveData<Boolean>()
+    var mPickProfilePicture = MutableStateFlow<Boolean>(false)
 
     fun updateUser() {
         Log.e("updateUser  ", "${user}")
@@ -41,7 +43,7 @@ class ProfileViewModel : BaseViewModel() {
     }
 
     fun askToChangeProfile() {
-        mPickProfilePicture.postValue(true)
+        mPickProfilePicture.value = true
     }
 
     fun onFocusChanged(view: View, hasFocus: Boolean) {

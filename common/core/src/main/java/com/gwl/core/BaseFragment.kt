@@ -17,6 +17,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 /**
  * @author GWL
@@ -54,7 +56,9 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
         mDataBinding.lifecycleOwner = this
         mDataBinding.executePendingBindings()
         removeObservers()
-        initObservers()
+        lifecycleScope.launch {
+            initObservers()
+        }
         // }
     }
 
@@ -120,7 +124,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : Fragment()
         return false
     }
 
-    open fun initObservers() {}
+    open suspend fun initObservers() {}
     open fun removeObservers() {}
     open fun initExtras() {}
 
